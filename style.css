@@ -1,0 +1,379 @@
+/*Hamburger*/
+header {
+	background-color: #E6EDFF;
+	padding: 0px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	border-bottom: solid 3px #1557FF;
+}
+.hamburger a {
+	text-decoration: none;
+	color: black;
+}
+.hamburger-menu {
+	color: black;
+	text-decoration: none;
+}
+.hamburger {
+	display: inline-block;
+	cursor: pointer;
+	padding: 8px 12px;
+	background-color: #E6EDFF;
+	border: none;
+	color: #333;
+	font-size: 20px;
+}
+.hamburger:hover {
+	background-color: #E6EDFF;
+}
+.font-margin {
+	padding-left: 20px;
+}
+
+/*HTML page*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: Arial;
+	background: white;
+}
+a {
+	text-decoration: none;
+	color: blue;
+}
+ol, ul {
+	padding-left: 22px;
+}
+h1,h2 {
+	text-align: center;
+}
+button {
+	background-color: #C0DCFF;
+	border-color: #1557FF;
+	border-width: 2px;
+	padding: 1px 3px 1px 3px;
+}
+select {
+	background-color: #C0DCFF;
+	border-color: #1557FF;
+	border-width: 2px;
+	padding: 1px 3px 1px 3px;
+}
+audio {
+	max-width: 100%;
+	max-height: 100vh;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.center-fit {
+	max-width: 100%;
+	max-height: 100vh;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: contain;
+}
+.center-text {
+	text-align: center;
+}
+.title {
+	padding: 0.5em 1em;
+	margin: 0em 0em;
+	align-content: center;
+}
+.title br {
+	margin: 0;
+	padding: 0;
+}
+.submit_btn {
+	margin-top: 1%;
+	width: 20%;
+}
+.submit_btn:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+.subtitle {
+	font-size: 0.7em;
+}
+.dp {
+	border-color: #1557FF;
+	border-radius: 10px;
+	border-style: solid;
+	float: left;
+	margin-right: 10px;
+	width: 100px
+}
+.flag-counter {
+	text-align: center
+}
+.text {
+	display: none;
+}
+.desc {
+	font-size: 85%;
+	color: rgb(80, 80, 80);
+}
+@media only screen and (orientation: landscape) {
+	.center-fit {
+		justify-content: center;
+	}
+}
+
+/*Boxes*/
+.box1 {
+	padding: 0.5em 0.5em;
+	margin-top: 0%;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-bottom: 3%;
+	border: solid 3px #000000;
+	text-align: center;
+}
+.box1 br {
+	margin: 0;
+	padding: 0;
+}
+.box2 {
+	padding: 0.5em 0.5em;
+	margin-top: 0%;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-bottom: 3%;
+	color: black;
+	background: #E6EDFF;
+	border-top: solid 5px #1557FF;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+	border-radius: 10px;
+}
+.box2 br {
+	margin: 0;
+	padding: 0;
+}
+.box3 {
+	padding: 0.5em 0.5em;
+	margin-top: 0%;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-bottom: 3%;
+	background: #E6EDFF;
+	border-radius: 10px;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.box3 .box-title {
+	font-size: 1.2em;
+	background: #1557FF;
+	padding: 4px;
+	text-align: center;
+	color: #FFF;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+.box3 br {
+	padding: 15px 20px;
+	margin: 0;
+}
+.box4 {
+	margin: 2em 0;
+	background: #FFBFBF;
+}
+.box4 .box-title {
+	font-size: 1.2em;
+	background: #db0000;
+	padding: 4px;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+.box4 br {
+	padding: 15px 20px;
+	margin: 0;
+}
+
+/*Background colors*/
+.red-bg {
+	background-color: #FFBFBF;
+}
+.orange-bg {
+	background-color: #FFDFBF;
+}
+.yellow-bg {
+	background-color: #FFFFBF;
+}
+.green-bg {
+	background-color: #BFFFBF;
+}
+.cyan-bg {
+	background-color: #BFFFFF;
+}
+.blue-bg {
+	background-color: #BFBFFF;
+}
+.magenta-bg {
+	background-color: #FFBFFF;
+}
+.purple-bg {
+	background-color: #DFBFFF;
+}
+
+/*Background colors to represent each grade levels*/
+/*Best for table headings*/
+.g7-th {
+	background-color: #009900;
+}
+.g8-th {
+	background-color: #FFFF65;
+}
+.g9-th {
+	background-color: #FF6565;
+}
+.g10-th {
+	background-color: #6565FF;
+}
+.g11-th {
+	background-color: #B265FF;
+}
+.g12-th {
+	background-color: #FFB265;
+}
+
+/*Background solid colors (100% pure) represent each grade levels*/
+.g7 {
+	background-color: green;
+}
+.g8 {
+	background-color: yellow;
+}
+.g9 {
+	background-color: red;
+}
+.g10 {
+	background-color: blue;
+}
+.g11 {
+	background-color: purple;
+}
+.g12 {
+	background-color: orange;
+}
+
+/*Table*/
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	table-layout: fixed;
+	border: 1;
+	width: 100%;
+}
+td, th {
+	position: relative;
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 6px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+}
+th {
+	background-color: #AAD0FF;
+	/*#C0DCFF is the old*/
+}
+table.inner-table th {
+	background: #CCE2FF;
+}
+
+/*Collapsible*/
+.collapsible {
+	border: 3px solid blue;
+	background-color: #1557FF;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	width: 94%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+	margin-left: 3%;
+	border-radius: 10px;
+
+}
+.active, .collapsible:hover {
+	background-color: #4C7FFF;
+}
+.content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	background-color: #E6EDFF;
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-bottom: 3%;
+	top: 9px;
+}
+
+/*SVG*/
+.external-link {
+	width: 12px;
+	height: 12px;
+}
+
+/*For train stations. Colored border lines left and right*/
+/*Only for stations under 'services'*/
+.line1 {
+	border-left: solid 18px #01844B;
+	border-right: solid 18px #01844B;
+}
+.line2 {
+	border-left: solid 18px #324A9C;
+	border-right: solid 18px #324A9C;
+}
+.line3 {
+	border-left: solid 18px #FFCC00;
+	border-right: solid 18px #FFCC00;
+}
+.line6 {
+	border-left: solid 18px #A9A9A9;
+	border-right: solid 18px #A9A9A9;
+}
+.line7 {
+	border-left: solid 18px #DB1E1E;
+	border-right: solid 18px #DB1E1E;
+}
+.linepnr {
+	border-left: solid 18px #FF9900;
+	border-right: solid 18px #FF9900;
+}
+.font-station {
+	font-size: 90%;
+}
+
+/*Text color decoration for links for master lists in Pasay West represents as grade levels*/
+.g7-link {
+	color: green;
+}
+.g8-link {
+	color: yellow;
+}
+.g9-link {
+	color: red;
+}
+.g10-link {
+	color: blue;
+}
+.g11-link {
+	color: purple;
+}
+.g12-link {
+	color: orange;
+}
