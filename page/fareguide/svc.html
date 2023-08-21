@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<title>LRT-1 fare guide - SVC</title>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+				</div>
+			</nav>
+		</header>
+		<br>
+		<br>
+		<br>
+		<div class="title">
+			<h1>LRT-1 fare guide</h1>
+			<h2>Stored Value Card</h2>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a> &#8594; <a href="../../fareguide.html">LRT-1 fare guide</a>
+		</div>
+		<div class="box2">
+			Updated on August 2, 2023
+			<br>
+			<br class="punta">ORIGIN
+			<div class="select1">
+				<select id="origin">
+					<option value="" selected>Origin</option>
+				</select>
+			</div>
+			<br>DESTINATION
+			<div class="select2">
+				<select id="destination">
+					<option value="">Destination</option>
+				</select>
+			</div>
+			<br>
+			<div class="loc">
+				<p id="output"></p>
+				<p id="price"></p>
+			</div>
+			<br>
+			See also: <a href="sjt.html">Single journey ticket fare guide</a>
+		</div>
+		<script>
+			
+			const fares = {
+				"Baclaran": [13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 23, 24, 25, 26, 27, 28, 29, 30, 33, 35],
+				"EDSA": [14, 13, 15, 15, 17, 18, 19, 20, 21, 22, 23, 24, 24, 25, 26, 27, 28, 29, 32, 34],
+				"Libertad": [15, 15, 13, 14, 15, 16, 17, 18, 20, 21, 22, 22, 23, 24, 25, 26, 27, 28, 31, 33],
+				"Gil Puyat": [16, 15, 14, 13, 15, 16, 17, 17, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 30, 32],
+				"Vito Cruz": [17, 17, 15, 15, 13, 14, 15, 16, 18, 19, 19, 20, 21, 22, 23, 24, 25, 26, 29, 31],
+				"Quirino": [18, 18, 16, 16, 14, 13, 14, 15, 17, 18, 18, 19, 20, 21, 22, 23, 24, 25, 28, 30,],
+				"Pedro Gil": [19, 19, 17, 17, 15, 14, 13, 14, 16, 17, 17, 18, 19, 20, 21, 22, 23, 24, 17, 29],
+				"United Nations": [10, 10, 18, 17, 16, 15, 14, 13, 15, 16, 16, 17, 18, 19, 20, 21, 22, 23, 26, 28],
+				"Central Terminal": [22, 21, 20, 19, 18, 17, 16, 15, 13, 14, 15, 16, 17, 17, 18, 19, 20, 22, 24, 27],
+				"Carriedo": [23, 22, 21, 20, 19, 18, 17, 16, 14, 13, 14, 15, 16, 16, 18, 18, 20, 21, 24, 26],
+				"Doroteo Jose": [23, 23, 22, 21, 19, 18, 17, 16, 15, 14, 13, 14, 15, 16, 17, 18, 19, 20, 23, 25],
+				"Bambang": [124, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 14, 15, 16, 17, 18, 19, 22, 24],
+				"Tayuman": [25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 14, 15, 16, 17, 18, 21, 23],
+				"Blumentritt": [26, 25, 24, 23, 22, 21, 20, 19, 17, 16, 16, 15, 14, 13, 14, 15, 16, 18, 20, 23],
+				"Abad Santos": [27, 26, 25, 24, 23, 22, 21, 20, 18, 18, 17, 16, 15, 14, 13, 14, 15, 17, 19, 22],
+				"R. Papa": [28, 27, 26, 25, 24, 23, 22, 21, 19, 18, 18, 17, 16, 15, 14, 13, 14, 16, 18, 21],
+				"5th Avenue": [29, 28, 27, 26, 25, 24, 23, 22, 20, 20, 19, 18, 17, 16, 15, 14, 13, 15, 17, 20],
+				"Monumento": [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 18, 17, 16, 15, 13, 16, 18],
+				"Balintawak": [33, 32, 31, 30, 29, 28, 27, 26, 24, 24, 23, 22, 21, 20, 19, 18, 17, 16, 13, 16],
+				"Fernando Poe Jr.": [35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 23, 22, 21, 20, 18, 16, 13]
+			}
+			window.addEventListener("DOMContentLoaded", () => {
+				// when page has loaded
+				const from = document.getElementById("origin");
+				const to = document.getElementById("destination");
+				const output = document.getElementById("output");
+				const price = document.getElementById("price");
+				const stations = Object
+				.keys(fares)
+				.map(station => `<option value="${station}">${station}</option>`).join("");
+				from.innerHTML += stations;
+				to.innerHTML += stations;
+				const getFare = (fromStation, toIdx) => `₱${fares[fromStation][toIdx].toFixed(2)}`; // using Template Literals
+				const displayPrice = (e) => {
+					output.textContent = "" // empty
+					let fromVal = from.value;
+					let toVal = to.value;
+					if (fromVal === "" || toVal === "") return // stop processing if one is empty
+					let fromIdx = from.selectedIndex-1; // arrays start at 0
+					let toIdx = to.selectedIndex-1;
+					let a = Math.abs(fromIdx - toIdx);
+					output.textContent = `${fromVal} to ${toVal}`
+					price.textContent = getFare(fromVal, toIdx);
+				};
+				from.addEventListener("change", displayPrice);
+				to.addEventListener("change", displayPrice);
+			});
+		</script>
+	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
