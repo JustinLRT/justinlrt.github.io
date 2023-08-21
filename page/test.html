@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Test</title>
+</head>
+<body>
+	<div id="divImages">
+		<img tsrc="../image/photographs/smewreinpsy/pasay1.jpg" src="../image/photographs/smewreinpsy/pasay2.jpg" />
+		<img tsrc="../image/photographs/smewreinpsy/pasay3.jpg" src="../image/photographs/smewreinpsy/pasay4.jpg" />
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		function DelayloadingImages() {
+			var imgDiv = document.getElementById("divImages");
+			var images = imgDiv.getElementsByTagName("img");
+			for (var i = 0; i < images.length; i++) {
+				images[i].setAttribute("src", images[i].getAttribute("tsrc"));
+			}
+		}
+		setTimeout("DelayloadingImages()", 3000);
+	</script>
+</body>
+</html>

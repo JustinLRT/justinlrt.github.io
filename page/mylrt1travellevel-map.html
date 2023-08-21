@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<title>My LRT-1 Travel Level</title>
+	<style>
+		table {
+			font-size: 14px;
+			border-spacing: 3px;
+			width: 70%;
+		}
+		td {
+			padding: 0px;
+			text-align: center;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			display: inline-block;
+			margin-left: 14px;
+		}
+		label {
+			display: block;
+			text-align: center;
+		}
+		col.left {
+			width: 16%;
+		}
+		col.middle {
+			width: 50%;
+		}
+		col.right {
+			width: 10%;
+		}
+		.table-container {
+			display: flex;
+			justify-content: center;
+		}
+		.rating-container {
+			text-align: right;
+			font-size: 14px;
+		}
+		.spacing {
+			word-spacing: 7.8px;
+			margin-right: 6px;
+		}
+		.bg5 {
+			background-color: #e84c3d;
+		}
+		.bg4 {
+			background-color: #d58337;
+		}
+		.bg3 {
+			background-color: #f3c218;
+		}
+		.bg2 {
+			background-color: #30cc70;
+		}
+		.bg1 {
+			background-color: #3598db;
+		}
+		.bg0 {
+			background-color: #fff;
+		}
+		.support {
+			text-align: center;
+		}
+		.color-change {
+			transition: background-color 0.3s ease;
+		}
+		.text {
+			display: none;
+		}
+		#result {
+			font-weight: bold;
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+		#legend {
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+				</div>
+			</nav>
+		</header>
+		<br>
+		<br>
+		<br>
+		<div class="title">
+			<h1>My LRT-1 Travel Level</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../home.html">Home</a> &#8594; <a href="mylrt1travellevel.html">My LRT-1 Travel Level - home</a>
+		</div>
+		<div id="capture-element">
+			<div class="box2">
+				<div class="center-text" id="result">
+					LRT-1 Level 0
+				</div>
+				<div id="legend">
+					<div class="table-container">
+						<table>
+							<colgroup>
+								<col class="left"> <!-- First column -->
+								<col class="middle"> <!-- Middle column with adjusted width -->
+								<col class="right"> <!-- Third column -->
+							</colgroup>
+							<tr>
+								<td>Level 5</td>
+								<td>Lived near</td>
+								<td class="bg5"></td>
+							</tr>
+							<tr>
+								<td>Level 4</td>
+								<td>Worked/studied near</td>
+								<td class="bg4"></td>
+							</tr>
+							<tr>
+								<td>Level 3</td>
+								<td>Stayed near</td>
+								<td class="bg3"></td>
+							</tr>
+							<tr>
+								<td>Level 2</td>
+								<td>Went here</td>
+								<td class="bg2"></td>
+							</tr>
+							<tr>
+								<td>Level 1</td>
+								<td>Passed by here</td>
+								<td class="bg1"></td>
+							</tr>
+							<tr>
+								<td>Level 0</td>
+								<td>Never been here</td>
+								<td class="bg0"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="box2">
+				<div class="rating-container">
+					<ul class="spacing">
+						<li>0</li>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+					</ul>
+					<ul>
+						<font id="text1">Baclaran</font>
+						<li><label><input type="radio" name="rating1" value="0" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+						<li><label><input type="radio" name="rating1" value="1" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+						<li><label><input type="radio" name="rating1" value="2" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+						<li><label><input type="radio" name="rating1" value="3" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+						<li><label><input type="radio" name="rating1" value="4" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+						<li><label><input type="radio" name="rating1" value="5" onchange="calculateResult(); changeColor('text1', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text2">EDSA</font>
+						<li><label><input type="radio" name="rating2" value="0" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+						<li><label><input type="radio" name="rating2" value="1" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+						<li><label><input type="radio" name="rating2" value="2" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+						<li><label><input type="radio" name="rating2" value="3" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+						<li><label><input type="radio" name="rating2" value="4" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+						<li><label><input type="radio" name="rating2" value="5" onchange="calculateResult(); changeColor('text2', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text3">Libertad</font>
+						<li><label><input type="radio" name="rating3" value="0" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+						<li><label><input type="radio" name="rating3" value="1" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+						<li><label><input type="radio" name="rating3" value="2" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+						<li><label><input type="radio" name="rating3" value="3" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+						<li><label><input type="radio" name="rating3" value="4" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+						<li><label><input type="radio" name="rating3" value="5" onchange="calculateResult(); changeColor('text3', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text4">Gil Puyat</font>
+						<li><label><input type="radio" name="rating4" value="0" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+						<li><label><input type="radio" name="rating4" value="1" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+						<li><label><input type="radio" name="rating4" value="2" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+						<li><label><input type="radio" name="rating4" value="3" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+						<li><label><input type="radio" name="rating4" value="4" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+						<li><label><input type="radio" name="rating4" value="5" onchange="calculateResult(); changeColor('text4', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text5">Vito Cruz</font>
+						<li><label><input type="radio" name="rating5" value="0" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+						<li><label><input type="radio" name="rating5" value="1" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+						<li><label><input type="radio" name="rating5" value="2" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+						<li><label><input type="radio" name="rating5" value="3" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+						<li><label><input type="radio" name="rating5" value="4" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+						<li><label><input type="radio" name="rating5" value="5" onchange="calculateResult(); changeColor('text5', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text6">Quirino</font>
+						<li><label><input type="radio" name="rating6" value="0" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+						<li><label><input type="radio" name="rating6" value="1" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+						<li><label><input type="radio" name="rating6" value="2" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+						<li><label><input type="radio" name="rating6" value="3" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+						<li><label><input type="radio" name="rating6" value="4" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+						<li><label><input type="radio" name="rating6" value="5" onchange="calculateResult(); changeColor('text6', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text7">Pedro Gil</font>
+						<li><label><input type="radio" name="rating7" value="0" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+						<li><label><input type="radio" name="rating7" value="1" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+						<li><label><input type="radio" name="rating7" value="2" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+						<li><label><input type="radio" name="rating7" value="3" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+						<li><label><input type="radio" name="rating7" value="4" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+						<li><label><input type="radio" name="rating7" value="5" onchange="calculateResult(); changeColor('text7', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text8">United Nations</font>
+						<li><label><input type="radio" name="rating8" value="0" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+						<li><label><input type="radio" name="rating8" value="1" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+						<li><label><input type="radio" name="rating8" value="2" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+						<li><label><input type="radio" name="rating8" value="3" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+						<li><label><input type="radio" name="rating8" value="4" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+						<li><label><input type="radio" name="rating8" value="5" onchange="calculateResult(); changeColor('text8', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text9">Central</font>
+						<li><label><input type="radio" name="rating9" value="0" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+						<li><label><input type="radio" name="rating9" value="1" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+						<li><label><input type="radio" name="rating9" value="2" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+						<li><label><input type="radio" name="rating9" value="3" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+						<li><label><input type="radio" name="rating9" value="4" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+						<li><label><input type="radio" name="rating9" value="5" onchange="calculateResult(); changeColor('text9', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text10">Carriedo</font>
+						<li><label><input type="radio" name="rating10" value="0" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+						<li><label><input type="radio" name="rating10" value="1" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+						<li><label><input type="radio" name="rating10" value="2" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+						<li><label><input type="radio" name="rating10" value="3" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+						<li><label><input type="radio" name="rating10" value="4" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+						<li><label><input type="radio" name="rating10" value="5" onchange="calculateResult(); changeColor('text10', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text11">Doroteo Jose</font>
+						<li><label><input type="radio" name="rating11" value="0" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+						<li><label><input type="radio" name="rating11" value="1" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+						<li><label><input type="radio" name="rating11" value="2" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+						<li><label><input type="radio" name="rating11" value="3" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+						<li><label><input type="radio" name="rating11" value="4" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+						<li><label><input type="radio" name="rating11" value="5" onchange="calculateResult(); changeColor('text11', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text12">Bambang</font>
+						<li><label><input type="radio" name="rating12" value="0" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+						<li><label><input type="radio" name="rating12" value="1" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+						<li><label><input type="radio" name="rating12" value="2" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+						<li><label><input type="radio" name="rating12" value="3" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+						<li><label><input type="radio" name="rating12" value="4" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+						<li><label><input type="radio" name="rating12" value="5" onchange="calculateResult(); changeColor('text12', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text13">Tayuman</font>
+						<li><label><input type="radio" name="rating13" value="0" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+						<li><label><input type="radio" name="rating13" value="1" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+						<li><label><input type="radio" name="rating13" value="2" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+						<li><label><input type="radio" name="rating13" value="3" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+						<li><label><input type="radio" name="rating13" value="4" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+						<li><label><input type="radio" name="rating13" value="5" onchange="calculateResult(); changeColor('text13', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text14">Blumentritt</font>
+						<li><label><input type="radio" name="rating14" value="0" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+						<li><label><input type="radio" name="rating14" value="1" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+						<li><label><input type="radio" name="rating14" value="2" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+						<li><label><input type="radio" name="rating14" value="3" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+						<li><label><input type="radio" name="rating14" value="4" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+						<li><label><input type="radio" name="rating14" value="5" onchange="calculateResult(); changeColor('text14', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text15">Abad Santos</font>
+						<li><label><input type="radio" name="rating15" value="0" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+						<li><label><input type="radio" name="rating15" value="1" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+						<li><label><input type="radio" name="rating15" value="2" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+						<li><label><input type="radio" name="rating15" value="3" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+						<li><label><input type="radio" name="rating15" value="4" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+						<li><label><input type="radio" name="rating15" value="5" onchange="calculateResult(); changeColor('text15', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text16">R. Papa</font>
+						<li><label><input type="radio" name="rating16" value="0" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+						<li><label><input type="radio" name="rating16" value="1" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+						<li><label><input type="radio" name="rating16" value="2" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+						<li><label><input type="radio" name="rating16" value="3" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+						<li><label><input type="radio" name="rating16" value="4" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+						<li><label><input type="radio" name="rating16" value="5" onchange="calculateResult(); changeColor('text16', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text17">5th Avenue</font>
+						<li><label><input type="radio" name="rating17" value="0" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+						<li><label><input type="radio" name="rating17" value="1" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+						<li><label><input type="radio" name="rating17" value="2" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+						<li><label><input type="radio" name="rating17" value="3" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+						<li><label><input type="radio" name="rating17" value="4" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+						<li><label><input type="radio" name="rating17" value="5" onchange="calculateResult(); changeColor('text17', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text18">Monumento</font>
+						<li><label><input type="radio" name="rating18" value="0" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+						<li><label><input type="radio" name="rating18" value="1" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+						<li><label><input type="radio" name="rating18" value="2" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+						<li><label><input type="radio" name="rating18" value="3" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+						<li><label><input type="radio" name="rating18" value="4" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+						<li><label><input type="radio" name="rating18" value="5" onchange="calculateResult(); changeColor('text18', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text19">Balintawak</font>
+						<li><label><input type="radio" name="rating19" value="0" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+						<li><label><input type="radio" name="rating19" value="1" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+						<li><label><input type="radio" name="rating19" value="2" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+						<li><label><input type="radio" name="rating19" value="3" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+						<li><label><input type="radio" name="rating19" value="4" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+						<li><label><input type="radio" name="rating19" value="5" onchange="calculateResult(); changeColor('text19', this.value)"></label></li>
+					</ul>
+				</div>
+				<div class="rating-container">
+					<ul>
+						<font id="text20">Roosevelt</font>
+						<li><label><input type="radio" name="rating20" value="0" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+						<li><label><input type="radio" name="rating20" value="1" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+						<li><label><input type="radio" name="rating20" value="2" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+						<li><label><input type="radio" name="rating20" value="3" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+						<li><label><input type="radio" name="rating20" value="4" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+						<li><label><input type="radio" name="rating20" value="5" onchange="calculateResult(); changeColor('text20', this.value)"></label></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="box2 center-text">
+			<button onclick="resetForm()">Reset</button>
+			<button onclick="saveScreenshot()">Save Image</button>
+		</div>
+		<div class="box2 center-text">
+			If you liked this project and want it to be accessible in the future, please consider supporting below. Thank you!
+			<br>
+			<br><a href="http://www.youtube.com/@JustinLRT">Support me!</a>
+		</div>
+
+		<div class="box3">
+			<a href="#top">Go back to top</a>
+		</div>
+		<div class="box3 flag-counter">
+			<a href="https://info.flagcounter.com/2gNe"><img src="https://s01.flagcounter.com/count2/2gNe/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_20/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		</div>
+		<script>
+			function calculateResult() {
+				var radios = document.querySelectorAll('input[type="radio"]:checked');
+				var sum = 0;
+				for (var i = 0; i < radios.length; i++) {
+					sum += parseInt(radios[i].value);
+				}
+				document.getElementById("result").textContent = "LRT-1 Level " + sum;
+			}
+			function changeColor(elementId, rating) {
+				var element = document.getElementById(elementId);
+				switch (rating) {
+					case "1":
+						element.style.backgroundColor = "#3598db";
+						break;
+					case "2":
+						element.style.backgroundColor = "#30cc70";
+						break;
+					case "3":
+						element.style.backgroundColor = "#f3c218";
+						break;
+					case "4":
+						element.style.backgroundColor = "#d58337";
+						break;
+					case "5":
+						element.style.backgroundColor = "#e84c3d";
+						break;
+					default:
+						element.style.backgroundColor = "white";
+						break;
+				}
+			}
+			function resetForm() {
+				var radios = document.querySelectorAll('input[type="radio"]:checked');
+				for (var i = 0; i < radios.length; i++) {
+					radios[i].checked = false;
+				}
+				document.getElementById("result").textContent = "LRT-1 Level 0";
+			}
+		</script>
+		<script>
+			function saveScreenshot() {
+				var element = document.getElementById("capture-element");
+				var options = {
+					useCORS: true,
+					allowTaint: true
+				};
+				alert("Please wait until the download notification appeared. Please click OK to start image processing. This last for few seconds.");
+
+				html2canvas(element, options).then(function(canvas) {
+					var link = document.createElement('a');
+					link.href = canvas.toDataURL();
+					link.download = 'My LRT-1 Travel Level.png';
+					link.click();
+				});
+			}
+		</script>
+		<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
+	</div>
+	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
