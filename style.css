@@ -72,6 +72,14 @@ audio {
 	justify-content: center;
 	align-items: center;
 }
+ul.pdl li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+ol.pdl li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 .center-fit {
 	max-width: 100%;
 	max-height: 100vh;
@@ -111,6 +119,11 @@ audio {
 	float: left;
 	margin-right: 10px;
 	width: 100px
+}
+.dp1 {
+	float: left;
+	margin-right: 10px;
+	width: 125px
 }
 .flag-counter {
 	text-align: center
@@ -290,6 +303,9 @@ th {
 table.inner-table th {
 	background: #CCE2FF;
 }
+.td-bg {
+	background: #CCE2FF;
+}
 
 /*Collapsible*/
 .collapsible {
@@ -376,4 +392,11 @@ table.inner-table th {
 }
 .g12-link {
 	color: orange;
+}
+
+/*Countdown*/
+.countdown {
+	font-size: 24px;
+	text-align: center;
+	font-weight: bold;
 }
