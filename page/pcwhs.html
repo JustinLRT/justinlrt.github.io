@@ -30,12 +30,26 @@
 			max-height: 49vh;
 			margin: auto;
 		}
+		.center-fit2 {
+			max-width: 49%;
+			max-height: 49vh;
+			margin: auto;
+		}
+		.center-text2 {
+			text-align: center;
+		}
 		.pd1 {
 			display: block;
 			text-decoration: none;
 			color: black;
 			/* Adjust color as needed */
 			cursor: pointer;
+		}
+		div.imageContainer img {
+			margin: 0px;
+		}
+		ul.padding0-rule li {
+			padding: 0px;
 		}
 		table.sched td {
 			text-align: center;
@@ -48,6 +62,12 @@
 		}
 		div.taa h3 {
 			text-align: center;
+		}
+		col.period {
+			width: 25%;
+		}
+		col.legend-calendar {
+			width: 19%;
 		}
 		h2 {
 			text-align: left;
@@ -75,12 +95,84 @@
 			overflow-x: auto;
 			white-space: nowrap;
 		}
+		.firstday-td {
+			position: relative;
+			z-index: 1;
+		}
+		.firstday-td::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background-color: skyblue;
+		}
+		.firstday-td::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 50%;
+			height: 100%;
+			background-color: #3DCC6C;
+		}
+		.firstday-td span {
+			position: relative;
+			z-index: 1;
+		}
+		.firstexam-td {
+			position: relative;
+			z-index: 1;
+		}
+		.firstexam-td::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background-color: #415BDB;
+		}
+		.firstexam-td::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 50%;
+			height: 100%;
+			background-color: green;
+		}
+		.firstexam-td span {
+			position: relative;
+			z-index: 1;
+		}
 		/* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (min-width: 600px) {
 			/* Add any specific styles for the scrollable table on smaller screens if needed */
 			.table-container {
 				width: 100% !important;
 				overflow-x: scroll;
+			}
+			.calendar-container {
+				display: flex;
+				flex-direction: column;
+			}
+			.calendar-container {
+				flex-direction: row;
+			}
+			.calendar {
+				order: 2;
+				/* Swap order with text element */
+				width: 40%;
+			}
+			.desc-calendar {
+				order: 1;
+				/* Swap order with box element */
+				width: 60%;
+			}
+			.center-fit2 {
+				justify-content: left;
 			}
 		}
 	</style>
@@ -106,10 +198,14 @@
 			<a href="../home.html">Home</a>
 		</div>
 		<div class="box1">
-			For announcements and updates in this school, please click <a href="schlnnncmnts.html">here</a>.
+			For announcements and updates in this school, please click <a href="schlnnncmnts.html">here</a>
+			<br>
+			<br>For posts from the school, please click <a href="pcwhs/posts.html">here</a>.
+			<br>
+			<br>For files from Justin LRT about this school, click <a href="pcwhs/files.html">here</a>.
 		</div>
 		<div class="box2">
-			<b>Pasay City West High School</b> is a large public school in Pasay, Metro Manila, Philippines, established <a class="secret" href="nmldaypsywst/passcode.html">in</a> 1949. It is located at Pasadeña Street, F.B. Harrison, Pasay City, Metro Manila. This school occupied more than 7,400 students. The current Principal IV is Mr. Agapito Teodoro N. Manaog.
+			<b>Pasay City West High School</b> is a large public school in Pasay, Metro Manila, Philippines, established <a class="secret" href="nmldaypsywst/passcode.html">in</a> 1949. It is located at Pasadeaa Street, FB Harrison, Pasay City, Metro Manila. This school occupied more than 7,400 students. The current Principal IV is Mr. Agapito Teodoro N. Manaog.
 			<br>
 			<br>Let's explore this page how beautiful the largest public school in Pasay City and what their contents and features around the school.
 			<br>
@@ -120,9 +216,17 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<img class="center-fit" src="../media/photographs/pasaywest/pcwhs25.jpg" />
+						<div id="imageContainer">
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs25.jpg" />
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs43.jpg" />
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs34.jpg" />
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs17.jpg" />
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs22.jpg" />
+							<img class="center-fit2" src="../media/photographs/pasaywest/pcwhs47.jpg" />
+						</div>
 						<div class="center-text desc">
-							View from Building 3 at 4th floor, May 2, 2023
+							(From top, left to right)
+							<br>Aerial view from Building 3 • Entrace gate • Manuel L. Quezon statue • I love PCWHS landscape • School gymnasium • Hallway in Building 3
 						</div>
 					</td>
 				</tr>
@@ -210,6 +314,8 @@
 			In 1952, Manuel L. Quezon High School was renamed to Pasay City High School after the other schools were named after the late President Manuel Quezon, school officials proposed to the city council to change the name of the institution under Resolution No. 145.
 			<br>
 			<br>The creation of two annexes which is the Pasay City East High School and Pasay City South High School (now Villamor Air Base) led to be renamed from Pasay City High School to Pasay City West High School in 1967.
+			<br>
+			<br>View full history <a href="pcwhs/history.html">here</a>
 		</div>
 		<button class="collapsible">Teachers and Administrators</button>
 		<div class="content taa">
@@ -637,165 +743,188 @@
 			<br>
 			<h2>Boy and girl scouts</h2>
 		</div>
+		<button class="collapsible">Learning areas</button>
+		<div class="content">
+			<br>
+			<ul class="pdl">
+				<li>
+					<b>English</b>
+					<ul>
+						<li>It is focuses on developing advanced language skills, including reading, writing, speaking, and critical thinking. It covers literature analysis, essay composition, and communication skills.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Filipino</b>
+					<ul>
+						<li>It is the study of the Filipino language, literature, and culture. High school Filipino includes in-depth discussions of Filipino literature and grammar.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Science</b>
+					<ul>
+						<li>
+							It covers biology, chemistry, and physics. Students learn about the scientific method, conduct experiments, and explore the physical and biological world.
+							<ul>
+								<li><b>Biology</b>: It focuses on the study of living organisms. Students explore topics like cellular biology, genetics, evolution, ecology, and human anatomy. This subject helps students understand the diversity of life and the mechanisms that drive it.</li>
+								<li><b>Chemistry</b>: It delves into the composition, properties, and reactions of matter. It covers concepts like the periodic table, chemical bonding, chemical reactions, and the basics of organic and inorganic chemistry. It's crucial for understanding the world of chemicals and their interactions.</li>
+								<li><b>Physics</b>: It deals with the fundamental laws that govern the physical world. Students learn about motion, forces, energy, electricity, magnetism, and topics like thermodynamics and quantum physics. Physics explains how the universe functions at the most basic level.</li>
+								<li><b>Earth and Space</b>: This section explores the Earth's geology, meteorology, and astronomy. Students study topics like plate tectonics, weather patterns, celestial objects, and the universe's structure. Earth & Space Science helps students comprehend the planet they live on and the vast cosmos beyond.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<b>Mathematics</b>
+					<ul>
+						<li>Mathematics in high school involves advanced topics in algebra, geometry, trigonometry, and calculus. It develops problem-solving and analytical skills.</li>
+					</ul>
+				</li>
+				<li>
+					<b>MAPEH (Music, Arts, Physical Education, and Health)</b>
+					<ul>
+						<li>
+							It integrates various elements. It includes music and art appreciation, physical education activities, and health-related topics.
+							<ul>
+								<li><b>Music</b>: This delves into the study of music theory, history, and performance. Students learn to read sheet music, explore various musical genres, and may even participate in choir, band, or individual instrumental activities.</li>
+								<li><b>Arts</b>: The arts component includes visual arts, such as drawing, painting, and sculpture. Students express their creativity through various art forms, while also learning about art history and techniques.</li>
+								<li><b>Physical Education (PE)</b>: It focus on physical fitness, sports, and overall health. Students engage in various physical activities, sports, and games to promote physical fitness and well-being.</li>
+								<li><b>Health</b>: Health education covers a range of topics, including nutrition, sexual education, mental health, and overall well-being. Students learn about healthy lifestyle choices, stress management, and essential life skills.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<b>ESP (Edukasyon sa Pagpapakatao)</b>
+					<ul>
+						<li>It focuses on values and character education. It covers ethics, moral values, and civic responsibility.</li>
+					</ul>
+				</li>
+				<li>
+					<b>AP (Araling Panlipunan)</b>
+					<ul>
+						<li>It encompasses social studies, history, and geography. This may include topics on Philippine history, world history, and geography.</li>
+					</ul>
+				</li>
+				<li>
+					<b>TLE (Technology and Livelihood Education)</b>
+					<ul>
+						<li>TLE introduces practical skills and knowledge for future careers. It includes topics like home economics, entrepreneurship, and technology-related skills.</li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
 		<button class="collapsible">Class schedules</button>
 		<div class="content">
 			<br>
-			<table class="sched green-bg">
+			<table class="sched table-container">
+				<colgroup>
+					<col>
+					<col class="green-bg">
+					<col class="yellow-bg">
+				</colgroup>
 				<tr>
-					<th class="g7-th" colspan="2">Grade 7</th>
+					<th rowspan="2">Period</th>
+					<th colspan="2">Time</th>
 				</tr>
 				<tr>
-					<th class="g7-th">Period</th>
-					<th class="g7-th">Time</th>
+					<th class="g7-th">Grade 7</th>
+					<th class="g8-th">Grade 8</th>
+				</tr>
+				<tr>
+					<td>Flag ceremony</td>
+					<td>12:20 - 12:40</td>
+					<td>5:45 - 6:00</td>
 				</tr>
 				<tr>
 					<td>1st</td>
 					<td>12:40 - 1:40</td>
+					<td>6:00 - 7:00</td>
 				</tr>
 				<tr>
 					<td>2nd</td>
 					<td>1:40 - 2:40</td>
+					<td>7:00 - 8:00</td>
 				</tr>
 				<tr>
 					<td>Break</td>
 					<td>2:40 - 3:00</td>
-				</tr>
-				<tr>
-					<td>3rd</td>
-					<td>3:00 - 4:00</td>
-				</tr>
-				<tr>
-					<td>4th</td>
-					<td>4:00 - 5:00</td>
-				</tr>
-				<tr>
-					<td>5th</td>
-					<td>5:00 - 6:00</td>
-				</tr>
-				<tr>
-					<td>6th</td>
-					<td>6:00 - 7:00</td>
-				</tr>
-			</table>
-			<br>
-			<table class="sched yellow-bg">
-				<tr>
-					<th class="g8-th" colspan="2">Grade 8</th>
-				</tr>
-				<tr>
-					<th class="g8-th">Period</th>
-					<th class="g8-th">Time</th>
-				</tr>
-				<tr>
-					<td>Flag ceremony</td>
-					<td>5:45 - 6:00</td>
-				</tr>
-				<tr>
-					<td>1st</td>
-					<td>6:00 - 7:00</td>
-				</tr>
-				<tr>
-					<td>2nd</td>
-					<td>7:00 - 8:00</td>
-				</tr>
-				<tr>
-					<td>Break</td>
 					<td>8:00 - 8:20</td>
 				</tr>
 				<tr>
 					<td>3rd</td>
+					<td>3:00 - 4:00</td>
 					<td>8:20 - 9:20</td>
 				</tr>
 				<tr>
 					<td>4th</td>
-					<td>9:20 - 10:20</td>
-				</tr>
-				<tr>
-					<td>5th</td>
-					<td>10:20 - 11:20</td>
-				</tr>
-				<tr>
-					<td>6th</td>
-					<td>11:20 - 12:20</td>
-				</tr>
-			</table>
-			<br>
-			<table class="sched red-bg">
-				<tr>
-					<th class="g9-th" colspan="2">Grade 9</th>
-				</tr>
-				<tr>
-					<th class="g9-th">Period</th>
-					<th class="g9-th">Time</th>
-				</tr>
-				<tr>
-					<td>1st</td>
-					<td>12:40 - 1:40</td>
-				</tr>
-				<tr>
-					<td>2nd</td>
-					<td>1:40 - 2:40</td>
-				</tr>
-				<tr>
-					<td>3rd</td>
-					<td>2:40 - 3:40</td>
-				</tr>
-				<tr>
-					<td>Break</td>
-					<td>3:40 - 4:00</td>
-				</tr>
-				<tr>
-					<td>4th</td>
 					<td>4:00 - 5:00</td>
+					<td>9:20 - 10:20</td>
 				</tr>
 				<tr>
 					<td>5th</td>
 					<td>5:00 - 6:00</td>
-				</tr>
-				<tr>
-					<td>6th</td>
-					<td>6:00 - 7:00</td>
-				</tr>
-			</table>
-			<br>
-			<table class="sched blue-bg">
-				<tr>
-					<th class="g10-th" colspan="2">Grade 10</th>
-				</tr>
-				<tr>
-					<th class="g10-th">Period</th>
-					<th class="g10-th">Time</th>
-				</tr>
-				<tr>
-					<td>Flag ceremony</td>
-					<td>5:45 - 6:00</td>
-				</tr>
-				<tr>
-					<td>1st</td>
-					<td>6:00 - 7:00</td>
-				</tr>
-				<tr>
-					<td>2nd</td>
-					<td>7:00 - 8:00</td>
-				</tr>
-				<tr>
-					<td>3rd</td>
-					<td>8:00 - 9:00</td>
-				</tr>
-				<tr>
-					<td>Break</td>
-					<td>9:00 - 9:20</td>
-				</tr>
-				<tr>
-					<td>4th</td>
-					<td>9:20 - 10:20</td>
-				</tr>
-				<tr>
-					<td>5th</td>
 					<td>10:20 - 11:20</td>
 				</tr>
 				<tr>
 					<td>6th</td>
+					<td>6:00 - 7:00</td>
+					<td>11:20 - 12:20</td>
+				</tr>
+			</table>
+			<br>
+			<table class="schesd table-container">
+				<colgroup>
+					<col>
+					<col class="red-bg">
+					<col class="blue-bg">
+				</colgroup>
+				<tr>
+					<th rowspan="2">Period</th>
+					<th colspan="2">Time</th>
+				</tr>
+				<tr>
+					<th class="g9-th">Grade 9</th>
+					<th class="g10-th">Grade 10</th>
+				</tr>
+				<tr>
+					<td>Flag ceremony</td>
+					<td>12:20 - 12:40</td>
+					<td>5:45 - 6:00</td>
+				</tr>
+				<tr>
+					<td>1st</td>
+					<td>12:40 - 1:40</td>
+					<td>6:00 - 7:00</td>
+				</tr>
+				<tr>
+					<td>2nd</td>
+					<td>1:40 - 2:40</td>
+					<td>7:00 - 8:00</td>
+				</tr>
+				<tr>
+					<td>3rd</td>
+					<td>2:40 - 3:40</td>
+					<td>8:00 - 9:00</td>
+				</tr>
+				<tr>
+					<td>Break</td>
+					<td>3:40 - 4:00</td>
+					<td>9:00 - 9:20</td>
+				</tr>
+				<tr>
+					<td>4th</td>
+					<td>4:00 - 5:00</td>
+					<td>9:20 - 10:20</td>
+				</tr>
+				<tr>
+					<td>5th</td>
+					<td>5:00 - 6:00</td>
+					<td>10:20 - 11:20</td>
+				</tr>
+				<tr>
+					<td>6th</td>
+					<td>6:00 - 7:00</td>
 					<td>11:20 - 12:20</td>
 				</tr>
 			</table>
@@ -1292,10 +1421,417 @@
 						<li><b>Grade 12:</b> 6:00 - 11:20 AM</li>
 					</ul>
 				</li>
+				<li>Morning class being implemented on May 2, 2023 for safety of the students due to excessive heat which can cause heat stroke.</li>
+			</ul>
+			<table class="sched table-container">
+				<tr>
+					<th>Grade</th>
+					<th>Face to face</th>
+					<th>Synchronous/Asynchronous</th>
+				</tr>
+				<tr>
+					<td>7 & 9</td>
+					<td>
+						Tue, Thu (6:00 AM - 12:20 PM)
+						<br>Fri (12:40 - 7:00 PM)
+					</td>
+					<td>Mon, Wed (10:00 AM - 4:20 PM)</td>
+				</tr>
+				<tr>
+					<td>8 & 10</td>
+					<td>Mon, Wed, Fri (6:00 AM - 12:20 PM)</td>
+					<td>Tue, Thu (6:00 AM - 12:20 PM)</td>
+				</tr>
+				<tr>
+					<td>STE 7-10</td>
+					<td>Mon, Wed, Fri (7:00 AM - 3:40 PM)</td>
+					<td>Tue, Thu (7:00 AM - 3:40 PM)</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Tue, Thu (6:00 - 11:45 AM)
+						<br>Fri (11:45 AM - 5:35 PM)
+					</td>
+					<td>Mon, Wed (10:00 AM - 4:45 PM)</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>Mon, Wed, Fri (6:00 - 11:20 AM)</td>
+					<td>Tue, Thu (6:00 - 11:20 AM)</td>
+				</tr>
+			</table>
+			<br>
+			<ul>
+				<li>The school announced on May 2 that there's have changes on schedule starting May 3. AM and PM teachers and classes will shift to AM class.</li>
+			</ul>
+			<table class="sched table-container">
+				<tr>
+					<th>Grade</th>
+					<th>Face to face</th>
+					<th>Synchronous/Asynchronous</th>
+				</tr>
+				<tr>
+					<td>7 & 9</td>
+					<td>
+						Tue, Thu (6:00 AM - 12:20 PM)
+						<br>Fri (9:30 AM - 12:30 PM)
+					</td>
+					<td>Mon, Wed (6:00 AM - 12:20 PM)</td>
+				</tr>
+				<tr>
+					<td>8 & 10</td>
+					<td>
+						Mon, Wed (6:00 AM - 12:20 PM)
+						<br>Fri (6:00 - 9:00 AM)
+					</td>
+					<td>Tue, Thu (6:00 AM - 12:20 PM)</td>
+				</tr>
+				<tr>
+					<td>STE 7-10</td>
+					<td>Mon, Wed, Fri (7:00 AM - 3:40 PM)</td>
+					<td>Tue, Thu (7:00 AM - 3:40 PM)</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>
+						Tue, Thu (6:00 AM - 12:45 PM)
+						<br>Fri (9:30 AM - 12:30 PM)
+					</td>
+					<td>Mon, Wed (6:00 AM - 12:45 PM)</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>
+						Mon, Wed (6:00 - 11:20 AM)
+						<br>Fri (6:00 - 9:00 AM)
+					</td>
+					<td>Tue, Thu (6:00 - 11:20 AM)</td>
+				</tr>
+				<tr>
+					<td class="desc" colspan="3">Friday schedules have only 30 minutes per period and without break time.</td>
+				</tr>
+			</table>
+			<br>
+			<ul>
+				<li>
+					Normal schedule will be placed on June 13, 2023. Here are following schedules:
+					<ul>
+						<li><b>Grade 7 and 9</b>: 12:40 - 7:00 PM</li>
+						<li><b>Grade 9 and 10</b>: 6:00 AM - 12:20 PM</li>
+						<li><b>STE (7 to 10)</b>: 7:00 AM - 3:40 PM</li>
+						<li><b>Grade 11</b>: 11:45 AM - 6:30 PM</li>
+						<li><b>Grade 12</b>: 6:00 - 11:20 AM</li>
+					</ul>
+				</li>
+			</ul>
+			<br>
+			<h2>Other schedules</h2>
+			<h3>Quarterly periodical test</h3>
+			Periodical test take place before the quarter ends. It divided into 2 days, and each day have only 4 subjects. With duration of 1 hour per learning areas and 30 minutes break.
+			<table class="sched">
+				<colgroup>
+					<col class="period">
+					<col class="green-bg">
+					<col class="yellow-bg">
+				</colgroup>
+				<tr>
+					<th rowspan="2">Period</th>
+					<th colspan="2">Time</th>
+				</tr>
+				<tr>
+					<th class="g7-th">Grade 7</th>
+					<th class="g8-th">Grade 8</th>
+				</tr>
+				<tr>
+					<td>1st</td>
+					<td>12:00 - 1:00</td>
+					<td>7:00 - 8:30</td>
+				</tr>
+				<tr>
+					<td>Break</td>
+					<td>1:00 - 1:30</td>
+					<td>8:00 - 8:30</td>
+				</tr>
+				<tr>
+					<td>2nd</td>
+					<td>1:30 - 2:30</td>
+					<td>8:30 - 9:30</td>
+				</tr>
+				<tr>
+					<td>3rd</td>
+					<td>2:30 - 3:30</td>
+					<td>9:30 - 10:30</td>
+				</tr>
+				<tr>
+					<td>4th</td>
+					<td>3:30 - 4:30</td>
+					<td>10:30 - 11:30</td>
+				</tr>
+			</table>
+			<table class="sched">
+				<colgroup>
+					<col class="period">
+					<col class="red-bg">
+					<col class="blue-bg">
+				</colgroup>
+				<tr>
+					<th rowspan="2">Period</th>
+					<th colspan="2">Time</th>
+				</tr>
+				<tr>
+					<th class="g9-th">Grade 9</th>
+					<th class="g10-th">Grade 10</th>
+				</tr>
+				<tr>
+					<td>1st</td>
+					<td>12:00 - 1:00</td>
+					<td>7:00 - 8:00</td>
+				</tr>
+				<tr>
+					<td>2nd</td>
+					<td>1:00 - 2:00</td>
+					<td>8:00 - 9:00</td>
+				</tr>
+				<tr>
+					<td>Break</td>
+					<td>2:00 - 2:30</td>
+					<td>9:00 - 9:30</td>
+				</tr>
+				<tr>
+					<td>3rd</td>
+					<td>2:30 - 3:30</td>
+					<td>9:30 - 10:30</td>
+				</tr>
+				<tr>
+					<td>4th</td>
+					<td>3:30 - 4:30</td>
+					<td>10:30 - 11:30</td>
+				</tr>
+			</table>
+			<br>
+			<h3>Monthly test</h3>
+			As same schedule as periodical test, divided into 2 days and 4 subjects per day. The schedule is not shown because of schedule changing.
+			<br>
+			<br>
+			<h3>Christmas/Year-end party</h3>
+			<ul>
+				<li><b>Grade 7, 9 and 11</b>: 10:00 AM - 12:00 PM</li>
+				<li><b>Grade 8, 10, and 12</b>: 8:00 - 10:00 AM</li>
+				<li><b>STE (Grade 7 to 10)</b>: 10:00 AM - 12:00 PM</li>
 			</ul>
 		</div>
 		<button class="collapsible">School rules</button>
 		<div class="content">
+			<br>The Pasay City West High School are having very strict rules and students need to follow these rules to avoid any consequences.
+			<br>
+			<br>
+			<ul class="pdl">
+				<li>
+					<b>School uniform</b>
+					<ul>
+						<li>
+							Students should adhere to the school uniform policy and avoid clothing that is offensive or distracting. The students' uniform should be as required by the school. Incorrect uniform (like another color or for another school) will not be admitted to school.
+							<ul>
+								<li>
+									For male:
+									<ul class="padding0-rule">
+										<li>White polo with patches</li>
+										<li>White T-shirt or shirt inside</li>
+										<li>Gray pants</li>
+										<li>Black shoes</li>
+									</ul>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									For female:
+									<ul class="padding0-rule">
+										<li>White blouse with patches</li>
+										<li>White shirt inside</li>
+										<li>Blue striped dress that the length is below the knees</li>
+										<li>Black shoes</li>
+										<li>White socks</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>Wearing white T-shirt while entering the school is prohibited as the order from the principal, Mr. Agapito Teodoro N. Manaog.</li>
+						<li>Wearing shoes other than black is prohibited.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Proper haircut and colors</b>
+					<ul>
+						<li>
+							Our school places importance on maintaining a well-groomed and uniform appearance. The rules regarding proper haircut and hair colors are as follows:
+							<ul>
+								<li>
+									For male:
+									<ul class="padding0-rule">
+										<li>The hair does not cover the ear.</li>
+										<li>Hair length is limited to 3×4 is allowed</li>
+										<li>The length at the back will not reach the collar of the uniform.</li>
+										<li>Hair coloring is not permitted. Natural black and pure black is allowed.</li>
+									</ul>
+								</li>
+								<li>
+									For female:
+									<ul class="padding0-rule">
+										<li>The hair is properly combed.</li>
+										<li>If there are bangs it should not reach the eyelid.</li>
+										<li>Hair coloring is not permitted. Natural black and pure black is allowed.</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<b>Vaping and smoking</b>
+					<ul>
+						<li>The use of tobacco products, including vaping and smoking, is strictly prohibited on school grounds. This rule is in place to ensure a healthy and smoke-free environment for all.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Vandalism/graffiti</b>
+					<ul>
+						<li>Writing on walls, desks, or defacing school property in any way is not permitted.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Bullying</b>
+					<ul>
+						<li>Bullying is not tolerated in our school. This includes any repeated aggressive behavior, either verbal, physical, or online, that is intended to harm, intimidate, or belittle another student.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Destruction of school or classroom equipment</b>
+					<ul>
+						<li>Deliberate damage to school property, including classroom equipment, textbooks, or any other school materials, is strictly prohibited.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Fighting</b>
+					<ul>
+						<li>Engaging in physical altercations or fights on school grounds disrupts the learning environment and poses a safety risk to all students. Such behavior will not be tolerated.</li>
+						<li>Any fight happened outside of school grounds will be reported to the school administrators and the students may order for suspension or dismissal.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Frequent absences and lates</b>
+					<ul>
+						<li>Repeatedly absences and/or arriving late to school or classes without a valid excuse is not allowed.</li>
+						<li>Absences should provide an excuse letter with parent signature to believe that this is why he/she is absent.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Using illegal drugs</b>
+					<ul>
+						<li>The use, possession, or distribution of illegal drugs or controlled substances is strictly forbidden. Violators will face severe consequences, including legal action.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Bringing and consuming alcoholic beverages</b>
+					<ul>
+						<li>Bringing alcoholic beverages onto school property or consuming them during school hours is against the rules. We maintain a strict no-alcohol policy on campus.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Disrespect towards teachers and school staff</b>
+					<ul>
+						<li>Students are expected to show respect and courtesy to all teachers and staff members. Disrespectful behavior, including rudeness or insubordination, is not acceptable.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Cutting classes</b>
+					<ul>
+						<li>Attending all scheduled classes is essential for academic success. Skipping classes without a valid reason is considered truancy and will result in disciplinary action.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Using cellphones and other electronics during class</b>
+					<ul>
+						<li>To maintain a focused learning environment, the use of cellphones and other electronic devices during class is generally not allowed.</li>
+						<li>The use of cellphones and other electronic devices is only explicitly permitted by the teacher for educational purposes during the class.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Unauthorized visitors</b>
+					<ul>
+						<li>Students should not bring unauthorized visitors onto school property during school hours.</li>
+						<li>Inclusion of parent/guardian will be allowed.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Harassment or discrimination</b>
+					<ul>
+						<li>Any form of harassment or discrimination based on race, gender, religion, or any other characteristic is strictly prohibited.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Cheating or plagiarism</b>
+					<ul>
+						<li>Cheating on exams, assignments, or plagiarizing someone else's work is not allowed and will result in consequences.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Disruptive behavior</b>
+					<ul>
+						<li>Engaging in behavior that disrupts the learning environment, such as shouting, loud disruptions, or excessive talking, is prohibited.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Weapons or dangerous objects</b>
+					<ul>
+						<li>Bringing weapons or dangerous objects such as guns and knifes onto the school premises is strictly forbidden.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Skipping detention or other punishments</b>
+					<ul>
+						<li>Refusing to attend detention or evade other disciplinary actions will result in further consequences.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Theft or stealing</b>
+					<ul>
+						<li>Stealing from fellow students, teachers, or the school itself is a serious offense.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Cyberbullying</b>
+					<ul>
+						<li>Engaging in cyberbullying, including online harassment or spreading harmful content about fellow students or staff, is strictly prohibited.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Use of disrespectful language</b>
+					<ul>
+						<li>Using disrespectful or offensive language towards others, including peers, teachers, or staff, is not allowed.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Being drunk or Intoxicated</b>
+					<ul>
+						<li>Entering school while drunk or intoxicated is prohibited. This is to maintain order and safety for everyone within the school.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Earrings for males</b>
+					<ul>
+						<li>At Pasay City West High School, the dress code includes guidelines for wearing earrings. Male students are expected to adhere to a no-earring policy. This rule is in place to promote a neat and uniform appearance among male students. Earrings are not allowed as part of the school uniform.</li>
+					</ul>
+				</li>
+			</ul>
+			<h2>Punishments</h2>
+			Pasay City West High School has very strict rules. If students break any of these rules, they will receive punishments. The severity of the punishments depends on the specific rule they have violated.
+			<br>
+			<br>
+			<ul>
+				<li><b>First offense:</b> the consequences vary based on the rule violated. For minor infractions, such as equipment damage, students may be required to repair the damages or issue an apology. For major violations, parents may be contacted, and the student may face a 3-day suspension or possible dismissal from the school.</li>
+				<li><b>Second offense:</b> parents will be contacted, and the student will face a 3-day suspension. In cases of serious violations, the student may be dismissed, and their report card will be returned.</li>
+				<li><b>Third offense:</b> the student may face dismissal from the school, and their report card will be returned. They will be required to find another school for transfer.</li>
+			</ul>
 		</div>
 		<button class="collapsible">Grade and sections</button>
 		<div class="content">
@@ -1478,65 +2014,995 @@
 					<td>Sapphire</td>
 				</tr>
 				<tr>
-					<td>Daffodil (OHP)</td>
-					<td>Maparaan (OHP)</td>
-					<td>Lino Brocka (OHP)</td>
-					<td>Raha Soliman (OHP)</td>
+					<td>Daffodil (OHSP)</td>
+					<td>Maparaan (OHSP)</td>
+					<td>Lino Brocka (OHSP)</td>
+					<td>Raha Soliman (OHSP)</td>
 					<td></td>
 					<td>Topaz</td>
 				</tr>
 			</table>
 		</div>
-		<!-- Temporary unavailable -->
-		<!--
-						<button class="collapsible">Master lists</button>
-						<div class="content">
-							<br>For complete lists of students per section of each grade levels, pleaee click below.
-							<br>
-							<br>
-							<table>
-								<tr>
-									<th class="g7-th"><a class="pd1" href="gradeandsec/grade7.html" target="_blank">Grade 7</a></th>
-									<th class="g8-th"><a class="pd1" href="gradeandsec/grade8.html" target="_blank">Grade 8</a></th>
-									<th class="g9-th"><a class="pd1" href="gradeandsec/grade9.html" target="_blank">Grade 9</a></th>
-								</tr>
-								<tr>
-									<th class="g10-th"><a class="pd1" href="gradeandsec/grade10.html" target="_blank">Grade 10</a></th>
-									<th class="g11-th"><a class="pd1" href="gradeandsec/grade11.html" target="_blank">Grade 11</a></th>
-									<th class="g12-th"><a class="pd1" href="gradeandsec/grade12.html" target="_blank">Grade 12</a></th>
-								</tr>
-							</table>
-						</div>
-						-->
-		<button class="collapsible">Future</button>
-		<div class="content">
-			<br>After the incident was known to use students with illegal drugs and vape on September 13, 2023 which those students are already dismissed, teachers and coordinators of Grade 10 talked about on how to solve this problem. They thought of two options:
-			<ol type="a">
-				<li>Students will reshuffles in different sections</li>
-				<li>The class adviser will advise students not to repeat them</li>
-			</ol>
-			<br>In the next coming weeks, the school will provide a pass in each classrooms to make one student per classroom go out at a time. These are steps for using it:
-			<ol>
-				<li>If a student want go go outside to go comfort room or when instructed by a tracher, the student must ask a teacher for a pass and the teacher give it to student.</li>
-				<li>Maximum time is only 2-3 minutes to use other students in a classroom</li>
-				<li>When the student is back in the classroom, the pass will be returned to the teacher.</li>
-			</ol>
-			<br>Mr. Agapito Teodoro N. Manaog said during student orientation that the school will have elevators soon to access for persons with disability, senior citizens, visual impaired, and persons with health issues.
+		<button class="collapsible">School calendar</button>
+		<div class="content scal">
+			<br>
+			<h3 class="center">School calendar of activities for school year 2023-2024</h3>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">August 2023</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td class="holiday">21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+						</tr>
+						<tr>
+							<td>27</td>
+							<td class="holiday">28</td>
+							<td class="firstday-td"><span class="firstday-td-span">29</span></td>
+							<td>30</td>
+							<td class="class-suspended">31</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>21: Ninoy Aquino Day</li>
+						<li>28: National Heroes Day</li>
+						<li>29: First day of school</li>
+						<li>29: Student orientation</li>
+						<li>31: Class suspension due to heavy rainfall</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">September 2023</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="class-suspended">1</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td class="class-suspended">4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td class="activity">15</td>
+							<td>16</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td class="class-suspended">22</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>24</td>
+							<td class="activity">25</td>
+							<td>26</td>
+							<td>27</td>
+							<td class="test">28</td>
+							<td class="test">29</td>
+							<td>30</td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>1: Class suspension as the order from Malacañang (Memorandum Circular No. 30)</li>
+						<li>4: Class suspension due to heavy rainfall</li>
+						<li>15: Schoolwide general cleaning</li>
+						<li>22: Class suspension due to volcanic ash from Taal Volcano</li>
+						<li>25: Family day (shortened period)</li>
+						<li>28-29: Monthly test for September</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">October 2023</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td class="events-clssus">5</td>
+							<td class="events-clssus">6</td>
+							<td>7</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td class="events">13</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td class="class-suspended">16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+						</tr>
+						<tr>
+							<td>22</td>
+							<td class="events">23</td>
+							<td>24</td>
+							<td>25</td>
+							<td class="firstexam-td"><span class="firstexam-td-span">26</span></td>
+							<td class="firstexam-td"><span class="firstexam-td-span">27</span></td>
+							<td>28</td>
+						</tr>
+						<tr>
+							<td>29</td>
+							<td class="class-suspended">30</td>
+							<td class="class-suspended">31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>5-6: Teachers' Day</li>
+						<li>13: 5.0 magnitude earthquake</li>
+						<li>16: Class suspension due of transport strike</li>
+						<li>23: SDO-Pasay ASEAN-UNESCO</li>
+						<li>26-27: 1st quarter examination</li>
+						<li>26-27: Pictorial</li>
+						<li>30: Elections</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">November 2023</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="holiday">1</td>
+							<td class="holiday">2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td class="activity">11</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<td>26</td>
+							<td class="holiday">27</td>
+							<td class="events">28</td>
+							<td>29</td>
+							<td class="holiday">30</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>1: All Saints' Day</li>
+						<li>2: All Souls' Day</li>
+						<li>11: Distribution of report cards</li>
+						<li>27 & 30: Bonifacio Day</li>
+						<li>28: Birthday celebration</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">December 2023</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td class="class-suspended">18</td>
+							<td class="class-suspended">19</td>
+							<td class="class-suspended">20</td>
+							<td class="class-suspended">21</td>
+							<td class="class-suspended">22</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td class="holiday">24</td>
+							<td class="holiday">25</td>
+							<td class="class-suspended">26</td>
+							<td class="class-suspended">27</td>
+							<td class="class-suspended">28</td>
+							<td class="class-suspended">29</td>
+							<td class="holiday">30</td>
+						</tr>
+						<tr>
+							<td class="holiday">31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>16: Start of Christmas break</li>
+						<li>24: Christmas Eve</li>
+						<li>25: Christmas Day</li>
+						<li>30: Rizal Day</li>
+						<li>31: New Year's Eve</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">January 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="holiday">1</td>
+							<td class="class-suspended">2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td class="test">22</td>
+							<td class="test">23</td>
+							<td class="class-suspended">24</td>
+							<td class="class-suspended">25</td>
+							<td class="class-suspended">26</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td class="class-suspended">29</td>
+							<td class="class-suspended">30</td>
+							<td>31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>1: New Year's Day</li>
+						<li>2: End of Christmas break</li>
+						<li>3: Resumption of classes</li>
+						<li>22-23: 2nd quarter examination</li>
+						<li>24-26 & 29-30: Mid-year/semester break</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">February 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td class="holiday">10</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+						</tr>
+						<tr>
+							<td class="holiday">25</td>
+							<td>26</td>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>10: Chinese New Year</li>
+						<li>25: EDSA People Power Revolution</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">March 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+							<td class="holiday">28</td>
+							<td class="holiday">29</td>
+							<td class="holiday">30</td>
+						</tr>
+						<tr>
+							<td>31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>28: Maundy Thursday</li>
+						<li>29: Good Friday</li>
+						<li>30: Black Saturday</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">April 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td class="test">3</td>
+							<td class="test">4</td>
+							<td>5</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>8</td>
+							<td class="holiday">9</td>
+							<td class="holiday">10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>3-4: 3rd quarter examination</li>
+						<li>9: The Day of Valor</li>
+						<li>10: Eidul-Fitar</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">May 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="holiday">1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td class="test">23</td>
+							<td class="test">24</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<td>26</td>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td class="test">30</td>
+							<td class="test">31</td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>1: Labor Day</li>
+						<li>23-24: 4th quarter examination (For Grade 12)</li>
+						<li>30-31: 4th quarter examination (For Grades 7 to 11)</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<div class="calendar-container">
+				<div class="calendar">
+					<table class="calendar-days">
+						<colgroup>
+							<col class="red-bg">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<tr>
+							<th colspan="7">June 2024</th>
+						</tr>
+						<tr>
+							<th class="sunday">S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>10</td>
+							<td class="activity">11</td>
+							<td class="holiday">12</td>
+							<td class="activity">13</td>
+							<td class="activity">14</td>
+							<td>15</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td class="holiday">17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+						</tr>
+						<tr>
+							<td>30</td>
+							<td>31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="desc-calendar">
+					<ul>
+						<li>11 & 13-14: End of school year rites</li>
+						<li>12: Independence Day</li>
+						<li>17: Eid al-Adha (Feast of the Sacrifice)</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<h3>Legend</h3>
+			<table>
+				<colgroup>
+					<col class="legend-calendar">
+					<col>
+				</colgroup>
+				<tr>
+					<th>Color</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td class="holiday"></td>
+					<td>Holidays</td>
+				</tr>
+				<tr>
+					<td class="class-suspended"></td>
+					<td>Class suspensions by the government and events from the government</td>
+				</tr>
+				<tr>
+					<td class="events-clssus"></td>
+					<td>School events with class suspensions</td>
+				</tr>
+				<tr>
+					<td class="activity"></td>
+					<td>Activities in the school</td>
+				</tr>
+				<tr>
+					<td class="events"></td>
+					<td>Events in the school</td>
+				</tr>
+				<tr>
+					<td class="test"></td>
+					<td>Periodical and monthly tests/exams</td>
+				</tr>
+				<tr>
+					<td class="firstday"></td>
+					<td>First day of school classes</td>
+				</tr>
+			</table>
 		</div>
 		<button class="collapsible">Incidents</button>
 		<div class="content">
 			<br>
 			<ul class="pdl">
-				<li>On November 29, 2022, two men in a room of 9-Kamagong perform a boxing even there's have a teacher at the last period (between 4:40 PM - 5:30 PM). They were both taken to the guidance office and suspended for three school days.</li>
-				<li>On June 14, 2023, the students of Grade 11 turned off the circuit breaker in 2nd floor of Building 3 at stairs beside of room 208 resulting to blackout in rooms 205 to 208. A Grade 9 student enter the TLE Practical Arts faculty room then it reminded to the teachers that the cause of blackout was the Grade 11 students. The teachers who professional in electricity turned on the circuit breaker can the electricity is back, causing students from room 205 to 208 cheering up.</li>
-				<li>On June 15, 2023, at 10:19 AM, a magnitude 6.3 earthquake with its epicenter in Calatagan, Batangas, caused panic in the school. Classes were immediately suspended, including afternoon sessions, starting at 10:20 AM. The school's engineering and disaster response teams inspected buildings and structures for safety.</li>
-				<li>On September 13, 2023, some Grade 10 students using illegal drugs and vape inside the comfort room. Mostly are sections Agoncillo, Gomez, Malvar and Jaena. On the same day, two female Grade 10 students used vape in the women's comfort room and posted a video on TikTok that was wearing a school uniform of PCWHS. Because it was a major violation, the school dismissed those students mentioned above.</li>
+				<li>On November 29, 2022, two men in room in 9-Kamagong engaged in a fight even though there was a teacher present during the last period (between 4:40 PM - 5:30 PM). Both individuals were subsequently taken to the guidance office and suspended for three school days.</li>
+				<li>On June 14, 2023, Grade 11 students turned off the circuit breaker on the 2nd floor of Building 3, near the stairs next to room 208, resulting in a blackout in rooms 205 to 208. A Grade 9 student entered the TLE Practical Arts faculty room, and it was then realized by the teachers that the Grade 11 students were responsible for the blackout. The teachers, who are professionals in electrical matters, restored the electricity by turning the circuit breaker back on, much to the delight of the students in rooms 205 to 208.</li>
+				<li>On June 15, 2023, at 10:19 AM, a magnitude 6.5 earthquake with its epicenter in Calatagan, Batangas, caused panic at the school. Classes were immediately suspended, including the afternoon sessions, starting at 10:20 AM. The school's engineering and disaster response teams inspected buildings and structures to ensure safety.</li>
+				<li>On September 13, 2023, some Grade 10 students were found using illegal drugs and vaping inside the restroom. Most of these students were from sections Agoncillo, Gomez, Malvar, and Jaena. On the same day, two female Grade 10 students were caught vaping in the women's restroom and posted a video on TikTok while wearing the school uniform of PCWHS. Due to the severity of these violations, the school dismissed the students mentioned above.</li>
+				<li>On October 13, 2023, at 8:24 AM, a magnitude 5.0 earthquake originating from Calaca, Batangas prompted students to evacuate to the school's open space area for safety. The School Risk Management Council conducted inspections of the classrooms to assess for any potential wall cracks. By 9:00 AM, following directives from the Pasay City School's Division Office, the school principal issued instructions for students to return to their classrooms, and classes resumed as scheduled. No injuries were reported in this incident.</li>
 			</ul>
 		</div>
-		<button class="collapsible">Photographies</button>
+		<button class="collapsible">Gallery</button>
 		<div class="content">
 			<br>
-			<h3 class="center">School photographies</h3>
 			<div id="imageContainer">
 				<img class="center-fit1" src="../media/photographs/pasaywest/pcwhs3.jpg" />
 				<img class="center-fit1" src="../media/photographs/pasaywest/pcwhs2.jpg" />
@@ -1585,6 +3051,11 @@
 				<img class="center-fit1" src="../media/photographs/pasaywest/pcwhs39.jpg" />
 				<img class="center-fit1" src="../media/photographs/pasaywest/pcwhs46.jpg" />
 			</div>
+		</div>
+		<button class="collapsible">External links</button>
+		<div class="content">
+			<br>
+
 		</div>
 		<div class="box3">
 			<a href="#top">Go back to top</a>

@@ -7,6 +7,38 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
 	<title>About me</title>
+	<style>
+	table.ptr-fit-td td {
+			padding: 1px;
+		}
+@media (min-width: 600px) {
+		.pcwhs-thumb,
+		.song,
+		.lrtride {
+			float: left;
+			margin-right: 10px;
+			width: 300px;
+		}
+		.video {
+			float: right;
+			margin-left: 10px;
+			width: 300px;
+		}
+		.photographiesContainer {
+			flex-direction: row;
+			display: flex;
+		}
+		.pics {
+			order: 2;
+			width: 30%;
+			margin-right: 10px;
+		}
+		.pht-desc {
+			order: 1;
+			width: 70%;
+		}
+	}
+	</style>
 </head>
 <body>
 	<div class="text">
@@ -67,8 +99,11 @@
 		</div>
 		<div class="box2">
 			<h2 id="section-1">As a student of Pasay City West High School</h2>
-			<img class="center-fit" src="../media/photographs/pasaywest/pcwhs25.jpg" />
-			<br>As a student, I'm so exciting in every class because after 2 years of pandemic caused by COVID-19, I finally meet my classmates, friends and even going somewhere. I'm was placed at top 8 in my class because I study hard and I'm doing great at school. I'm so good at drawing, drafting, and lettering since the start of school year.
+			<div class="pcwhs-thumb">
+				<img class="center-fit" src="../media/photographs/pasaywest/pcwhs25.jpg" />
+				<br>
+			</div>
+			As a student, I'm so exciting in every class because after 2 years of pandemic caused by COVID-19, I finally meet my classmates, friends and even going somewhere. I'm was placed at top 8 in my class because I study hard and I'm doing great at school. I'm so good at drawing, drafting, and lettering since the start of school year.
 			<br>
 			<br>My teacher adviser, named Mrs. Juliet P. Boncales, and she is my best and beautiful teacher adviser ever seen. She the adviser of 9 - Kamagong and also she is a guidance teacher. Her favorite subject mostly teaching for students is Values.
 			<br>
@@ -81,34 +116,46 @@
 		</div>
 		<div class="box2">
 			<h2 id="section-2">Photographer</h2>
-			<table>
-				<tr>
-					<td colspan="2"><img class="center-fit" src="../media/photographs/lrt1/lrt1-20.jpg" /></td>
-				</tr>
-				<tr>
-					<td><img class="center-fit" src="../media/photographs/moa/moa8.jpg" /></td>
-					<td><img class="center-fit" src="../media/photographs/pasayrotonda/pasayrtd9.jpg" /></td>
-				</tr>
-				<tr>
-					<td><img class="center-fit" src="../media/photographs/smewreinpsy/pasay2.jpg" /></td>
-					<td><img class="center-fit" src="../media/photographs/pasaywest/pcwhs25.jpg" /></td>
-				</tr>
-			</table>
-			<div class="center-text desc">Some of his photos captured somewhere</div>
-			<br>I'm always taking pictures somewhere because it's so beautiful and I've taken someone at the school.
-			<br>
-			<br>I've start photographing in 2021 because of beautiful view outside at top of my house. When the face-to-face classes starts after 2 years, I'm now able to get pictures and videos anywhere.
-			<br>
-			<br>Click
-			<a href="ptgrphs.html">here</a> for more photos of my photographies.
+			<div class="photographiesContainer">
+				<div class="pics">
+					<table class="ptr-fit-td">
+						<tr>
+							<td colspan="2"><img class="center-fit" src="../media/photographs/lrt1/lrt1-20.jpg" /></td>
+						</tr>
+						<tr>
+							<td><img class="center-fit" src="../media/photographs/moa/moa8.jpg" /></td>
+							<td><img class="center-fit" src="../media/photographs/pasayrotonda/pasayrtd9.jpg" /></td>
+						</tr>
+						<tr>
+							<td><img class="center-fit" src="../media/photographs/smewreinpsy/pasay2.jpg" /></td>
+							<td><img class="center-fit" src="../media/photographs/pasaywest/pcwhs25.jpg" /></td>
+						</tr>
+					</table>
+					<div class="center-text desc">
+						Some of his photos captured somewhere
+					</div>
+				</div>
+				<br>
+				<div class="pht-desc">
+					I'm always taking pictures somewhere because it's so beautiful and I've taken someone at the school.
+					<br>
+					<br>I've start photographing in 2021 because of beautiful view outside at top of my house. When the face-to-face classes starts after 2 years, I'm now able to get pictures and videos anywhere.
+					<br>
+					<br>Click
+					<a href="ptgrphs.html">here</a> for more photos of my photographies.
+				</div>
+			</div>
 		</div>
 		<div class="box2">
 			<h2 id="section-3">LRT and MRT song composer</h2>
-			<img class="center-fit" src="../media/lightrailtransitline1.jpg" alt="Light Rail Transit Line 1" />
-			<div class="center-text desc">
-				The most popular song ever I created, Light Rail Transit Line 1.
+			<div class="song">
+				<img class="center-fit" src="../media/lightrailtransitline1.jpg" alt="Light Rail Transit Line 1" />
+				<div class="center-text desc">
+					The most popular song ever I created, Light Rail Transit Line 1.
+				</div>
+				<br>
 			</div>
-			<br>I'm always listening and singing my own song because people can hear my song for the first time. My songs that I released is <i>20 Stations of LRT-1</i>, <i>13 Stations of LRT-2</i>, <i>13 Stations of MRT-3</i>, and <i>Light Rail Transit Line 1</i>, which are the songs are made by me.
+			I'm always listening and singing my own song because people can hear my song for the first time. My songs that I released is <i>20 Stations of LRT-1</i>, <i>13 Stations of LRT-2</i>, <i>13 Stations of MRT-3</i>, and <i>Light Rail Transit Line 1</i>, which are the songs are made by me.
 			<br>
 			<br>The most popular song I've created ever is <b>Light Rail Transit Line 1</b>.
 			<br>
@@ -120,6 +167,7 @@
 			<br>
 			<br>
 			<h3>Trainspotting</h3>
+			<div class="video">
 			<video class="center-fit" controls>
 				<source src=”../media/lrt1firsttrainspotvideo.mp4” type=video/ogg>
 				<source src="../media/lrt1firsttrainspotvideo.mp4" type=video/mp4>
@@ -127,7 +175,9 @@
 			<div class="center-text desc">
 				First trainspotting video at 4th floor of my house. Taken August 21, 2021 at 6:52 AM
 			</div>
-			<br>I started doing trainspotting activities since August 21, 2021 at top of my house where I lived. The first video was taken on the same date.
+			<br>
+			</div>
+			I started doing trainspotting activities since August 21, 2021 at top of my house where I lived. The first video was taken on the same date.
 			<br>
 			<br>Then, I want to train spot until 2022. My first long trainspotting at same place on November 5, 2022.
 			<br>
@@ -144,17 +194,20 @@
 			<br>
 			<br>
 			<h3>Rides</h3>
-			<img class="center-fit" src="../media/ride/baclaran2.jpg" />
-			<div class="center-text desc">
-				His first ride from Baclaran to Libertad after years on December 15, 2022.
+			<div class="lrtride">
+				<img class="center-fit" src="../media/ride/baclaran2.jpg" />
+				<div class="center-text desc">
+					His first ride from Baclaran to Libertad after years on December 15, 2022.
+				</div>
+				<br>
 			</div>
-			<br>I'm riding almost every day because of fresh air conditioning, fast speeds and beautiful outside view.
+			I'm riding almost every day because of fresh air conditioning, fast speeds and beautiful outside view.
 			<br>
 			<br>My first ride after 4 years on November 17, 2022. I'm was so excited to ride the train because I've never ride train after 4 years. I start ride from Libertad and my destination is EDSA.
 			<br>
 			<br>My first ride from Baclaran to Libertad was on December 15, 2022. I looked the station after years and it was so large.
 			<br>
-			<br>I had ridden more than 40 times of LRT-1.
+			<br>I had been ridden more than 100 times of LRT-1.
 			<br>
 			<br>Click
 			<a href="lrt1ride.html">here</a> for more information about my LRT-1 ride.
