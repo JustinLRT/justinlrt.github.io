@@ -195,8 +195,14 @@ ol.pdl li {
 	margin: 0;
 }
 .box4 {
-	margin: 2em 0;
+	padding: 0.5em 0.5em;
+	margin-top: 0%;
+	margin-left: 3%;
+	margin-right: 3%;
+	margin-bottom: 3%;
 	background: #FFBFBF;
+	border-radius: 10px;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 .box4 .box-title {
 	font-size: 1.2em;
@@ -399,4 +405,66 @@ table.inner-table th {
 	font-size: 24px;
 	text-align: center;
 	font-weight: bold;
+}
+
+/*Posts*/
+.post {
+	display: flex;
+	padding-bottom: 15px;
+}
+.profile-picture img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+	/* To make it circular */
+	margin-right: 10px;
+	/* To maintain aspect ratio within the circle */
+}
+.post-details {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	padding-top: 5px;
+}
+.name {
+	font-weight: bold;
+	font-size: 18px;
+}
+.date-time {
+	color: #888;
+	font-size: 14px;
+}
+
+/*Calendar*/
+table.calendar-days td {
+	text-align: center;
+}
+div.scal li {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.sunday {
+	background-color: red;
+}
+.holiday {
+	background-color: red;
+}
+.class-suspended {
+	background-color: orange;
+}
+.activity {
+	background-color: green;
+}
+.events {
+	background-color: #3DCC6C;
+}
+.events-clssus {
+	background-color: yellow;
+}
+.test {
+	background-color: #415BDB;
+}
+.firstday {
+	background-color: skyblue;
 }

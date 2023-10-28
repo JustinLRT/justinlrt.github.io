@@ -7,6 +7,11 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
 	<title>Navigation page</title>
+	<style>
+		ul.padding0-rule li {
+			padding: 0px;
+		}
+	</style>
 </head>
 <body>
 	<div class="text">
@@ -23,9 +28,10 @@
 			<h2>Site contents</h2>
 			<ul>
 				<li><a href="home.html">Home</a></li>
-				<ul>
+				<ul class="pdl">
+					<li><a href="page/posts.html">Justin LRT - Posts</a></li>
 					<li>LRT-1</li>
-					<ul>
+					<ul class="padding0-rule">
 						<li><a href="page/fareguide.html">LRT-1 fare guide</a></li>
 						<ul>
 							<li><a href="page/fareguide/sjt.html">Single journey ticket</a></li>
@@ -51,9 +57,13 @@
 						<li><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></li>
 					</ul>
 					<li><a href="page/pcwhs.html">Pasay City West High School</a></li>
+					<ul class="padding0-rule">
+						<li><a href="page/pcwhs/announcements.html">Announcements and updates</a></li>
+						<li><a href="page/pcwhs/posts.html">Posts</a></li>
+					</ul>
 					<li><a href="page/ptgrphs.html">Photographies</a></li>
 					<li><a href="page/aboutme.html">About Justin LRT</a></li>
-					<ul>
+					<ul class="padding0-rule">
 						<li><a href="page/pcwhs.html">Pasay City West High School</a></li>
 						<li><a href="page/ptgrphs.html">Photographies</a></li>
 						<li><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></li>
@@ -99,56 +109,18 @@
 					<td>Yes</td>
 				</tr>
 			</table>
+			<br><a href="page/termsofuse.html">Terms of Use</a>
 			<br>
-			<a href="page/termsofuse.html">Terms of Use</a>
+			<br>Licenses:
+			<li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a></li>
 		</div>
-		<div class="box2">
-			<h2>Latest site changes</h2>
-			<h3 align="center">September 23, 2023</h3>
-			<h4>Added</h4>
-			<ul>
-				<li>Added a alert message for unaccessible pages</li>
-				<li>Added an content for PCWHS-ND page (which is only accessible by URL only)</li>
-			</ul>
-			<h4>Changes</h4>
-			<ul>
-				<li>Updated information in most pages</li>
-				<li>Updated information for Pasay City West High School</li>
-			</ul>
+		<div class="box4">
+			<h3 class="center-text"><font color="red">Warning!</font></h3>
+			For web developers only, visitors will be okay and keep their convenient surfing.
 			<br>
-			<h4>Removed</h4>
+			<br>It should fix issue in the following pages:
 			<ul>
-				<li>Removed the LRT-1 update in homepage of station change name (Fernando Poe Jr. station) because is now 30 days passed.</li>
-			</ul>
-			<br>
-			<h3 align="center">August 23, 2023</h3>
-			<h4>Added</h4>
-			<ul>
-				<li>Added more images in LRT-1 Fernando Poe Jr. station</li>
-			</ul>
-			<br>
-			<h4>Removed</h4>
-			<ul>
-				<li>Removed school photographies involving students for privacy reasons</li>
-				<li>Removed <i>9-Kamagong classmate ratings</i></li>
-				<li>Removed the master lists that showing list of students in sections in all grade levels (but there's no contents and only sections)</li>
-				<li>Removed LRT-1 quizzes due to scoring system</li>
-			</ul>
-			<br>
-			<h4>Changes</h4>
-			<ul>
-				<li>Changes in homepage</li>
-				<li>Changes in <i>Pasay City West High School</i> page</li>
-				<li>Changes in <i>About Justin LRT</i></li>
-				<li>Changes in <i>Photographies</i></li>
-			</ul>
-			<br>
-			<h4>Fixes</h4>
-			<ul>
-				<li>Fixed the issue that some pages are not loading properly due to code errors</li>
-				<li>Fixed the grammar in some LRT-1 articles</li>
-				<li>Fixed the spelling of a LRT-1 station that it shows <q>Ferdinand Poe Jr.</q> instead of <q>Fernando Poe Jr.</q></li>
-				<li>Fixed the issue that save image button in <i>My LRT-1 Travel Level</i> that not showing a download prompt</li>
+				<li>LRT-1 rides (w/ screen res of 600+ px)</li>
 			</ul>
 		</div>
 		<div class="box3">
@@ -157,7 +129,7 @@
 	</div>
 	<script>
 		function address() {
-			alert("Room 202, Building 3, Pasay City West High School, Pasadena street, FB Harrison, Pasay City, Metro Manila")
+			alert("Room 203, Building 3, Pasay City West High School, Pasadena street, FB Harrison, Pasay City, Metro Manila")
 		}
 	</script>
 	<script type='text/javascript' src='script/jquery.min.js'></script>
