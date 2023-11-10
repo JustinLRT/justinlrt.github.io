@@ -2,12 +2,47 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+	<title>Redirecting...</title>
 </head>
 <body>
-	<h3>This main page is under development, please click <a href="home.html">HERE</a> to proceed.</h3>
-	<h3>Justin LRT</h3>
+	<div class="text">
+		<!--
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+				</div>
+			</nav>
+		</header>
+		-->
+		<div class="box2">
+			<h3>Redirecting... Please wait.</h3>
+		</div>
+	</div>
+	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<script>
+		// JavaScript code for redirection
+		window.location.href = "home.html"; // Redirect to page2.html immediately
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
 </body>
-  </html>
+</html>
