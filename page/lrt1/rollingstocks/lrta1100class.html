@@ -6,7 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../../../style.css" type="text/css" media="all" />
-	<title>LRTA 1200 class</title>
+	<title>LRTA 1100 class</title>
 	<style>
 		th {
 			text-align: center;
@@ -19,6 +19,9 @@
 			/* Lock the table layout to prevent column width changes */
 			width: 100%;
 			/* Set the table width to 100% of the container */
+		}
+		col.legend {
+			width: 5%;
 		}
 		.table-container {
 			width: 100% !important;
@@ -60,11 +63,8 @@
 				</div>
 			</nav>
 		</header>
-		<br>
-		<br>
-		<br>
 		<div class="title">
-			<h1>LRTA 1200 class</h1>
+			<h1>LRTA 1100 class</h1>
 		</div>
 		<div class="box3">
 			<a href="javascript:window.history.back();">Back</a>
@@ -99,8 +99,8 @@
 				<tr>
 					<td><b>Manufacturer</b></td>
 					<td>
-						Hyundai Precision<button id="section-1" onclick="noteA()">a</button>
-						<br>ADtranz<button id="section-2" onclick="noteB()">b</button>
+						Hyundai Precision<sup><a id="section-1" onclick="noteA()">[a]</a></sup>
+						<br>ADtranz<sup><a id="section-2" onclick="noteB()">[b]</a></sup>
 					</td>
 				</tr>
 				<tr>
@@ -129,7 +129,7 @@
 				</tr>
 				<tr>
 					<td><b>Formation</b></td>
-					<td>4 cars per trainset (Mc–M–M–Mc)<button id="section-3" onclick="noteC()">c</button></td>
+					<td>4 cars per trainset (Mc–M–M–Mc)<sup><a id="section-3" onclick="noteC()">[c]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Fleet numbers</b></td>
@@ -137,7 +137,7 @@
 				</tr>
 				<tr>
 					<td><b>Capacity</b></td>
-					<td>1,358 passengers<button id="section-4" onclick="noteD()">d</button></td>
+					<td>1,358 passengers<sup><a id="section-4" onclick="noteD()">[d]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Operator(s)</b></td>
@@ -165,7 +165,7 @@
 				</tr>
 				<tr>
 					<td><b>Train length</b></td>
-					<td>105.7 m<button id="section-5" onclick="noteE()">e</button></td>
+					<td>105.7 m<sup><a id="section-5" onclick="noteE()">[e]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Car length</b></td>
@@ -242,14 +242,14 @@
 				<tr>
 					<td><b>Traction system</b></td>
 					<td>
-						Adtranz<button id="section-6" onclick="noteF()">f</button>
-						<br>Voith<button id="section-7" onclick="noteG()">g</button>
+						Adtranz<sup><a id="section-6" onclick="noteF()">[f]</a></sup>
+						<br>Voith<sup><a id="section-7" onclick="noteG()">[g]</a></sup>
 						<br>IGBT–VVVF
 					</td>
 				</tr>
 				<tr>
 					<td><b>Traction motors</b></td>
-					<td>4 × 125 / 170 kW<button id="section-8" onclick="noteH()">h</button> 3-phase AC induction motor</td>
+					<td>4 × 125 / 170 kW<sup><a id="section-8" onclick="noteH()">[h]</a></sup> 3-phase AC induction motor</td>
 				</tr>
 				<tr>
 					<td><b>Power output</b></td>
@@ -470,14 +470,27 @@
 		<button class="collapsible">Incidents</button>
 		<div class="content">
 			<br>
-			<ul>
+			<ul class="pdl">
 				<li>Two 1100 class trains, LRVs 1107 and 1120, collided at Baclaran Depot. LRV 1120, however, was subsequently repaired and refurbished in 2019.</li>
 				<li>On November 27, 2017, a 1100 class train door malfunctioned after a passenger forcibly opened it at Vito Cruz station, causing the sensor to malfunction. The train continued its journey with the door left open, and a passenger recorded this incident on camera.</li>
 				<li>On April 19, 2023, a 1100 class train stopped between Roosevelt and Balintawak Station.The 1100 class was coupled to a 1000 class train to be brought back to Baclaran Depot.</li>
+				<li>On August 24, 2023, a 1100 class train derailed near Baclaran station, leaving 1104 stranded. Efforts took the entire day to remove the train, necessitating track repairs. As a result, provisional services were implemented between Fernando Poe Jr. and Gil Puyat stations, scheduled for the upcoming weekend until August 27. Fortunately, the repairs were completed ahead of schedule and certified on August 26, enabling the line to resume regular operations.</li>
 			</ul>
 		</div>
 		<button class="collapsible">Build details (original configurations)</button>
 		<div class="content">
+			<br>
+			<h4>Legend</h4>
+			<table>
+				<colgroup>
+					<col class="legend" />
+					<col />
+				</colgroup>
+				<tr>
+					<td class="red-bg"></td>
+					<td>Out of service, scrapped or decommissioned</td>
+				</tr>
+			</table>
 			<br>
 			<table class="center-text1">
 				<tr>
@@ -498,8 +511,8 @@
 					<td>2</td>
 					<td>1105</td>
 					<td>1106</td>
-					<td>1107</td>
-					<td>1108</td>
+					<td class="red-bg">1107</td>
+					<td class="red-bg">1108</td>
 				</tr>
 				<tr>
 					<td>3</td>
@@ -526,7 +539,7 @@
 					<td>6</td>
 					<td>1121</td>
 					<td>1122</td>
-					<td>1123</td>
+					<td class="red-bg">1123</td>
 					<td>1124</td>
 				</tr>
 				<tr>
@@ -534,7 +547,7 @@
 					<td>1125</td>
 					<td>1126</td>
 					<td>1127</td>
-					<td>1128</td>
+					<td class="red-bg">1128</td>
 				</tr>
 			</table>
 		</div>
@@ -562,7 +575,7 @@
 		<div class="box3">
 			<a href="#top">Go back to top</a>
 		</div>
-		<script src="../../../script/collapsible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../script.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			function noteA() {
 				alert("Carbody")

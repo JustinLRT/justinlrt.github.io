@@ -20,6 +20,9 @@
 			width: 100%;
 			/* Set the table width to 100% of the container */
 		}
+		col.legend {
+			width: 5%;
+		}
 		.table-container {
 			width: 100% !important;
 			overflow-x: scroll;
@@ -56,9 +59,6 @@
 				</div>
 			</nav>
 		</header>
-		<br>
-		<br>
-		<br>
 		<div class="title">
 			<h1>LRTA 1200 class</h1>
 		</div>
@@ -102,7 +102,7 @@
 				<tr>
 					<td><b>Built at</b></td>
 					<td>
-						Osaka<button id="section-1" onclick="noteA()">a</button>/Aichi,<button id="section-2" onclick="noteB()">b</button> Japan
+						Osaka<sup><a id="section-1" onclick="noteA()">[a]</a></sup>/Aichi,<sup><a id="section-2" onclick="noteB()">[b]</a></sup> Japan
 					</td>
 				</tr>
 				<tr>
@@ -131,7 +131,7 @@
 				</tr>
 				<tr>
 					<td><b>Capacity</b></td>
-					<td>1,388 passengers<button id="section-3" onclick="noteC()">c</button></td>
+					<td>1,388 passengers<sup><a id="section-3" onclick="noteC()">[c]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Operator(s)</b></td>
@@ -159,7 +159,7 @@
 				</tr>
 				<tr>
 					<td><b>Train length</b></td>
-					<td>105.7 m<button id="section-4" onclick="noteD()">d</button></td>
+					<td>105.7 m<sup><a id="section-4" onclick="noteD()">[d]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Car length</b></td>
@@ -445,7 +445,7 @@
 		<button class="collapsible">Incidents</button>
 		<div class="content">
 			<br>
-			<ul>
+			<ul class="pdl">
 				<li>On June 24, 2010, two trains (1000 and 1200 class) collided at Balintawak station. As a result, LRVs 1248 and 1247 sustained damage. There were plans to restore it, but the involved cars remain idle as of 2022.</li>
 				<li>On February 18, 2011, two trains (1000 and 1200 class) collided near Roosevelt Station in Quezon City at the reversing tracks, around a kilometer away to the east. There were no passengers on board when the incident happened. This caused the Roosevelt and Balintawak stations to remain closed for two months until the stations were reopened on April 11, 2011. An investigation was conducted and was shown that one of the drivers was texting when the incident occurred. This however caused LRV 1236, the 3rd generation unit involved in the incident, to be in idle state and has not yet been restored for service.</li>
 				<li>On May 23, 2015, thousands of passengers were stranded after two trains (1000 and 1200 class collided near the Monumento station. A train driver was hurt after the impact caused his head to slam into the dashboard of the train. The accident, later revealed to be caused by power fluctuation that affected the signalling system, forced passengers to alight from the station until services was restored around 1 pm at the same day.</li>
@@ -453,6 +453,18 @@
 		</div>
 		<button class="collapsible">Build details (original configurations)</button>
 		<div class="content">
+			<br>
+			<h4>Legend</h4>
+			<table>
+				<colgroup>
+					<col class="legend" />
+					<col />
+				</colgroup>
+				<tr>
+					<td class="red-bg"></td>
+					<td>Out of service, scrapped or decommissioned</td>
+				</tr>
+			</table>
 			<br>
 			<table class="table-container">
 				<tr>
@@ -531,8 +543,8 @@
 					<td>9</td>
 					<td>1233</td>
 					<td>1234</td>
-					<td>1235</td>
-					<td>1236</td>
+					<td class="red-bg">1235</td>
+					<td class="red-bg">1236</td>
 					<td>Kinki Sharyo</td>
 				</tr>
 				<tr>
@@ -555,8 +567,8 @@
 					<td>12</td>
 					<td>1245</td>
 					<td>1246</td>
-					<td>1247</td>
-					<td>1248</td>
+					<td class="red-bg">1247</td>
+					<td class="red-bg">1248</td>
 					<td>Nippon Sharyo</td>
 				</tr>
 			</table>
@@ -581,7 +593,7 @@
 		<div class="box3">
 			<a href="#top">Go back to top</a>
 		</div>
-		<script src="../../../script/collapsible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../script.js" type="text/javascript" charset="utf-8"></script>
 	</div>
 	<script type='text/javascript' src='../../../script/jquery.min.js'></script>
 	<script type="text/javascript" charset="utf-8">

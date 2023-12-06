@@ -18,6 +18,9 @@
 		table.center-text1 td {
 			text-align: center;
 		}
+		col.legend {
+			width: 5%;
+		}
 	</style>
 </head>
 <body>
@@ -29,9 +32,6 @@
 				</div>
 			</nav>
 		</header>
-		<br>
-		<br>
-		<br>
 		<div class="title">
 			<h1>LRTA 1000 class</h1>
 		</div>
@@ -68,8 +68,8 @@
 				<tr>
 					<td><b>Manufacturer</b></td>
 					<td>
-						BN Constructions Ferroviaires et Métalliques<button id="section-1" onclick="noteA()">a</button>
-						<br>Ateliers de Constructions Electriques de Charleroi<button id="section-2" onclick="noteB()">b</button>
+						BN Constructions Ferroviaires et Métalliques<sup><a id="section-1" onclick="noteA()">[a]</a></sup>
+						<br>Ateliers de Constructions Electriques de Charleroi<sup><a id="section-2" onclick="noteB()">[b]</a></sup>
 					</td>
 				</tr>
 				<tr>
@@ -154,7 +154,7 @@
 				</tr>
 				<tr>
 					<td><b>Car length</b></td>
-					<td>29.79 m<button id="section-3" onclick="noteC()">c</button></td>
+					<td>29.79 m<sup><a id="section-3" onclick="noteC()">[c]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Width</b></td>
@@ -181,7 +181,7 @@
 				</tr>
 				<tr>
 					<td><b>Doors</b></td>
-					<td>5 per side; double-leaf swing plug-type; 1,300 mm<button id="section-4" onclick="noteD()">d</button></td>
+					<td>5 per side; double-leaf swing plug-type; 1,300 mm<sup><a id="section-4" onclick="noteD()">[d]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Articulated sections</b></td>
@@ -412,9 +412,9 @@
 		<div class="content">
 			<br>
 			<ul>
-				<li>On December 30, 2000, Rizal Day, a train (car number 1037) exploded at Blumentritt station as part of a series of explosions in a terrorist attack known as the Rizal Day bombings. The attack on Line 1 killed some 22 people and injured hundreds. The damaged train was decommissioned immediately after the incident. No confirmed plans were announced on its ultimate fate, whether it would be restored or scrapped. The train, together with other trainsets involved in accidents, have been ultimately sold for scrap.</li>
+				<li class="pdl">On December 30, 2000, Rizal Day, a train (car number 1037) exploded at Blumentritt station as part of a series of explosions in a terrorist attack known as the Rizal Day bombings. The attack on Line 1 killed some 22 people and injured hundreds. The damaged train was decommissioned immediately after the incident. No confirmed plans were announced on its ultimate fate, whether it would be restored or scrapped. The train, together with other trainsets involved in accidents, have been ultimately sold for scrap.</li>
 				<li>On June 24, 2010, two trains (1000 and 1200 class) collided at Balintawak station.</li>
-				<li>On February 18, 2011, two trains (3G and 1G trains) collided near Roosevelt Station in Quezon City on Friday at the reversing tracks, around a kilometer away to the east. No passengers were injured. This caused the Roosevelt and Balintawak stations to remain closed for two months until the stations were reopened on April 11, 2011. An investigation was conducted and was shown that one of the drivers was texting when the incident occurred. As a result, LRV 1015 sustained damage.</li>
+				<li>On February 18, 2011, two trains (1000 and 1200 class trains) collided near Roosevelt Station in Quezon City on Friday at the reversing tracks, around a kilometer away to the east. No passengers were injured. This caused the Roosevelt and Balintawak stations to remain closed for two months until the stations were reopened on April 11, 2011. An investigation was conducted and was shown that one of the drivers was texting when the incident occurred. As a result, LRV 1015 sustained damage.</li>
 				<li>On May 23, 2015, thousands of passengers were stranded after a train of Line 1 slammed into another train near the Monumento station. A train driver was hurt after the impact caused his head to slam into the dashboard of the train. The accident, later revealed to be caused by power fluctuation that affected the signalling system, forced passengers to alight from the station until services was restored around 1:00 PM at the same day.</li>
 				<li>On March 10, 2016, a door in a 1st generation train car was left open while running between Central Terminal and Pedro Gil stations. The problem was fixed at the Pedro Gil station.</li>
 				<li>On March 22, 2016, the doors of a 1st generation train car at the Central Terminal station failed to open, leaving passengers trapped inside the train.</li>
@@ -428,6 +428,18 @@
 			<br>Original configurations of two-car trains.
 			<br>
 			<br>
+			<h4>Legend</h4>
+			<table>
+				<colgroup>
+					<col class="legend" />
+					<col />
+				</colgroup>
+				<tr>
+					<td class="red-bg"></td>
+					<td>Out of service, scrapped or decommissioned</td>
+				</tr>
+			</table>
+			<br>
 			<table class="center-text1">
 				<tr>
 					<th>Set no.</th>
@@ -437,7 +449,7 @@
 				<tr>
 					<td>1</td>
 					<td>1001</td>
-					<td>1002</td>
+					<td class="red-bg">1002</td>
 				</tr>
 				<tr>
 					<td>2</td>
@@ -446,13 +458,13 @@
 				</tr>
 				<tr>
 					<td>3</td>
-					<td>1005</td>
-					<td>1006</td>
+					<td class="red-bg">1005</td>
+					<td class="red-bg">1006</td>
 				</tr>
 				<tr>
 					<td>4</td>
-					<td>1007</td>
-					<td>1008</td>
+					<td class="red-bg">1007</td>
+					<td class="red-bg">1008</td>
 				</tr>
 				<tr>
 					<td>5</td>
@@ -461,12 +473,12 @@
 				</tr>
 				<tr>
 					<td>6</td>
-					<td>1011</td>
+					<td class="red-bg">1011</td>
 					<td>1012</td>
 				</tr>
 				<tr>
 					<td>7</td>
-					<td>1013</td>
+					<td class="red-bg">1013</td>
 					<td>1014</td>
 				</tr>
 				<tr>
@@ -481,7 +493,7 @@
 				</tr>
 				<tr>
 					<td>10</td>
-					<td>1019</td>
+					<td class="red-bg">1019</td>
 					<td>1020</td>
 				</tr>
 				<tr>
@@ -501,7 +513,7 @@
 				</tr>
 				<tr>
 					<td>14</td>
-					<td>1027</td>
+					<td class="red-bg">1027</td>
 					<td>1028</td>
 				</tr>
 				<tr>
@@ -526,7 +538,7 @@
 				</tr>
 				<tr>
 					<td>19</td>
-					<td>1037</td>
+					<td class="red-bg">1037</td>
 					<td>1038</td>
 				</tr>
 				<tr>
@@ -536,7 +548,7 @@
 				</tr>
 				<tr>
 					<td>21</td>
-					<td>1041</td>
+					<td class="red-bg">1041</td>
 					<td>1042</td>
 				</tr>
 				<tr>
@@ -566,8 +578,8 @@
 				</tr>
 				<tr>
 					<td>27</td>
-					<td>1053</td>
-					<td>1054</td>
+					<td class="red-bg">1053</td>
+					<td class="red-bg">1054</td>
 				</tr>
 				<tr>
 					<td>28</td>
@@ -616,7 +628,7 @@
 		<div class="box3">
 			<a href="#top">Go back to top</a>
 		</div>
-		<script src="../../../script/collapsible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../script.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			function noteA() {
 				alert("Carbody")
