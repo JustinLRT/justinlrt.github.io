@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" version="1.0">
+  <defs>
+    <linearGradient id="a" x1="41.1948738" x2="118.931351" y1="616.477173" y2="527.555115" gradientTransform="matrix(4.55676 0 0 -4.31503 37.49756 2758.519)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6a3093"/>
+      <stop offset="1" stop-color="#3b095e"/>
+    </linearGradient>
+    <linearGradient id="b" x1="530.809509" x2="174.805481" y1="486.631012" y2="211.22995" gradientTransform="matrix(.96 0 0 .96 11.68071 9.787565)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#470b71"/>
+      <stop offset="1" stop-color="#63288d"/>
+    </linearGradient>
+    <linearGradient id="c" x1="187.873566" x2="581.837463" y1="224.598923" y2="483.100006" gradientTransform="matrix(.96 0 0 .96 11.68071 9.787558)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9c6fba"/>
+      <stop offset="1" stop-color="#5a1d84"/>
+    </linearGradient>
+    <linearGradient id="d" x1="250.398453" x2="412.094299" y1="101.536331" y2="264.54187" gradientTransform="matrix(.96 0 0 .96 11.68071 9.787565)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e6d9ff"/>
+      <stop offset="1" stop-color="#6a3093"/>
+    </linearGradient>
+    <radialGradient id="e" cx="295.471252" cy="186.096344" r="179.550003" gradientTransform="matrix(0 1.53126 -.8765 -.00002 462.7486 -245.0023)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".5" stop-color="#fff"/>
+      <stop offset="1" stop-color="#d5d5d5"/>
+    </radialGradient>
+  </defs>
+  <path fill-opacity=".178571" d="M287.0439 30.68461 26.88238 457.8871c-4.99204 8.1601-4.99204 18.2401 0 26.4002 4.89603 8.064 14.11208 13.1521 24.09614 13.1521H571.3016c9.888 0 19.1041-5.0881 24.0961-13.1521 4.896-8.1601 4.896-18.2401 0-26.4002L335.2362 30.68461c-4.992-8.16004-14.2081-13.24807-24.0962-13.24807-9.888 0-19.1041 5.08803-24.0961 13.24807z"/>
+  <path fill="url(#a)" d="M275.5863 23.03565 15.42473 450.2381c-4.99203 8.1601-4.99203 18.2402 0 26.4002 4.89603 8.0641 14.11208 13.1521 24.09614 13.1521H559.8439c9.8881 0 19.1041-5.088 24.0962-13.1521 4.896-8.16 4.896-18.2401 0-26.4002L323.7785 23.03565c-4.992-8.16005-14.208-13.248082-24.0961-13.248082S280.5783 14.8756 275.5863 23.03565z"/>
+  <path fill="url(#b)" d="M299.6824 31.7717c-1.632 0-3.168.864-4.032 2.20801L165.5696 247.581 35.48885 461.1822c-.86401 1.344-.86401 3.072 0 4.416.864 1.344 2.40001 2.208 4.03202 2.208H559.8439c1.632 0 3.168-.864 4.0321-2.208.864-1.344.864-3.072 0-4.416L303.7144 33.97971c-.864-1.34401-2.4-2.20801-4.032-2.20801z"/>
+  <path fill="none" stroke="url(#c)" stroke-linejoin="round" stroke-width="11.52007" d="M299.6464 31.7717c-1.632 0-3.1681.864-4.0321 2.20801L165.5336 247.581 35.45283 461.1822c-.86401 1.344-.86401 3.072 0 4.416.864 1.344 2.40001 2.208 4.03202 2.208H559.8079c1.632 0 3.168-.864 4.032-2.208.864-1.344.864-3.072 0-4.416L303.6784 33.97971c-.864-1.34401-2.4-2.20801-4.032-2.20801z"/>
+  <path fill="url(#d)" d="M299.7514 39.46512c-1.5457.0764-2.9865.93901-3.81 2.22002L165.8606 255.2864l-18.1201 29.7602c44.1342 26.493 95.7728 41.7602 150.9609 41.7602 55.9718 0 108.3072-15.6775 152.8509-42.8702L304.0114 41.68514c-.864-1.34402-2.388-2.22002-4.02-2.22002-.0765 0-.164-.00376-.24 0z"/>
+  <path fill="url(#e)" d="M286.4344 145.7244 129.2814 403.678c-2.688 4.5121-2.688 10.0801 0 14.4961 2.6881 4.512 7.7761 7.2961 13.2481 7.2961h314.21c5.472 0 10.5601-2.7841 13.2481-7.2961 2.688-4.512 2.688-9.984 0-14.4961l-157.057-257.9536c-2.688-4.512-7.7761-7.296-13.2481-7.296-5.472 0-10.5601 2.784-13.2481 7.296z"/>
+  <text xml:space="preserve" x="297.77386" y="320.8895" font-family="Times" font-size="64.69930267" font-weight="700" style="text-align:center;line-height:89.99999762%;-inkscape-font-specification:Times Bold" text-anchor="middle"><tspan x="297.77386" y="320.8895" font-family="Times New Roman" style="text-align:center;line-height:89.99999762%;-inkscape-font-specification:Times New Roman Bold">JOKE</tspan><tspan x="297.77386" y="379.11887" font-family="Times New Roman" style="text-align:center;line-height:89.99999762%;-inkscape-font-specification:Times New Roman Bold">ALERT</tspan></text>
+</svg>
