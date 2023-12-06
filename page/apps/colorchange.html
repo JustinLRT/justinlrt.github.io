@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<title>Color changing</title>
+	<style>
+		.color {
+			height: 200px;
+			line-height: 200px;
+			color: white;
+			text-align: center;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>Color changing</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a>
+		</div>
+		<div class="box3">
+			<button onclick="openFullscreen();">Fullscreen Mode</button>
+		</div>
+		<div id="fsc" class="color" onclick="changeColor(this)" style="background-color: black;">
+		</div>
+		<br>
+		<div class="box3">
+			<a href="#top">Go back to top</a>
+		</div>
+	</div>
+	<script>
+		function changeColor(element) {
+			var currentColor = element.style.backgroundColor;
+			if (currentColor == "red") {
+				element.style.backgroundColor = "black";
+			} else {
+				element.style.backgroundColor = "red";
+			}
+		}
+
+		var elem = document.getElementById("fsc");
+		function openFullscreen() {
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			}
+		}
+	</script>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
