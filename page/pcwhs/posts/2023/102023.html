@@ -11,6 +11,34 @@
 		ul.padding0-rule li {
 			padding: 0px;
 		}
+		.center-fit1 {
+			max-width: 100%;
+			max-height: 100vh;
+			margin: auto;
+			padding-bottom: 10px;
+		}
+		imageContainer {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			flex: 100vw;
+		}
+@media (min-width: 600px) {
+			.center-fit1 {
+				justify-content: left;
+				max-width: 49%;
+				max-height: 49vh;
+				margin: auto;
+				padding-bottom: 1.5px;
+			}
+			div#imageContainer1 .center-fit1 {
+				justify-content: left;
+				max-width: 43%;
+				max-height: 43vh;
+				margin: auto;
+				padding-bottom: 1.5px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -22,9 +50,6 @@
 				</div>
 			</nav>
 		</header>
-		<br>
-		<br>
-		<br>
 		<div class="title">
 			<h1>Pasay City West High School</h1>
 			<h2>Posts - October 2023</h2>
@@ -68,11 +93,14 @@
 			<br>
 			<br>PCWHS young talents from Junior High School and Senior High School across year levels participated enthusiastically. Winners of the poster-making contest will be revealed during the closing ceremony.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231004-2057H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231004-2057H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231004-2057H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231004-2057H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231004-2057H/5.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231004-2057H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231004-2057H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231004-2057H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231004-2057H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231004-2057H/5.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Happy World Teacher's Day!</button>
 		<div class="content">
@@ -98,6 +126,46 @@
 			<br>
 			<br><img class="center-fit" src="../../../../media/pcwhs/wldtchrsdy.jpg" />
 		</div>
+		<button class="collapsible">Aking gurong mahal, kalinga mo'y baon ko!</button>
+		<div class="content">
+			<br>
+			<div class="post">
+				<div class="profile-picture">
+					<img src="../../../../media/profpic/ulatkanluran.jpg" alt="Profile Picture" />
+				</div>
+				<div class="post-details">
+					<div class="name">
+						Ulat Kanluran
+					</div>
+					<div class="date-time">
+						October 5, 2023 at 10:14 PM
+					</div>
+				</div>
+			</div>
+			<h3>Aking gurong mahal, kalinga mo'y baon ko!</h3>
+<br>Isang maligayang bati at masiglang araw sa patuloy na pagyakap ng inyong propesyon. Gaano man kahirap ang tinatamasa sa bawat takbo ng orasan na tila gabay ng mundo.
+<br>
+<br>Nawa'y ipagpatuloy ninyo ang kabusilakan ng loob upang maipahayag ang aral na kailangan matutuhan naming mga mag-aaral sa pagsandal namin sa silya ng aming mga pangarap. Hindi sana kayo magsawa na maging parte ng aming tagumpay; hindi sapat ang 7 letra upang maiparating ang aming nag-uumapaw na pagmamahal.
+<br>
+<br>Muli, salamat sa pagbubuwis ng dugo, pawis, at lalamunan upang aming lubusang makuha ang leksyon na nais n'yong maiparating.
+<br>
+<br>
+<div class="imageContainer">
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/1.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/2.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/3.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/4.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/5.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/6.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/7.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/8.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/9.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/10.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/11.jpg" />
+	<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231005-2214H/12.jpg" />
+</div>
+		</div>
+		
 		<button class="collapsible">Honoring Our Teachers at PCWHS!</button>
 		<div class="content">
 			<br>
@@ -125,36 +193,39 @@
 			<br>
 			<br>A big round of applause to all who made the PCWHS Teachers’ Day celebration a memorable and heartwarming event! Happy Teacher's Day!
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/11.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/12.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/13.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/14.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/15.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/16.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/17.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/18.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/19.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/20.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/21.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/22.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/23.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/24.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/25.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/26.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/27.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/28.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/29.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231006-2306H/30.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/17.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/18.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/19.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/20.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/21.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/22.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/23.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/24.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/25.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/26.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/27.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/28.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/29.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231006-2306H/30.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Mabuhay Mga Gurong Pasayeno!</button>
 		<div class="content">
@@ -175,44 +246,125 @@
 			<h3>Mabuhay Mga Gurong Pasayeno!</h3>
 			<br>Masayang ipinagdiwang ng mga guro ng Dibisyon ng Pasay ang Araw ng Mga Guro 2023 sa Cuneta Astrodome noong Oktubre 6, 2023 sa pamumuno ng SDO Pasay, mga opisyal at kawani ng lunsod at mga punongguro ng mga paaralan kung saan maraming guro ang umuwi ng may ngiti sa labi tulad ng mga guro sa Pasay City West High School dahil sa mga papremyong nakamit mula sa raffle na hatid ng mga opisyal at iba't ibang sektor ng Pasay.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/11.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/12.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/13.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/14.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/15.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/16.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/17.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/18.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/19.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/20.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/21.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/22.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/23.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/24.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/25.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/26.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/27.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/28.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/29.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/30.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/31.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/32.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/33.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/34.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/35.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/36.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231007-0657H/37.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/17.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/18.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/19.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/20.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/21.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/22.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/23.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/24.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/25.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/26.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/27.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/28.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/29.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/30.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/31.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/32.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/33.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/34.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/35.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/36.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-0657H/37.jpg" />
+			</div>
+		</div>
+		<button class="collapsible">Teachers aren't just educators</button>
+		<div class="content">
+			<br>
+			<div class="post">
+				<div class="profile-picture">
+					<img src="../../../../media/profpic/knightscicofpcwhs.jpg" alt="Profile Picture" />
+				</div>
+				<div class="post-details">
+					<div class="name">
+						Knights CIC of PCWHS
+					</div>
+					<div class="date-time">
+						October 7, 2023 at 6:30 PM
+					</div>
+				</div>
+			</div>
+			<q>Teachers aren't just educators; they're the friendly faces that ease our first-day jitters and the patient guides who celebrate our successes.</q>
+			<br>
+			<br>Once again, Happy Teachers' Day to all! Here are some messages of the Campus Integrity Crusaders for all the teachers!
+			<br>
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231007-1830H/9.jpg" />
+			</div>
+		</div>
+		<button class="collapsible">Teacher's Day celebration</button>
+		<div class="content">
+			<br>
+			<div class="post">
+				<div class="profile-picture">
+					<img src="../../../../media/profpic/knightscicofpcwhs.jpg" alt="Profile Picture" />
+				</div>
+				<div class="post-details">
+					<div class="name">
+						Knights CIC of PCWHS
+					</div>
+					<div class="date-time">
+						October 10, 2023 at 9:05 PM
+					</div>
+				</div>
+			</div>
+			<h3>Teacher's Day celebration</h3>
+			<br>Teacher's Day was celebrated at Pasay City West High School last week, October 6, 2023. Every organization lends a hand honoring our beloved teachers. The gym was filled with love and happiness so, it was another memory to be remembered.
+			<br>
+			<br>This is the day we are waiting for. Thank you teachers for your unconditional love and support for your students.
+			<br>
+			<br>Once again, Happy Teacher's Day!
+			<br>
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/17.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2105H/18.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Congratulations to our School Principal</button>
 		<div class="content">
@@ -237,12 +389,15 @@
 			<br>
 			<br>Sir Aga, your Scout spirit is truly unmatched!
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231010-2144H/6.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231010-2144H/6.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Calling all Future Journalists at PCWHS</button>
 		<div class="content">
@@ -443,16 +598,19 @@
 			<br>
 			<br>School administrators likewise left their posts and stayed on the school grounds. Teachers conducted headcounts for their respective classes to ensure that no one was left in the classroom. Mr. Agapito Teodoro N. Manaog, the school principal, immediately called the Pasay City School's Division Office for instructions regarding the classes. While waiting for instructions from SDO Pasay, members of the School Risk Reduction Management Council inspected the classrooms to check for cracks in the walls. At 9:00 a.m., as per the instructions from SDO Pasay, the school principal ordered the learners to return to their classrooms.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231013-1049H/10.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231013-1049H/10.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Oryentasyon para sa Feeding Program</button>
 		<div class="content">
@@ -475,23 +633,26 @@
 			<br>
 			<br><q>Sa ating sabay-sabay na pagtutulungan, malalabanan natin ang malnutrisyon ng mga batang Westians.</q>
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/11.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/12.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/13.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/14.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/15.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/16.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-0833H/17.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-0833H/17.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Cluster 9 Triumphs</button>
 		<div class="content">
@@ -511,14 +672,17 @@
 			</div>
 			Cluster 9 Triumphs: PCWHS, PCSciNHS and PCNHS Sweeps Awards at the SDO-Pasay 4th BERT Camp 2023
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231014-1208H/8.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231014-1208H/8.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">PCWHS Brilliance Unleashed!</button>
 		<div class="content">
@@ -539,18 +703,21 @@
 			<h3>PCWHS Brilliance Unleashed!</h3>
 			<br>The PCWHS Performing Arts Dance Troupe and Glee Club took center stage, leaving retirees in awe with their breathtaking performance at Padre Zamora Elementary School on September 29, 2023.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/11.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231016-1544H/12.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231016-1544H/12.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Professional Growth!</button>
 		<div class="content">
@@ -578,11 +745,14 @@
 			</ul>
 			<br>Together, they are representing SDO Pasay as they work towards taking our special curricular programs to the next level!
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231018-1051H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231018-1051H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231018-1051H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231018-1051H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231018-1051H/5.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231018-1051H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231018-1051H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231018-1051H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231018-1051H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231018-1051H/5.jpg" />
+			</div>
 		</div>
 		<button class="collapsible"><q>No Parking Policy</q> Successfully Implemented</button>
 		<div class="content">
@@ -613,17 +783,20 @@
 			<br>
 			<br>Together, let us continue our collaborative efforts to make our school a safer place for everyone.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231019-1336H/11.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231019-1336H/11.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">Westian Girl Scouts Celebrate JLEscoda Day!</button>
 		<div class="content">
@@ -646,10 +819,12 @@
 			<br>
 			<br>Salute to our Girl Scout Leaders as they carry forward JLEscoda's legacy.
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231020-1435H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231020-1435H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231020-1435H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231020-1435H/4.jpg" />
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231020-1435H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231020-1435H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231020-1435H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231020-1435H/4.jpg" />
+			</div>
 		</div>
 		<button class="collapsible">SDO-Pasay ASEAN-UNESCO</button>
 		<div class="content">
@@ -861,53 +1036,219 @@
 			<br>The event provided an opportunity for PCWHS students to exhibit their artistic skills, reflecting UNESCO cultural heritage sites.
 			<br>The support and dedication of our teachers, parents, and students shone brightly!
 			<br>
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/1.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/2.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/3.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/4.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/5.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/6.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/7.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/8.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/9.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/10.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/11.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/12.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/13.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/14.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/15.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/16.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/17.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/18.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/19.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/20.jpg" />
-			<br><img class="center-fit" src="../../../../media/pcwhs/posts/2023/20231023-1912H/21.jpg" />
+			<br>
+			<div id="imageContainer">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/17.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/18.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/19.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/20.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231023-1912H/21.jpg" />
+			</div>
 		</div>
+		<button class="collapsible">High scores cutie!!</button>
+		<div class="content">
+			<br>
+			<div class="post">
+				<div class="profile-picture">
+					<img src="../../../../media/profpic/knightscicofpcwhs.jpg" alt="Profile Picture" />
+				</div>
+				<div class="post-details">
+					<div class="name">
+						Knights CIC of PCWHS
+					</div>
+					<div class="date-time">
+						October 25, 2023 at 9:44 PM
+					</div>
+				</div>
+			</div>
+			<h3>High scores cutie!!</h3>
+			<br>Tomorrow is the the most awaited day of all
+			<br>
+			<br>What’s up, Crusader’s!
+			<br>
+			<br>One day to go, remember that success is born from dedication, perseverance, and the belief in your abilities. As you prepare to face your exams, may your hard work be rewarded, and may your knowledge shine brightly. Trust in your preparation, and let your determination fuel your efforts. And may you enter the examination hall with confidence and leave it with success. Stay calm, stay confident, and give it your all. You've got the knowledge, you've got the skills, and now it's time to let your brilliance shine.
+			<br>
+			<br>From CIC, sending best wishes and good luck to everyone taking exams! You've got this Crusaders!
+		</div>
+		<button class="collapsible">ASEAN-UNESCO Photobooth</button>
+		<div class="content">
+			<br>
+			<div class="post">
+				<div class="profile-picture">
+					<img src="../../../../media/profpic/knightscicofpcwhs.jpg" alt="Profile Picture" />
+				</div>
+				<div class="post-details">
+					<div class="name">
+						Knights CIC of PCWHS
+					</div>
+					<div class="date-time">
+						October 30, 2023 at 5:10 PM
+					</div>
+				</div>
+			</div>
+			Stepping into the photobooth is like stepping into a world of endless fun and memories! We're all about capturing those candid moments and making them last a lifetime. Say cheese!
+			<br>
+			<br>The event was nothing short of extraordinary, filled with laughter, heartwarming conversations, and unforgettable moments. It brings together a diverse group of people, all with their own unique stories and backgrounds, who shared their experiences and formed connections that will last a lifetime. The atmosphere was electrifying, with music filling the air and delicious food tantalizing our taste buds. As the day progressed, it was evident that this event was a true celebration of life, love, and joy of coming together as a community. It's a memory we'll cherish forever, a reminder of the beauty that can be found when people unite to create something special.
+			<br>
+			<br>
+			<div id="imageContainer1">
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/1.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/2.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/3.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/4.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/5.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/6.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/7.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/8.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/9.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/10.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/11.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/12.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/13.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/14.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/15.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/16.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/17.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/18.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/19.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/20.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/21.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/22.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/23.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/24.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/25.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/26.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/27.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/28.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/29.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/30.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/31.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/32.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/33.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/34.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/35.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/36.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/37.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/38.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/39.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/40.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/41.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/42.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/43.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/44.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/45.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/46.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/47.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/48.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/49.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/50.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/51.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/52.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/53.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/54.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/55.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/56.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/57.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/58.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/59.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/60.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/61.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/62.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/63.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/64.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/65.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/66.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/67.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/68.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/69.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/70.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/71.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/72.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/73.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/74.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/75.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/76.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/77.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/78.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/79.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/80.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/81.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/82.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/83.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/84.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/85.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/86.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/87.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/88.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/89.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/90.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/91.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/92.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/93.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/94.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/95.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/96.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/97.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/98.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/99.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/100.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/101.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/102.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/103.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/104.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/105.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/106.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/107.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/108.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/109.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/110.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/111.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/112.jpg" />
+				<img class="center-fit1" src="../../../../media/pcwhs/posts/2023/20231030-1710H/113.jpg" />
+			</div>
+		</div>
+		
 		<!--
-													<button class="collapsible"></button>
-													<div class="content">
-														<br>
-														<div class="post">
-															<div class="profile-picture">
-																<img src="../../../../media/profpic/pcwhs.jpg" alt="Profile Picture" />
-															</div>
-															<div class="post-details">
-																<div class="name">
-																	Pasay City West High School
-																</div>
-																<div class="date-time">
-																</div>
-															</div>
-														</div>
-														<h3></h3>
-													</div>
-													-->
+																	<button class="collapsible"></button>
+																	<div class="content">
+																		<br>
+																		<div class="post">
+																			<div class="profile-picture">
+																				<img src="../../../../media/profpic/pcwhs.jpg" alt="Profile Picture" />
+																			</div>
+																			<div class="post-details">
+																				<div class="name">
+																					Pasay City West High School
+																				</div>
+																				<div class="date-time">
+																				</div>
+																			</div>
+																		</div>
+																		<h3></h3>
+																	</div>
+																	-->
 		<div class="box3">
 			<a href="#top">Go back to top</a>
 		</div>
 	</div>
 	<script type='text/javascript' src='../../../../script/jquery.min.js'></script>
-	<script src="../../../../script/collapsible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../script.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
