@@ -147,6 +147,32 @@
 			position: relative;
 			z-index: 1;
 		}
+		.holibreak-td {
+			position: relative;
+			z-index: 1;
+		}
+		.holibreak-td::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background-color: red;
+		}
+		.holibreak-td::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 50%;
+			height: 100%;
+			background-color: #FF6400;
+		}
+		.holibreak-td span {
+			position: relative;
+			z-index: 1;
+		}
 		/* Media query for smaller screens */
 @media (min-width: 600px) {
 			/* Add any specific styles for the scrollable table on smaller screens if needed */
@@ -646,6 +672,8 @@
 			<br>The stage are 3 steps tall and it can be used during programs or events. This area are have a decoration by the school depending on the program.
 			<br>
 			<br>The mezzanine floor are located at the side of the gymnasium and it can be accessed by stairs. There's have a things stored in this place and it is used for sports and for programs. The faculty rooms are located here in each side.
+			<br>
+			<br>As of now, the gymnasium is being demolished and build the proposed four story building where the gymnasium is located at the 5th floor of the proposed building.
 		</div>
 		<button class="collapsible">Gates</button>
 		<div class="content">
@@ -2182,7 +2210,7 @@
 						<li>15: Schoolwide general cleaning</li>
 						<li>22: Class suspension due to volcanic ash from Taal Volcano</li>
 						<li>25: Family day (shortened period)</li>
-						<li>28-29: Monthly test for September</li>
+						<li>28-29: September monthly test</li>
 					</ul>
 				</div>
 			</div>
@@ -2310,7 +2338,7 @@
 							<td>6</td>
 							<td>7</td>
 							<td>8</td>
-							<td class="activity">9</td>
+							<td>9</td>
 							<td>10</td>
 							<td>11</td>
 						</tr>
@@ -2336,8 +2364,8 @@
 							<td>26</td>
 							<td class="holiday">27</td>
 							<td class="events">28</td>
-							<td>29</td>
-							<td class="holiday">30</td>
+							<td class="test">29</td>
+							<td class="test">30</td>
 							<td></td>
 							<td></td>
 						</tr>
@@ -2349,8 +2377,9 @@
 						<li>2: All Souls' Day</li>
 						<li>3: Asynchronous class</li>
 						<li>16: Distribution of report cards</li>
-						<li>27 & 30: Bonifacio Day</li>
+						<li>27: Bonifacio Day</li>
 						<li>28: Birthday celebration</li>
+						<li>29 & 30: November monthly test</li>
 					</ul>
 				</div>
 			</div>
@@ -2392,18 +2421,18 @@
 							<td>3</td>
 							<td>4</td>
 							<td>5</td>
-							<td>6</td>
+							<td class="class-suspended">6</td>
 							<td>7</td>
 							<td>8</td>
 							<td>9</td>
 						</tr>
 						<tr>
 							<td>10</td>
-							<td>11</td>
-							<td>12</td>
+							<td class="async">11</td>
+							<td class="async">12</td>
 							<td>13</td>
-							<td>14</td>
-							<td>15</td>
+							<td class="events">14</td>
+							<td class="break">15</td>
 							<td>16</td>
 						</tr>
 						<tr>
@@ -2417,7 +2446,7 @@
 						</tr>
 						<tr>
 							<td class="holiday">24</td>
-							<td class="holiday">25</td>
+							<td class="holibreak-td"><span class="holibreak-td-span">25</span></td>
 							<td class="break">26</td>
 							<td class="break">27</td>
 							<td class="break">28</td>
@@ -2437,7 +2466,10 @@
 				</div>
 				<div class="desc-calendar">
 					<ul>
-						<li>16: Start of Christmas break</li>
+						<li>6: Tree planting activity by DepEd</li>
+						<li>11 & 12: Asynchronous class due to power interruption</li>
+						<li>14: Christmas party</li>
+						<li>15: Start of Christmas break</li>
 						<li>24: Christmas Eve</li>
 						<li>25: Christmas Day</li>
 						<li>30: Rizal Day</li>
@@ -2965,11 +2997,11 @@
 				</tr>
 				<tr>
 					<td class="class-suspended"></td>
-					<td>Class suspensions by the government and events from the government</td>
+					<td>Class suspensions by the government and event</td>
 				</tr>
 				<tr>
 					<td class="events-clssus"></td>
-					<td>School events with class suspensions</td>
+					<td>Class suspensions brought by school activity or event</td>
 				</tr>
 				<tr>
 					<td class="async"></td>
@@ -2977,11 +3009,11 @@
 				</tr>
 				<tr>
 					<td class="events"></td>
-					<td>Events in the school</td>
+					<td>School events</td>
 				</tr>
 				<tr>
 					<td class="activity"></td>
-					<td>Activities in the school</td>
+					<td>School activities</td>
 				</tr>
 				<tr>
 					<td class="test"></td>
