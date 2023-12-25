@@ -41,7 +41,6 @@
 				<button>Download File</button>
 				<button type="reset" onclick="cleartxt()">Clear</button>
 			</form>
-			<br>Not working? <a href="downloader2.html">Try this instead</a>.
 		</div>
 		<div class="box2">
 			<h2>What is File Downloader by Justin LRT?</h2>
@@ -70,6 +69,7 @@
 	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		const fileInput = document.querySelector("input"),
+
 		downloadBtn = document.querySelector("button");
 
 		downloadBtn.addEventListener("click", e => {
@@ -77,26 +77,29 @@
 			downloadBtn.innerText = "Downloading file...";
 			fetchFile(fileInput.value);
 		});
+
 		function fetchFile(url) {
 			fetch(url).then(res => res.blob()).then(file => {
 				let tempUrl = URL.createObjectURL(file);
 				const aTag = document.createElement("a");
 				aTag.href = tempUrl;
-				aTag.download = url.replace(/^.*[\\\/]/, '');
+				const fileName = "Justin LRT - Downloader"; // You can customize this name
+				const extension = url.split('.').pop(); // Extract file extension from the URL
+				aTag.download = `${fileName}.${extension}`;
 				document.body.appendChild(aTag);
 				aTag.click();
 				downloadBtn.innerText = "Download File";
 				URL.revokeObjectURL(tempUrl);
 				aTag.remove();
 			}).catch(() => {
-				alert("Failed to download file!");
+				alert("Failed to download file! Make sure the URL is correct.");
 				downloadBtn.innerText = "Download File";
 			});
 		}
-
 		function cleartxt() {
 			document.getElementById("clear").value = "";
 		}
+
 	</script>
 	<noscript>
 		<br>

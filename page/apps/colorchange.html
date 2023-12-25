@@ -40,11 +40,11 @@
 		</div>
 		<div id="fsc" class="color" onclick="changeColor(this)" style="background-color: black;">
 		</div>
-		<br>
-		<div class="box3">
-			<a href="#top">Go back to top</a>
-		</div>
+		<footer id="footerB"></footer>
 	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		function changeColor(element) {
 			var currentColor = element.style.backgroundColor;
@@ -54,7 +54,6 @@
 				element.style.backgroundColor = "red";
 			}
 		}
-
 		var elem = document.getElementById("fsc");
 		function openFullscreen() {
 			if (elem.requestFullscreen) {
@@ -62,7 +61,6 @@
 			}
 		}
 	</script>
-	<script type='text/javascript' src='../../script/jquery.min.js'></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
