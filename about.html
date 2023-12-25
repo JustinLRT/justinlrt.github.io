@@ -14,6 +14,31 @@
 		div.title h1 {
 			margin-top: 0px;
 		}
+		th,td {
+			text-align: center;
+		}
+		table a {
+			display: block;
+			width: 100%;
+		}
+		table.nav {
+			border: solid #C0C0C0;
+		}
+		th {
+			border-bottom: solid #C0C0C0;
+		}
+		.bdt {
+			border-top: solid #C0C0C0;
+		}
+		.bdl {
+			border-left: solid #C0C0C0;
+		}
+		.bdr {
+			border-right: solid #C0C0C0;
+		}
+		.bdb {
+			border-bottom: solid #C0C0C0;
+		}
 	</style>
 </head>
 <body>
@@ -23,72 +48,121 @@
 			<h2>Navigation page</h2>
 		</div>
 		<div class="box3">
-			<a href="javascript:window.history.back();">Back</a>
-			<br>
-			<a href="page/search.html">Search</a>
-			<br>
-			<a href="home.html">Home</a>
+			<table>
+				<td><a href="javascript:window.history.back();">Back</a></td>
+				<td><a href="home.html">Home</a></td>
+				<td><a href="page/search.html">Search</a></td>
+			</table>
 		</div>
 		<div class="box2">
 			<h2>Site contents</h2>
-			<ul>
-				<li><a href="home.html">Home</a></li>
-				<ul class="pdl">
-					<li><a href="page/posts.html">Justin LRT - Posts</a></li>
-					<li><a href="page/lrt1.html">LRT-1</a></li>
-					<ul class="padding0-rule">
-						<li><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a></li>
-						<li><a href="page/fareguide.html">LRT-1 fare guide</a></li>
-						<ul>
-							<li><a href="page/fareguide/sjt.html">Single journey ticket</a></li>
-							<li><a href="page/fareguide/svc.html">Stored value card</a></li>
-						</ul>
-						<li><a href="page/lrt1freeride.html">LRT-1 free ride</a></li>
-						<ul>
-							<li><a href="page/lrt1freeriderec.html">Free ride records</a></li>
-						</ul>
-						<li><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></li>
-						<li><a href="page/lrt1ride.html">LRT-1 ride</a></li>
-						<li>
-							<a href="page/lrtmrtsongs.html">LRT and MRT songs</a>
-							<ul>
-								<li><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></li>
-							</ul>
-						</li>
-						<li><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></li>
-						<ul>
-							<li><a href="page/merch.html">Merchandises</a></li>
-							<li><a href="page/lttr.html">Letter written by Justin</a></li>
-						</ul>
-						<li><a href="page/elections.html">LRT Elections and Officers</a></li>
-						<li><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></li>
-					</ul>
-					<li><a href="page/pcwhs.html">Pasay City West High School</a></li>
-					<ul class="padding0-rule">
-						<li><a href="page/pcwhs/announcements.html">Announcements and updates</a></li>
-						<li><a href="page/pcwhs/posts.html">Posts</a></li>
-						<li><a href="page/pcwhs/files.html">Files</a></li>
-					</ul>
-					<li><a href="page/ptgrphs.html">Photographies</a></li>
-					<li><a href="page/aboutme.html">About Justin LRT</a></li>
-					<ul class="padding0-rule">
-						<li><a href="page/pcwhs.html">Pasay City West High School</a></li>
-						<li><a href="page/ptgrphs.html">Photographies</a></li>
-						<li><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></li>
-						<li><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></li>
-						<li><a href="page/lrt1ride.html">LRT-1 rides</a></li>
-					</ul>
-					<li><a href="page/apps.html">Apps</a></li>
-					<ul class="padding0-rule">
-						<li><a href="page/apps/downloader.html">File Downloader</a></li>
-						<li><a href="page/apps/musicplayer.html">Music Player</a></li>
-					</ul>
-				</ul>
-			</ul>
+			<table class="nav">
+				<tr>
+					<th colspan="2"><a href="page/justinlrt.html">Justin LRT</a></th>
+				</tr>
+				<tr>
+					<td class="bdr"><a href="page/ptgrphs.html">Photographies</a></td>
+					<td><a href="page/posts.html">Posts</a></td>
+				</tr>
+			</table>
+			<br>
+			<table class="nav">
+				<tr>
+					<th colspan="2"><a href="page/lrt1.html">LRT-1</a></th>
+				</tr>
+				<tr>
+					<td class="bdb" colspan="2"><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a></td>
+				</tr>
+				<tr>
+					<td class="bdb" colspan="2"><a href="page/lrt1updates.html">LRT-1 updates</a></td>
+				</tr>
+				<tr>
+					<td class="bdb" rowspan="2"><a href="page/fareguide.html">LRT-1 fare guide</a></td>
+					<td><a href="page/fareguide/sjt.html">Single journey ticket</a></td>
+				</tr>
+				<tr>
+					<td class="bdb"><a href="page/fareguide/svc.html">Stored value card</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/lrt1freeride.html">LRT-1 free ride</a></td>
+					<td><a href="page/lrt1freeriderec.html">Free ride records</a></td>
+				</tr>
+				<tr>
+					<td class="bdb bdt" colspan="2"><a href="page/lrt1ride.html">LRT-1 ride</a></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
+				</tr>
+				<tr>
+					<td class="bdt"><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></td>
+					<td class="bdt"><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></td>
+				</tr>
+				<tr>
+					<td class="bdt bdb" colspan="2"><a href="page/sytmmap.html">LRT and MRT system map</a></td>
+				</tr>
+				<tr>
+					<td rowspan="2"><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></td>
+					<td><a href="page/lttr.html">Letter written by Justin</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/merch.html">Merchandises</a></td>
+				</tr>
+				<tr>
+					<td class="bdt bdb" colspan="2"><a href="page/elections.html">LRT Elections and Officers</a></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
+				</tr>
+			</table>
+			<br>
+			<table class="nav">
+				<tr>
+					<th colspan="2"><a href="page/pcwhs.html">Pasay City West High School</a></th>
+				</tr>
+				<tr>
+					<td class="bdb" colspan="2"><a href="page/pcwhs/announcements.html">Announcements and updates</a></td>
+				</tr>
+				<tr>
+					<td class="bdr"><a href="page/pcwhs/files.html">Files</a></td>
+					<td><a href="page/pcwhs/posts.html">Posts</a></td>
+				</tr>
+			</table>
+			<br>
+			<table class="nav">
+				<tr>
+					<th><a href="page/aboutme.html">About Justin LRT</a></th>
+				</tr>
+				<tr>
+					<td><a href="page/pcwhs.html">Pasay City West High School</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/ptgrphs.html">Photographies</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/lrt1ride.html">LRT-1 rides</a></td>
+				</tr>
+			</table>
+			<br>
+			<table class="nav">
+				<tr>
+					<th colspan="2"><a href="page/apps.html">Apps</a></th>
+				</tr>
+				<tr>
+					<td class="bdr"><a href="page/apps/downloader.html">File Downloader</a></td>
+					<td><a href="page/apps/musicplayer.html">Music Player</a></td>
+				</tr>
+				
+			</table>
 		</div>
 		<div class="box2">
 			<h2>Contact us</h2>
-			<a href="https://www.facebook.com/justinlovelrt">Facebook</a> | <a href="http://www.youtube.com/@JustinLRT">YouTube</a> | <a href="mailto:justingrande97@gmail.com?subject=feedback">Email</a> | <a href="tel:+639056602907">Phone</a> | <a onclick="address()">Office address</a>
+			Please click <a href="page/contact.html">HERE</a> for more details.
 		</div>
 		<div class="box2">
 			<h2>About this site</h2>
@@ -103,7 +177,7 @@
 				</tr>
 				<tr>
 					<td><b>Publish date</b></td>
-					<td>August 22, 2023 (GitHub)</td>
+					<td>August 22, 2023</td>
 				</tr>
 				<tr>
 					<td><b>Created by</b></td>
@@ -121,23 +195,28 @@
 					<td><b>Public access</b></td>
 					<td>Yes</td>
 				</tr>
+				<tr>
+					<td><b>Website</b></td>
+					<td><a href="https://justinlrt.github.io">justinlrt.github.io</a></td>
+				</tr>
 			</table>
-			<br><a href="page/termsofuse.html">Terms of Use</a>
+			<br><a href="page/aboutus.html">About us</a>
+			<br><a href="page/termsofservice.html">Terms of Service</a>
+			<br><a href="page/copyright.html">Copyright Notice</a>
+			<br><a href="page/prvcyplcy.html">Privacy Policy</a>
 			<br>
 			<br>Licenses:
-			<li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a></li>
+			<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
 		</div>
 		<div class="red-temp1">
 			For web developers only!
 			<br>
 			<br>It should fix issue in the following pages:
 			<ul>
-				<li>LRT-1 rides (w/ screen resolution of 600+ px)</li>
+				LRT-1 rides (w/ screen resolution of 600+ px)
 			</ul>
 		</div>
-		<div class="box3">
-			<a href="#top">Go back to top</a>
-		</div>
+		<footer id="footer"></footer>
 	</div>
 	<script>
 		function address() {
@@ -145,6 +224,8 @@
 		}
 	</script>
 	<script type='text/javascript' src='script/jquery.min.js'></script>
+	<script src="script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
