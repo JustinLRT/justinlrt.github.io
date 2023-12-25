@@ -8,36 +8,36 @@
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
 	<title>About me</title>
 	<style>
-	table.ptr-fit-td td {
+		table.ptr-fit-td td {
 			padding: 1px;
 		}
 @media (min-width: 600px) {
-		.pcwhs-thumb,
-		.song,
-		.lrtride {
-			float: left;
-			margin-right: 10px;
-			width: 300px;
+			.pcwhs-thumb,
+			.song,
+			.lrtride {
+				float: left;
+				margin-right: 10px;
+				width: 300px;
+			}
+			.video {
+				float: right;
+				margin-left: 10px;
+				width: 300px;
+			}
+			.photographiesContainer {
+				flex-direction: row;
+				display: flex;
+			}
+			.pics {
+				order: 2;
+				width: 30%;
+				margin-right: 10px;
+			}
+			.pht-desc {
+				order: 1;
+				width: 70%;
+			}
 		}
-		.video {
-			float: right;
-			margin-left: 10px;
-			width: 300px;
-		}
-		.photographiesContainer {
-			flex-direction: row;
-			display: flex;
-		}
-		.pics {
-			order: 2;
-			width: 30%;
-			margin-right: 10px;
-		}
-		.pht-desc {
-			order: 1;
-			width: 70%;
-		}
-	}
 	</style>
 </head>
 <body>
@@ -165,14 +165,14 @@
 			<br>
 			<h3>Trainspotting</h3>
 			<div class="video">
-			<video class="center-fit" controls>
-				<source src=”../media/lrt1firsttrainspotvideo.mp4” type=video/ogg>
-				<source src="../media/lrt1firsttrainspotvideo.mp4" type=video/mp4>
-			</video>
-			<div class="center-text desc">
-				First trainspotting video at 4th floor of my house. Taken August 21, 2021 at 6:52 AM
-			</div>
-			<br>
+				<video class="center-fit" controls>
+					<source src=”../media/lrt1firsttrainspotvideo.mp4” type=video/ogg>
+					<source src="../media/lrt1firsttrainspotvideo.mp4" type=video/mp4>
+				</video>
+				<div class="center-text desc">
+					First trainspotting video at 4th floor of my house. Taken August 21, 2021 at 6:52 AM
+				</div>
+				<br>
 			</div>
 			I started doing trainspotting activities since August 21, 2021 at top of my house where I lived. The first video was taken on the same date.
 			<br>
@@ -231,11 +231,11 @@
 			<br>
 			<a href="mailto: justingrande97@gmail.com">Send Email <img class="extsvg" src="../media/ui/external_link.svg" /></a>
 		</div>
-		<div class="box3">
-			<a href="#top">Go back to top</a>
-		</div>
+		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">

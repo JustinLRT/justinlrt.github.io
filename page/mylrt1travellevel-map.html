@@ -392,73 +392,72 @@
 			<br>
 			<br><a href="http://www.youtube.com/@JustinLRT">Support me!</a>
 		</div>
-
-		<div class="box3">
-			<a href="#top">Go back to top</a>
-		</div>
-		<div class="box3 flag-counter">
+		<div class="box2 flag-counter">
 			<a href="https://info.flagcounter.com/2gNe"><img src="https://s01.flagcounter.com/count2/2gNe/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_20/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 		</div>
-		<script>
-			function calculateResult() {
-				var radios = document.querySelectorAll('input[type="radio"]:checked');
-				var sum = 0;
-				for (var i = 0; i < radios.length; i++) {
-					sum += parseInt(radios[i].value);
-				}
-				document.getElementById("result").textContent = "LRT-1 Level " + sum;
-			}
-			function changeColor(elementId, rating) {
-				var element = document.getElementById(elementId);
-				switch (rating) {
-					case "1":
-						element.style.backgroundColor = "#3598db";
-						break;
-					case "2":
-						element.style.backgroundColor = "#30cc70";
-						break;
-					case "3":
-						element.style.backgroundColor = "#f3c218";
-						break;
-					case "4":
-						element.style.backgroundColor = "#d58337";
-						break;
-					case "5":
-						element.style.backgroundColor = "#e84c3d";
-						break;
-					default:
-						element.style.backgroundColor = "white";
-						break;
-				}
-			}
-			function resetForm() {
-				var radios = document.querySelectorAll('input[type="radio"]:checked');
-				for (var i = 0; i < radios.length; i++) {
-					radios[i].checked = false;
-				}
-				document.getElementById("result").textContent = "LRT-1 Level 0";
-			}
-		</script>
-		<script>
-			function saveScreenshot() {
-				var element = document.getElementById("capture-element");
-				var options = {
-					useCORS: true,
-					allowTaint: true
-				};
-				alert("Please wait until the download notification appeared. Please click OK to start image processing. This last for few seconds.");
-
-				html2canvas(element, options).then(function(canvas) {
-					var link = document.createElement('a');
-					link.href = canvas.toDataURL();
-					link.download = 'My LRT-1 Travel Level.png';
-					link.click();
-				});
-			}
-		</script>
-		<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
+		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function calculateResult() {
+			var radios = document.querySelectorAll('input[type="radio"]:checked');
+			var sum = 0;
+			for (var i = 0; i < radios.length; i++) {
+				sum += parseInt(radios[i].value);
+			}
+			document.getElementById("result").textContent = "LRT-1 Level " + sum;
+		}
+		function changeColor(elementId, rating) {
+			var element = document.getElementById(elementId);
+			switch (rating) {
+				case "1":
+					element.style.backgroundColor = "#3598db";
+					break;
+				case "2":
+					element.style.backgroundColor = "#30cc70";
+					break;
+				case "3":
+					element.style.backgroundColor = "#f3c218";
+					break;
+				case "4":
+					element.style.backgroundColor = "#d58337";
+					break;
+				case "5":
+					element.style.backgroundColor = "#e84c3d";
+					break;
+				default:
+					element.style.backgroundColor = "white";
+					break;
+			}
+		}
+		function resetForm() {
+			var radios = document.querySelectorAll('input[type="radio"]:checked');
+			for (var i = 0; i < radios.length; i++) {
+				radios[i].checked = false;
+			}
+			document.getElementById("result").textContent = "LRT-1 Level 0";
+		}
+	</script>
+	<script>
+		function saveScreenshot() {
+			var element = document.getElementById("capture-element");
+			var options = {
+				useCORS: true,
+				allowTaint: true
+			};
+			alert("Please wait until the download notification appeared. Please click OK to start image processing. This last for few seconds.");
+
+			html2canvas(element, options).then(function(canvas) {
+				var link = document.createElement('a');
+				link.href = canvas.toDataURL();
+				link.download = 'My LRT-1 Travel Level.png';
+				link.click();
+			});
+		}
+	</script>
+	<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
