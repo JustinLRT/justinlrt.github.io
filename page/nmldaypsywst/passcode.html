@@ -36,27 +36,28 @@
 				<button type="reset" onclick="clearPasswordField()">Clear</button>
 			</form>
 		</div>
-		<script type="text/javascript">
-			function checkPassword(form) {
-				if (form.pincode.value === "136605130354") {
-					localStorage.setItem('access_granted', 'true'); // Store flag in localStorage
-					window.location.href = 'normalday.html';
-					return false; // Prevent form submission (optional)
-				} else {
-					alert('The pincode you entered is invalid. Please try again.');
-					return false; // Prevent form submission
-				}
-			}
-
-			// Clear the access_granted flag when loading page2.html
-			localStorage.removeItem('access_granted');
-
-			function clearPasswordField() {
-				document.getElementById("pincodeClear").value = "";
-			}
-		</script>
+		<footer id="footerB"></footer>
 	</div>
 	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function checkPassword(form) {
+			if (form.pincode.value === "136605130354") {
+				localStorage.setItem('access_granted', 'true'); // Store flag in localStorage
+				window.location.href = 'normalday.html';
+				return false; // Prevent form submission (optional)
+			} else {
+				alert('The pincode you entered is invalid. Please try again.');
+				return false; // Prevent form submission
+			}
+		}
+		// Clear the access_granted flag when loading page2.html
+		localStorage.removeItem('access_granted');
+		function clearPasswordField() {
+			document.getElementById("pincodeClear").value = "";
+		}
+	</script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
