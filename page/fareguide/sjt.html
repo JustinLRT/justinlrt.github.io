@@ -49,58 +49,61 @@
 			<br>
 			See also: <a href="svc.html">Stored value card fare guide</a>
 		</div>
-		<script>
-			const fares = {
-				"Baclaran": [00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 30, 30, 30, 35, 35],
-				"EDSA": [15, 00, 15, 15, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 30, 35, 35],
-				"Libertad": [15, 15, 00, 15, 15, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 35, 35],
-				"Gil Puyat": [20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 35],
-				"Vito Cruz": [20, 20,15, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 35],
-				"Quirino": [20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30],
-				"Pedro Gil": [20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 20, 25, 25, 25, 25, 30, 30],
-				"United Nations": [20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 20, 25, 25, 25, 30, 30],
-				"Central Terminal": [25, 25, 20, 20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 20, 25, 25, 30],
-				"Carriedo": [25, 25, 25, 20, 20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 30],
-				"Doroteo Jose": [25, 25, 25, 25, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25],
-				"Bambang": [25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 20, 25, 25],
-				"Tayuman": [25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 25, 25],
-				"Blumentritt": [30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 25],
-				"Abad Santos": [30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 25],
-				"R. Papa": [30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 25],
-				"5th Avenue": [30, 30, 30, 30, 25, 25, 25, 25, 20, 20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20],
-				"Monumento": [30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 20, 15, 00, 20, 20],
-				"Balintawak": [35, 35, 35, 30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 00, 20],
-				"Fernando Poe Jr.": [35, 35, 35, 35, 35, 30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 25, 20, 20, 20, 00]
-			}
-			window.addEventListener("DOMContentLoaded", () => {
-				// when page has loaded
-				const from = document.getElementById("origin");
-				const to = document.getElementById("destination");
-				const output = document.getElementById("output");
-				const price = document.getElementById("price");
-				const stations = Object
-				.keys(fares)
-				.map(station => `<option value="${station}">${station}</option>`).join("");
-				from.innerHTML += stations;
-				to.innerHTML += stations;
-				const getFare = (fromStation, toIdx) => `₱${fares[fromStation][toIdx].toFixed(2)}`; // using Template Literals
-				const displayPrice = (e) => {
-					output.textContent = "" // empty
-					let fromVal = from.value;
-					let toVal = to.value;
-					if (fromVal === "" || toVal === "") return // stop processing if one is empty
-					let fromIdx = from.selectedIndex-1; // arrays start at 0
-					let toIdx = to.selectedIndex-1;
-					let a = Math.abs(fromIdx - toIdx);
-					output.textContent = `${fromVal} to ${toVal}`
-					price.textContent = getFare(fromVal, toIdx);
-				};
-				from.addEventListener("change", displayPrice);
-				to.addEventListener("change", displayPrice);
-			});
-		</script>
+		<footer id="footerB"></footer>
 	</div>
 	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		const fares = {
+			"Baclaran": [00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 30, 30, 30, 35, 35],
+			"EDSA": [15, 00, 15, 15, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 30, 35, 35],
+			"Libertad": [15, 15, 00, 15, 15, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 35, 35],
+			"Gil Puyat": [20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 30, 30, 30, 35],
+			"Vito Cruz": [20, 20,15, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30, 35],
+			"Quirino": [20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 30, 30],
+			"Pedro Gil": [20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 20, 25, 25, 25, 25, 30, 30],
+			"United Nations": [20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 20, 20, 20, 20, 25, 25, 25, 30, 30],
+			"Central Terminal": [25, 25, 20, 20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 20, 25, 25, 30],
+			"Carriedo": [25, 25, 25, 20, 20, 20, 20, 20, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25, 30],
+			"Doroteo Jose": [25, 25, 25, 25, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 20, 20, 25, 25],
+			"Bambang": [25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 20, 25, 25],
+			"Tayuman": [25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 25, 25],
+			"Blumentritt": [30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 20, 25],
+			"Abad Santos": [30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 15, 20, 20, 25],
+			"R. Papa": [30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20, 25],
+			"5th Avenue": [30, 30, 30, 30, 25, 25, 25, 25, 20, 20, 20, 20, 20, 20, 15, 15, 00, 15, 20, 20],
+			"Monumento": [30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 20, 15, 00, 20, 20],
+			"Balintawak": [35, 35, 35, 30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 00, 20],
+			"Fernando Poe Jr.": [35, 35, 35, 35, 35, 30, 30, 30, 30, 30, 25, 25, 25, 25, 25, 25, 20, 20, 20, 00]
+		}
+		window.addEventListener("DOMContentLoaded", () => {
+			// when page has loaded
+			const from = document.getElementById("origin");
+			const to = document.getElementById("destination");
+			const output = document.getElementById("output");
+			const price = document.getElementById("price");
+			const stations = Object
+			.keys(fares)
+			.map(station => `<option value="${station}">${station}</option>`).join("");
+			from.innerHTML += stations;
+			to.innerHTML += stations;
+			const getFare = (fromStation, toIdx) => `₱${fares[fromStation][toIdx].toFixed(2)}`; // using Template Literals
+			const displayPrice = (e) => {
+				output.textContent = "" // empty
+				let fromVal = from.value;
+				let toVal = to.value;
+				if (fromVal === "" || toVal === "") return // stop processing if one is empty
+				let fromIdx = from.selectedIndex-1; // arrays start at 0
+				let toIdx = to.selectedIndex-1;
+				let a = Math.abs(fromIdx - toIdx);
+				output.textContent = `${fromVal} to ${toVal}`
+				price.textContent = getFare(fromVal, toIdx);
+			};
+			from.addEventListener("change", displayPrice);
+			to.addEventListener("change", displayPrice);
+		});
+	</script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
