@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../../style.css" type="text/css" media="all" />
+	<title>Music Player - 3 tracks</title>
+	<style>
+		input {
+			width: 70%;
+		}
+		th,td {
+			text-align: center;
+		}
+		audio {
+			width: 100%;
+			height: 38px;
+		}
+		button.collapsible {
+			padding-top: 8px;
+			padding-bottom: 8px;
+			margin: 0%;
+			width: 100%;
+		}
+		.content {
+			padding: 0px;
+			margin-left: 2%;
+			margin-right: 2%;
+		}
+		.slider {
+			width: 75%;
+		}
+		/* Hover effect */
+		.button:hover {
+			background-color: #1557FF
+		}
+		.file-input-wrapper {
+			position: relative;
+			overflow: hidden;
+			display: inline-block;
+			margin-right: 4px;
+		}
+		.file-input {
+			/* Position and style the file input */
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			cursor: pointer;
+			font-size: 100%;
+		}
+		.import {
+			background-color: #C0DCFF;
+			border-color: #1557FF;
+			border-width: 2px;
+			padding: 1px 3px 1px 3px;
+			cursor: pointer;
+			margin-top: 3px;
+		}
+		.table-container {
+			width: 100% !important;
+			overflow-x: scroll;
+			text-align: center;
+		}
+		table.table-container th,
+		table.table-container td {
+			text-align: center;
+		}
+		table.table-container {
+			display: block;
+			max-width: -moz-fit-content;
+			max-width: fit-content;
+			margin: 0 auto;
+			overflow-x: auto;
+			white-space: nowrap;
+		}
+		/* Media query for smaller screens */
+@media (max-width: 600px) {
+			/* Add any specific styles for the scrollable table on smaller screens if needed */
+			.table-container {
+				width: 100% !important;
+				overflow-x: scroll;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>Music Player</h1>
+			<h2>3 tracks</h2>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../../home.html">Home</a>
+		</div>
+		<div class="box2">
+			<div>
+				<label for="audioFileInput1"><b>Audio 1</b></label>
+				Selected Music: <span id="fileName1"></span>
+				<br>
+				<audio id="myAudio1" controls controlsList="nodownload">
+					<source id="audioSource1" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+				<br>
+				<label for="audioFileInput2"><b>Audio 2</b></label>
+				Selected Music: <span id="fileName2"></span>
+				<br>
+				<audio id="myAudio2" controls controlsList="nodownload">
+					<source id="audioSource2" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+				<br>
+				<label for="audioFileInput3"><b>Audio 3</b></label>
+				Selected Music: <span id="fileName2"></span>
+				<br>
+				<audio id="myAudio3" controls controlsList="nodownload">
+					<source id="audioSource3" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+			<br>
+			<button class="collapsible">Controls</button>
+			<div class="content">
+				<br>
+				<table class="table-container">
+				<tr>
+					<th>Control</th>
+					<th>Audio 1</th>
+					<th>Audio 2</th>
+					<th>Audio 3</th>
+				</tr>
+				<tr>
+					<td>Choose File<br>from storage</td>
+					<td><div class="file-input-wrapper">
+						<button class="button">Choose File</button>
+						<input type="file" class="file-input" id="audioFileInput1">
+						<br><button class="button import" onclick="importAudio(1)">Import File</button>
+					</div></td>
+					<td><div class="file-input-wrapper">
+						<button class="button">Choose File</button>
+						<input type="file" class="file-input" id="audioFileInput2">
+						<br><button class="button import" onclick="importAudio(2)">Import File</button>
+					</div></td>
+					<td><div class="file-input-wrapper">
+						<button class="button">Choose File</button>
+						<input type="file" class="file-input" id="audioFileInput3">
+						<br><button class="button import" onclick="importAudio(3)">Import File</button>
+					</div></td>
+				</tr>
+				<tr>
+					<td>Play/Pause</td>
+					<td><button class="button" id="playPauseButton1" onclick="togglePlayPause(1)">Play</button></td>
+					<td><button class="button" id="playPauseButton2" onclick="togglePlayPause(2)">Play</button></td>
+					<td><button class="button" id="playPauseButton3" onclick="togglePlayPause(3)">Play</button></td>
+				</tr>
+				<tr>
+					<td>Rewind<br>/Forward</td>
+					<td><button class="button" onclick="rewindAudio(1)"><<</button>
+				<button class="button" onclick="forwardAudio(1)">>></button></td>
+					<td><button class="button" onclick="rewindAudio(2)"><<</button>
+				<button class="button" onclick="forwardAudio(2)">>></button></td>
+				<td><button class="button" onclick="rewindAudio(3)"><<</button>
+				<button class="button" onclick="forwardAudio(3)">>></button></td>
+				</tr>
+				<tr>
+					<td>Rewind<br>(seconds)</td>
+					<td><input type="number" id="rewindInput1" min="0.1" value="5"></td>
+					<td><input type="number" id="rewindInput2" min="0.1" value="5"></td>
+					<td><input type="number" id="rewindInput3" min="0.1" value="5"></td>
+				</tr>
+				<tr>
+					<td>Foward<br>(seconds)</td>
+					<td><input type="number" id="forwardInput1" min="0.1" value="5"></td>
+					<td><input type="number" id="forwardInput2" min="0.1" value="5"></td>
+					<td><input type="number" id="forwardInput3" min="0.1" value="5"></td>
+				</tr>
+				<tr>
+					<td>Reset Tempo<br>to 100%</td>
+					<td><button class="button" onclick="resetTempo(1)">Reset</button></td>
+					<td><button class="button" onclick="resetTempo(2)">Reset</button></td>
+					<td><button class="button" onclick="resetTempo(3)">Reset</button></td>
+				</tr>
+			</table>
+			</div>
+			<br>
+			<div>
+				<h3>Volumes</h3>
+				<label for="volumeSlider1">A1:&nbsp;</label>
+				<input class="slider" type="range" id="volumeSlider1" min="0" max="1" step="0.01" value="1" oninput="changeVolume(1)">
+				<span id="volumePercentage1">100%</span>
+				<br>
+				<label for="volumeSlider2">A2:&nbsp;</label>
+				<input class="slider" type="range" id="volumeSlider2" min="0" max="1" step="0.01" value="1" oninput="changeVolume(2)">
+				<span id="volumePercentage2">100%</span>
+				<br>
+				<label for="volumeSlider3">A3:&nbsp;</label>
+				<input class="slider" type="range" id="volumeSlider3" min="0" max="1" step="0.01" value="1" oninput="changeVolume(3)">
+				<span id="volumePercentype3">100%</span>
+			</div>
+			<br>
+			<div>
+				<h3>Tempo</h3>
+				<label for="tempoSlider1">A1:&nbsp;</label>
+				<input class="slider" type="range" id="tempoSlider1" min="0.25" max="2" step="0.01" value="1" oninput="changeTempo(1)">
+				<span id="tempoPercentage1">100%</span>
+				<br>
+				<label for="tempoSlider2">A2:&nbsp;</label>
+				<input class="slider" type="range" id="tempoSlider2" min="0.25" max="2" step="0.01" value="1" oninput="changeTempo(2)">
+				<span id="tempoPercentage2">100%</span>
+				<br>
+				<label for="tempoSlider3">A3:&nbsp;</label>
+				<input class="slider" type="range" id="tempoSlider3" min="0.25" max="2" step="0.01" value="1" oninput="changeTempo(3)">
+				<span id="tempoPercentage3">100%</span>
+			</div>
+			<br>
+			<div>
+				<h3>Controls for all</h3>
+				<button class="button" onclick="playPauseAllAudio()">Play/Pause All</button>
+				<button class="button" onclick="rewindAllAudio()"><< All</button>
+				<button class="button" onclick="forwardAllAudio()">>> All</button>
+				<br>
+				<table>
+					<tr>
+						<td>Rewind (seconds)</td>
+						<td>Foward (seconds)</td>
+					</tr>
+					<tr>
+						<td><input type="number" id="rewindInputAll" min="0.1" value="5"></td>
+						<td><input type="number" id="forwardInputAll" min="0.1" value="5"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<footer id="footerC"></footer>
+	</div>
+	<script type='text/javascript' src='../../../script/jquery.min.js'></script>
+	<script src="../../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../script/footer/footerC.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		//Audio 1
+		var audio1 = document.getElementById('myAudio1');
+		var audioSource1 = document.getElementById('audioSource1');
+		var audioFileInput1 = document.getElementById('audioFileInput1');
+		var volumeSlider1 = document.getElementById('volumeSlider1');
+		var volumePercentage1 = document.getElementById('volumePercentage1');
+		var rewindInput1 = document.getElementById('rewindInput1');
+		var forwardInput1 = document.getElementById('forwardInput1');
+		var tempoSlider1 = document.getElementById('tempoSlider1');
+		var tempoPercentage1 = document.getElementById('tempoPercentage1');
+
+		//Audio 2
+		var audio2 = document.getElementById('myAudio2');
+		var audioSource2 = document.getElementById('audioSource2');
+		var audioFileInput2 = document.getElementById('audioFileInput2');
+		var volumeSlider2 = document.getElementById('volumeSlider2');
+		var volumePercentage2 = document.getElementById('volumePercentage2');
+		var rewindInput2 = document.getElementById('rewindInput2');
+		var forwardInput2 = document.getElementById('forwardInput2');
+		var tempoSlider2 = document.getElementById('tempoSlider2');
+		var tempoPercentage2 = document.getElementById('tempoPercentage2');
+
+		//Audio 3
+		var audio3 = document.getElementById('myAudio3');
+		var audioSource3 = document.getElementById('audioSource3');
+		var audioFileInput3 = document.getElementById('audioFileInput3');
+		var volumeSlider3 = document.getElementById('volumeSlider3');
+		var volumePercentage3 = document.getElementById('volumePercentage3');
+		var rewindInput3 = document.getElementById('rewindInput3');
+		var forwardInput3 = document.getElementById('forwardInput3');
+		var tempoSlider3 = document.getElementById('tempoSlider3');
+		var tempoPercentage3 = document.getElementById('tempoPercentage3');
+
+		//For all
+		var rewindInputAll = document.getElementById('rewindInputAll');
+		var forwardInputAll = document.getElementById('forwardInputAll');
+
+		var playPauseButton1 = document.getElementById('playPauseButton1');
+		var playPauseButton2 = document.getElementById('playPauseButton2');
+		var playPauseButton2 = document.getElementById('playPauseButton3');
+
+		function importAudio(audioNumber) {
+			var fileInput = audioNumber === 1 ? audioFileInput1: audioFileInput2; audioFileInput3;
+			var audioSource = audioNumber === 1 ? audioSource1: audioSource2; audioSource3;
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+
+			audioSource.src = URL.createObjectURL(fileInput.files[0]);
+			audio.load();
+		}
+
+		function togglePlayPause(audioNumber) {
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+			var button = audioNumber === 1 ? playPauseButton1: plavolumeSlider2; playPauseButton3;
+
+			if (audio.paused) {
+				audio.play();
+				button.textContent = 'Pause';
+			} else {
+				audio.pause();
+				button.textContent = 'Play';
+			}
+		}
+
+		function changeVolume(audioNumber) {
+			var volumeSlider = audioNumber === 1 ? volumeSlider1: volumeSlider2; volumeSlider3;
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+			audio.volume = volumeSlider.value;
+			
+			var volume = parseFloat(volumeSlider.value);
+			audio.playbackVolume = volume;
+			updateVolumePercentage(audioNumber, volume);
+		}
+
+		function updateVolumePercentage(audioNumber, volume) {
+			var volumePercentage = audioNumber === 1 ? volumePercentage1: volumePercentage2; volumePercentage3;
+			var percentage = Math.round(volume * 100);
+			volumePercentage.textContent = percentage + "%";
+		}
+
+		function rewindAudio(audioNumber) {
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+			var rewindInput = audioNumber === 1 ? rewindInput1: rewindInput2; rewindInput3;
+			audio.currentTime -= parseInt(rewindInput.value);
+		}
+
+		function forwardAudio(audioNumber) {
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+			var forwardInput = audioNumber === 1 ? forwardInput1: forwardInput2; forwardInput3;
+			audio.currentTime += parseInt(forwardInput.value);
+		}
+
+		function playPauseAllAudio() {
+			if (audio1.paused && audio2.paused && audio3.paused) {
+				audio1.play();
+				audio2.play();
+				audio3.play();
+			} else {
+				audio1.pause();
+				audio2.pause();
+				audio3.pause();
+			}
+		}
+
+		function rewindAllAudio() {
+			audio1.currentTime -= parseInt(rewindInputAll.value);
+			audio2.currentTime -= parseInt(rewindInputAll.value);
+			audio3.currentTime -= parseInt(rewindInputAll.value);
+		}
+
+		function forwardAllAudio() {
+			audio1.currentTime += parseInt(forwardInputAll.value);
+			audio2.currentTime += parseInt(forwardInputAll.value);
+			audio3.currentTime += parseInt(forwardInputAll.value);
+		}
+
+		function changeTempo(audioNumber) {
+			var tempoSlider = audioNumber === 1 ? tempoSlider1: ttempoSlider; tempoSlider3;
+			var audio = audioNumber === 1 ? audio1: audio2; audio3;
+
+			var tempo = parseFloat(tempoSlider.value);
+			audio.playbackRate = tempo;
+			updateTempoPercentage(audioNumber, tempo);
+		}
+
+		function updateTempoPercentage(audioNumber, tempo) {
+			var tempoPercentage = audioNumber === 1 ? ttempoPercentage; tempoPercentage2: tempoPercentage3;
+			var percentage = Math.round(tempo * 100);
+			tempoPercentage.textContent = percentage + "%";
+		}
+
+		function resetTempo(audioNumber) {
+			var tempoSlider = audioNumber === 1 ? tempoSlider1: tempoSlider2; tempoSlider3;
+			tempoSlider.value = 1;
+			changeTempo(audioNumber);
+		}
+
+		var audioFileInput1 = document.getElementById('audioFileInput1');
+		var audioFileInput2 = document.getElementById('audioFileInput2');
+		var audioFileInput3 = document.getElementById('audioFileInput3');
+		var fileName1 = document.getElementById('fileName1');
+		var fileName2 = document.getElementById('fileName2');
+		var fileName3 = document.getElementById('fileName3');
+
+		audioFileInput1.addEventListener('change', function() {
+			var file = audioFileInput1.files[0];
+			fileName1.textContent = file.name;
+		});
+
+		audioFileInput2.addEventListener('change', function() {
+			var file = audioFileInput2.files[0];
+			fileName2.textContent = file.name;
+		});
+
+		audioFileInput3.addEventListener('change', function() {
+			var file = audioFileInput3.files[0];
+			fileName2.textContent = file.name;
+		});
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
