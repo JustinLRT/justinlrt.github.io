@@ -160,15 +160,10 @@
 								<td>Foward<br>(seconds)</td>
 								<td><input type="number" id="forwardInput2" min="0.1" value="5"></td>
 							</tr>
-							<tr>
-								<td><button class="button" onclick="resetTempo(1)">Reset</button></td>
-								<td>Reset Tempo<br>to 100%</td>
-								<td><button class="button" onclick="resetTempo(2)">Reset</button></td>
-							</tr>
 						</table>
 					</div>
-					<br>
 				</div>
+				<br>
 				<div class="right">
 					<h3>Volumes</h3>
 					<label for="volumeSlider1">A1:&nbsp;</label>
@@ -179,6 +174,7 @@
 					<input class="slider" type="range" id="volumeSlider2" min="0" max="1" step="0.01" value="1" oninput="changeVolume(2)">
 					<span id="volumePercentage2">100%</span>
 					<br>
+					<br>
 					<div>
 						<h3>Tempo</h3>
 						<label for="tempoSlider1">A1:&nbsp;</label>
@@ -188,6 +184,7 @@
 						<label for="tempoSlider2">A2:&nbsp;</label>
 						<input class="slider" type="range" id="tempoSlider2" min="0.25" max="2" step="0.01" value="1" oninput="changeTempo(2)">
 						<span id="tempoPercentage2">100%</span>
+						<br><b>Reset tempo:</b> <button class="button" onclick="resetTempo(1)">Audio 1</button> <button class="button" onclick="resetTempo(2)">Audio 2</button>
 					</div>
 					<br>
 					<div>
