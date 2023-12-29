@@ -13,3 +13,9 @@ for (i = 0; i < coll.length; i++) {
 		}
 	});
 }
+
+// BROWSER THEME COLOR META
+document.addEventListener('DOMContentLoaded', function() {
+	// Replace #ff0000 with your desired color code
+	document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1557FF');
+});

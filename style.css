@@ -38,6 +38,10 @@ header {
 	margin: 0px;
 	padding: 0px;
 }
+head {
+	background-color: #AAD0FF;
+	color: black;
+}
 footer {
 	text-align: center;
 	margin-top: 17px;
@@ -84,13 +88,6 @@ audio {
 }
 .social a {
 	padding: 0 8px;
-}
-.extsvg {
-	vertical-align: -1px;
-	margin: 0px;
-}
-.verifiedsvg {
-	/*No styles yet*/
 }
 div.title h1 {
 	margin-top: 45px;
@@ -668,6 +665,13 @@ div.scal li {
 	float: left;
 	margin-right: 10px;
 	width: 42px;
+}
+.extsvg {
+	vertical-align: -1px;
+	margin: 0px;
+}
+.verifiedsvg {
+	/*No styles yet*/
 }
 
 /*Text color*/
