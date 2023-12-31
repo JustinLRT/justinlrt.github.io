@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="icon.png">
 	<title>Navigation page</title>
 	<style>
 		ul.padding0-rule li {
@@ -18,7 +19,6 @@
 			text-align: center;
 		}
 		table a {
-			display: block;
 			width: 100%;
 		}
 		table.nav {
@@ -39,12 +39,17 @@
 		.bdb {
 			border-bottom: solid #C0C0C0;
 		}
+		.icon {
+			width: 10%;
+			transform: translate(0px,3.6px);
+			margin-right: 4px;
+		}
 	</style>
 </head>
 <body>
 	<div class="text">
 		<div class="title">
-			<h1>Justin LRT</h1>
+			<h1><img class="icon" src="icon.png" />Justin LRT</h1>
 			<h2>Navigation page</h2>
 		</div>
 		<div class="box3">
@@ -157,7 +162,7 @@
 					<td class="bdr"><a href="page/apps/downloader.html">File Downloader</a></td>
 					<td><a href="page/apps/musicplayer.html">Music Player</a></td>
 				</tr>
-				
+
 			</table>
 		</div>
 		<div class="box2">
@@ -169,15 +174,18 @@
 			<table>
 				<tr>
 					<td><b>Creation date</b></td>
-					<td>April 14, 2023</td>
+					<td>April 14, 2023<sup><a onclick="noteA()">[a]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Modernized on</b></td>
-					<td>July 24, 2023</td>
+					<td>
+						July 24, 2023<sup><a onclick="noteB()">[b]</a></sup>
+						<br>December 31, 2023<sup><a onclick="noteC()">[c]</a></sup>
+					</td>
 				</tr>
 				<tr>
 					<td><b>Publish date</b></td>
-					<td>August 22, 2023</td>
+					<td>August 22, 2023<sup><a onclick="noteD()">[d]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Created by</b></td>
@@ -185,6 +193,10 @@
 				</tr>
 				<tr>
 					<td><b>Styled by</b></td>
+					<td>Justin LRT</td>
+				</tr>
+				<tr>
+					<td><b>Operated by</b></td>
 					<td>Justin LRT</td>
 				</tr>
 				<tr>
@@ -208,12 +220,16 @@
 			<br>Licenses:
 			<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
 		</div>
-		<div class="red-temp1">
+		<div class="red-bg-temp1">
 			For web developers only!
 			<br>
 			<br>It should fix issue in the following pages:
 			<ul>
-				LRT-1 rides (w/ screen resolution of 600+ px)
+				<li>With screen resolution of 600 pixels and above</li>
+				<ul>
+					<li>LRT-1 rides</li>
+					<li>LRT-1 trainspotting</li>
+				</ul>
 			</ul>
 		</div>
 		<footer id="footer"></footer>
@@ -221,6 +237,18 @@
 	<script>
 		function address() {
 			alert("Room 203, Building 3, Pasay City West High School, Pasadena street, FB Harrison, Pasay City, Metro Manila")
+		}
+		function noteA() {
+			alert("That time was not published yet. It was started with simple website without any stylings but in the local device only.")
+		}
+		function noteB() {
+			alert("After Justin LRT learned and understand the styling rules, the website is turned into blue with proper layout. The website is not published yet.")
+		}
+		function noteC() {
+			alert("Changed the theme into green as the request to match the LRT Line 1 color and added some layouts.")
+		}
+		function noteD() {
+			alert("First published in Github. It supposed to be www.justinlrt.com but there's have a problem regarding to DNS.")
 		}
 	</script>
 	<script type='text/javascript' src='script/jquery.min.js'></script>

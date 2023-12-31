@@ -1,13 +1,13 @@
 /*Hamburger*/
 header {
-	background-color: #E6EDFF;
+	background-color: #E5FFE5 /*Background color*/;
 	padding: 0px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 999;
-	border-bottom: solid 3px #1557FF;
+	border-bottom: solid 3px #008000 /*Main color*/;
 }
 .hamburger a {
 	text-decoration: none;
@@ -21,26 +21,31 @@ header {
 	display: inline-block;
 	cursor: pointer;
 	padding: 8px 12px;
-	background-color: #E6EDFF;
+	background-color: #E5FFE5 /*Background color*/;
 	border: none;
 	color: #333;
 	font-size: 20px;
+	font-family: justinlrt;
 }
 .hamburger:hover {
-	background-color: #E6EDFF;
+	background-color: #E5FFE5 /*Background color*/;
 }
 .font-margin {
-	padding-left: 20px;
+	padding-left: 10px;
+}
+.icon-nav {
+	width: 10%;
+	transform: translate(0px,3.6px);
+}
+@font-face {
+	font-family: justinlrt;
+	src: url(font/ananda.ttf);
 }
 
 /*HTML page*/
 * {
 	margin: 0px;
 	padding: 0px;
-}
-head {
-	background-color: #AAD0FF;
-	color: black;
 }
 footer {
 	text-align: center;
@@ -58,7 +63,7 @@ td {
 }
 a {
 	text-decoration: none;
-	color: blue;
+	color: green;
 }
 ol, ul {
 	padding-left: 22px;
@@ -67,14 +72,14 @@ h1,h2 {
 	text-align: center;
 }
 button {
-	background-color: #C0DCFF;
-	border-color: #1557FF;
+	background-color: #B8FFAA;
+	border-color: #008000 /*Main color*/;
 	border-width: 2px;
 	padding: 1px 3px 1px 3px;
 }
 select {
-	background-color: #C0DCFF;
-	border-color: #1557FF;
+	background-color: #B8FFAA;
+	border-color: #008000 /*Main color*/;
 	border-width: 2px;
 	padding: 1px 3px 1px 3px;
 }
@@ -107,11 +112,17 @@ ol.pdl li {
 	align-items: center;
 	object-fit: contain;
 }
+.left-text {
+	text-align: left;
+}
 .center-text {
 	text-align: center;
 }
+.right-text {
+	text-align: right;
+}
 .title {
-	padding: 0.5em 0em;
+	padding: 0.5em 1em;
 	margin: 0em 0em;
 	align-content: center;
 }
@@ -131,7 +142,7 @@ ol.pdl li {
 	font-size: 0.7em;
 }
 .dp {
-	border-color: #1557FF;
+	border-color: #008000 /*Main color*/;
 	border-radius: 10px;
 	border-style: solid;
 	float: left;
@@ -164,7 +175,7 @@ ol.pdl li {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	border: solid 3px #1557FF;
+	border: solid 3px #008000 /*Main color*/;
 	text-align: center;
 }
 .box1 br {
@@ -176,8 +187,8 @@ ol.pdl li {
 	margin-top: 0%;
 	margin-bottom: 3%;
 	color: black;
-	background: #E6EDFF;
-	border-top: solid 5px #1557FF;
+	background: #E5FFE5 /*Background color*/;
+	border-top: solid 5px #008000 /*Main color*/;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 	border-radius: 10px;
 }
@@ -189,13 +200,13 @@ ol.pdl li {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	background: #E6EDFF;
+	background: #E5FFE5 /*Background color*/;
 	border-radius: 10px;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 .box3 .box-title {
 	font-size: 1.2em;
-	background: #1557FF;
+	background: #008000 /*Main color*/;
 	padding: 4px;
 	text-align: center;
 	color: #FFF;
@@ -292,20 +303,20 @@ td, th {
 	word-wrap: break-word;
 }
 th {
-	background-color: #AAD0FF;
-	/*#C0DCFF is the old*/
+	background-color: #B8FFAA;
+	/*#AAD0FF & #C0DCFF is the old*/
 }
 table.inner-table th {
-	background: #CCE2FF;
+	background: #C5FFBA;
 }
 .td-bg {
-	background: #CCE2FF;
+	background: #C5FFBA;
 }
 
 /*Collapsible*/
 .collapsible { /*Button*/
 	border: 3px solid blue;
-	background-color: #1557FF;
+	background-color: #008000 /*Main color*/;
 	color: white;
 	cursor: pointer;
 	padding: 10px;
@@ -315,17 +326,16 @@ table.inner-table th {
 	outline: none;
 	font-size: 15px;
 	border-radius: 10px;
-
 }
 .active, .collapsible:hover {
-	background-color: #4C7FFF;
+	background-color: #4FFF4C;
 }
 .content {
 	padding: 0 13px;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.2s ease-out;
-	background-color: #E6EDFF;
+	transition: max-height 0.17s ease-out;
+	background-color: #E5FFE5 /*Background color*/;
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-bottom: 3%;
@@ -335,12 +345,6 @@ table.inner-table th {
 	.content {
 		margin-bottom: 10px;
 	}
-}
-
-/*SVG*/
-.external-link {
-	width: 12px;
-	height: 12px;
 }
 
 /*For train stations. Colored border lines left and right*/
@@ -658,7 +662,14 @@ div.scal li {
 	background-color: #F7F8FF;
 }
 
-
+/*SVG*/
+.external-link {
+	width: 12px;
+	height: 12px;
+}
+.lrt1green-logo {
+	/*No styles yet*/
+}
 
 /*SVG floating images*/
 .ui {
@@ -666,12 +677,12 @@ div.scal li {
 	margin-right: 10px;
 	width: 42px;
 }
+.verifiedsvg {
+	/*No styles yet*/
+}
 .extsvg {
 	vertical-align: -1px;
 	margin: 0px;
-}
-.verifiedsvg {
-	/*No styles yet*/
 }
 
 /*Text color*/
