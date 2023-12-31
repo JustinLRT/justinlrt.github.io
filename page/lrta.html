@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../icon.png">
 	<title>Light Rail Transit Authority</title>
 	<style>
 		th {
@@ -55,7 +56,7 @@
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
 				</div>
 			</nav>
 		</header>
@@ -229,16 +230,17 @@
 		<button class="collapsible">Notes</button>
 		<div class="content">
 			<br>
-			<ul type="a">
+			<ol type="a">
 				<li><a href="#section-1">^</a> For the LRT Line 2 east extension</li>
 				<li><a href="#section-2">^</a> LRTA is responsible for monitoring the Line 1 concessionaire Light Rail Manila Corporation.</li>
-			</ul>
+			</ol>
 		</div>
 		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		function noteA() {
 			alert("For the LRT Line 2 east extension")

@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../icon.png">
 	<title>Search Justin LRT</title>
 	<style>
 		input {
@@ -18,7 +19,7 @@
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
 				</div>
 			</nav>
 		</header>
@@ -62,7 +63,7 @@
 				<li><a href="fareguide.html">LRT-1 fare guide</a></li>
 				<li><a href="lrt1freeride.html">LRT-1 free ride</a></li>
 				<li><a href="lrt1freeriderec.html">LRT-1 free ride records</a></li>
-				<li><a href="lrt1ride.html">LRT-1 ride</a></li>
+				<li><a href="lrt1ride.html">LRT-1 rides</a></li>
 				<li><a href="lrt1trainspotting.html">LRT-1 trainspotting</a></li>
 				<li><a href="lrt1/rollingstocks/lrta1000class.html">LRTA 1000 class</a></li>
 				<li><a href="lrt1/rollingstocks/lrta1100class.html">LRTA 1100 class</a></li>
@@ -81,14 +82,13 @@
 				<li><a href="lrt1/stations/monumento.html">Monumento station</a></li>
 				<li><a href="apps/musicplayer.html">Music Player</a></li>
 				<li><a href="mylrt1travellevel.html">My LRT-1 Travel Level</a></li>
-				<li><a href="mylrt1travellevel-map.html">My LRT-1 Travel Level - Map</a></li>
 				<li><a href="lrt1/stations/ninoyaquino.html">Ninoy Aquino station</a></li>
 				<li><a href="lrt1/stations/niog.html">Niog station</a></li>
 				<li><a href="lrt1/stations/northtriangle.html">North Triangle Common Station</a></li>
 				<li><a href="pcwhs.html">Pasay City West High School</a></li>
 				<li><a href="pcwhs/announcements.html">Pasay City West High School - Announcements and updates</a></li>
 				<li><a href="pcwhs/files.html">Pasay City West High School - Files</a></li>
-				<li><a href="nmldaypsywst/passcode.html">Pasay City West High School - Normal Days</a></li>
+				<li><a href="nmldaypsywst/passcode.html">Pasay City West High School - Normal days and viral posts</a></li>
 				<li><a href="pcwhs/posts.html">Pasay City West High School - Posts</a></li>
 				<li><a href="lrt1/stations/pedrogil.html">Pedro Gil station</a></li>
 				<li><a href="ptgrphs.html">Photographies</a></li>
@@ -109,6 +109,7 @@
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		function myFunction() {
 			// Declare variables

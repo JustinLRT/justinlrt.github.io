@@ -6,14 +6,25 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../icon.png">
 	<title>About us</title>
+	<style>
+		.bd-temp {
+			max-width: 100%;
+			overflow-x: auto;
+		}
+		.bd-temp code {
+			width: 100%;
+			word-wrap: break-word;
+		}
+	</style>
 </head>
 <body>
 	<div class="text">
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
 				</div>
 			</nav>
 		</header>
@@ -60,14 +71,26 @@
 			<br>
 			<br>
 			<div class="bd-temp">
-				<iframe src="txt/linktojustinlrt.txt" frameborder="0"></iframe>
+				<code id="copy"></code>
 			</div>
+			<button onclick="copyBtn()">Copy code</button>
 		</div>
 		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var copy = document.getElementById('copy');
+		var dynamicText = '<a href="https://justinlrt.github.io">justinlrt.github.io</a> - a great source about LRT Line 1 and Pasay City West High School with much features.';
+		copy.innerText = dynamicText;
+
+		let stringText = '<a href="https://justinlrt.github.io">justinlrt.github.io</a> - a great source about LRT Line 1 and Pasay City West High School with much features.';
+		function copyBtn() {
+			navigator.clipboard.writeText(stringText);
+		}
+	</script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">

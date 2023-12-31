@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../icon.png">
 	<title>LRT-1</title>
 	<style>
 		h2 {
@@ -98,7 +99,7 @@
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
 				</div>
 			</nav>
 		</header>
@@ -322,14 +323,14 @@
 					<th>Total</th>
 				</tr>
 				<tr>
-					<td class="red-bg"><a href="lrt1/stations/northtriangle.html" target="_blank">North Triangle</a></td>
+					<td class="red-bg"><a href="lrt1/stations/northtriangle.html" target="_blank">North Triangle<br>Common Station</a></td>
 					<td>-</td>
 					<td>-</td>
 					<td>
 						<b>Manila MRT</b>
 						<br>Line 3
-						<br>Line 7
-						<br>Metro Manila Subway
+						<br><span class="red-bg">Line 7</span>
+						<br><span class="red-bg">Metro Manila Subway</span>
 					</td>
 					<td rowspan="3">Quezon<br>City</td>
 				</tr>
@@ -401,7 +402,7 @@
 						<br>Line 2 - Recto
 						<br>
 						<br><b>Manila MRT</b>
-						<br><font class="red-bg">Line 8 - Lerma</font>
+						<br><span class="red-bg">Line 8 - Lerma</span>
 					</td>
 				</tr>
 				<tr>
@@ -628,7 +629,7 @@
 			<br>
 			<br>As of November 8, 2009, folding bicycles are allowed to be brought into trains provided that it does not exceed the LRTA's baggage size limitations of 2 by 2 feet. The last car of each train are also designated as <q>green zones</q>, where folding bicycle users can ride with their bikes.
 			<br>
-			<br>All stations have side platforms except for <a href="lrt1/stations/baclaran.html">Baclaran</a>, which has one side and one island platform. Due to the high patronage of the line, part of the platform corresponding to the front car of the train is cordoned off for the use of women, children, elderly and disabled passengers.
+			<br>All stations have side platforms except for <a href="lrt1/stations/baclaran.html">Baclaran</a>, which has one side and one island platform. Due to the high patronage of the line, part of the platform corresponding to the front car of the train is cordoned off for the use of pregnant women, children, elderly and disabled passengers.
 			<br>
 			<br>
 			<h2>Shops and services</h2>
@@ -845,6 +846,7 @@
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		function noteA() {
 			alert("Photo by Las Piñas Born & Rased on Facebook")

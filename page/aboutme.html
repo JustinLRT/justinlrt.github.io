@@ -6,10 +6,14 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../icon.png">
 	<title>About me</title>
 	<style>
 		table.ptr-fit-td td {
 			padding: 1px;
+		}
+		ul.padding0-rule li {
+			padding: 0;
 		}
 @media (min-width: 600px) {
 			.pcwhs-thumb,
@@ -45,7 +49,7 @@
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
 				</div>
 			</nav>
 		</header>
@@ -56,15 +60,6 @@
 			<a href="javascript:window.history.back();">Back</a>
 			<br>
 			<a href="../home.html">Home</a>
-			<br>
-			<br>Table of contents:
-			<br>
-			<li><a href="#section-1">As a student of Pasay City West High School</a></li>
-			<li><a href="#section-2">Photographer</a></li>
-			<li><a href="#section-3">LRT and MRT song composer</a></li>
-			<li><a href="#section-4">Rail enthusiast</a></li>
-			<li><a href="#section-5">Vlogger</a></li>
-			<li><a href="#section-6">Contact us</a></li>
 		</div>
 		<div class="box2">
 			<img class="dp" src="../media/me.jpg" alt="Me" />
@@ -215,27 +210,52 @@
 			<br>I've started to vlog when I was doing trainspotting at Pasay Rotonda, train ride, and also when there is chaos, unexpected events, dances, programs, presentations, and more at school and anywhere.
 			<br>
 			<br>Some of my vlogging that I already have:
-			<li>LRT-1 Pasay Rotonda trainspotting</li>
-			<li>LRT-1 ride</li>
-			<li>Pasay Rotonda walking tour</li>
-			<li>Jeepney ride from Pasay Rotonda to Pasay City West High School</li>
-			<li>Pasay City West High School</li>
+			<ul class="pdl">
+				<li>LRT-1 Pasay Rotonda trainspotting</li>
+				<li>
+					LRT-1 ride
+					<ul class="padding0-rule">
+						<li>Libertad to EDSA</li>
+						<li>EDSA to Libertad</li>
+						<li>Libertad to Baclaran</li>
+						<li>Baclaran to Libertad</li>
+						<li>Libertad to Baclaran to EDSA</li>
+						<li>EDSA to Carriedo</li>
+						<li>Libertad to Carriedo</li>
+						<li>Doroteo Jose to Libertad</li>
+						<li>Doroteo Jose to EDSA</li>
+					</ul>
+				</li>
+				<li>Pasay Rotonda walking tour</li>
+				<li>Baclaran to EDSA walking tour</li>
+				<li>Jeepney ride from Pasay Rotonda to Pasay City West High School</li>
+				<li>
+					Pasay City West High School
+					<ul class="padding0-rule">
+						<li>Dances</li>
+						<li>Programs</li>
+						<li>Earthquake drill</li>
+						<li>Real earthquake</li>
+						<li>Class suspension</li>
+						<li>Random shots</li>
+						<li>Time lapse</li>
+						<li>Students playing lato-lato</li>
+						<li>Role plays</li>
+						<li>Flag rasing ceremony</li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 		<div class="box2">
 			<h2 id="section-6">Contact us</h2>
-			If you want to talk Justin for suggestions, conversations or other inquiries, please contact us by clicking the links below:
-			<br>
-			<a href="tel:09056602907">Call us <img class="extsvg" src="../media/ui/external_link.svg" /></a>
-			<br>
-			<a href="https://www.facebook.com/justinlovelrt">Justin LRT Facebook page <img class="extsvg" src="../media/ui/external_link.svg" /></a>
-			<br>
-			<a href="mailto: justingrande97@gmail.com">Send Email <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+			If you want to talk Justin for suggestions, conversations or other inquiries, please contact us by clicking <a href="contact.html">HERE</a>.
 		</div>
 		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
