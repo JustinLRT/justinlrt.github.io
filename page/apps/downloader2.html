@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../../icon.png">
 	<title>File Downloader</title>
 	<style>
 		input {
@@ -19,7 +20,7 @@
 		<header>
 			<nav>
 				<div class="hamburger">
-					<a class="hamburger-menu" href="../../about.html">&#9776;</a><font class="font-margin">Justin LRT</font>
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><span class="font-margin" id="navB"></span>
 				</div>
 			</nav>
 		</header>
@@ -30,6 +31,11 @@
 			<a href="javascript:window.history.back();">Back</a>
 			<br>
 			<a href="../../home.html">Home</a> &#8594; <a href="../apps.html">Web Apps</a>
+		</div>
+		<div class="box1">
+			This is the alternative version of file downloader in case the original version is not working.
+			<br>
+			<br>To use original version, please click <b>Back</b> at top.
 		</div>
 		<div class="box2">
 			Paste URL of image, video, pdf, and other files to download.
@@ -67,6 +73,7 @@
 	<script type='text/javascript' src='../../script/jquery.min.js'></script>
 	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		const fileInput = document.querySelector("input"),
 
