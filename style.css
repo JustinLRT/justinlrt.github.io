@@ -77,6 +77,9 @@ button {
 	border-width: 2px;
 	padding: 1px 3px 1px 3px;
 }
+button:hover {
+	background-color: #008000;
+}
 select {
 	background-color: #B8FFAA;
 	border-color: #008000 /*Main color*/;
@@ -314,7 +317,8 @@ table.inner-table th {
 }
 
 /*Collapsible*/
-.collapsible { /*Button*/
+.collapsible {
+	/*Button*/
 	border: 3px solid blue;
 	background-color: #008000 /*Main color*/;
 	color: white;
@@ -660,6 +664,12 @@ div.scal li {
 	margin: 0% 0% 3% 0%;
 	border: solid 2.7px #8888AA;
 	background-color: #F7F8FF;
+}
+
+.quotation-temp {
+	border-left: solid 3.5px #9DAF9D;
+	padding-left: 22px;
+	font-family: serif;
 }
 
 /*SVG*/
