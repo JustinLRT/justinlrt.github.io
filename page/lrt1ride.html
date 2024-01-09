@@ -10,23 +10,80 @@
 	<title>LRT-1 rides</title>
 	<style>
 @media (min-width: 600px) {
+		.lib-eds,
+		.eds-lib,
+		.lib-bac,
 		.bac-lib,
-		.lib-bac {
-			float: left;
+		.lib-bac-eds,
+		.eds-car {
+			flex-direction: row;
+			display: flex;
+		}
+
+		/* Libertad to EDSA */
+		.lied-pic {
+			order: 1;
+			width: 40%;
 			margin-right: 10px;
-			width: 300px;
 		}
-		.edsa-lib {
-			float: right;
+		.lied-desc {
+			order: 2;
+			width: 60%;
+		}
+
+		/* EDSA to Libertad */
+		.edli-pic {
+			order: 1;
+			width: 40%;
+			margin-right: 10px;
+		}
+		.edli-desc {
+			order: 2;
+			width: 60%;
+		}
+
+		/* Libertad to Baclaran */
+		.liba-pic1 {
+			order: 1;
+			width: 49%;
+			margin-right: 1%;
+		}
+		.liba-pic2 {
+			order: 2;
+			width: 49%;
+		}
+
+		/* Baclaran to Libertad */
+		.bali-pic1 {
+			order: 1;
+			width: 49%;
+			margin-right: 1%;
+		}
+		.bali-pic2 {
+			order: 2;
+			width: 49%;
+		}
+
+		/* Libertad to Baclaran to EDSA */
+		.libaed-pic {
+			order: 2;
+			width: 40%;
 			margin-left: 10px;
-			width: 300px;
 		}
-		.bac-lib::after,
-		.lib-bac::after,
-		.edsa-lib::after {
-			content: "";
-			display: table;
-			clear: both;
+		.libaed-desc {
+			order: 1;
+			width: 60%;
+		}
+
+		/* EDSA to Carriedo */
+		.edca-pic {
+			order: 1;
+			width: 40%;
+			margin-right: 10px;
+		}
+		.edca-desc {
+			order: 2;
+			width: 60%;
 		}
 	}
 	</style>
@@ -64,38 +121,45 @@
 		</div>
 		<div class="box2" id="section-1">
 			<h2>Libertad to EDSA</h2>
-			Justin decided to go to LRT-1 because the jeepneys are too long to wait. As his first time to ride after 4 years, he so happy because it's too long not seen the trains and stations. His first ride was on November 17, 2022.
-			<br>
-			<br>And he decided to take a video when the train is coming.  At first he so scared for taking video because the guards can catch me. After I asked rail enthusiasts of the following days, they said that taking pictures and videos of LRT-1 is allowed because LRT-1 is the most unrestricted train line in terms of taking pictures and videos.
-			<br>
-			<br>
-			<video class="center-fit" controls>
-				<source src=”../media/1stgenapprochinglibertad.mp4” type=video/ogg>
-				<source src="../media/1stgenapprochinglibertad.mp4" type=video/mp4>
-			</video>
-			<div class="center-text desc">
-				His first video ever inside of LRT-1.
+			<div class="lib-eds">
+				<div class="lied-desc">
+					Justin decided to go to LRT-1 because the jeepneys are too long to wait. As his first time to ride after 4 years, he so happy because it's too long not seen the trains and stations. His first ride was on November 17, 2022.
+					<br>
+					<br>And he decided to take a video when the train is coming.  At first he so scared for taking video because the guards can catch me. After I asked rail enthusiasts of the following days, they said that taking pictures and videos of LRT-1 is allowed because LRT-1 is the most unrestricted train line in terms of taking pictures and videos.
+					<br>
+					<br>
+				</div>
+				<div class="lied-pic">
+					<img class="center-fit" src="../media/lrt12glibertad.jpg" />
+					<div class="center-text desc">
+						2nd gen train at Libertad station on December 14, 2022.
+						<a href="https://youtu.be/6cp5G8LEJuM">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
+				</div>
 			</div>
-			<br>His destination is mostly at EDSA because his home was near at EDSA. In every school days, he rode mostly from Libertad to EDSA. Until December 15, 2023 which is the last ride from Libertad to EDSA.
+			<br>His destination is mostly at EDSA because his home was near at EDSA. In every school days, he rode mostly from Libertad to EDSA. Until December 15, 2023, which is the last ride from Libertad to EDSA.
 			<br>
 			<br>For more videos of LRT-1 rides from Libertad to EDSA, please click <a href="https://www.youtube.com/playlist?list=PLNbOfRi3RANOVrycLnUdNldjxjrYUKKJ4">HERE <img class="extsvg" src="../media/ui/external_link.svg" /></a>.
 		</div>
 		<div class="box2" id="section-2">
 			<h2>Baclaran to Libertad</h2>
 			<div class="bac-lib">
-				<img class="center-fit" src="../media/ride/baclaran1.jpg" alt="Baclaran station" />
-				<div class="center-text desc">
-					Inside of Baclaran station on December 15, 2022.
+				<div class="bali-pic1">
+					<img class="center-fit" src="../media/ride/baclaran1.jpg" alt="Baclaran station" />
+					<div class="center-text desc">
+						Inside of Baclaran station on December 15, 2022.
+					</div>
 				</div>
 				<br>
-				<img class="center-fit" src="../media/ride/baclaran2.jpg" alt="3rd gen train approaching Baclaran station" />
-				<div class="center-text desc">
-					3rd gen train at Baclaran station on December 15, 2022.
-					<a href="https://youtu.be/HQkooOZdF3A">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+				<div class="bali-pic2">
+					<img class="center-fit" src="../media/ride/baclaran2.jpg" alt="3rd gen train approaching Baclaran station" />
+					<div class="center-text desc">
+						3rd gen train at Baclaran station on December 15, 2022.
+						<a href="https://youtu.be/HQkooOZdF3A">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
 				</div>
-				<br>
 			</div>
-			Justin tried to go to Baclaran station from EDSA by himself to ride LRT-1 to Libertad. After years not entering that station, it was a large station ever seen.
+			<br>Justin tried to go to Baclaran station from EDSA by himself to ride LRT-1 to Libertad. After years not entering that station, it was a large station ever seen.
 			<br>
 			<br>He started to rode the train from Baclaran to Libertad on December 15, 2022 after years.
 			<br>
@@ -103,14 +167,17 @@
 		</div>
 		<div class="box2" id="section-3">
 			<h2>EDSA to Libertad</h2>
-			Justin ride LRT-1 from EDSA to Libertad after his trainspotting to upload his videos at Libertad by connecting to high-speed free WiFi. This kind of ride was started on February 1, 2023 and it was the first time to ride in this kind of route.
-			<br>
-			<br>
-			<div class="edsa-lib">
-				<img class="center-fit" src="../media/ride/edsa1.jpg" alt="Rear cabin view at EDSA station" />
-				<div class="center-text desc">
-					Rear cabin view ride on February 1, 2023.
-					<a href="https://youtu.be/R8q21QUD8RY">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+			<div class="eds-lib">
+				<div class="edli-desc">
+					Justin ride LRT-1 from EDSA to Libertad after his trainspotting to upload his videos at Libertad by connecting to high-speed free WiFi. This kind of ride was started on February 1, 2023 and it was the first time to ride in this kind of route.
+				</div>
+				<br>
+				<div class="edli-pic">
+					<img class="center-fit" src="../media/ride/edsa1.jpg" alt="Rear cabin view at EDSA station" />
+					<div class="center-text desc">
+						Rear cabin view ride on February 1, 2023.
+						<a href="https://youtu.be/R8q21QUD8RY">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
 				</div>
 			</div>
 			<br>For more videos of LRT-1 rides from EDSA to Libertad, please click <a href="https://www.youtube.com/playlist?list=PLNbOfRi3RANOTW4ZGfctbEMyOYkwbe2Fv">HERE <img class="extsvg" src="../media/ui/external_link.svg" /></a>.
@@ -123,32 +190,56 @@
 			<br>
 			<br>
 			<div class="lib-bac">
-				<img class="center-fit" src="../media/ride/libertad2.jpg" alt="Trains meetup at Libertad station" />
-				<div class="center-text desc">
-					Justin rode on 3rd gen train going to Baclaran on February 1, 2023.
-					<a href="https://youtu.be/izgUa-tTUy0">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+				<div class="liba-pic1">
+					<img class="center-fit" src="../media/ride/libertad2.jpg" alt="Trains meetup at Libertad station" />
+					<div class="center-text desc">
+						Justin rode on 3rd gen train going to Baclaran on February 1, 2023.
+						<a href="https://youtu.be/izgUa-tTUy0">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
 				</div>
 				<br>
-				<img class="center-fit" src="../media/ride/baclaran3.jpg" alt="Baclaran station exit at northbound side" />
-				<div class="center-text desc">
-					People line up to get out from the station since the train switched the tracks on February 13, 2023.
-					<a href="https://youtu.be/izgUa-tTUy0">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+				<div class="liba-pic2">
+					<img class="center-fit" src="../media/ride/baclaran3.jpg" alt="Baclaran station exit at northbound side" />
+					<div class="center-text desc">
+						Crowded people are lined up to get out from the station since the track is switched on the other side on February 13, 2023.
+						<a href="https://youtu.be/izgUa-tTUy0">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
 				</div>
 			</div>
 			<br>For more videos of LRT-1 rides from Libertad to Baclaran, please click <a href="https://www.youtube.com/playlist?list=PLNbOfRi3RANPbMUFjUZ5h5M0oxH0gwsSL">HERE <img class="extsvg" src="../media/ui/external_link.svg" /></a>.
 		</div>
 		<div class="box2" id="section-5">
 			<h2>Libertad to Baclaran to EDSA</h2>
-			On September 6, 2023, Justin rode the 4th generation train to EDSA but the train is running slow. He know that the train is about to track switching before approaching Baclaran station. So he decided to go to Baclaran station the the train switched the tracks to northbound side. It was a chance to go back to EDSA.
-			<br>
-			<br>Many southbound passengers are leaving the train except Justin which he need to go back to EDSA station without leaving the train. So he made the train ride from Libertad to Baclaran to EDSA.
-			<br>
+			<div class="lib-bac-eds">
+				<div class="libaed-desc">
+					On September 6, 2023, Justin rode the 4th generation train to EDSA but the train is running slow. He know that the train is about to track switching before approaching Baclaran station. So he decided to go to Baclaran station the the train switched the tracks to northbound side. It was a chance to go back to EDSA.
+					<br>
+					<br>Many southbound passengers are leaving the train except Justin which he need to go back to EDSA station without leaving the train. So he made the train ride from Libertad to Baclaran to EDSA.
+				</div>
+				<br>
+				<div class="libaed-pic">
+					<img class="center-fit" src="../media/ride/edsa2.jpg" />
+					<div class="center-text desc">
+						4th gen train departing EDSA station northbound on September 6, 2023
+					</div>
+				</div>
+			</div>
 			<br>Watch the video <a href="https://youtu.be/pQcDIyFO32Q">HERE <img class="extsvg" src="../media/ui/external_link.svg" /></a>.
 		</div>
 		<div class="box2" id="section-6">
 			<h2>EDSA to Carriedo</h2>
-			When Justin go to University of the East, he rode the train from EDSA to Carriedo on November 5 until December 10, 2023 of every Sunday. This is the very first time going to Carriedo station and it was 5 years not riding the train after Libertad.
-			<br>
+			<div class="eds-car">
+				<div class="edca-desc">
+					When Justin go to University of the East, he rode the train from EDSA to Carriedo on November 5 until December 10, 2023 of every Sunday. This is the very first time going to Carriedo station and it was 5 years not riding the train after Libertad.
+				</div>
+				<br>
+				<div class="edca-pic">
+					<img class="center-fit" src="../media/ride/pasigriver.jpg" />
+					<div class="center-text desc">
+						View of Pasig River from onboarding 4th gen train on November 5, 2023. <a href="https://youtu.be/JfW2mHPpU1c">Video <img class="extsvg" src="../media/ui/external_link.svg" /></a>
+					</div>
+				</div>
+			</div>
 			<br>For more videos of LRT-1 rides from EDSA to Carriedo, please click <a href="https://www.youtube.com/playlist?list=PLNbOfRi3RANPM7gTmWn1ZVZLE777TJoR8">HERE <img class="extsvg" src="../media/ui/external_link.svg" /></a>.
 		</div>
 		<div class="box2" id="section-7">

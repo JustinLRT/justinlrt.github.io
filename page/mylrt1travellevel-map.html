@@ -110,7 +110,7 @@
 		<div class="box3">
 			<a href="javascript:window.history.back();">Back</a>
 			<br>
-			<a href="../home.html">Home</a> &#8594; <a href="mylrt1travellevel.html">My LRT-1 Travel Level - home</a>
+			<a href="../home.html">Home</a> &#8594; <a href="mylrt1travellevel.html">My LRT-1 Travel Level</a>
 		</div>
 		<div id="capture-element">
 			<div class="box2">
@@ -453,15 +453,13 @@
 				useCORS: true,
 				allowTaint: true
 			};
-
-			alert("Please wait until the download notification appeared. Please click OK to start image processing. This last for few seconds.");
-
 			html2canvas(element, options).then(function(canvas) {
 				var link = document.createElement('a');
 				link.href = canvas.toDataURL();
 				link.download = 'My LRT-1 Travel Level.png';
 				link.click();
 			});
+			alert("Please wait until the download notification appeared. Please click OK to start image processing. This can last for few seconds.");
 		}
 	</script>
 	<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>

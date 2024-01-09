@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<title>LRT-1 Bingo</title>
+	<style>
+		td {
+			width: 100%;
+			height: 2em;
+			padding: 2px;
+			margin: 0;
+			border: 0;
+		}
+		table button {
+			width: 100%;
+			height: 100%;
+			border: 0px;
+			font-size: 79%;
+			border-radius: 5px;
+			border-bottom: solid 4px #008000;
+			padding: 1px 1px 3px 1px;
+		}
+		table button:hover {
+			background-color: #B8FFAA;
+			
+		}
+		table {
+			border: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>LRT-1 Bingo</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../home.html">Home</a>
+		</div>
+		<div id="capture-element">
+			<h2>LRT-1 Bingo</h2>
+			<table>
+				<tr>
+					<td><button onclick="changeColor(this)">Naipit sa pinto ng tren</button></td>
+					<td><button onclick="changeColor(this)">Naka sakay habang off-peak hours</button></td>
+					<td><button onclick="changeColor(this)">Umupo sa sahig ng tren kahit bawal</button></td>
+					<td><button onclick="changeColor(this)">Nakasakay sa huling bagon ng tren</button></td>
+					<td><button onclick="changeColor(this)">Nagbibigay ng daan sa mga lalabas na pasahero</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="changeColor(this)">Naka lipat sa ibang station platform</button></td>
+					<td><button onclick="changeColor(this)">Nakaranas ng malamig na tren</button></td>
+					<td><button onclick="changeColor(this)">Lumangoy palabas ng tren</button></td>
+					<td><button onclick="changeColor(this)">Na-exit mismatch error</button></td>
+					<td><button onclick="changeColor(this)">Nakaranas ng siksikan sa tren</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="changeColor(this)">Nakasakay sa skip train</button></td>
+					<td><button onclick="changeColor(this)">Naubusan ng load habang lumalabas</button></td>
+					<td><button onclick="changeColor(this)">Basta nakasakay ng tren</button></td>
+					<td><button onclick="changeColor(this)">Nakasakay sa harap na bagon ng tren</button></td>
+					<td><button onclick="changeColor(this)">Kabisado ang 20 stations ng LRT-1</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="changeColor(this)">Madaldal na kaibigan</button></td>
+					<td><button onclick="changeColor(this)">Hindi umabot sa last train</button></td>
+					<td><button onclick="changeColor(this)">Sumabit sa ibabaw ng pinto</button></td>
+					<td><button onclick="changeColor(this)">Nalito sa Baclaran at FPJ na direksyon</button></td>
+					<td><button onclick="changeColor(this)">Bumaba ng station para lang mag-CR</button></td>
+				</tr>
+				<tr>
+					<td><button onclick="changeColor(this)">Kabisado ang huling pintuan ng tren</button></td>
+					<td><button onclick="changeColor(this)">Nagtagal sa station dahil sa rush hour</button></td>
+					<td><button onclick="changeColor(this)">Lumagpas sa inyong station</button></td>
+					<td><button onclick="changeColor(this)">Nag <q>para po</q> sa loob ng tren</button></td>
+					<td><button onclick="changeColor(this)">Kasabay si crush sa tren</button></td>
+				</tr>
+			</table>
+			<br>
+			<div class="box2">
+				<h2 class="left-text">Tag your friends!</h2>
+				Template by Justin LRT
+				<br>Based on the official LRT-1 signage system
+			</div>
+		</div>
+		<div class="box3 center-text">
+			<button onClick="window.location.reload();">Reset</button>
+			<button onclick="saveScreenshot()">Save Image</button>
+		</div>
+		<footer id="footerA"></footer>
+	</div>
+	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function saveScreenshot() {
+			var element = document.getElementById("capture-element");
+			var options = {
+				useCORS: true,
+				allowTaint: true
+			};
+
+			alert("Please wait until the download notification appeared. Please click OK to start image processing. This last for few seconds.");
+
+			html2canvas(element, options).then(function(canvas) {
+				var link = document.createElement('a');
+				link.href = canvas.toDataURL();
+				link.download = 'LRT-1 Bingo.png';
+				link.click();
+			});
+		}
+	</script>
+	<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function changeColor(element) {
+			var currentColor = element.style.backgroundColor;
+			if (currentColor == "green") {
+				element.style.backgroundColor = "";
+			} else {
+				element.style.backgroundColor = "green";
+			}
+		}
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
