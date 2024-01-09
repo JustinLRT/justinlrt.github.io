@@ -31,7 +31,9 @@
 		}
 @media (min-width: 600px) {
 			.headmain,
-			.photographiesContainer {
+			.photographiesContainer,
+			.lrt1info,
+			.pcwhs {
 				flex-direction: row;
 				display: flex;
 			}
@@ -46,6 +48,30 @@
 				vertical-align: center;
 				margin-left: 5px;
 			}
+
+			/* LRT-1 */
+			.lrt1img {
+				order: 1;
+				width: 38%;
+				margin-right: 10px;
+			}
+			.lrt1desc {
+				order: 2;
+				width: 62%;
+			}
+
+			/* PCWHS */
+			.pcwhspic {
+				order: 2;
+				width: 38%;
+				margin-left: 10px;
+			}
+			.pcwhs-desc {
+				order: 1;
+				width: 62%;
+			}
+
+			/* Photographies */
 			.pics {
 				order: 1;
 				width: 30%;
@@ -54,16 +80,6 @@
 			.pht-desc {
 				order: 2;
 				width: 70%;
-			}
-			.lrt1 {
-				float: left;
-				margin-right: 10px;
-				width: 300px
-			}
-			.pcwhs-thumb {
-				float: right;
-				margin-left: 10px;
-				width: 300px;
 			}
 		}
 	</style>
@@ -103,29 +119,35 @@
 		</div>
 		<div class="box2">
 			<h2>Latest from Justin LRT</h2>
-			<h3 class="center-text">Happy new year!</h3>
-			Happy New Year, everyone! Thank you for your support throughout 2023. We've created countless memories together that we can cherish. We worked tirelessly on content throughout the entire year, aiming for more views.
+			<h3 class="center-text">Parent needed!</h3>
+			Need ko na kausapin ang parent nina CJ Anthony Tavera ng 10–LAPULAPU bago mag exam sa January 22 at 23 sa kadahilang may ginawang di maganda. Marami na ginawa lagpas 10 beses na itong ginawa.
 			<br>
-			<br>As we enter 2024, we hope it will surpass the achievements and experiences of 2023.
+			<br>Kung gusto nyo ako kausapin, pwede nyo pumunta sa <a href="page/contact.html">contact us page</a>.
 			<br>
-			<br><img class="center-fit" src="media/2024newyear.jpg" />
+			<br>Maraming salamat sa inyong pag-unawa.
 			<!--
-									<h3 class="center-text">Last LRT-1 ride ceremonial</h3>
-									The last ride ceremonial from Libertad to EDSA happened on December 14, 2023 after the Christmas party from his school. The ceremonial ride gives a better service of LRT-1 because on how fast and cool of the trains.
-									<br>
-									<br>The last ceremonial ride also inclues the song performing of official music of LRT-1 at EDSA station and to say goodbye to LRT-1.
-									<br>
-									<br>We are happy to ride the LRT-1 many times. So this is the end of the day of his everyday hobbies.
-									<br>
-									<br>Bye bye LRT-1<h3 class="center-text">Last LRT-1 ride ceremonial</h3>
-									The last ride ceremonial from Libertad to EDSA happened on December 14, 2023 after the Christmas party from his school. The ceremonial ride gives a better service of LRT-1 because on how fast and cool of the trains.
-									<br>
-									<br>The last ceremonial ride also inclues the song performing of official music of LRT-1 at EDSA station and to say goodbye to LRT-1.
-									<br>
-									<br>We are happy to ride the LRT-1 many times. So this is the end of the day of his everyday hobbies.
-									<br>
-									<br>Bye bye LRT-1!--
-									-->
+						<h3 class="center-text">Happy new year!</h3>
+						Happy New Year, everyone! Thank you for your support throughout 2023. We've created countless memories together that we can cherish. We worked tirelessly on content throughout the entire year, aiming for more views.
+						<br>
+						<br>As we enter 2024, we hope it will surpass the achievements and experiences of 2023.
+						<br>
+						<br><img class="center-fit" src="media/2024newyear.jpg" />
+												<h3 class="center-text">Last LRT-1 ride ceremonial</h3>
+												The last ride ceremonial from Libertad to EDSA happened on December 14, 2023 after the Christmas party from his school. The ceremonial ride gives a better service of LRT-1 because on how fast and cool of the trains.
+												<br>
+												<br>The last ceremonial ride also inclues the song performing of official music of LRT-1 at EDSA station and to say goodbye to LRT-1.
+												<br>
+												<br>We are happy to ride the LRT-1 many times. So this is the end of the day of his everyday hobbies.
+												<br>
+												<br>Bye bye LRT-1<h3 class="center-text">Last LRT-1 ride ceremonial</h3>
+												The last ride ceremonial from Libertad to EDSA happened on December 14, 2023 after the Christmas party from his school. The ceremonial ride gives a better service of LRT-1 because on how fast and cool of the trains.
+												<br>
+												<br>The last ceremonial ride also inclues the song performing of official music of LRT-1 at EDSA station and to say goodbye to LRT-1.
+												<br>
+												<br>We are happy to ride the LRT-1 many times. So this is the end of the day of his everyday hobbies.
+												<br>
+												<br>Bye bye LRT-1!--
+												-->
 			<!-- <br>Please click <a href="page/posts.html">here</a> for more posts from Justin LRT. -->
 		</div>
 		<div class="box2">
@@ -138,52 +160,58 @@
 			<br>More information <a href="page/lrt1updates.html">here</a>.
 		</div>
 		<div class="box2">
-			<h2>NEW! Web Apps</h2>
-			Are you very excited to see this for very first time? You can explore and use our apps to enjoy your everyday life.
-			<br>
-			<br>Click <a href="page/apps.html">here</a> to view our Web Apps.
-		</div>
-		<div class="box2">
 			<h2>LRT-1</h2>
-			<div class="lrt1">
-				<img class="center-fit" src="media/aboutlrt1/1gpedrogil.jpg" />
-				<br>
+			<div class="lrt1info">
+				<div class="lrt1img">
+					<img class="center-fit" src="media/aboutlrt1/1gpedrogil.jpg" />
+					<br>
+				</div>
+				<div class="lrt1desc">
+					LRT-1 is owned by Light Rail Transit Authority and the operator and maintenance by Light Rail Manila Corporation. LRT-1 started operations in December 1, 1984 and make this a first LRT system in Southeast Asia. With the length of 19.65 kilometers and 20 stations, LRT-1 is a great service ever because the air conditioning is very cool, the speed is fast, and enjoyable view outside. So do you want ride LRT-1?
+					<br>
+					<br>In this page, you want to see about LRT-1 and also the trainspotting and rides by Justin. This includes updates for up-to-date information about LRT-1.
+					<br>
+					<br>Please click the link  below for more articles about LRT-1:
+					<br>
+					<ul>
+						<li><a href="page/lrt1updates.html">LRT-1 updates</a></li>
+						<li><a href="page/fareguide.html">LRT-1 fare guide</a></li>
+						<li><a href="page/lrt1freeride.html">LRT-1 free ride</a></li>
+						<li><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></li>
+						<li><a href="page/lrt1ride.html">LRT-1 ride</a></li>
+						<li><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></li>
+						<li><a href="page/sytmmap.html">LRT and MRT system map</a></li>
+						<li><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></li>
+						<li><a href="page/elections.html">LRT Elections and Officers</a></li>
+					</ul>
+					<br>More and full information about LRT-1 <a href="page/lrt1.html">here</a>.
+					<ul>
+						<li><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a> - shortcut for information of rolling stocks, stations, and operators</li>
+					</ul>
+					<br>
+					<h3 class="left-text">LRT-1 Apps</h3>
+					<ul>
+						<li><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a> - used to visualize how well-travelled you are in LRT-1.</li>
+						<li><a href="page/lrt1bingo.html">LRT-1 Bingo</a> - used to visualize what you're done in LRT-1.</li>
+					</ul>
+				</div>
 			</div>
-			LRT-1 is owned by Light Rail Transit Authority and the operator and maintenance by Light Rail Manila Corporation. LRT-1 started operations in December 1, 1984 and make this a first LRT system in Southeast Asia. With the length of 19.65 kilometers and 20 stations, LRT-1 is a great service ever because the air conditioning is very cool, the speed is fast, and enjoyable view outside. So do you want ride LRT-1?
-			<br>
-			<br>In this page, you want to see about LRT-1 and also the trainspotting and rides by Justin. This includes updates for up-to-date information about LRT-1.
-			<br>
-			<br>Please click the link  below for more articles about LRT-1:
-			<br>
-			<ul>
-				<li><a href="page/lrt1updates.html">LRT-1 updates</a></li>
-			<li><a href="page/fareguide.html">LRT-1 fare guide</a></li>
-			<li><a href="page/lrt1freeride.html">LRT-1 free ride</a></li>
-			<li><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></li>
-			<li><a href="page/lrt1ride.html">LRT-1 ride</a></li>
-			<li><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></li>
-			<li><a href="page/sytmmap.html">LRT and MRT system map</a></li>
-			<li><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></li>
-			<li><a href="page/elections.html">LRT Elections and Officers</a></li>
-			</ul>
-			<br>More and full information about LRT-1 <a href="page/lrt1.html">here</a>.
-			<ul>
-				<li><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a> - shortcut for information of rolling stocks, stations, and operators</li>
-			</ul>
-			<br>If you want to view your LRT-1 travel level, please click
-			<a href="page/mylrt1travellevel.html">here</a>.
 		</div>
 		<div class="box2">
 			<h2>Pasay City West High School</h2>
-			<div class="pcwhs-thumb">
-				<img class="center-fit" src="media/photographs/pasaywest/pcwhs4.jpg" />
-				<br>
+			<div class="pcwhs">
+				<div class="pcwhspic">
+					<img class="center-fit" src="media/photographs/pasaywest/pcwhs4.jpg" />
+					<br>
+				</div>
+				<div class="pcwhs-desc">
+					Pasay City West High School is a large public school in Pasay, Philippines, established in 1949. It is located at Pasadeña Street, FB Harrison, Pasay City, Metro Manila. This school occupied more than 7,400 students. The current principal is Mr. Agapito Teodoro N. Manaog.
+					<br>
+					<br>This section was I included here because to make visitors better how beautiful the largest public school in Pasay City it is and what their contents and features around the school.
+					<br>
+					<br>Click <a href="page/pcwhs.html">here</a> to see about the school.
+				</div>
 			</div>
-			Pasay City West High School is a large public school in Pasay, Philippines, established in 1949. It is located at Pasadeña Street, FB Harrison, Pasay City, Metro Manila. This school occupied more than 7,400 students. The current principal is Mr. Agapito Teodoro N. Manaog.
-			<br>
-			<br>This section was I included here because to make visitors better how beautiful the largest public school in Pasay City it is and what their contents and features around the school.
-			<br>
-			<br>Click <a href="page/pcwhs.html">here</a> to see about the school.
 		</div>
 		<div class="box2">
 			<h2>Photographies</h2>
@@ -215,6 +243,12 @@
 			</div>
 		</div>
 		<div class="box2">
+			<h2>Web Apps</h2>
+			Web apps by Justin LRT are the apps that never existed before. This can only be used in the site and can't be downloadable as mobile application.
+			<br>
+			<br>Click <a href="page/apps.html">here</a> to view our Web Apps.
+		</div>
+		<div class="box2">
 			<h2>About me</h2>
 			<img class="dp" src="media/me.jpg" alt="Me" />
 			Hello there! My name is Justin and I am a Filipino student of Pasay City West High School, a photographer, song composer of LRT and MRT and rail enthusiast. I'm always ride LRT-1 because I'm enjoying ride LRT of cool air conditioning, fast speeds and safe.
@@ -238,27 +272,28 @@
 	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/nav/nav.js" type="text/javascript" charset="utf-8"></script>
 	<!--<script>
-		if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-			window.location.href = 'page/pterc.html';
-		} else {
-			if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-				if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-					window.location.href = 'page/pterc.html';
-				} else {
-					if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-						if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-							window.location.href = 'page/pterc.html';
-						} else {
-							if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-								if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-									window.location.href = 'page/pterc.html';
-								} else {
-									if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-										if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-											window.location.href = 'page/pterc.html';
-										} else {
-											if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-												alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+			if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+				window.location.href = 'page/pterc.html';
+			} else {
+				if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+					if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+						window.location.href = 'page/pterc.html';
+					} else {
+						if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+							if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+								window.location.href = 'page/pterc.html';
+							} else {
+								if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+									if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+										window.location.href = 'page/pterc.html';
+									} else {
+										if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+											if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+												window.location.href = 'page/pterc.html';
+											} else {
+												if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+													alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+												}
 											}
 										}
 									}
@@ -268,8 +303,7 @@
 					}
 				}
 			}
-		}
-	</script>-->
+		</script>-->
 	<noscript>
 		<br>
 		<div class="box3 center-text">

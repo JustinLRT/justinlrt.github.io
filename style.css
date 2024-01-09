@@ -64,6 +64,7 @@ td {
 a {
 	text-decoration: none;
 	color: green;
+	outline: none;
 }
 ol, ul {
 	padding-left: 22px;
@@ -72,6 +73,7 @@ h1,h2 {
 	text-align: center;
 }
 button {
+	outline: none;
 	background-color: #B8FFAA;
 	border-color: #008000 /*Main color*/;
 	border-width: 2px;

@@ -39,3 +39,22 @@ if (ogTitleMeta && ogDescMeta && ogImageMeta) {
 function verified() {
 	alert("This profile was verified.\n\nVerified profiles are able to provide reliable sources and high quality posts.");
 }
+
+// SECTIOM <a href="#">
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			const targetId = this.getAttribute('href').substring(1);
+			const targetElement = document.getElementById(targetId);
+
+			if (targetElement) {
+				window.scrollTo({
+					top: targetElement.offsetTop - window.innerHeight / 3,
+					behavior: 'smooth'
+				});
+			}
+		});
+	});
+});

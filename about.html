@@ -15,17 +15,27 @@
 		div.title h1 {
 			margin-top: 0px;
 		}
-		th,td {
+		table.nav th,td {
 			text-align: center;
+			padding: 0;
 		}
-		table a {
+		table.nav td a {
+			display: inline-block;
+			padding: 6px;
+			width: calc(100% - 12px);
+			box-sizing: border-box;
+			white-space: normal;
 			width: 100%;
+		}
+		table.abouts td {
+			padding: 6px;
 		}
 		table.nav {
 			border: solid #C0C0C0;
 		}
-		th {
+		table.nav th {
 			border-bottom: solid #C0C0C0;
+			padding: 6px;
 		}
 		.bdt {
 			border-top: solid #C0C0C0;
@@ -40,7 +50,7 @@
 			border-bottom: solid #C0C0C0;
 		}
 		.icon {
-			width: 10%;
+			width: 1em;
 			transform: translate(0px,3.6px);
 			margin-right: 4px;
 		}
@@ -53,7 +63,7 @@
 			<h2>Navigation page</h2>
 		</div>
 		<div class="box3">
-			<table>
+			<table class="abouts">
 				<td><a href="javascript:window.history.back();">Back</a></td>
 				<td><a href="home.html">Home</a></td>
 				<td><a href="page/search.html">Search</a></td>
@@ -93,7 +103,7 @@
 					<td><a href="page/lrt1freeriderec.html">Free ride records</a></td>
 				</tr>
 				<tr>
-					<td class="bdb bdt" colspan="2"><a href="page/lrt1ride.html">LRT-1 ride</a></td>
+					<td class="bdb bdt" colspan="2"><a href="page/lrt1ride.html">LRT-1 rides</a></td>
 				</tr>
 				<tr>
 					<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
@@ -116,7 +126,10 @@
 					<td class="bdt bdb" colspan="2"><a href="page/elections.html">LRT Elections and Officers</a></td>
 				</tr>
 				<tr>
-					<td colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
+					<td class="bdb" colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="page/lrt1bingo.html">LRT-1 Bingo</a></td>
 				</tr>
 			</table>
 			<br>
@@ -171,7 +184,7 @@
 		</div>
 		<div class="box2">
 			<h2>About this site</h2>
-			<table>
+			<table class="abouts">
 				<tr>
 					<td><b>Creation date</b></td>
 					<td>April 14, 2023<sup><a onclick="noteA()">[a]</a></sup></td>
@@ -219,18 +232,6 @@
 			<br>
 			<br>Licenses:
 			<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
-		</div>
-		<div class="red-bg-temp1">
-			For web developers only!
-			<br>
-			<br>It should fix issue in the following pages:
-			<ul>
-				<li>With screen resolution of 600 pixels and above</li>
-				<ul>
-					<li>LRT-1 rides</li>
-					<li>LRT-1 trainspotting</li>
-				</ul>
-			</ul>
 		</div>
 		<footer id="footer"></footer>
 	</div>
