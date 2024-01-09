@@ -28,7 +28,7 @@
 			<a href="../../home.html">Home</a> &#8594; <a href="../pcwhs.html">Pasay City West High School</a>
 		</div>
 		<div class="box2">
-			To proceed, please enter the pincode
+			To proceed, please enter the 12-digit passcode
 			<br>
 			<br>
 			<form onsubmit="return checkPassword(this)">
@@ -45,7 +45,7 @@
 	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		function checkPassword(form) {
-			if (form.pincode.value === "163944029873") {
+			if (form.pincode.value === "164922973170") {
 				localStorage.setItem('access_granted', 'true'); // Store flag in localStorage
 				window.location.href = 'normalday.html';
 				return false; // Prevent form submission (optional)

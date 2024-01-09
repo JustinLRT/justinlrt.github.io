@@ -9,14 +9,15 @@
 	<link rel="apple-touch-icon" href="../../icon.png">
 	<title>Normal days and viral posts at Pasay City West High School</title>
 	<style>
-		.center-fit1 {
-			margin auto;
-			width: 100%;
-			height: 100%;
-		}
 		.mention {
 			color: #1951FF;
 			font-weight: bold;
+		}
+		@media (min-width: 600px) {
+			img.center-fit {
+				width: 70%;
+				height: auto;
+			}
 		}
 	</style>
 </head>
@@ -62,7 +63,7 @@
 			NORMAL DAY IN PASAWAY WEST <button onclick="moreinfo1()">More info</button>
 			<br>
 			<br>
-			<video class="center-fit1" controls controlsList="nodownload">
+			<video class="center-fit" controls controlsList="nodownload">
 				<source src="../../media/nmldaypsywst/011.mp4" type=video/ogg>
 				<source src="../../media/nmldaypsywst/011.mp4" type=video/mp4>
 			</video>
@@ -461,7 +462,14 @@
 		} else {
 			// Clear the access_granted flag after redirection
 			localStorage.removeItem('access_granted');
-			if (confirm("This page you're accessing may contain theme, language, violence, sexual, horror, or drugs, that not suitable for younger people.\n\nAre you sure to want to access this page?\nClick OK to proceed, and Cancel to go back.")) {} else {
+			if (confirm("This page you're accessing may contain theme, language, violence, sexual, horror, or drugs, that not suitable for younger audiences.\n\nAre you sure to want to access this page?\nClick OK to proceed, and Cancel to go back.\n\nYou have 3 minutes to access this page. After 3 minutes, you need to enter the passcode again.")) {
+				function backPrev() {
+					alert("You've run out of time to access this page. Click OK to go back.");
+					window.location.href = "passcode.html";
+				}
+				// Delay the page load in ms
+				setTimeout(backPrev, 180000);
+			} else {
 				window.location.href = 'passcode.html';
 			}
 		}
