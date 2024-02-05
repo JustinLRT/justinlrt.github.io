@@ -1,0 +1,59 @@
+input {
+	width: 100px;
+}
+.center-fit1 {
+	max-width: 49%;
+	max-height: 49vh;
+	margin: auto;
+}
+imageContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 100vw;
+}
+
+/*Padding*/
+#imageContainer .center-fit,
+.imageContainer img {
+	padding-bottom: 5px;
+}
+@media (min-width: 600px) {
+	#imageContainer .center-fit {
+		padding: 0;
+	}
+}
+
+/*Use 'center-fit' class
+ When using 2 images only
+ In portrait when thr 2 images are both landscape
+ In landscape mode, 2 images are next to each other*/
+.imageContainer1 img {
+	padding-bottom: 5px;
+}
+@media (min-width: 600px) {
+	.imageContainer1 img {
+		width: 49%;
+	}
+	.imageContainer1 {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		flex: 100vw;
+	}
+}
+
+/*Use 'center-fit' class
+ When using 2 images only
+ In portrait when thr 2 images are both portrait
+ 2 images are next to each other*/
+.imageContainer2 img {
+	padding-bottom: 5px;
+	width: 49%;
+}
+.imageContainer2 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 100vw;
+}
