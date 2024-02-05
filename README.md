@@ -2,8 +2,6 @@
 Justin LRT is a site where topics like train and schools are included here and also the articles for latest LRT-1 update.
 
 [CLICK HERE](https://justinlrt.github.io/home.html) to view the website
-[CLICK HERE](https://justinlrt.github.io/home.html) to view the website
-[CLICK HERE](https://justinlrt.github.io/home.html) to view the website
 
 ## Pages
 There's have many pages and topics in this HTML site such as the Manila LRT Line 1, the Pasay City West High School, updates, photographies, and many more to explore my first web project.
