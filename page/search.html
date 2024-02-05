@@ -88,8 +88,8 @@
 				<li><a href="lrt1/stations/northtriangle.html">North Triangle Common Station</a></li>
 				<li><a href="pcwhs.html">Pasay City West High School</a></li>
 				<li><a href="pcwhs/announcements.html">Pasay City West High School - Announcements and updates</a></li>
-				<li><a href="pcwhs/files.html">Pasay City West High School - Files</a></li>
-				<li><a href="nmldaypsywst/passcode.html">Pasay City West High School - Normal days and viral posts</a></li>
+				<li><a href="pcwhs/justinlrt.html">Pasay City West High School - Files and Posts by Justin LRT</a></li>
+				<li><a href="pcwhs/normalday/passcode.html">Pasay City West High School - Normal days and viral posts</a></li>
 				<li><a href="pcwhs/posts.html">Pasay City West High School - Posts</a></li>
 				<li><a href="lrt1/stations/pedrogil.html">Pedro Gil station</a></li>
 				<li><a href="ptgrphs.html">Photographies</a></li>
@@ -126,11 +126,20 @@
 			ul = document.getElementById("myUL");
 			li = ul.getElementsByTagName('li');
 
+			// Split the filter into individual words
+			var filterWords = filter.split(" ");
+
 			// Loop through all list items, and hide those who don't match the search query
 			for (i = 0; i < li.length; i++) {
 				a = li[i].getElementsByTagName("a")[0];
 				txtValue = a.textContent || a.innerText;
-				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+
+				// Check if all filter words are present in the text
+				var matchAllWords = filterWords.every(function(word) {
+					return txtValue.toUpperCase().includes(word);
+				});
+
+				if (matchAllWords) {
 					li[i].style.display = "";
 				} else {
 					li[i].style.display = "none";
