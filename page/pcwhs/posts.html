@@ -8,6 +8,84 @@
 	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
 	<link rel="apple-touch-icon" href="../../icon.png">
 	<title>Pasay City West High School - Posts</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		.image-container {
+			position: relative;
+			margin: 0 auto;
+			/* center the image containers */
+			width: 80%;
+			box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+			/* material box shadow */
+			margin-bottom: 20px;
+			transition-duration: 1s;
+		}
+		.image-container:hover {
+			width: 98%;
+			box-shadow: 0 18px 36px rgba(0,0,0,0.30), 0 14px 11px rgba(0,0,0,0.22);
+		}
+		/* make the images responsive */
+		div.image-container a img.cover {
+			width: 100%;
+			height: auto;
+		}
+		.image-description {
+			padding: 0 7px;
+		}
+		.post-details {
+			display: flex;
+			align-items: left;
+			justify-content: center;
+			text-align: left;
+		}
+		.name {
+			font-weight: bold;
+			font-size: 18px;
+		}
+		div.post {
+			padding-right: 3px;
+			padding-left: 3px;
+			padding-bottom: 3px;
+			position: absolute;
+			position: absolute;
+			bottom: 5px;
+			left: 8px;
+		}
+		.white {
+			color: white;
+			color: #fff;
+			text-shadow:
+			-1.5px -1.5px 0 #000,
+			1.5px -1.5px 0 #000,
+			-1.5px 1.5px 0 #000,
+			1.5px 1.5px 0 #000;
+		}
+@media (min-width: 600px) {
+			.top {
+				margin-bottom: 20px;
+			}
+			.image-container {
+				width: 87%;
+			}
+			.image-container:hover {
+				width: 100%;
+			}
+			.container {
+				flex-direction: row;
+				display: flex;
+			}
+			.link1, .link3 {
+				order: 1;
+				width: 50%;
+			}
+			.link2, .link4 {
+				order: 2;
+				width: 50%;
+			}
+		}
+	</style>
 </head>
 <body>
 	<div class="text">
@@ -27,18 +105,82 @@
 			<br>
 			<a href="../../home.html">Home</a>
 		</div>
-		<div class="box2">
-			In this page, the posts from the school will be placed here to engage students, parents, teachers and visitors to view what happened in the school. Please click the links below to see the posts by month:
-			<br>
-			<br>
-			<h3>2023</h3>
-			<ul>
-				<li><a href="posts/2023/082023.html">August 2023</a></li>
-				<li><a href="posts/2023/092023.html">September 2023</a></li>
-				<li><a href="posts/2023/102023.html">October 2023</a></li>
-				<li><a href="posts/2023/112023.html">November 2023</a></li>
-				<li><a href="posts/2023/122023.html">December 2023</a></li>
-			</ul>
+		<div class="red-bg-temp1 center-text">
+			<b>Due to site's limitations, showing all of the posts from the school is no longer available but some are still in there for important posts. If you want to see more posts, please visit the links below.</b>
+		</div>
+		<div class="gallery">
+			<div class="container top">
+				<div class="link1">
+					<a class="white" href="https://www.facebook.com/PCWHSOfficialPage" target="_blank">
+						<div class="image-container">
+							<img class="center-fit cover" src="../../media/coverphoto/pcwhs.jpg" />
+							<div class="post">
+								<div class="profile-picture">
+									<img src="../../media/profpic/pcwhs.jpg" alt="Profile Picture" />
+								</div>
+								<div class="post-details">
+									<div class="name">
+										Pasay City West High School <a onclick="verified()"><img class="verifiedsvg" src="../../media/ui/verified.svg" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="link2">
+					<a class="white" href="https://www.facebook.com/AngHaligiPCWHS" target="_blank">
+						<div class="image-container">
+							<img class="center-fit cover" src="../../media/coverphoto/anghaligipcwhs.jpg" />
+							<div class="post">
+								<div class="profile-picture">
+									<img src="../../media/profpic/anghaligipcwhs.jpg" alt="Profile Picture" />
+								</div>
+								<div class="post-details">
+									<div class="name">
+										Ang Haligi - Pasay City West High School <a onclick="verified()"><img class="verifiedsvg" src="../../media/ui/verified.svg" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="container">
+				<div class="link3">
+					<a class="white" href="https://www.facebook.com/UlatKanluran" target="_blank">
+						<div class="image-container">
+							<img class="center-fit cover" src="../../media/coverphoto/ulatkanluran.jpg" />
+							<div class="post">
+								<div class="profile-picture">
+									<img src="../../media/profpic/ulatkanluran.jpg" alt="Profile Picture" />
+								</div>
+								<div class="post-details">
+									<div class="name">
+										Ulat Kanluran <a onclick="verified()"><img class="verifiedsvg" src="../../media/ui/verified.svg" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="link4">
+					<a class="white" href="https://www.facebook.com/knightspcwhs" target="_blank">
+						<div class="image-container">
+							<img class="center-fit cover" src="../../media/coverphoto/knightscicofpcwhs.jpg" />
+							<div class="post">
+								<div class="profile-picture">
+									<img src="../../media/profpic/knightscicofpcwhs.jpg" alt="Profile Picture" />
+								</div>
+								<div class="post-details">
+									<div class="name">
+										Knights CIC of PCWHS <a onclick="verified()"><img class="verifiedsvg" src="../../media/ui/verified.svg" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
 		</div>
 		<footer id="footerB"></footer>
 	</div>
