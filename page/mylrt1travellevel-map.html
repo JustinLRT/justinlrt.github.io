@@ -85,6 +85,9 @@
 		.text {
 			display: none;
 		}
+		body.dark-mode .textmode td {
+			color: black;
+		}
 		#result {
 			font-weight: bold;
 			font-size: 24px;
@@ -112,6 +115,13 @@
 			<br>
 			<a href="../home.html">Home</a> &#8594; <a href="mylrt1travellevel.html">My LRT-1 Travel Level</a>
 		</div>
+		<div class="ad">
+			<a href="advertise.html">
+				AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+				<br>Click this to place your ad here
+			</a>
+		</div>
+		<br>
 		<div id="capture-element">
 			<div class="box2">
 				<div class="center-text" id="result">
@@ -161,7 +171,7 @@
 			</div>
 			<div class="box2">
 				<div class="rating-container">
-					<table>
+					<table class="textmode">
 						<colgroup>
 							<col class="station">
 							<col>
@@ -179,6 +189,51 @@
 							<th>3</th>
 							<th>4</th>
 							<th>5</th>
+						</tr>
+						<tr>
+							<td id="text25">Dr. Santos</td>
+							<td><label><input type="radio" name="rating25" value="0" checked onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+							<td><label><input type="radio" name="rating25" value="1" onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+							<td><label><input type="radio" name="rating25" value="2" onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+							<td><label><input type="radio" name="rating25" value="3" onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+							<td><label><input type="radio" name="rating25" value="4" onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+							<td><label><input type="radio" name="rating25" value="5" onchange="calculateResult(); changeColor('text25', this.value)"></label></td>
+						</tr>
+						<tr>
+							<td id="text24">Ninoy Aquino</td>
+							<td><label><input type="radio" name="rating24" value="0" checked onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+							<td><label><input type="radio" name="rating24" value="1" onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+							<td><label><input type="radio" name="rating24" value="2" onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+							<td><label><input type="radio" name="rating24" value="3" onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+							<td><label><input type="radio" name="rating24" value="4" onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+							<td><label><input type="radio" name="rating24" value="5" onchange="calculateResult(); changeColor('text24', this.value)"></label></td>
+						</tr>
+						<tr>
+							<td id="text23">Asia World</td>
+							<td><label><input type="radio" name="rating23" value="0" checked onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+							<td><label><input type="radio" name="rating23" value="1" onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+							<td><label><input type="radio" name="rating23" value="2" onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+							<td><label><input type="radio" name="rating23" value="3" onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+							<td><label><input type="radio" name="rating23" value="4" onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+							<td><label><input type="radio" name="rating23" value="5" onchange="calculateResult(); changeColor('text23', this.value)"></label></td>
+						</tr>
+						<tr>
+							<td id="text22">MIA</td>
+							<td><label><input type="radio" name="rating22" value="0" checked onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+							<td><label><input type="radio" name="rating22" value="1" onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+							<td><label><input type="radio" name="rating22" value="2" onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+							<td><label><input type="radio" name="rating22" value="3" onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+							<td><label><input type="radio" name="rating22" value="4" onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+							<td><label><input type="radio" name="rating22" value="5" onchange="calculateResult(); changeColor('text22', this.value)"></label></td>
+						</tr>
+						<tr>
+							<td id="text21">Redemptorist</td>
+							<td><label><input type="radio" name="rating21" value="0" checked onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
+							<td><label><input type="radio" name="rating21" value="1" onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
+							<td><label><input type="radio" name="rating21" value="2" onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
+							<td><label><input type="radio" name="rating21" value="3" onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
+							<td><label><input type="radio" name="rating21" value="4" onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
+							<td><label><input type="radio" name="rating21" value="5" onchange="calculateResult(); changeColor('text21', this.value)"></label></td>
 						</tr>
 						<tr>
 							<td id="text1">Baclaran</td>
@@ -459,7 +514,7 @@
 				link.download = 'My LRT-1 Travel Level.png';
 				link.click();
 			});
-			alert("Please wait until the download notification appeared. Please click OK to start image processing. This can last for few seconds.");
+			alert("Please wait until the download notification appeared. Please click OK to start image processing. This can last for few seconds depending on your processor.");
 		}
 	</script>
 	<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>

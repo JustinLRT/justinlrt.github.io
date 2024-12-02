@@ -1,0 +1,19 @@
+<table>
+	<tr>
+		<th>Month</th>
+		<th>Event</th>
+	</tr>
+	<tr>
+		<td>January</td>
+		<td>New Year's Day</td>
+	</tr>
+	<tr>
+		<td>February</td>
+		<td>Valentine's Day</td>
+	</tr>
+	<tr>
+		<td>March</td>
+		<td>Junior Prom</td>
+	</tr>
+</table>
+<a href="SAMPLE 3.html">Go back to previous page</a>
