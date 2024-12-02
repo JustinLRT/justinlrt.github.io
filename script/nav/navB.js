@@ -1,4 +1,24 @@
-// page/a/b, ../../
-var navB = document.getElementById('navB');
-var dynamicHTML = '<img class="icon-nav" src="../../icon.png" /> Justin LRT';
-navB.innerHTML = dynamicHTML;
+document.addEventListener("DOMContentLoaded", () => {
+	const navA = document.getElementById("navB");
+	const relativePath = "../../"; // Path from `/root/a/b/` to `/root/`
+
+	// Create the navigation HTML with a placeholder for the theme icon
+	const dynamicHTML = `
+	<img id="themeIcon" class="icon-nav" src="${relativePath}icon-light.png" alt="Navigation Icon">
+	`;
+	navA.innerHTML = dynamicHTML;
+	const themeIcon = document.getElementById("themeIcon");
+	const savedMode = localStorage.getItem("darkMode");
+
+	// Update the logo based on the saved theme
+	function updateLogo() {
+		if (savedMode === "enabled") {
+			themeIcon.src = `${relativePath}icon-dark.png`;
+		} else {
+			themeIcon.src = `${relativePath}icon-light.png`;
+		}
+	}
+
+	// Call the function to apply the correct logo on page load
+	updateLogo();
+});
