@@ -1,3 +1,141 @@
+/*Dark mode*/
+body.dark-mode {
+	background-color: #000000;
+	color: white;
+}
+body.dark-mode header {
+	background-color: #102512;
+	border-bottom: solid 3px #4AAF39;
+}
+body.dark-mode .hamburger {
+	background-color: #102512	;
+	color: white;
+}
+body.dark-mode .hamburger a {
+	color: white;
+}
+body.dark-mode .hamburger-menu {
+	color: white;
+}
+body.dark-mode a {
+	color: #4AAF39;
+}
+body.dark-mode .dp {
+	border-color: #4AAF39;
+}
+body.dark-mode button {
+	border-color: #4AAF39;
+	background-color: #003200;
+	color: white;
+}
+body.dark-mode button:hover {
+	background-color: #4AAF39;
+}
+body.dark-mode select {
+	border-color: #4AAF39;
+	background-color: #003200;
+	color: white;
+}
+body.dark-mode .box1 {
+	border: solid 3px #4AAF39;
+}
+body.dark-mode .box2 {
+	border-top: solid 5px #4AAF39;
+	background: #102512;
+	color: white;
+}
+body.dark-mode .box3 {
+	background: #102512;
+	color: white;
+}
+body.dark-mode .box3 .box-title {
+	background: #4AAF39;
+}
+body.dark-mode .desc {
+	color: #BBBBBB;
+}
+body.dark-mode td, th {
+	border-color: 1px solid #dddddd;
+}
+body.dark-mode th {
+	background-color: #003200;
+}
+body.dark-mode table.inner-table th {
+	background: #003000;
+}
+body.dark-mode .td-bg {
+	background: #003000;
+}
+body.dark-mode .collapsible {
+	background-color: #008000;
+}
+body.dark-mode .active, .collapsible:hover {
+	background-color: #4FFF4C;
+}
+body.dark-mode .content {
+	background-color: #102512;
+}
+body.dark-mode .red-bg {
+	background-color: #623033;
+}
+body.dark-mode .orange-bg {
+	background-color: #3F2911;
+}
+body.dark-mode .yellow-bg {
+	background-color: #201F00;
+}
+body.dark-mode .green-bg {
+	background-color: #005000;
+}
+body.dark-mode .cyan-bg {
+	background-color: #002C2D;
+}
+body.dark-mode .blue-bg {
+	background-color: #1C1C42;
+}
+body.dark-mode .magenta-bg {
+	background-color: #5C275F;
+}
+body.dark-mode .purple-bg {
+	background-color: #52376E;
+}
+body.dark-mode .g7-th {
+	background-color: #009900;
+}
+body.dark-mode .g8-th {
+	background-color: #FFFF65;
+}
+body.dark-mode .g9-th {
+	background-color: #FF6565;
+}
+body.dark-mode .g10-th {
+	background-color: #6565FF;
+}
+body.dark-mode .g11-th {
+	background-color: #B265FF;
+}
+body.dark-mode .g12-th {
+	background-color: #FFB265;
+}
+body.dark-mode .g7 {
+	background-color: green;
+}
+body.dark-mode .g8 {
+	background-color: yellow;
+}
+body.dark-mode .g9 {
+	background-color: red;
+}
+body.dark-mode .g10 {
+	background-color: blue;
+}
+body.dark-mode .g11 {
+	background-color: purple;
+}
+body.dark-mode .g12 {
+	background-color: orange;
+}
+
 /*Hamburger*/
 header {
 	background-color: #E5FFE5 /*Background color*/;
@@ -20,12 +158,11 @@ header {
 .hamburger {
 	display: inline-block;
 	cursor: pointer;
-	padding: 8px 12px;
+	padding: 0px 8px 10px 8px;
 	background-color: #E5FFE5 /*Background color*/;
 	border: none;
 	color: #333;
 	font-size: 20px;
-	font-family: justinlrt;
 }
 .hamburger:hover {
 	background-color: #E5FFE5 /*Background color*/;
@@ -34,12 +171,10 @@ header {
 	padding-left: 10px;
 }
 .icon-nav {
-	width: 10%;
-	transform: translate(0px,3.6px);
-}
-@font-face {
-	font-family: justinlrt;
-	src: url(font/ananda.ttf);
+	width: 120px;
+	transform: translate(0px,11px);
+	margin: 0;
+	padding: 0;
 }
 
 /*HTML page*/
@@ -63,7 +198,7 @@ td {
 }
 a {
 	text-decoration: none;
-	color: green;
+	color: #008000;
 	outline: none;
 }
 ol, ul {
@@ -103,7 +238,7 @@ audio {
 	padding: 0 8px;
 }
 div.title h1 {
-	margin-top: 50px;
+	margin-top: 55px;
 }
 ul.pdl li {
 	padding-top: 10px;
@@ -130,7 +265,7 @@ ol.pdl li {
 	text-align: right;
 }
 .title {
-	padding: 0.5em 1em;
+	padding: 0.5em 0.5em;
 	margin: 0em 0em;
 	align-content: center;
 }
@@ -176,6 +311,15 @@ ol.pdl li {
 	.center-fit {
 		justify-content: center;
 	}
+}
+div.ad {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	border: solid 3px red;
+}
+div.ad a {
+	color: red;
 }
 
 /*Boxes*/
@@ -341,7 +485,7 @@ table.inner-table th {
 	padding: 0 13px;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.17s ease-out;
+	transition: max-height 0.22s ease-out;
 	background-color: #E5FFE5 /*Background color*/;
 	margin-left: 2%;
 	margin-right: 2%;
@@ -357,16 +501,16 @@ table.inner-table th {
 /*For train stations. Colored border lines left and right*/
 /*Only for stations under 'services'*/
 .line1 {
-	border-left: solid 18px #01844B;
-	border-right: solid 18px #01844B;
+	border-left: solid 18px #00B500;
+	border-right: solid 18px #00B500;
 }
 .line2 {
-	border-left: solid 18px #324A9C;
-	border-right: solid 18px #324A9C;
+	border-left: solid 18px #690DAC;
+	border-right: solid 18px #690DAC;
 }
 .line3 {
-	border-left: solid 18px #FFCC00;
-	border-right: solid 18px #FFCC00;
+	border-left: solid 18px #FDEC00;
+	border-right: solid 18px #FDEC00;
 }
 .line6 {
 	border-left: solid 18px #A9A9A9;
@@ -697,7 +841,9 @@ div.scal li {
 	vertical-align: -1px;
 	margin: 0px;
 }
-
+.increasesvg, .decreasesvg, .steadysvg {
+	width: 10px;
+}
 /*Text color*/
 .red {
 	color: red;

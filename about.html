@@ -58,16 +58,25 @@
 			border-bottom: solid #C0C0C0;
 		}
 		.icon {
-			width: 1em;
+			width: 8em;
 			transform: translate(0px,3.6px);
 			margin-right: 4px;
+		}
+		#nav img {
+			width: 225px;
+			/* Set the desired width */
+			height: auto;
+			/* Maintain aspect ratio */
+			max-width: 100%;
+			/* Ensure it doesn't overflow */
+			transform: translate(-7.5px,0px);
 		}
 	</style>
 </head>
 <body>
 	<div class="text">
 		<div class="title">
-			<h1><img class="icon" src="icon.png" />Justin LRT</h1>
+			<h1><span class="font-margin" id="nav"></span></h1>
 			<h2>Navigation page</h2>
 		</div>
 		<div class="box3">
@@ -116,12 +125,9 @@
 				<tr>
 					<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
 				</tr>
-				<tr>
-					<td class="bdt"><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></td>
+				<tr class="bdb">
+					<td class="bdt"><a href="page/lrtmrtsongs.html">Songs</a></td>
 					<td class="bdt"><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></td>
-				</tr>
-				<tr>
-					<td class="bdt bdb" colspan="2"><a href="page/sytmmap.html">LRT and MRT system map</a></td>
 				</tr>
 				<tr>
 					<td rowspan="2"><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></td>
@@ -146,9 +152,6 @@
 					<th colspan="2"><a href="page/pcwhs.html">Pasay City West High School</a></th>
 				</tr>
 				<tr>
-					<td class="bdb" colspan="2"><a href="page/pcwhs/announcements.html">Announcements and updates</a></td>
-				</tr>
-				<tr>
 					<td class="bdb" colspan="2"><a href="page/pcwhs/history.html">History</a></td>
 				</tr>
 				<tr>
@@ -171,7 +174,7 @@
 					<td><a href="page/ptgrphs.html">Photographies</a></td>
 				</tr>
 				<tr>
-					<td><a href="page/lrtmrtsongs.html">LRT and MRT songs</a></td>
+					<td><a href="page/lrtmrtsongs.html">Songs</a></td>
 				</tr>
 				<tr>
 					<td><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
@@ -186,15 +189,28 @@
 					<th colspan="2"><a href="page/apps.html">Apps</a></th>
 				</tr>
 				<tr>
-					<td class="bdr"><a href="page/apps/downloader.html">File Downloader</a></td>
-					<td><a href="page/apps/musicplayer.html">Music Player</a></td>
+					<td><a href="apps/bpmtapper.html">BPM Tapper</a></td>
+					<td><a href="apps/notepad.html">Notepad</a></td>
 				</tr>
-
+				<tr>
+					<td><a href="page/apps/downloader.html">File Downloader</a></td>
+					<td><a href="apps/colorchange.html">Tap to change color</a></td>
+				</tr>
+				<tr>
+					<td><a href="page/apps/musicplayer.html">Music Player</a></td>
+					<td><a href="apps/videotoimage.html">Video to Image</a></td>
+				</tr>
 			</table>
 		</div>
 		<div class="box2">
 			<h2>Contact us</h2>
 			Please click <a href="page/contact.html">HERE</a> for more details.
+		</div>
+		<div class="box2">
+			<h2>Settings</h2>
+			<input type="checkbox" id="darkModeToggle">
+			<label for="darkModeToggle">Dark mode</label>
+			<br><button id="saveButton">Save changes</button>
 		</div>
 		<div class="box2">
 			<h2>About this site</h2>
@@ -265,10 +281,49 @@
 		function noteD() {
 			alert("First published in Github. It supposed to be www.justinlrt.com but there's have a problem regarding to DNS.")
 		}
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const darkModeToggle = document.getElementById("darkModeToggle");
+			const saveButton = document.getElementById("saveButton");
+
+			const themeIcon = document.getElementById("themeIcon");
+			const relativePath = "../"; // Adjust path for `settings.html`
+
+			// Update logo dynamically when the theme is toggled
+			function updateLogo(isDarkMode) {
+				if (themeIcon) {
+					themeIcon.src = isDarkMode
+					? `${relativePath}icon-dark.png`: `${relativePath}icon-light.png`;
+				}
+			}
+
+			// Load saved setting
+			const savedMode = localStorage.getItem("darkMode");
+			if (savedMode === "enabled") {
+				darkModeToggle.checked = true;
+				updateLogo(true);
+			}
+
+			// Handle toggle change
+			darkModeToggle.addEventListener("change", () => {
+				const isDarkMode = darkModeToggle.checked;
+				document.body.classList.toggle("dark-mode", isDarkMode);
+				updateLogo(isDarkMode);
+			});
+
+			// Save setting
+			saveButton.addEventListener("click", () => {
+				const isDarkMode = darkModeToggle.checked;
+				localStorage.setItem("darkMode", isDarkMode ? "enabled": "disabled");
+				alert("Settings saved! Please refresh the page to load your changes.");
+			});
+		});
+
 	</script>
 	<script type='text/javascript' src='script/jquery.min.js'></script>
 	<script src="script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="script/nav/nav.js" type="text/javascript" charset="utf-8"></script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">

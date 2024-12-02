@@ -1,29 +1,47 @@
 # Justin LRT
-Justin LRT is a site where topics like train and schools are included here and also the articles for latest LRT-1 update.
+Justin LRT is a site where topics of LRT-1 are included here and this is the most powerful and reliable website. This website also includes the most basic web apps that is not existing in many app stores and easy to use.
 
 [CLICK HERE](https://justinlrt.github.io/home.html) to view the website
+[CLICK HERE](https://justinlrt.github.io/home.html) to view the website
+[CLICK HERE](https://justinlrt.github.io/home.html) to view the website
+
+## Advertise with us
+We offer advertising space on every page of our website! If you're interested in promoting your business, product, or service, you can rent an ad space for only 20 Philippine pesos per month.
+
+Contact: To place an ad, please reach out via the [contact form](https://justinlrt.github.io/page/advertise.html) or email us directly at justinlrtmediaunlimited@gmail.com
+Support the site and get your message across to a growing audience!
+
 
 ## Pages
-There's have many pages and topics in this HTML site such as the Manila LRT Line 1, the Pasay City West High School, updates, photographies, and many more to explore my first web project.
+This website contains various pages and topics, including the Manila LRT Line 1, updates, photography, and much more to explore in my first web project.
 
 ### LRT-1
-The Manila Light Rail Transit Line 1 (LRT-1) is the first LRT system in Southeast Asia. There's more pages about this web project such as my LRT-1 train spotting and rides, fare guide, and more. These are include:
+The Manila Light Rail Transit Line 1 (LRT-1) is the first LRT system in Southeast Asia. There are additional pages dedicated to this web project, such as my LRT-1 train spotting and rides, fare guide, and more. These include:
 #### Updates
 #### Songs
 #### Train rides
-#### Trainspottings
+#### Train spotting
 
 ### Pasay City West High School
-The sch5is published in 1949. To view about the school, you can see at the web's homepage and click the button and redirect for further information about the school
+The school was established in 1949. For more information about the school, you can visit the homepage and click the button to be redirected to further details.
 
 ### Photographies
-It shows photos somewhere in Pasay City
+This section showcases photos taken in various locations throughout Pasay City.
 
 ## Features
 ### My LRT-1 travel level map
-This feature is got viral and this is used to tell what is your level while you travelled in LRT-1.
+This feature went viral and helps users determine their travel level while riding the LRT-1.
 ### LRT-1 Fare guide
-This is guide on what fare to pay from station to station. This is helpful to tell commuters before they ride LRT-1 to tell how much is from origin station to destination station.
+This guide helps commuters know the fare between stations. It’s useful for figuring out how much to pay from the origin station to the destination station before boarding the LRT-1.
+### Web apps
+These apps are not available in app stores and provide unique functionalities. They include:
+####BPM Taper
+####File Downloader
+####Multi-track Music Player
+####Notepad
+####Tap to Change Colors
+####Video to Image Converter
+These apps are convenient and don't require an internet connection as long as they are preloaded on your device.
 
 ## Ending
-And that all for today, please support me for improvements.
+That’s all for today. Please support me as I work on future improvements!

@@ -40,4 +40,47 @@ function verified() {
 	alert("This profile was verified.\n\nVerified profiles are able to provide reliable sources and high quality posts.");
 }
 
-// SECTIOM <a href="#">
+// DARK MODE
+document.addEventListener("DOMContentLoaded", () => {
+	const savedMode = localStorage.getItem("darkMode");
+	const themeIcon = document.getElementById("themeIcon");
+
+	// Function to get the relative path to handle navigation from different folder depths
+	function getRelativePath() {
+		const depth = window.location.pathname.split('/').length - 2; // Adjust for current page
+		return depth === 0 ? "": "../".repeat(depth);
+	}
+
+	const relativePath = getRelativePath();
+
+	// Apply dark mode and set icon
+	function updateThemeAndIcon() {
+		if (savedMode === "enabled") {
+			document.body.classList.add("dark-mode");
+			if (themeIcon) {
+				themeIcon.src = `${relativePath}icon-dark.png`;
+			}
+		} else {
+			document.body.classList.remove("dark-mode");
+			if (themeIcon) {
+				themeIcon.src = `${relativePath}icon-light.png`;
+			}
+		}
+	}
+
+	// Call the function to apply the theme and icon
+	updateThemeAndIcon();
+
+	// Optional: To dynamically change the logo when the theme is toggled (if toggled via UI)
+	const darkModeToggle = document.getElementById("darkModeToggle");
+	if (darkModeToggle) {
+		darkModeToggle.addEventListener("change", () => {
+			if (darkModeToggle.checked) {
+				localStorage.setItem("darkMode", "enabled");
+			} else {
+				localStorage.setItem("darkMode", "disabled");
+			}
+			updateThemeAndIcon(); // Update theme and icon after toggle
+		});
+	}
+});
