@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../../icon.png">
+	<title>Video to Image</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			background-color: black;
+			color: white;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 5px;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-bottom: 5px;
+		}
+		video {
+			max-width: 100%;
+			height: auto;
+			border: 1px solid grey;
+			margin-bottom: 10px;
+		}
+		canvas {
+			max-width: 100%;
+			height: auto;
+			border: 1px solid grey;
+		}
+		input[type="range"] {
+			width: 100%;
+			margin: 10px 0;
+		}
+		input[type="file"] {
+			width: 100%;
+		}
+		.controls {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+		}
+		button, input[type="file"] {
+			margin: 5px;
+			border-radius: 50px;
+			padding: 5px;
+			border: solid 1.5px white;
+		}
+		h1 {
+			margin: 2px;
+		}
+		#speedIndicator, #timeIndicator {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		#playPauseBtn {
+			background-color: lime;
+		}
+		#seek {
+			background-color: blue;
+			color: white;
+		}
+		#seekf {
+			background-color: turquoise;
+		}
+		#speed {
+			background-color: pink;
+		}
+		#save {
+			background-color: red;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<h1>Video to Image</h1>
+
+	<!-- File Input for Choosing Video -->
+	<input type="file" id="videoFile" accept="video/*">
+	<div>
+		<a href="javascript:window.history.back();">Go Back</a> | <a id="fullscreenBtn">Full Screen</a>
+	</div>
+	<br>
+	<video id="video"></video>
+
+	<p id="speedIndicator">
+		Playback Speed: 1x
+	</p>
+	<p id="timeIndicator">
+		00:00 / 00:00
+	</p>
+
+	<input type="range" id="seekSlider" min="0" max="100" step="0.1">
+
+	<!-- Play/Pause Button -->
+
+	<!-- FF and BW Controls -->
+	<div class="controls">
+		<button id="seek" onclick="seekBySeconds(-10)">«10</button>
+		<button id="seek" onclick="seekBySeconds(-5)">«5</button>
+		<button id="seek" onclick="seekBySeconds(-1)">«1</button>
+		<button id="playPauseBtn">Play</button>
+		<button id="seek" onclick="seekBySeconds(1)">1»</button>
+		<button id="seek" onclick="seekBySeconds(5)">5»</button>
+		<button id="seek" onclick="seekBySeconds(10)">10»</button>
+	</div>
+
+	<!-- Playback Speed Controls -->
+	<div class="controls">
+		<button id="speed" onclick="setPlaybackSpeed(0.25)">0.25x</button>
+		<button id="speed" onclick="setPlaybackSpeed(0.5)">0.5x</button>
+		<button id="speed" onclick="setPlaybackSpeed(1)">1x</button>
+		<button id="speed" onclick="setPlaybackSpeed(2)">2x</button>
+		<button id="speed" onclick="setPlaybackSpeed(3)">3x</button>
+		<button id="speed" onclick="setPlaybackSpeed(4)">4x</button>
+		<button id="speed" onclick="setPlaybackSpeed(5)">5x</button>
+		<button id="speed" onclick="setPlaybackSpeed(10)">10x</button>
+	</div>
+
+	<div class="controls">
+		<button id="seekf" onclick="seekByFrame(-1)">Prev Frame</button>
+		<button id="save" onclick="saveFrame()">Save Frame</button>
+		<button id="seekf" onclick="seekByFrame(1)">Next Frame</button>
+	</div>
+
+	<canvas id="canvas"></canvas>
+
+	<script>
+		const video = document.getElementById('video');
+		const videoFileInput = document.getElementById('videoFile');
+		const canvas = document.getElementById('canvas');
+		const context = canvas.getContext('2d');
+		const seekSlider = document.getElementById('seekSlider');
+		const playPauseBtn = document.getElementById('playPauseBtn');
+		const speedIndicator = document.getElementById('speedIndicator');
+		const timeIndicator = document.getElementById('timeIndicator');
+		let filename = '';
+		let shotCounter = 1;
+
+		// Load the selected video file into the video element
+		videoFileInput.addEventListener('change', () => {
+			const file = videoFileInput.files[0];
+			if (file) {
+				const url = URL.createObjectURL(file);
+				video.src = url;
+				video.load();
+
+				filename = file.name.split('.').slice(0, -1).join('.');
+				shotCounter = 1; // Reset shot counter for new file
+			}
+		});
+
+		// Update canvas size to match video size
+		video.addEventListener('loadedmetadata', () => {
+			seekSlider.max = video.duration;
+			canvas.width = video.videoWidth;
+			canvas.height = video.videoHeight;
+			updateTimeIndicator();
+		});
+
+		video.addEventListener('timeupdate', () => {
+			seekSlider.value = video.currentTime;
+			updateTimeIndicator();
+		});
+
+		seekSlider.addEventListener('input', () => {
+			video.currentTime = seekSlider.value;
+		});
+
+		function seekBySeconds(seconds) {
+			video.currentTime = Math.min(Math.max(0, video.currentTime + seconds),
+				video.duration);
+		}
+
+		function seekByFrame(frames) {
+			const fps = 25; // Example frame rate, adjust according to your video
+			video.currentTime += frames / fps;
+		}
+
+		function saveFrame() {
+			context.drawImage(video,
+				0,
+				0,
+				canvas.width,
+				canvas.height);
+			const image = canvas.toDataURL('image/jpeg',
+				1.0); // Save as JPEG with original quality
+			const link = document.createElement('a');
+
+			const outputFilename = `${filename}_${shotCounter}.jpg`;
+			link.href = image;
+			link.download = outputFilename;
+
+			link.click();
+			shotCounter++; // Increment shot counter after each save
+		}
+
+		// Play/Pause Button functionality
+		playPauseBtn.addEventListener('click', () => {
+			if (video.paused || video.ended) {
+				video.play();
+				playPauseBtn.textContent = 'Pause';
+			} else {
+				video.pause();
+				playPauseBtn.textContent = 'Play';
+			}
+		});
+
+		// Set Playback Speed
+		function setPlaybackSpeed(speed) {
+			video.playbackRate = speed;
+			speedIndicator.textContent = `Playback Speed: ${speed}x`;
+		}
+
+		// Update the time indicator (e.g., 1:00 / 3:45)
+		function updateTimeIndicator() {
+			const current = formatTime(video.currentTime);
+			const total = formatTime(video.duration);
+			timeIndicator.textContent = `${current} / ${total}`;
+		}
+
+		// Format time as mm:ss
+		function formatTime(time) {
+			const minutes = Math.floor(time / 60);
+			const seconds = Math.floor(time % 60).toString().padStart(2,
+				'0');
+			return `${minutes}:${seconds}`;
+		}
+
+		// Full screen mode
+		const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+		fullscreenBtn.addEventListener('click', () => {
+			if (document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen(); // Whole webpage fullscreen
+			} else if (document.documentElement.mozRequestFullScreen) {
+				// Firefox
+				document.documentElement.mozRequestFullScreen();
+			} else if (document.documentElement.webkitRequestFullscreen) {
+				// Chrome, Safari, and Opera
+				document.documentElement.webkitRequestFullscreen();
+			} else if (document.documentElement.msRequestFullscreen) {
+				// IE/Edge
+				document.documentElement.msRequestFullscreen();
+			}
+		});
+	</script>
+</body>
+</html>

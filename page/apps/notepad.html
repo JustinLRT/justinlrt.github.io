@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../../icon.png">
+	<title>Notepad</title>
+	<style>
+		* {
+			font-family: Arial;
+		}
+		textarea {
+			width: 100%;
+			font-size: 1rem;
+		}
+		div.content textarea {
+			margin-bottom: 15px;
+		}
+		button.collapsible textarea {
+			font-size: 1.2rem;
+			width: 87%;
+		}
+		button.collapsible {
+			font-size: 1.9rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		span {
+			margin-right: 9px;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><span class="font-margin" id="navB"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>Notepad</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a> &#8594; <a href="../apps.html">Web Apps</a>
+		</div>
+		<div class="box2">
+			Type your notes below. You can add more notes up to 20 notes. The notes you entered are only stored in your device and these are not able to sent to the server.
+		</div>
+		<div class="box2">
+			<h2>How to delete notes?</h2>
+			You can press the clear button at the bottom of each notepad. Since the notes you entered are stored in your device, you can go to browser's settings, then site settings, find justinlrt.github.io and click clear data.
+		</div>
+		<button class="collapsible"><textarea id="title1" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note1" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear1()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title2" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note2" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear2()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title3" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note3" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear3()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title4" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note4" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear4()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title5" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note5" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear5()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title6" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note6" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear6()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title7" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note7" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear7()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title8" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note8" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear8()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title9" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note9" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear9()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title10" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note10" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear10()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title11" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note11" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear11()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title12" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note12" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear12()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title13" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note13" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear13()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title14" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note14" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear14()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title15" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note15" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear15()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title16" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note16" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear16()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title17" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note17" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear17()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title18" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note18" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear18()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title19" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note19" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear19()">Clear</button>
+		</div>
+		<button class="collapsible"><textarea id="title20" rows="1" cols="100" placeholder="Title"></textarea><span>&gt;</span></button>
+		<div class="content">
+			<br>
+			<textarea id="note20" rows="25" cols="100" placeholder="Note"></textarea>
+			<button type="reset" onclick="clear20()">Clear</button>
+		</div>
+		<footer id="footerB"></footer>
+	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		// Retrieve saved text from local storage
+		document.getElementById('note1').value = localStorage.getItem('draftNote1');
+		document.getElementById('note2').value = localStorage.getItem('draftNote2');
+		document.getElementById('note3').value = localStorage.getItem('draftNote3');
+		document.getElementById('note4').value = localStorage.getItem('draftNote4');
+		document.getElementById('note5').value = localStorage.getItem('draftNote5');
+		document.getElementById('note6').value = localStorage.getItem('draftNote6');
+		document.getElementById('note7').value = localStorage.getItem('draftNote7');
+		document.getElementById('note8').value = localStorage.getItem('draftNote8');
+		document.getElementById('note9').value = localStorage.getItem('draftNote9');
+		document.getElementById('note10').value = localStorage.getItem('draftNote10');
+		document.getElementById('note11').value = localStorage.getItem('draftNote11');
+		document.getElementById('note12').value = localStorage.getItem('draftNote12');
+		document.getElementById('note13').value = localStorage.getItem('draftNote13');
+		document.getElementById('note14').value = localStorage.getItem('draftNote14');
+		document.getElementById('note15').value = localStorage.getItem('draftNote15');
+		document.getElementById('note16').value = localStorage.getItem('draftNote16');
+		document.getElementById('note17').value = localStorage.getItem('draftNote17');
+		document.getElementById('note18').value = localStorage.getItem('draftNote18');
+		document.getElementById('note19').value = localStorage.getItem('draftNote19');
+		document.getElementById('note20').value = localStorage.getItem('draftNote20');
+
+		document.getElementById('title1').value = localStorage.getItem('draftTitle1');
+		document.getElementById('title2').value = localStorage.getItem('draftTitle2');
+		document.getElementById('title3').value = localStorage.getItem('draftTitle3');
+		document.getElementById('title4').value = localStorage.getItem('draftTitle4');
+		document.getElementById('title5').value = localStorage.getItem('draftTitle5');
+		document.getElementById('title6').value = localStorage.getItem('draftTitle6');
+		document.getElementById('title7').value = localStorage.getItem('draftTitle7');
+		document.getElementById('title8').value = localStorage.getItem('draftTitle8');
+		document.getElementById('title9').value = localStorage.getItem('draftTitle9');
+		document.getElementById('title10').value = localStorage.getItem('draftTitle10');
+		document.getElementById('title11').value = localStorage.getItem('draftTitle11');
+		document.getElementById('title12').value = localStorage.getItem('draftTitle12');
+		document.getElementById('title13').value = localStorage.getItem('draftTitle13');
+		document.getElementById('title14').value = localStorage.getItem('draftTitle14');
+		document.getElementById('title15').value = localStorage.getItem('draftTitle15');
+		document.getElementById('title16').value = localStorage.getItem('draftTitle16');
+		document.getElementById('title17').value = localStorage.getItem('draftTitle17');
+		document.getElementById('title18').value = localStorage.getItem('draftTitle18');
+		document.getElementById('title19').value = localStorage.getItem('draftTitle19');
+		document.getElementById('title20').value = localStorage.getItem('draftTitle20');
+
+		// Save text to local storage on input
+		document.getElementById('note1').addEventListener('input', function() {
+			localStorage.setItem('draftNote1', this.value);
+		});
+		document.getElementById('note2').addEventListener('input', function() {
+			localStorage.setItem('draftNote2', this.value);
+		});
+		document.getElementById('note3').addEventListener('input', function() {
+			localStorage.setItem('draftNote3', this.value);
+		});
+		document.getElementById('note4').addEventListener('input', function() {
+			localStorage.setItem('draftNote4', this.value);
+		});
+		document.getElementById('note5').addEventListener('input', function() {
+			localStorage.setItem('draftNote5', this.value);
+		});
+		document.getElementById('note6').addEventListener('input', function() {
+			localStorage.setItem('draftNote6', this.value);
+		});
+		document.getElementById('note7').addEventListener('input', function() {
+			localStorage.setItem('draftNote7', this.value);
+		});
+		document.getElementById('note8').addEventListener('input', function() {
+			localStorage.setItem('draftNote8', this.value);
+		});
+		document.getElementById('note9').addEventListener('input', function() {
+			localStorage.setItem('draftNote9', this.value);
+		});
+		document.getElementById('note10').addEventListener('input', function() {
+			localStorage.setItem('draftNote10', this.value);
+		});
+		document.getElementById('note11').addEventListener('input', function() {
+			localStorage.setItem('draftNote11', this.value);
+		});
+		document.getElementById('note12').addEventListener('input', function() {
+			localStorage.setItem('draftNote12', this.value);
+		});
+		document.getElementById('note13').addEventListener('input', function() {
+			localStorage.setItem('draftNote13', this.value);
+		});
+		document.getElementById('note14').addEventListener('input', function() {
+			localStorage.setItem('draftNote14', this.value);
+		});
+		document.getElementById('note15').addEventListener('input', function() {
+			localStorage.setItem('draftNote15', this.value);
+		});
+		document.getElementById('note16').addEventListener('input', function() {
+			localStorage.setItem('draftNote16', this.value);
+		});
+		document.getElementById('note17').addEventListener('input', function() {
+			localStorage.setItem('draftNote17', this.value);
+		});
+		document.getElementById('note18').addEventListener('input', function() {
+			localStorage.setItem('draftNote18', this.value);
+		});
+		document.getElementById('note19').addEventListener('input', function() {
+			localStorage.setItem('draftNote19', this.value);
+		});
+		document.getElementById('note20').addEventListener('input', function() {
+			localStorage.setItem('draftNote20', this.value);
+		});
+
+		document.getElementById('title1').addEventListener('input', function() {
+			localStorage.setItem('draftTitle1', this.value);
+		});
+		document.getElementById('title2').addEventListener('input', function() {
+			localStorage.setItem('draftTitle2', this.value);
+		});
+		document.getElementById('title3').addEventListener('input', function() {
+			localStorage.setItem('draftTitle3', this.value);
+		});
+		document.getElementById('title4').addEventListener('input', function() {
+			localStorage.setItem('draftTitle4', this.value);
+		});
+		document.getElementById('title5').addEventListener('input', function() {
+			localStorage.setItem('draftTitle5', this.value);
+		});
+		document.getElementById('title6').addEventListener('input', function() {
+			localStorage.setItem('draftTitle6', this.value);
+		});
+		document.getElementById('title7').addEventListener('input', function() {
+			localStorage.setItem('draftTitle7', this.value);
+		});
+		document.getElementById('title8').addEventListener('input', function() {
+			localStorage.setItem('draftTitle8', this.value);
+		});
+		document.getElementById('title9').addEventListener('input', function() {
+			localStorage.setItem('draftTitle9', this.value);
+		});
+		document.getElementById('title10').addEventListener('input', function() {
+			localStorage.setItem('draftTitle10', this.value);
+		});
+		document.getElementById('title11').addEventListener('input', function() {
+			localStorage.setItem('draftTitle11', this.value);
+		});
+		document.getElementById('title12').addEventListener('input', function() {
+			localStorage.setItem('draftTitle12', this.value);
+		});
+		document.getElementById('title13').addEventListener('input', function() {
+			localStorage.setItem('draftTitle13', this.value);
+		});
+		document.getElementById('title14').addEventListener('input', function() {
+			localStorage.setItem('draftTitle14', this.value);
+		});
+		document.getElementById('title15').addEventListener('input', function() {
+			localStorage.setItem('draftTitle15', this.value);
+		});
+		document.getElementById('title16').addEventListener('input', function() {
+			localStorage.setItem('draftTitle16', this.value);
+		});
+		document.getElementById('title17').addEventListener('input', function() {
+			localStorage.setItem('draftTitle17', this.value);
+		});
+		document.getElementById('title18').addEventListener('input', function() {
+			localStorage.setItem('draftTitle18', this.value);
+		});
+		document.getElementById('title19').addEventListener('input', function() {
+			localStorage.setItem('draftTitle19', this.value);
+		});
+		document.getElementById('title20').addEventListener('input', function() {
+			localStorage.setItem('draftTitle20', this.value);
+		});
+
+		// Clear title and note
+		function clear1() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note1").value = "";
+				document.getElementById("title1").value = "";
+				localStorage.setItem('draftTitle1', value = "");
+				localStorage.setItem('draftNote1', value = "");
+			} else {}
+		}
+		function clear2() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note2").value = "";
+				document.getElementById("title2").value = "";
+				localStorage.setItem('draftTitle2', value = "");
+				localStorage.setItem('draftNote2', value = "");
+			} else {}
+		}
+		function clear3() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note3").value = "";
+				document.getElementById("title3").value = "";
+				localStorage.setItem('draftTitle3', value = "");
+				localStorage.setItem('draftNote3', value = "");
+			} else {}
+		}
+		function clear4() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note4").value = "";
+				document.getElementById("title4").value = "";
+				localStorage.setItem('draftTitle4', value = "");
+				localStorage.setItem('draftNote4', value = "");
+			} else {}
+		}
+		function clear5() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note5").value = "";
+				document.getElementById("title5").value = "";
+				localStorage.setItem('draftTitle5', value = "");
+				localStorage.setItem('draftNote5', value = "");
+			} else {}
+		}
+		function clear6() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note6").value = "";
+				document.getElementById("title6").value = "";
+				localStorage.setItem('draftTitle6', value = "");
+				localStorage.setItem('draftNote6', value = "");
+			} else {}
+		}
+		function clear7() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note7").value = "";
+				document.getElementById("title7").value = "";
+				localStorage.setItem('draftTitle7', value = "");
+				localStorage.setItem('draftNote7', value = "");
+			} else {}
+		}
+		function clear8() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note8").value = "";
+				document.getElementById("title8").value = "";
+				localStorage.setItem('draftTitle8', value = "");
+				localStorage.setItem('draftNote8', value = "");
+			} else {}
+		}
+		function clear9() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note9").value = "";
+				document.getElementById("title9").value = "";
+				localStorage.setItem('draftTitle9', value = "");
+				localStorage.setItem('draftNote9', value = "");
+			} else {}
+		}
+		function clear10() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note10").value = "";
+				document.getElementById("title10").value = "";
+				localStorage.setItem('draftTitle10', value = "");
+				localStorage.setItem('draftNote10', value = "");
+			} else {}
+		}
+		function clear11() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note11").value = "";
+				document.getElementById("title11").value = "";
+				localStorage.setItem('draftTitle11', value = "");
+				localStorage.setItem('draftnote11', value = "");
+			} else {}
+		}
+		function clear12() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note12").value = "";
+				document.getElementById("title12").value = "";
+				localStorage.setItem('draftTitle12', value = "");
+				localStorage.setItem('draftnote12', value = "");
+			} else {}
+		}
+		function clear13() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note13").value = "";
+				document.getElementById("title13").value = "";
+				localStorage.setItem('draftTitle13', value = "");
+				localStorage.setItem('draftnote13', value = "");
+			} else {}
+		}
+		function clear14() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note14").value = "";
+				document.getElementById("title14").value = "";
+				localStorage.setItem('draftTitle14', value = "");
+				localStorage.setItem('draftnote14', value = "");
+			} else {}
+		}
+		function clear15() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note15").value = "";
+				document.getElementById("title15").value = "";
+				localStorage.setItem('draftTitle15', value = "");
+				localStorage.setItem('draftnote15', value = "");
+			} else {}
+		}
+		function clear16() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note16").value = "";
+				document.getElementById("title16").value = "";
+				localStorage.setItem('draftTitle16', value = "");
+				localStorage.setItem('draftnote16', value = "");
+			} else {}
+		}
+		function clear17() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note17").value = "";
+				document.getElementById("title17").value = "";
+				localStorage.setItem('draftTitle17', value = "");
+				localStorage.setItem('draftnote17', value = "");
+			} else {}
+		}
+		function clear18() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note18").value = "";
+				document.getElementById("title18").value = "";
+				localStorage.setItem('draftTitle18', value = "");
+				localStorage.setItem('draftnote18', value = "");
+			} else {}
+		}
+		function clear19() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note19").value = "";
+				document.getElementById("title19").value = "";
+				localStorage.setItem('draftTitle19', value = "");
+				localStorage.setItem('draftnote19', value = "");
+			} else {}
+		}
+		function clear20() {
+			var txt;
+			if (confirm("Are you sure you want to clear the note including the title?")) {
+				document.getElementById("note20").value = "";
+				document.getElementById("title20").value = "";
+				localStorage.setItem('draftTitle20', value = "");
+				localStorage.setItem('draftnote20', value = "");
+			} else {}
+		}
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>

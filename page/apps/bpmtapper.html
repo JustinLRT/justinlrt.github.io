@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../../icon.png">
+	<title>BPM Tapper</title>
+	<style>
+		div.box2 {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			flex-direction: column;
+		}
+		#tapBox {
+			width: 100px;
+			height: 50px;
+			background-color: #B8FFAA;
+			border: solid 2px green;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			margin: 10px;
+			cursor: pointer;
+		}
+		#resetButton {
+			width: 80px;
+			height: 30px;
+			background-color: #FFDBDB;
+			border: solid 2px red;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			cursor: pointer;
+		}
+		#currentBpmBox {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><span class="font-margin" id="navB"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>BPM Tapper</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a> &#8594; <a href="../apps.html">Web Apps</a>
+		</div>
+		<div class="box2">
+			<h3 id="averageBpmBox">Average BPM: 0</h3>
+			<h3 id="currentBpmBox">Current BPM: 0</h3>
+			<h3 id="lowestBpmBox">Lowest BPM: N/A</h3>
+			<h3 id="highestBpmBox">Highest BPM: N/A</h3>
+			<div id="tapBox" onclick="handleTap()">
+				Tap
+			</div>
+			<div id="resetButton" onclick="resetCounters()">
+				Reset
+			</div>
+		</div>
+		<footer id="footerB"></footer>
+	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+
+		let taps = [];
+		let lastTapTime = 0;
+
+		function handleTap() {
+			const currentTime = new Date().getTime();
+			const timeSinceLastTap = currentTime - lastTapTime;
+
+			if (timeSinceLastTap > 0 && timeSinceLastTap < 3000) {
+				const bpm = Math.round(60000 / timeSinceLastTap);
+				taps.push(bpm);
+				updateDisplay();
+			}
+
+			lastTapTime = currentTime;
+		}
+
+		function updateDisplay() {
+			const averageBpm = taps.length > 0 ? Math.round(taps.reduce((a, b) => a + b) / taps.length) : 0;
+			const currentBpm = taps.length > 1 ? taps[taps.length - 1] : 0;
+			const lowestBpm = taps.length > 0 ? Math.min(...taps) : "N/A";
+			const highestBpm = taps.length > 0 ? Math.max(...taps) : "N/A";
+
+			document.getElementById('averageBpmBox').innerText = `Average BPM: ${averageBpm}`;
+			document.getElementById('currentBpmBox').innerText = `Current BPM: ${currentBpm}`;
+			document.getElementById('lowestBpmBox').innerText = `Lowest BPM: ${lowestBpm}`;
+			document.getElementById('highestBpmBox').innerText = `Highest BPM: ${highestBpm}`;
+		}
+
+		function resetCounters() {
+			taps = [];
+			lastTapTime = 0;
+			updateDisplay();
+		}
+
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
