@@ -96,9 +96,25 @@
 		</header>
 		<div class="title">
 			<h1>Welcome to our website!</h1>
-			<h4>Last updated: December 2, 2024</h4>
+			<h4>Last updated on December 28, 2024</h4>
 		</div>
 		<img class="center-fit" src="media/cover.jpg" />
+		<br>
+		<div class="box2">
+			<h3>We have</h3>
+			<i>
+				<div class="countdown">
+					<span id="days">0</span> Days,
+					<span id="hours">0</span> Hours,
+					<span id="minutes">0</span> Minutes,
+					<span id="seconds">0</span> Seconds</i>
+			</div>
+			<h3>to celebrate the New Year 2025!</h3>
+			<br>
+			<div style="text-align:center;">
+				Join now with Justin LRT: Metropolitan Manila to celebrate our new year celebration.
+			</div>
+		</div>
 		<br>
 		<div class="headmain">
 			<div class="box1 important update">
@@ -119,6 +135,13 @@
 				<div class="center-fit" id="banner-load"></div>
 			</div>
 		</div>
+		<div class="ad">
+			<a href="page/advertise.html">
+				AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+				<br>Click this to place your ad here
+			</a>
+		</div>
+		<br>
 		<div class="box2">
 			<h2>LRT-1</h2>
 			<div class="lrt1info">
@@ -234,16 +257,14 @@
 	</div>
 	<!--Don't forget Jquery-->
 	<script type='text/javascript' src='script/jquery.min.js'></script>
+	<!-- Countdown -->
+	<script src="script/countdown.js" type="text/javascript" charset="utf-8"></script>
 	<!--Page will not loaded until the user enabled JavaScript-->
 	<script src="script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/nav/nav.js" type="text/javascript" charset="utf-8"></script>
 	<!--<script>
-						if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-							window.location.href = 'page/pterc.html';
-						} else {
-							if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-								if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+								if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
 									window.location.href = 'page/pterc.html';
 								} else {
 									if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
@@ -259,7 +280,13 @@
 															window.location.href = 'page/pterc.html';
 														} else {
 															if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+																if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																	window.location.href = 'page/pterc.html';
+																} else {
+																	if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																		alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+																	}
+																}
 															}
 														}
 													}
@@ -268,9 +295,7 @@
 										}
 									}
 								}
-							}
-						}
-					</script>-->
+							</script>-->
 	<noscript>
 		<br>
 		<div class="box3 center-text">
