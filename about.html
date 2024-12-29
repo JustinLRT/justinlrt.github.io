@@ -71,6 +71,21 @@
 			/* Ensure it doesn't overflow */
 			transform: translate(-7.5px,0px);
 		}
+@media (min-width: 600px) {
+			.about-container {
+				flex-direction: row;
+				display: flex;
+			}
+			.left {
+				order: 1;
+				width: 50%;
+				margin-right: 2%;
+			}
+			.right {
+				order: 2;
+				width: 50%;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -80,188 +95,195 @@
 			<h2>Navigation page</h2>
 		</div>
 		<div class="box3">
-			<table class="abouts">
-				<td><a href="javascript:window.history.back();">Back</a></td>
-				<td><a href="home.html">Home</a></td>
-				<td><a href="page/search.html">Search</a></td>
-			</table>
-		</div>
-		<div class="box2">
-			<h2>Site contents</h2>
-			<table class="nav">
-				<tr>
-					<th colspan="2"><a href="page/justinlrt.html">Justin LRT</a></th>
-				</tr>
-				<tr>
-					<td class="bdr"><a href="page/ptgrphs.html">Photographies</a></td>
-					<td><a href="page/posts.html">Posts</a></td>
-				</tr>
-			</table>
-			<br>
-			<table class="nav">
-				<tr>
-					<th colspan="2"><a href="page/lrt1.html">LRT-1</a></th>
-				</tr>
-				<tr>
-					<td class="bdb" colspan="2"><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a></td>
-				</tr>
-				<tr>
-					<td class="bdb" colspan="2"><a href="page/lrt1updates.html">LRT-1 updates</a></td>
-				</tr>
-				<tr>
-					<td class="bdb" rowspan="2"><a href="page/fareguide.html">LRT-1 fare guide</a></td>
-					<td><a href="page/fareguide/sjt.html">Single journey ticket</a></td>
-				</tr>
-				<tr>
-					<td class="bdb"><a href="page/fareguide/svc.html">Stored value card</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/lrt1freeride.html">LRT-1 free ride</a></td>
-					<td><a href="page/lrt1freeriderec.html">Free ride records</a></td>
-				</tr>
-				<tr>
-					<td class="bdb bdt" colspan="2"><a href="page/lrt1ride.html">LRT-1 rides</a></td>
-				</tr>
-				<tr>
-					<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
-				</tr>
-				<tr class="bdb">
-					<td class="bdt"><a href="page/lrtmrtsongs.html">Songs</a></td>
-					<td class="bdt"><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></td>
-				</tr>
-				<tr>
-					<td rowspan="2"><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></td>
-					<td><a href="page/lttr.html">Letter written by Justin</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/merch.html">Merchandises</a></td>
-				</tr>
-				<tr>
-					<td class="bdt bdb" colspan="2"><a href="page/elections.html">LRT Elections and Officers</a></td>
-				</tr>
-				<tr>
-					<td class="bdb" colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
-				</tr>
-				<tr>
-					<td colspan="2"><a href="page/lrt1bingo.html">LRT-1 Bingo</a></td>
-				</tr>
-			</table>
-			<br>
-			<table class="nav">
-				<tr>
-					<th colspan="2"><a href="page/pcwhs.html">Pasay City West High School</a></th>
-				</tr>
-				<tr>
-					<td class="bdb" colspan="2"><a href="page/pcwhs/history.html">History</a></td>
-				</tr>
-				<tr>
-					<td class="bdb" colspan="2"><a href="page/pcwhs/normalday/passcode.html">Normal days and viral posts</a></td>
-				</tr>
-				<tr>
-					<td class="bdr"><a href="page/pcwhs/justinlrt.html">Files and posts by Justin LRT</a></td>
-					<td><a href="page/pcwhs/posts.html">Posts</a></td>
-				</tr>
-			</table>
-			<br>
-			<table class="nav">
-				<tr>
-					<th><a href="page/aboutme.html">About Justin LRT</a></th>
-				</tr>
-				<tr>
-					<td><a href="page/pcwhs.html">Pasay City West High School</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/ptgrphs.html">Photographies</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/lrtmrtsongs.html">Songs</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/lrt1ride.html">LRT-1 rides</a></td>
-				</tr>
-			</table>
-			<br>
-			<table class="nav">
-				<tr>
-					<th colspan="2"><a href="page/apps.html">Apps</a></th>
-				</tr>
-				<tr>
-					<td><a href="apps/bpmtapper.html">BPM Tapper</a></td>
-					<td><a href="page/apps/notepad.html">Notepad</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/apps/downloader.html">File Downloader</a></td>
-					<td><a href="page/apps/colorchange.html">Tap to change color</a></td>
-				</tr>
-				<tr>
-					<td><a href="page/apps/musicplayer.html">Music Player</a></td>
-					<td><a href="page/apps/videotoimage.html">Video to Image</a></td>
-				</tr>
-			</table>
-		</div>
-		<div class="box2">
-			<h2>Contact us</h2>
-			Please click <a href="page/contact.html">HERE</a> for more details.
-		</div>
-		<div class="box2">
-			<h2>Settings</h2>
-			<input type="checkbox" id="darkModeToggle">
-			<label for="darkModeToggle">Dark mode</label>
-			<br><button id="saveButton">Save changes</button>
-		</div>
-		<div class="box2">
-			<h2>About this site</h2>
-			<table class="abouts">
-				<tr>
-					<td><b>Creation date</b></td>
-					<td>April 14, 2023<sup><a onclick="noteA()">[a]</a></sup></td>
-				</tr>
-				<tr>
-					<td><b>Modernized on</b></td>
-					<td>
-						July 24, 2023<sup><a onclick="noteB()">[b]</a></sup>
-						<br>December 31, 2023<sup><a onclick="noteC()">[c]</a></sup>
-					</td>
-				</tr>
-				<tr>
-					<td><b>Publish date</b></td>
-					<td>August 22, 2023<sup><a onclick="noteD()">[d]</a></sup></td>
-				</tr>
-				<tr>
-					<td><b>Created by</b></td>
-					<td>Justin LRT</td>
-				</tr>
-				<tr>
-					<td><b>Styled by</b></td>
-					<td>Justin LRT</td>
-				</tr>
-				<tr>
-					<td><b>Operated by</b></td>
-					<td>Justin LRT</td>
-				</tr>
-				<tr>
-					<td><b>Status</b></td>
-					<td>Operatonal</td>
-				</tr>
-				<tr>
-					<td><b>Public access</b></td>
-					<td>Yes</td>
-				</tr>
-				<tr>
-					<td><b>Website</b></td>
-					<td><a href="https://justinlrt.github.io">justinlrt.github.io</a></td>
-				</tr>
-			</table>
-			<br><a href="page/aboutus.html">About us</a>
-			<br><a href="page/termsofservice.html">Terms of Service</a>
-			<br><a href="page/copyright.html">Copyright Notice</a>
-			<br><a href="page/prvcyplcy.html">Privacy Policy</a>
-			<br>
-			<br>Licenses:
-			<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
+					<table class="abouts">
+						<td><a href="javascript:window.history.back();">Back</a></td>
+						<td><a href="home.html">Home</a></td>
+						<td><a href="page/search.html">Search</a></td>
+					</table>
+				</div>
+		<div class="about-container">
+			<div class="left">
+				<div class="box2">
+					<h2>Site contents</h2>
+					<table class="nav">
+						<tr>
+							<th colspan="2"><a href="page/justinlrt.html">Justin LRT</a></th>
+						</tr>
+						<tr>
+							<td class="bdr"><a href="page/ptgrphs.html">Photographies</a></td>
+							<td><a href="page/posts.html">Posts</a></td>
+						</tr>
+					</table>
+					<br>
+					<table class="nav">
+						<tr>
+							<th colspan="2"><a href="page/lrt1.html">LRT-1</a></th>
+						</tr>
+						<tr>
+							<td class="bdb" colspan="2"><a href="page/lrt1/morelrt1.html">LRT-1 navigation page</a></td>
+						</tr>
+						<tr>
+							<td class="bdb" colspan="2"><a href="page/lrt1updates.html">LRT-1 updates</a></td>
+						</tr>
+						<tr>
+							<td class="bdb" rowspan="2"><a href="page/fareguide.html">LRT-1 fare guide</a></td>
+							<td><a href="page/fareguide/sjt.html">Single journey ticket</a></td>
+						</tr>
+						<tr>
+							<td class="bdb"><a href="page/fareguide/svc.html">Stored value card</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/lrt1freeride.html">LRT-1 free ride</a></td>
+							<td><a href="page/lrt1freeriderec.html">Free ride records</a></td>
+						</tr>
+						<tr>
+							<td class="bdb bdt" colspan="2"><a href="page/lrt1ride.html">LRT-1 rides</a></td>
+						</tr>
+						<tr>
+							<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
+						</tr>
+						<tr class="bdb">
+							<td class="bdt"><a href="page/lrtmrtsongs.html">Songs</a></td>
+							<td class="bdt"><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></td>
+						</tr>
+						<tr>
+							<td rowspan="2"><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></td>
+							<td><a href="page/lttr.html">Letter written by Justin</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/merch.html">Merchandises</a></td>
+						</tr>
+						<tr>
+							<td class="bdt bdb" colspan="2"><a href="page/elections.html">LRT Elections and Officers</a></td>
+						</tr>
+						<tr>
+							<td class="bdb" colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
+						</tr>
+						<tr>
+							<td colspan="2"><a href="page/lrt1bingo.html">LRT-1 Bingo</a></td>
+						</tr>
+					</table>
+					<br>
+					<table class="nav">
+						<tr>
+							<th colspan="2"><a href="page/pcwhs.html">Pasay City West High School</a></th>
+						</tr>
+						<tr>
+							<td class="bdb" colspan="2"><a href="page/pcwhs/history.html">History</a></td>
+						</tr>
+						<!--<tr>
+							<td class="bdb" colspan="2"><a href="page/pcwhs/normalday/passcode.html">Normal days and viral posts</a></td>
+						</tr>-->
+						<tr>
+							<td class="bdr"><a href="page/pcwhs/justinlrt.html">Files and posts by Justin LRT</a></td>
+							<td><a href="page/pcwhs/posts.html">Posts</a></td>
+						</tr>
+					</table>
+					<br>
+					<table class="nav">
+						<tr>
+							<th><a href="page/aboutme.html">About Justin LRT</a></th>
+						</tr>
+						<tr>
+							<td><a href="page/pcwhs.html">Pasay City West High School</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/ptgrphs.html">Photographies</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/lrtmrtsongs.html">Songs</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/lrt1ride.html">LRT-1 rides</a></td>
+						</tr>
+					</table>
+					<br>
+					<table class="nav">
+						<tr>
+							<th colspan="2"><a href="page/apps.html">Apps</a></th>
+						</tr>
+						<tr>
+							<td><a href="apps/bpmtapper.html">BPM Tapper</a></td>
+							<td><a href="page/apps/notepad.html">Notepad</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/apps/downloader.html">File Downloader</a></td>
+							<td><a href="page/apps/colorchange.html">Tap to change color</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/apps/musicplayer.html">Music Player</a></td>
+							<td><a href="page/apps/videotoimage.html">Video to Image</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="box2">
+					<h2>Contact us</h2>
+					Please click <a href="page/contact.html">HERE</a> for more details.
+				</div>
+				<div class="box2">
+					<h2>Settings</h2>
+					<input type="checkbox" id="darkModeToggle">
+					<label for="darkModeToggle">Dark mode</label>
+					<br><button id="saveButton">Save changes</button>
+				</div>
+				<div class="box2">
+					<h2>About this site</h2>
+					<table class="abouts">
+						<tr>
+							<td><b>Creation date</b></td>
+							<td>April 14, 2023<sup><a onclick="noteA()">[a]</a></sup></td>
+						</tr>
+						<tr>
+							<td><b>Modernized on</b></td>
+							<td>
+								July 24, 2023<sup><a onclick="noteB()">[b]</a></sup>
+								<br>December 31, 2023<sup><a onclick="noteC()">[c]</a></sup>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Publish date</b></td>
+							<td>August 22, 2023<sup><a onclick="noteD()">[d]</a></sup></td>
+						</tr>
+						<tr>
+							<td><b>Created by</b></td>
+							<td>Justin LRT</td>
+						</tr>
+						<tr>
+							<td><b>Styled by</b></td>
+							<td>Justin LRT</td>
+						</tr>
+						<tr>
+							<td><b>Operated by</b></td>
+							<td>Justin LRT</td>
+						</tr>
+						<tr>
+							<td><b>Status</b></td>
+							<td>Operatonal</td>
+						</tr>
+						<tr>
+							<td><b>Public access</b></td>
+							<td>Yes</td>
+						</tr>
+						<tr>
+							<td><b>Website</b></td>
+							<td><a href="https://justinlrt.github.io">justinlrt.github.io</a></td>
+						</tr>
+					</table>
+					<br><a href="page/aboutus.html">About us</a>
+					<br><a href="page/termsofservice.html">Terms of Service</a>
+					<br><a href="page/copyright.html">Copyright Notice</a>
+					<br><a href="page/prvcyplcy.html">Privacy Policy</a>
+					<br>
+					<br>Licenses:
+					<a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
+				</div>
+			</div>
 		</div>
 		<footer id="footer"></footer>
 	</div>
