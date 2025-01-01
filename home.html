@@ -33,6 +33,7 @@
 			.headmain,
 			.photographiesContainer,
 			.lrt1info,
+			.news,
 			.pcwhs {
 				flex-direction: row;
 				display: flex;
@@ -47,6 +48,18 @@
 				width: 50%;
 				vertical-align: center;
 				margin-left: 5px;
+			}
+
+			/* News */
+			.img {
+
+				order: 1;
+				width: 38%;
+				margin-right: 10px;
+			}
+			.imgdesc {
+				order: 2;
+				width: 62%;
 			}
 
 			/* LRT-1 */
@@ -96,25 +109,10 @@
 		</header>
 		<div class="title">
 			<h1>Welcome to our website!</h1>
-			<h4>Last updated on December 29, 2024</h4>
+			<h4>Last updated on January 1, 2025</h4>
 		</div>
 		<img class="center-fit" loading="lazy" src="media/cover.jpg" />
 		<br>
-		<div class="box2">
-			<h3>We have</h3>
-			<i>
-				<div class="countdown">
-					<span id="days">0</span> Days,
-					<span id="hours">0</span> Hours,
-					<span id="minutes">0</span> Minutes,
-					<span id="seconds">0</span> Seconds</i>
-			</div>
-			<h3>to celebrate the New Year 2025!</h3>
-			<br>
-			<div style="text-align:center;">
-				Join now with Justin LRT: Metropolitan Manila to celebrate our new year celebration.
-			</div>
-		</div>
 		<div class="headmain">
 			<div class="box1 important update">
 				Thank you so much for making this personal project go viral like crazy! If you liked this project and want it to be accessible in the future, please consider supporting below:
@@ -141,6 +139,23 @@
 			</a>
 		</div>
 		<br>
+		<div class="box2">
+			<h2>Latest news</h2>
+			<h3 class="center-text">New Year 2025</h3>
+			<div class="news">
+				<div class="img">
+					<img class="center-fit" loading="lazy" src="media/2025.jpg" />
+					<br>
+				</div>
+				<div class="imgdesc">
+					Happy New Year, everyone! 🎉 As we step into 2025, I want to take a moment to thank each and every one of you for your incredible support and participation throughout this journey. Your engagement, feedback, and encouragement have played a huge role in driving this project forward.
+					<br>
+					<br>This year, we're excited to bring you more updates, improvements, and fresh ideas, and we hope you’ll continue to be a part of this adventure. Together, let’s make 2025 a year full of growth, creativity, and success.
+					<br>
+					<br>Thank you once again for being here, your support truly means the world to us. Here’s to an amazing year ahead!
+				</div>
+			</div>
+		</div>
 		<div class="box2">
 			<h2>LRT-1</h2>
 			<div class="lrt1info">
@@ -260,27 +275,30 @@
 	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/nav/nav.js" type="text/javascript" charset="utf-8"></script>
 	<!--<script>
-								if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-									window.location.href = 'page/pterc.html';
-								} else {
-									if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-										if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-											window.location.href = 'page/pterc.html';
-										} else {
-											if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-												if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-													window.location.href = 'page/pterc.html';
-												} else {
-													if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-														if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-															window.location.href = 'page/pterc.html';
-														} else {
-															if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																	window.location.href = 'page/pterc.html';
-																} else {
-																	if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																		alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+											if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+												window.location.href = 'page/pterc.html';
+											} else {
+												if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+													if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+														window.location.href = 'page/pterc.html';
+													} else {
+														if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+															if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																window.location.href = 'page/pterc.html';
+															} else {
+																if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																	if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																		window.location.href = 'page/pterc.html';
+																	} else {
+																		if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																			if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																				window.location.href = 'page/pterc.html';
+																			} else {
+																				if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																					alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+																				}
+																			}
+																		}
 																	}
 																}
 															}
@@ -288,10 +306,7 @@
 													}
 												}
 											}
-										}
-									}
-								}
-							</script>-->
+										</script>-->
 	<noscript>
 		<br>
 		<div class="box3 center-text">
