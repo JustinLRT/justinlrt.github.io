@@ -162,6 +162,9 @@
 						<tr>
 							<td colspan="2"><a href="page/lrt1bingo.html">LRT-1 Bingo</a></td>
 						</tr>
+						<tr>
+							<td colspan="2"><a href="page/lrt1carguide.html">LRT-1 Train Car Guide</a></td>
+						</tr>
 					</table>
 					<br>
 					<table class="nav">
@@ -229,7 +232,7 @@
 				<div class="box2">
 					<h2>Settings</h2>
 					<input type="checkbox" id="darkModeToggle">
-					<label for="darkModeToggle">Dark mode</label>
+					<label for="darkModeToggle">Dark mode</label> <a onclick="darkmodeinfo()">(More into)</a>
 					<br><button id="saveButton">Save changes</button>
 				</div>
 				<div class="box2">
@@ -288,9 +291,6 @@
 		<footer id="footer"></footer>
 	</div>
 	<script>
-		function address() {
-			alert("Room 203, Building 3, Pasay City West High School, Pasadena street, FB Harrison, Pasay City, Metro Manila")
-		}
 		function noteA() {
 			alert("That time was not published yet. It was started with simple website without any stylings but in the local device only.")
 		}
@@ -302,6 +302,9 @@
 		}
 		function noteD() {
 			alert("First published in Github. It supposed to be www.justinlrt.com but there's have a problem regarding to DNS.")
+		}
+		function darkmodeinfo() {
+			alert("To ensure proper rendering of graphics and elements, you MUST disable the dark mode in your browser for this site when enabling this theme. Otherwise, some elements may appear much darker or fail to render properly.")
 		}
 
 		document.addEventListener("DOMContentLoaded", () => {
