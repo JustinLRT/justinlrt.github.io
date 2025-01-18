@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
 	<link rel="apple-touch-icon" href="../../icon.png">
 	<title>LRT-1 fare guide - SVC</title>
+	<style>
+		table {
+			width: 300px;
+		}
+	</style>
 </head>
 <body>
 	<div class="text">
@@ -28,20 +33,31 @@
 			<a href="../../home.html">Home</a> &#8594; <a href="../../fareguide.html">LRT-1 fare guide</a>
 		</div>
 		<div class="box2">
-			Updated on August 2, 2023
+			Determine what fare you spend from your origin to your destination station.
 			<br>
-			<br class="punta">ORIGIN
-			<div class="select1">
-				<select id="origin">
-					<option value="" selected disabled>Origin</option>
-				</select>
-			</div>
-			<br>DESTINATION
-			<div class="select2">
-				<select id="destination">
-					<option value="" selected disabled>Destination</option>
-				</select>
-			</div>
+			<br>
+			<table>
+				<tr>
+					<th>Origin</th>
+					<th>Destination</th>
+				</tr>
+				<tr>
+					<td>
+						<div class="select1">
+							<select id="origin">
+								<option value="" selected disabled>Origin</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="select2">
+							<select id="destination">
+								<option value="" selected disabled>Destination</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
 			<br>
 			<div class="loc">
 				<p id="output"></p>
