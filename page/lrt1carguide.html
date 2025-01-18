@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<title>LRT-1 train car guide</title>
+	<style>
+		table {
+			width: 300px;
+		}
+		.red {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../about.html">&#9776;</a><span class="font-margin" id="navA"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>LRT-1 train car guide</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../home.html">Home</a>
+		</div>
+		<div class="box2">
+			<div class="calculator-container" id="check-id-number-container">
+				Determine which train to board to arrive at the nearest exit at your destination for the convenient travel.
+				<br>
+				<br>
+				<div class="form-container" id="train-car-calculator">
+					<form>
+						<table>
+							<tr>
+								<th>Origin</th>
+								<th>Destination</th>
+							</tr>
+							<tr>
+								<td><div class="mb-3">
+									<select class="form-select" id="origin-station">
+										<option value="25" selected disabled>Origin</option>
+										<option value="24">Dr. Santos</option>
+										<option value="23">Ninoy Aquino</option>
+										<option value="22">Asia World</option>
+										<option value="21">MIA</option>
+										<option value="20">Redemptorist</option>
+										<option value="19">Baclaran</option>
+										<option value="18">EDSA</option>
+										<option value="17">Libertad</option>
+										<option value="16">Gil Puyat</option>
+										<option value="15">Vito Cruz</option>
+										<option value="14">Quirino</option>
+										<option value="13">Pedro Gil</option>
+										<option value="12">United Nations</option>
+										<option value="11">Central Terminal</option>
+										<option value="10">Carriedo</option>
+										<option value="9">Doroteo Jose</option>
+										<option value="8">Bambang</option>
+										<option value="7">Tayuman</option>
+										<option value="6">Blumentritt</option>
+										<option value="5">Abad Santos</option>
+										<option value="4">R. Papa</option>
+										<option value="3">5th Avenue</option>
+										<option value="2">Monumento</option>
+										<option value="1">Balintawak</option>
+										<option value="0">Fernando Poe Jr.</option>
+									</select>
+								</div>
+								</td>
+								<td>
+									<div class="mb-3">
+										<select class="form-select" id="destination-station">
+											<option value="26" selected disabled>Destination</option>
+											<option value="24">Dr. Santos</option>
+											<option value="23">Ninoy Aquino</option>
+											<option value="22">Asia World</option>
+											<option value="21">MIA</option>
+											<option value="20">Redemptorist</option>
+											<option value="19">Baclaran</option>
+											<option value="18">EDSA</option>
+											<option value="17">Libertad</option>
+											<option value="16">Gil Puyat</option>
+											<option value="15">Vito Cruz</option>
+											<option value="14">Quirino</option>
+											<option value="13">Pedro Gil</option>
+											<option value="12">United Nations</option>
+											<option value="11">Central Terminal</option>
+											<option value="10">Carriedo</option>
+											<option value="9">Doroteo Jose</option>
+											<option value="8">Bambang</option>
+											<option value="7">Tayuman</option>
+											<option value="6">Blumentritt</option>
+											<option value="5">Abad Santos</option>
+											<option value="4">R. Papa</option>
+											<option value="3">5th Avenue</option>
+											<option value="2">Monumento</option>
+											<option value="1">Balintawak</option>
+											<option value="0">Fernando Poe Jr.</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<br>
+						<div class="row mb-4">
+							<!--Direction-->
+							<div class="col">
+								<label for="direction" class="form-label">Train Direction: </label>
+								<input class="form-control" type="text" id="direction" style="width:80px;" value="Southbound" disabled readonly>
+							</div>
+							<!--Priority Car Option-->
+							<div class="col d-flex align-items-center flex-wrap">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="priority-car">
+									<label class="form-check-label" for="priority-car">Include priority car</label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--Output-->
+				<div class="red">
+					<div id="origin-station-feedback" class="invalid-feedback"></div>
+					<div id="destination-station-feedback" class="invalid-feedback"></div>
+				</div>
+				<div class="row mb-4" id="train-car-results" hidden>
+					<label id="train-car-calculator-result-label"><br><h3>Result</h3></label>
+					<p class="calcu-result" id="train-car-number-result"></p>
+					<p class="calcu-result" id="train-car-message-result"></p>
+				</div>
+			</div>
+		</div>
+		<footer id="footerA"></footer>
+	</div>
+	<script type='text/javascript' src='../script/jquery.min.js'></script>
+	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		/*
+    Notes:
+    - The car number is relative to the direction of the train.
+*/
+
+		const Direction = {
+			NB: 'north',
+			SB: 'south',
+			EB: 'east',
+			WB: 'west',
+		}
+
+		const Ordinal = {
+			1: '1st',
+			2: '2nd',
+			3: '3rd',
+			4: '4th'
+		}
+
+		const LRT1Data = [{
+			"name": "Fernando Poe Jr.",
+			"exitMap": {
+				"north": [2,
+					3],
+				"south": [2,
+					3]
+			}
+		}, // index 0
+			{
+				"name": "Balintawak",
+				"exitMap": {
+					"north": [2,
+						3],
+					"south": [2,
+						3]
+				}
+			},
+			{
+				"name": "Monumento",
+				"exitMap": {
+					"north": [2],
+					"south": [3]
+				}
+			},
+			{
+				"name": "5th Avenue",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "R. Papa",
+				"exitMap": {
+					"north": [2,
+						3],
+					"south": [4]
+				}
+			},
+			{
+				"name": "Abad Santos",
+				"exitMap": {
+					"north": [1],
+					"south": [4]
+				}
+			},
+			{
+				"name": "Blumentritt",
+				"exitMap": {
+					"north": [3],
+					"south": [2]
+				}
+			},
+			{
+				"name": "Tayuman",
+				"exitMap": {
+					"north": [2,
+						3],
+					"south": [1]
+				}
+			},
+			{
+				"name": "Bambang",
+				"exitMap": {
+					"north": [3,
+						4],
+					"south": [2,
+						3]
+				}
+			},
+			{
+				"name": "Doroteo Jose",
+				"exitMap": {
+					"north": [2],
+					"south": [3]
+				}
+			},
+			{
+				"name": "Carriedo",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Central Terminal",
+				"exitMap": {
+					"north": [2,
+						3],
+					"south": [2,
+						3]
+				}
+			},
+			{
+				"name": "United Nations",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Pedro Gil",
+				"exitMap": {
+					"north": [3],
+					"south": [2]
+				}
+			},
+			{
+				"name": "Quirino",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Vito Cruz",
+				"exitMap": {
+					"north": [3],
+					"south": [2]
+				}
+			},
+			{
+				"name": "Gil Puyat",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						3]
+				}
+			},
+			{
+				"name": "Libertad",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "EDSA",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Baclaran",
+				"exitMap": {
+					"north": [2,
+						3],
+					"south": [2,
+						3]
+				}
+			},
+			{
+				"name": "Redemptorist",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "MIA",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Asia World",
+				"exitMap": {
+					"north": [1],
+					"south": [4]
+				}
+			},
+			{
+				"name": "Ninoy Aquino",
+				"exitMap": {
+					"north": [1,
+						4],
+					"south": [1,
+						4]
+				}
+			},
+			{
+				"name": "Dr. Santos",
+				"exitMap": {
+					"north": [1,
+						2],
+					"south": [3,
+						4]
+				}
+			} // index 24
+		]
+
+		const ERROR_MSG_SAME_STATION = "<br>Origin and destination station cannot be the same";
+		const ERROR_MSG_NORTH_END = "<br>Origin station is the northern terminus";
+		const ERROR_MSG_SOUTH_END = "<br>Origin station is the southern terminus";
+
+		function validateInputData(data) {
+			let origin = document.getElementById('origin-station');
+			let originFeedback = document.getElementById('origin-station-feedback');
+			let destination = document.getElementById('destination-station');
+			let destinationFeedback = document.getElementById('destination-station-feedback');
+			let direction = document.getElementById('direction');
+
+			// Remove old feedback
+			originFeedback.innerHTML = '';
+			destinationFeedback.innerHTML = '';
+			origin.classList.remove('is-invalid');
+			destination.classList.remove('is-invalid');
+			direction.classList.remove('is-invalid');
+
+			// Ensure values are typed to int
+			let originInd = parseInt(origin.value);
+			let destinationInd = parseInt(destination.value);
+
+			let passed = true;
+
+			// Flag if origin is not valid based on direction
+			if (originInd === 0 && direction.value === 'Northbound') {
+				originFeedback.innerHTML = ERROR_MSG_NORTH_END;
+				origin.classList.add('is-invalid');
+				passed = false;
+			}
+			if (originInd === data.length - 1 && direction.value === 'Southbound') {
+				originFeedback.innerHTML = ERROR_MSG_SOUTH_END;
+				origin.classList.add('is-invalid');
+				passed = false;
+			}
+
+			// Flag if the origin and destination are the same station
+			if (originInd === destinationInd) {
+				origin.classList.add('is-invalid');
+				destination.classList.add('is-invalid');
+				originFeedback.innerHTML = ERROR_MSG_SAME_STATION;
+				destinationFeedback.innerHTML = ERROR_MSG_SAME_STATION;
+				direction.value = '?'; // Reset direction
+				passed = false;
+			} else {
+				// Determine direction from origin and destination
+				if (originInd < destinationInd) {
+					direction.value = 'Southbound';
+				} else {
+					direction.value = 'Northbound';
+				}
+			}
+
+			// Flag if the direction is invalid for the origin and destination
+			if (originInd === destinationInd) {
+				direction.classList.add('is-invalid');
+				passed = false;
+			}
+
+			return passed;
+		}
+
+		function generateMessage(data, originInd, destInd, directionText, carArr) {
+			const origin = data[originInd].name;
+			const destination = data[destInd].name;
+			const direction = directionText.toLowerCase();
+
+			let carResult = '';
+			let carText = '';
+			if (carArr.length > 1) {
+				carText = `${Ordinal[carArr[0]]} or ${Ordinal[carArr[1]]}`;
+				carResult = `Car #${carArr[0]} or #${carArr[1]}`;
+			} else {
+				carText = Ordinal[carArr[0]];
+				carResult = `Car #${carArr[0]}`;
+			}
+
+			let message = `To arrive near the exit at ${destination}, board the ${carText} car at the ${direction} platform of ${origin}.`;
+			return [message,
+				carResult];
+		}
+
+		function calculateTrainCar(data, originInd, destInd, directionText, usePriorityCar) {
+			// Validate inputs
+			if (!data) {
+				throw new Error('Invalid data');
+			}
+			if (!data[originInd] || !data[destInd]) {
+				throw new Error('Invalid station indices');
+			}
+			const direction = directionText === 'Northbound' ? 'north': 'south';
+
+			// Get destination station exit cars
+			let destExits = data[destInd].exitMap[direction];
+			console.log(`Got ${destExits}`);
+
+			// If priorityCar is not checked, subtract the front car number by 1
+			if (!usePriorityCar) {
+				// If destExits contains cars 1 and 2, retain only car 2
+				if (destExits.length === 2 && destExits[0] === 1 && destExits[1] === 2) {
+					destExits = [2];
+					console.log(`Changed to ${destExits}`);
+					// Otherwise, change car 1 to car 2
+				} else if (destExits[0] === 1) {
+					destExits = destExits.map(car => car === 1 ? 2: car);
+					console.log(`Changed to ${destExits}`);
+				}
+			}
+			return destExits;
+		}
+
+		function processData(data, origin, destination, direction, usePriorityCar, results, resultsCar, resultsMsg) {
+			const originInd = parseInt(origin.value);
+			const destInd = parseInt(destination.value);
+			const carArr = calculateTrainCar(data, originInd, destInd, direction.value, usePriorityCar);
+			const [message,
+				carResult] = generateMessage(data, originInd, destInd, direction.value, carArr);
+			console.log(message);
+
+			results.hidden = false;
+			resultsCar.innerHTML = carResult;
+			resultsMsg.innerHTML = message;
+		}
+		document.addEventListener("DOMContentLoaded", (e) => {
+			// Trigger calculation automatically on input change
+			function submit() {
+				processData(
+					data, origin, destination, direction, priorityCar.checked,
+					results, resultsCar, resultsMsg
+				);
+			}
+
+			function validate() {
+				const inputsValid = validateInputData(data);
+				if (inputsValid) {
+					submit(); // Automatically trigger the result calculation
+				}
+			}
+
+			let origin = document.getElementById('origin-station');
+			let destination = document.getElementById('destination-station');
+			let direction = document.getElementById('direction');
+			let priorityCar = document.getElementById('priority-car');
+			let results = document.getElementById('train-car-results');
+			let resultsCar = document.getElementById('train-car-number-result');
+			let resultsMsg = document.getElementById('train-car-message-result');
+
+			let data = LRT1Data;
+
+			// Attach event listeners to input fields
+			[origin,
+				destination,
+				direction,
+				priorityCar].forEach(element => {
+					element.addEventListener('change', validate);
+				});
+		});
+
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>
