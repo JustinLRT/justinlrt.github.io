@@ -9,10 +9,13 @@
 	<title>LRT-1 train car guide</title>
 	<style>
 		table {
-			width: 300px;
+			width: 100%;
 		}
 		.red {
 			color: red;
+		}
+		input#direction {
+			width: 108px;
 		}
 	</style>
 </head>
@@ -25,6 +28,7 @@
 				</div>
 			</nav>
 		</header>
+		<div class="support" id="header"></div>
 		<div class="title">
 			<h1>LRT-1 train car guide</h1>
 		</div>
@@ -114,15 +118,15 @@
 						<br>
 						<div class="row mb-4">
 							<!--Direction-->
-							<div class="col">
+							<div>
 								<label for="direction" class="form-label">Train Direction: </label>
-								<input class="form-control" type="text" id="direction" style="width:80px;" value="Southbound" disabled readonly>
+								<input type="text" id="direction" value="Southbound" disabled readonly>
 							</div>
 							<!--Priority Car Option-->
 							<div class="col d-flex align-items-center flex-wrap">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="priority-car">
-									<label class="form-check-label" for="priority-car">Include priority car</label>
+									<input type="checkbox" value="" id="priority-car">
+									<label for="priority-car">Include priority car</label>
 								</div>
 							</div>
 						</div>
@@ -130,13 +134,13 @@
 				</div>
 				<!--Output-->
 				<div class="red">
-					<div id="origin-station-feedback" class="invalid-feedback"></div>
-					<div id="destination-station-feedback" class="invalid-feedback"></div>
+					<div id="origin-station-feedback"></div>
+					<div id="destination-station-feedback"></div>
 				</div>
-				<div class="row mb-4" id="train-car-results" hidden>
-					<label id="train-car-calculator-result-label"><br><h3>Result</h3></label>
-					<p class="calcu-result" id="train-car-number-result"></p>
-					<p class="calcu-result" id="train-car-message-result"></p>
+				<div id="results" hidden>
+					<br>
+					<h3 id="number-result"></h3>
+					<p id="message-result"></p>
 				</div>
 			</div>
 		</div>
@@ -520,9 +524,9 @@
 			let destination = document.getElementById('destination-station');
 			let direction = document.getElementById('direction');
 			let priorityCar = document.getElementById('priority-car');
-			let results = document.getElementById('train-car-results');
-			let resultsCar = document.getElementById('train-car-number-result');
-			let resultsMsg = document.getElementById('train-car-message-result');
+			let results = document.getElementById('results');
+			let resultsCar = document.getElementById('number-result');
+			let resultsMsg = document.getElementById('message-result');
 
 			let data = LRT1Data;
 
