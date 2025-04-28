@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<title>GPS tracker</title>
+	<style>
+		#output {
+			margin-top: 20px;
+			text-align: center;
+		}
+		#status {
+			margin-top: 10px;
+			color: green;
+		}
+		#clock {
+			font-size: 1.2em;
+			margin-top: 10px;
+		}
+		button:disabled {
+			cursor: not-allowed;
+		}
+		.accu {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><span class="font-margin" id="navB"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>GPS tracker</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a>
+		</div>
+		<div class="box3 accu">
+			Accuracy: <span id="accuracy-level">Unavailable</span>
+			<br>Status: <span id="status">Waiting for location updates...
+			</span>
+		</div>
+		<div class="box2" id="output">
+			Current Date and Time
+			<h3><span id="current-time">N/A</span></h3>
+			<br>
+			Coordinates
+			<h3><span id="coordinates">N/A</span></h3>
+			<br>
+			Address
+			<h3><span id="address">N/A</span></h3>
+			<br>
+			Current Speed
+			<h3><span id="speed">0.00 m/s | 0.00 km/h</span></h3>
+			<br>
+			Distance Traveled
+			<h3><span id="distance">0.00 m</span></h3>
+			<br>
+			Top Speed
+			<h3><span id="top-speed">0.00 m/s | 0.00 km/h</span></h3>
+			<br>
+			Average Speed
+			<h3><span id="average-speed">0.00 m/s | 0.00 km/h</span></h3>
+			<br>
+			Duration
+			<h3><span id="duration">00:00:00</span></h3>
+		</div>
+		<div class="box3 center-text">
+			<button id="save-button">Save Current Coordinates</button>
+			<button id="record-button">Start Recording</button>
+		</div>
+		<div class="box2">
+			<h2>How to use?</h2>
+			<h3>Before using</h3>
+			To start using, you must grant location permission in your browser. The accuracy and status will be shown at top. Make sure that your area has GPS coverage.
+			<br>
+			<br>
+			<h3>Interface</h3>
+			<ul>
+				<li><b>Current Date and Time</b>: your current date and time, set by your device and your local location.</li>
+				<li><b>Coordinates</b>: your current position; only available when GPS was detected.</li>
+				<li><b>Address</b>: your current complete address where you're positioned on; only available when internet connection was established.</li>
+				<li><b>Current Speed</b>: your current speed between positions per second.</li>
+				<li><b>Distance Traveled</b>: only available during the record; your distance travelled from the place where you started recording and the end place where you ended recording.</li>
+				<li><b>Top Speed</b>: only available during the record; your fastest speed ever recorded.</li>
+				<li><b>Average Speed</b>: only available during the record; it calculates the distance travelled and time to get the average speed.</li>
+				<li><b>Duration</b>: only available during the record; the duration of your record.</li>
+			</ul>
+			<br>
+			<h3>Record and save</h3>
+			To save your current coordinates, click <b>Save Current Coordinates</b> and the text file will be downloaded to your device.
+			<br>
+			<br>To record coordinates during your travel, click <b>Start Recording</b>. You can look the duration of the record on how you long you record it. To stop recording  click <b>Stop Recording</b> and the text file will be downloaded. Since many devices and browsers doesn't support background running on web-based apps, you should use split screen or floating window or as long as the browser page is visible in the screen. Attempting to minimize the browser will result in gap during the record.
+		</div>
+		<footer id="footerB"></footer>
+	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		const currentTimeSpan = document.getElementById("current-time");
+		const coordinatesSpan = document.getElementById("coordinates");
+		const addressSpan = document.getElementById("address");
+		const accuracyLevelSpan = document.getElementById("accuracy-level");
+		const speedSpan = document.getElementById("speed");
+		const distanceSpan = document.getElementById("distance");
+		const topSpeedSpan = document.getElementById("top-speed");
+		const averageSpeedSpan = document.getElementById("average-speed");
+		const durationSpan = document.getElementById("duration");
+		const statusSpan = document.getElementById("status");
+		const recordButton = document.getElementById("record-button");
+		const saveButton = document.getElementById("save-button");
+
+		let recording = false;
+		let records = [];
+		let startTime = null;
+		let watchID = null;
+		let timerInterval = null;
+
+		// Tracking variables
+		let totalDistance = 0;
+		let topSpeed = 0;
+		let speedSum = 0;
+		let speedCount = 0;
+		let lastCoords = null;
+
+		// Format date and time as MM/DD/YYYY HH:MM:SS AM/PM
+		function formatDateTime(date) {
+			const options = {
+				hour12: true
+			};
+			const formattedDate = `${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}/${date.getFullYear()}`;
+			const formattedTime = date.toLocaleTimeString("en-US", options);
+			return `${formattedDate} ${formattedTime}`;
+		}
+
+		// Format filename as GPS_YYYYMMDD_HHMMSS.txt
+		function formatFileName(date) {
+			return `GPS_${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}_${String(date.getHours()).padStart(2, "0")}${String(date.getMinutes()).padStart(2, "0")}${String(date.getSeconds()).padStart(2, "0")}.txt`;
+		}
+
+		// Calculate distance between two coordinates (Haversine formula)
+		function calculateDistance(lat1, lon1, lat2, lon2) {
+			const R = 6371000; // Earth radius in meters
+			const toRad = (deg) => (deg * Math.PI) / 180;
+			const dLat = toRad(lat2 - lat1);
+			const dLon = toRad(lon2 - lon1);
+			const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+			Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+			Math.sin(dLon / 2) * Math.sin(dLon / 2);
+			const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+			return R * c;
+		}
+
+		// Update displayed current time
+		function updateCurrentTime() {
+			currentTimeSpan.textContent = formatDateTime(new Date());
+		}
+
+		// Start watching GPS location
+		function startWatching() {
+			if (watchID !== null) {
+				navigator.geolocation.clearWatch(watchID);
+			}
+
+			watchID = navigator.geolocation.watchPosition(
+				async (position) => {
+					const {
+						latitude, longitude, accuracy, speed
+					} = position.coords;
+					const coords = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+					coordinatesSpan.textContent = coords;
+
+					let accuracyText = "Unavailable";
+					if (accuracy < 10) accuracyText = "High";
+					else if (accuracy < 50) accuracyText = "Med";
+					else if (accuracy < 100) accuracyText = "Low";
+					accuracyLevelSpan.textContent = accuracyText;
+
+					const speedMPS = speed || 0;
+					const speedKMPH = speedMPS * 3.6;
+					speedSpan.textContent = `${speedMPS.toFixed(2)} m/s | ${speedKMPH.toFixed(2)} km/h`;
+
+					if (recording && lastCoords) {
+						const [lastLat,
+							lastLon] = lastCoords;
+						totalDistance += calculateDistance(lastLat, lastLon, latitude, longitude);
+						distanceSpan.textContent = `${totalDistance.toFixed(2)} m`;
+					}
+					lastCoords = [latitude,
+						longitude];
+
+					if (recording) {
+						if (speedMPS > topSpeed) topSpeed = speedMPS;
+						speedSum += speedMPS;
+						speedCount++;
+						topSpeedSpan.textContent = `${topSpeed.toFixed(2)} m/s | ${(topSpeed * 3.6).toFixed(2)} km/h`;
+						averageSpeedSpan.textContent = `${(speedSum / speedCount).toFixed(2)} m/s | ${(speedSum * 3.6 / speedCount).toFixed(2)} km/h`;
+					}
+
+					try {
+						const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+						const data = await response.json();
+						addressSpan.textContent = data.display_name || "";
+					} catch {
+						addressSpan.textContent = "";
+					}
+
+					statusSpan.textContent = "Location updated.";
+				},
+				(error) => {
+					statusSpan.textContent = error.message;
+				},
+				{
+					enableHighAccuracy: true,
+					timeout: 50000,
+					maximumAge: 0
+				}
+			);
+		}
+
+		// Handle saving current coordinates
+		saveButton.addEventListener("click", () => {
+			const now = new Date();
+			const data = `${formatDateTime(now)}\n${coordinatesSpan.textContent}\n${addressSpan.textContent ? `${addressSpan.textContent}`: ""}`;
+
+			const blob = new Blob([data], {
+				type: "text/plain"
+			});
+			const link = document.createElement("a");
+			link.href = URL.createObjectURL(blob);
+			link.download = formatFileName(now);
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		});
+
+		// Handle recording
+		recordButton.addEventListener("click", () => {
+			if (!recording) {
+				records = [];
+				startTime = new Date();
+				totalDistance = 0;
+				topSpeed = 0;
+				speedSum = 0;
+				speedCount = 0;
+				lastCoords = null;
+				recording = true;
+				recordButton.textContent = "Stop Recording";
+
+				timerInterval = setInterval(() => {
+					if (!recording) return;
+
+					const now = new Date();
+					const elapsedSeconds = Math.floor((now - startTime) / 1000);
+					const elapsedFormatted = new Date(elapsedSeconds * 1000).toISOString().substr(11, 8);
+					durationSpan.textContent = elapsedFormatted;
+
+					let recordEntry = `${elapsedFormatted}\n${formatDateTime(now)}\n${coordinatesSpan.textContent}`;
+					if (addressSpan.textContent) recordEntry += `\n${addressSpan.textContent}`;
+					records.push(recordEntry);
+				},
+					1000);
+			} else {
+				clearInterval(timerInterval);
+				recording = false;
+				recordButton.textContent = "Start Recording";
+
+				const avgSpeedMPS = speedCount > 0 ? (speedSum / speedCount).toFixed(2): "0.00";
+				const avgSpeedKMPH = (avgSpeedMPS * 3.6).toFixed(2);
+				const topSpeedKMPH = (topSpeed * 3.6).toFixed(2);
+
+				const textContent = `Distance Traveled: ${totalDistance.toFixed(2)} m\nTop Speed: ${topSpeed.toFixed(2)} m/s | ${topSpeedKMPH} km/h\nAverage Speed: ${avgSpeedMPS} m/s | ${avgSpeedKMPH} km/h\nDuration: ${durationSpan.textContent}\n\n${records.join("\n\n")}`;
+
+				const blob = new Blob([textContent], {
+					type: "text/plain"
+				});
+				const link = document.createElement("a");
+				link.href = URL.createObjectURL(blob);
+				link.download = formatFileName(new Date());
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			}
+		});
+
+		// Start GPS tracking
+		startWatching();
+		setInterval(updateCurrentTime, 1000);
+
+		window.onbeforeunload = function(e) {
+			e.preventDefault();
+			e.returnValue = 'Are you sure you want to leave? Your progress will be undone.';
+		};
+
+		window.addEventListener('popstate', function(e) {
+			// Always prompt the user for this example
+			// Replace this with your own condition
+			var promptUser = true;
+
+			if (promptUser) {
+				if (confirm('Are you sure you want to leave? Your progress will be undone.')) {
+					// OK clicked, allow page to unload
+				} else {
+					// Cancel clicked, prevent page from unloading
+					window.history.pushState(null, null, window.location.href);
+					window.history.forward();
+				}
+			}
+		});
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>

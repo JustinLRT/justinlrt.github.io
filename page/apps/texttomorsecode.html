@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#000000">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
+	<title>Text to morse code converter</title>
+	<style>
+		#output {
+			font-size: 1.2rem;
+			margin: 10px 0;
+			color: #333;
+		}
+		#frequencyInput {
+			width: 60px;
+		}
+		textarea {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="text">
+		<header>
+			<nav>
+				<div class="hamburger">
+					<a class="hamburger-menu" href="../../about.html">&#9776;</a><span class="font-margin" id="navB"></span>
+				</div>
+			</nav>
+		</header>
+		<div class="title">
+			<h1>Text to morse code converter</h1>
+		</div>
+		<div class="box3">
+			<a href="javascript:window.history.back();">Back</a>
+			<br>
+			<a href="../../home.html">Home</a>
+		</div>
+		<div class="box2">
+			<h3>Text to morse</h3>
+			<textarea type="text" id="textInput" placeholder="Enter text" maxlength="1000" rows="7" cols="100"></textarea>
+			<div>
+				<button onclick="convertToMorse()">Convert</button>
+				<button onclick="reset()">Reset</button>
+			</div>
+			<div id="output"></div>
+			<br>
+			<h3>Audio playback</h3>
+			<label for="frequencyInput">Frequency:</label>
+			<input type="text" id="frequencyInput" value="900" inputmode="numeric" maxlength="5">
+			<button onclick="resetFrequency()">Reset frequency</button>
+			<br>
+			<select id="speedSelect">
+				<option value="1">Speed: 1x</option>
+				<option value="2">Speed: 2x</option>
+				<option value="3">Speed: 3x</option>
+				<option value="4" selected>Speed: 4x</option>
+				<option value="5">Speed: 5x</option>
+			</select>
+			<button onclick="playMorse()">Play</button>
+			<button onclick="stopAudio()">Stop</button>
+			<br>
+			<button onclick="saveMorseAudio()">Save audio</button>
+		</div>
+		<footer id="footerB"></footer>
+	</div>
+	<script type='text/javascript' src='../../script/jquery.min.js'></script>
+	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/nav/navB.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		const morseCode = {
+			A: "•-",
+			B: "-•••",
+			C: "-•-•",
+			D: "-••",
+			E: "•",
+			F: "••-•",
+			G: "--•",
+			H: "••••",
+			I: "••",
+			J: "•---",
+			K: "-•-",
+			L: "•-••",
+			M: "--",
+			N: "-•",
+			O: "---",
+			P: "•--•",
+			Q: "--•-",
+			R: "•-•",
+			S: "•••",
+			T: "-",
+			U: "••-",
+			V: "•••-",
+			W: "•--",
+			X: "-••-",
+			Y: "-•--",
+			Z: "--••",
+			"1": "•----",
+			"2": "••---",
+			"3": "•••--",
+			"4": "••••-",
+			"5": "•••••",
+			"6": "-••••",
+			"7": "--•••",
+			"8": "---••",
+			"9": "----•",
+			"0": "-----",
+			".": "•-•-•-",
+			",": "--••--"
+		};
+
+		let audioContext = null;
+		let isPlaying = false;
+		let defaultFrequency = 900;
+
+		function convertToMorse() {
+			const text = document.getElementById("textInput").value.toUpperCase().trim();
+			const words = text.split(" ");
+			const morseWords = words.map(word =>
+				word.split("").map(char => morseCode[char] || "").filter(Boolean).join(" ") // space between letters
+			);
+			const morseOutput = morseWords.join(" / "); // slash between words
+			document.getElementById("output").innerText = morseOutput;
+		}
+
+		function reset() {
+			document.getElementById("textInput").value = "";
+			document.getElementById("output").innerText = "";
+			stopAudio();
+		}
+
+		function playMorse() {
+			if (isPlaying) return; // Prevent overlapping playback
+
+			const morsePattern = document.getElementById("output").innerText;
+			const speed = parseFloat(document.getElementById("speedSelect").value);
+			const frequency = parseInt(document.getElementById("frequencyInput").value);
+			if (!morsePattern) return;
+
+			if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+			isPlaying = true;
+
+			const unitTime = 200 / speed; // Base time adjusted by speed
+			let currentTime = 0;
+
+			for (const symbol of morsePattern) {
+				if (symbol === "•") {
+					scheduleBeep(currentTime, unitTime, frequency); // Short beep
+					currentTime += unitTime * 2;
+				} else if (symbol === "-") {
+					scheduleBeep(currentTime, unitTime * 3, frequency); // Long beep
+					currentTime += unitTime * 4;
+				} else if (symbol === " ") {
+					currentTime += unitTime * 4; // Space between letters
+				} else if (symbol === "/") {
+					currentTime += unitTime * 6; // Space between words (longer pause)
+				}
+			}
+
+			// Reset playing state after the last beep
+			setTimeout(() => {
+				isPlaying = false;
+			}, currentTime);
+		}
+
+		function scheduleBeep(startDelay, duration, frequency) {
+			const startTime = audioContext.currentTime + startDelay / 1000; // Convert ms to seconds
+			const oscillator = audioContext.createOscillator();
+			oscillator.type = "sine";
+			oscillator.frequency.setValueAtTime(frequency, startTime); // Use user-defined frequency
+			oscillator.connect(audioContext.destination);
+			oscillator.start(startTime);
+			oscillator.stop(startTime + duration / 1000); // Convert ms to seconds
+		}
+
+		function stopAudio() {
+			if (audioContext) {
+				audioContext.close();
+				audioContext = null;
+			}
+			isPlaying = false;
+		}
+
+		function resetFrequency() {
+			document.getElementById("frequencyInput").value = defaultFrequency; // Reset to default
+		}
+
+		function saveMorseAudio() {
+			const speed = parseFloat(document.getElementById("speedSelect").value); // Get the speed multiplier
+			const frequency = parseInt(document.getElementById("frequencyInput").value); // Frequency of beep
+			const morsePattern = document.getElementById("output").innerText;
+			if (!morsePattern) return;
+
+			const unitTime = 170 / speed; // Base duration of a dot, adjusted by speed
+			const sampleRate = 44100; // Standard sample rate for audio
+			let totalSamples = 0;
+
+			// Calculate total duration in samples for the morse pattern
+			for (const symbol of morsePattern) {
+				if (symbol === "•") totalSamples += sampleRate * (unitTime * 2 / 900); // Dot duration
+				if (symbol === "-") totalSamples += sampleRate * (unitTime * 4 / 900); // Dash duration
+				if (symbol === " ") totalSamples += sampleRate * (unitTime * 4 / 900); // Space between letters
+				if (symbol === "/") totalSamples += sampleRate * (unitTime * 6 / 900); // Space between words
+			}
+
+			const audioContext = new (window.AudioContext || window.webkitAudioContext)({
+				sampleRate
+			});
+			const buffer = audioContext.createBuffer(1, totalSamples, sampleRate);
+			const channelData = buffer.getChannelData(0);
+
+			let sampleIndex = 0;
+			for (const symbol of morsePattern) {
+				let beepDuration = 0;
+				if (symbol === "•") beepDuration = unitTime * 2; // Dot
+				if (symbol === "-") beepDuration = unitTime * 4; // Dash
+
+				// Generate beep sound (sine wave)
+				if (beepDuration > 0) {
+					for (let i = 0; i < sampleRate * (beepDuration / 1000); i++) {
+						channelData[sampleIndex++] = Math.sin(2 * Math.PI * frequency * (i / sampleRate));
+					}
+				}
+
+				// Add silence after beep (space between symbols)
+				const silenceDuration = symbol === "•" || symbol === "-" ? unitTime: unitTime * 3; // Adjust silence
+				for (let i = 0; i < sampleRate * (silenceDuration / 1000); i++) {
+					channelData[sampleIndex++] = 0;
+				}
+
+				// Longer silence between words
+				if (symbol === "/") {
+					for (let i = 0; i < sampleRate * (unitTime * 1 / 1000); i++) {
+						channelData[sampleIndex++] = 0;
+					}
+				}
+			}
+
+			const wavBlob = bufferToWav(buffer); // Convert the buffer to a WAV blob
+			const link = document.createElement("a");
+			link.href = URL.createObjectURL(wavBlob);
+			link.download = "Morse_code.wav";
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		}
+
+		function bufferToWav(buffer) {
+			const numOfChan = buffer.numberOfChannels;
+			const length = buffer.length * numOfChan * 2 + 44;
+			const bufferArray = new ArrayBuffer(length);
+			const view = new DataView(bufferArray);
+			const channels = [];
+			let offset = 0;
+
+			function writeString(view, offset, string) {
+				for (let i = 0; i < string.length; i++) {
+					view.setUint8(offset + i, string.charCodeAt(i));
+				}
+			}
+
+			function floatTo16BitPCM(output, offset, input) {
+				for (let i = 0; i < input.length; i++, offset += 2) {
+					const s = Math.max(-1, Math.min(1, input[i]));
+					output.setInt16(offset, s < 0 ? s * 0x8000: s * 0x7FFF, true);
+				}
+			}
+
+			writeString(view, 0, "RIFF");
+			view.setUint32(4, length - 8, true);
+			writeString(view, 8, "WAVE");
+			writeString(view, 12, "fmt ");
+			view.setUint32(16, 16, true);
+			view.setUint16(20, 1, true);
+			view.setUint16(22, numOfChan, true);
+			view.setUint32(24, buffer.sampleRate, true);
+			view.setUint32(28, buffer.sampleRate * numOfChan * 2, true);
+			view.setUint16(32, numOfChan * 2, true);
+			view.setUint16(34, 16, true);
+			writeString(view, 36, "data");
+			view.setUint32(40, length - 44, true);
+
+			for (let i = 0; i < buffer.numberOfChannels; i++) {
+				channels.push(buffer.getChannelData(i));
+			}
+
+			let interleaved = new Float32Array(buffer.length * numOfChan);
+			for (let i = 0, j = 0; i < buffer.length; i++) {
+				for (let c = 0; c < numOfChan; c++, j++) {
+					interleaved[j] = channels[c][i];
+				}
+			}
+
+			floatTo16BitPCM(view, 44, interleaved);
+
+			return new Blob([view], {
+				type: "audio/wav"
+			});
+		}
+	</script>
+	<noscript>
+		<br>
+		<div class="box3 center-text">
+			<h2>JavaScript is need to be enabled!</h2>
+			You must have JavaScript enabled in your browser's settings to show the contents!
+			<br>
+			<br>Are you using HTML viewer? Open as browser instead.
+			<br>
+			<br>Done? Try refreshing the page.
+		</div>
+	</noscript>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show();
+		});
+	</script>
+</body>
+</html>

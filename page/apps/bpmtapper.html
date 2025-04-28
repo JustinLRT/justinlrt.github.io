@@ -17,8 +17,8 @@
 			flex-direction: column;
 		}
 		#tapBox {
-			width: 100px;
-			height: 50px;
+			width: 90%;
+			height: 15rem;
 			background-color: #B8FFAA;
 			border: solid 2px green;
 			display: flex;
@@ -29,6 +29,7 @@
 			cursor: pointer;
 		}
 		#resetButton {
+			margin-top: 20px;
 			width: 80px;
 			height: 30px;
 			background-color: #FFDBDB;
@@ -38,9 +39,6 @@
 			justify-content: center;
 			font-size: 12px;
 			cursor: pointer;
-		}
-		#currentBpmBox {
-			margin-bottom: 20px;
 		}
 	</style>
 </head>
@@ -62,10 +60,20 @@
 			<a href="../../home.html">Home</a> &#8594; <a href="../apps.html">Web Apps</a>
 		</div>
 		<div class="box2">
-			<h3 id="averageBpmBox">Average BPM: 0</h3>
-			<h3 id="currentBpmBox">Current BPM: 0</h3>
-			<h3 id="lowestBpmBox">Lowest BPM: N/A</h3>
-			<h3 id="highestBpmBox">Highest BPM: N/A</h3>
+			<table>
+				<tr>
+					<td><h3 id="lowestBpmBox">Lowest: N/A</h3></td>
+					<td><h3 id="currentBpmBox">Current: 0</h3></td>
+				</tr>
+				<tr>
+					<td><h3 id="highestBpmBox">Highest: N/A</h3></td>
+					<td><h3 id="averageBpmBox">Average: 0</h3></td>
+				</tr>
+			</table>
+			
+			
+			
+			
 			<div id="tapBox" onclick="handleTap()">
 				Tap
 			</div>
@@ -103,10 +111,10 @@
 			const lowestBpm = taps.length > 0 ? Math.min(...taps) : "N/A";
 			const highestBpm = taps.length > 0 ? Math.max(...taps) : "N/A";
 
-			document.getElementById('averageBpmBox').innerText = `Average BPM: ${averageBpm}`;
-			document.getElementById('currentBpmBox').innerText = `Current BPM: ${currentBpm}`;
-			document.getElementById('lowestBpmBox').innerText = `Lowest BPM: ${lowestBpm}`;
-			document.getElementById('highestBpmBox').innerText = `Highest BPM: ${highestBpm}`;
+			document.getElementById('averageBpmBox').innerText = `Average: ${averageBpm}`;
+			document.getElementById('currentBpmBox').innerText = `Current: ${currentBpm}`;
+			document.getElementById('lowestBpmBox').innerText = `Lowest: ${lowestBpm}`;
+			document.getElementById('highestBpmBox').innerText = `Highest: ${highestBpm}`;
 		}
 
 		function resetCounters() {
