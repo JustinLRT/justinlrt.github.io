@@ -8,7 +8,7 @@ body.dark-mode header {
 	border-bottom: solid 3px #4AAF39;
 }
 body.dark-mode .hamburger {
-	background-color: #102512	;
+	background-color: #102512;
 	color: white;
 }
 body.dark-mode .hamburger a {
@@ -23,13 +23,12 @@ body.dark-mode a {
 body.dark-mode .dp {
 	border-color: #4AAF39;
 }
-body.dark-mode button {
-	border-color: #4AAF39;
-	background-color: #003200;
+body.dark-mode button,select {
+	background-color: #008000;
 	color: white;
 }
 body.dark-mode button:hover {
-	background-color: #4AAF39;
+	background-color: #4FFF4C;
 }
 body.dark-mode select {
 	border-color: #4AAF39;
@@ -53,6 +52,22 @@ body.dark-mode .box3 .box-title {
 }
 body.dark-mode .desc {
 	color: #BBBBBB;
+}
+body.dark-mode input[type="text"] {
+	background-color: #121212;
+	color: white;
+}
+body.dark-mode input[type="text"]::placeholder {
+	color: white;
+	opacity: 1;
+}
+body.dark-mode textarea {
+	background-color: #121212;
+	color: white;
+}
+body.dark-mode textarea::placeholder {
+	color: white;
+	opacity: 1;
 }
 body.dark-mode td, th {
 	border-color: 1px solid #dddddd;
@@ -181,6 +196,7 @@ header {
 * {
 	margin: 0px;
 	padding: 0px;
+	font-family: system-ui;
 }
 footer {
 	text-align: center;
@@ -188,10 +204,10 @@ footer {
 	margin-bottom: 40px;
 }
 body {
-	font-family: Arial;
 	background: white;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-top: 55px;
 }
 td {
 	font-size: 96%;
@@ -210,21 +226,22 @@ h1,h2 {
 audio {
 	outline: none;
 }
-button {
+button, select {
 	outline: none;
-	background-color: #B8FFAA;
-	border-color: #008000 /*Main color*/;
-	border-width: 2px;
-	padding: 1px 3px 1px 3px;
-}
-button:hover {
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	padding: 10px 15px;
+	margin: 2px 1px;
 	background-color: #008000;
 }
-select {
-	background-color: #B8FFAA;
-	border-color: #008000 /*Main color*/;
-	border-width: 2px;
-	padding: 1px 3px 1px 3px;
+input {
+	padding: 5px;
+	margin: 2px 1px;
+}
+button:hover {
+	background-color: #4FFF4C;
 }
 audio {
 	width: 100%;
@@ -234,17 +251,21 @@ audio {
 	justify-content: center;
 	align-items: center;
 }
+textarea {
+	font-size: 1rem;
+	padding: 5px;
+}
 .social a {
 	padding: 0 8px;
-}
-div.title h1 {
-	margin-top: 55px;
 }
 ul.pdl li {
 	padding-top: 10px;
 }
 ol.pdl li {
 	padding-top: 10px;
+}
+div.title h3 {
+	text-align: center;
 }
 .center-fit {
 	max-width: 100%;
@@ -320,6 +341,17 @@ div.ad {
 }
 div.ad a {
 	color: red;
+}
+.close-btn {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+div.support {
+	position: relative;
+	transform: translate(0px,10px);
 }
 
 /*Boxes*/
@@ -439,7 +471,6 @@ div.ad a {
 
 /*Table*/
 table {
-	font-family: arial, sans-serif;
 	border-collapse: collapse;
 	table-layout: fixed;
 	border: 1;
@@ -523,6 +554,10 @@ table.inner-table th {
 .linepnr {
 	border-left: solid 18px #FF9900;
 	border-right: solid 18px #FF9900;
+}
+.linemms {
+	border-left: solid 18px blue;
+	border-right: solid 18px blue;
 }
 .font-station {
 	font-size: 90%;
@@ -739,6 +774,9 @@ div.scal li {
 	margin: 0% 0% 3% 0%;
 	border: solid 2.7px #B32424;
 	background-color: #FFDBDB;
+}
+body.dark-mode .red-bg-temp1 {
+	background-color: #422829;
 }
 .lightorange-bg-temp {
 	padding: 0.5em;

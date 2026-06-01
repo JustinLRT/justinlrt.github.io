@@ -9,6 +9,9 @@
 	<link rel="apple-touch-icon" href="icon.png">
 	<title>Navigation page</title>
 	<style>
+		body {
+			margin-top: 10px;
+		}
 		ul.padding0-rule li {
 			padding: 0px;
 		}
@@ -142,9 +145,12 @@
 						<tr>
 							<td colspan="2"><a href="page/lrt1trainspotting.html">LRT-1 trainspotting</a></td>
 						</tr>
-						<tr class="bdb">
-							<td class="bdt"><a href="page/lrtmrtsongs.html">Songs</a></td>
+						<tr>
+							<td class="bdt bdb" rowspan="2"><a href="page/lrtmrtsongs.html">Songs</a></td>
 							<td class="bdt"><a href="page/lightrailtransitline1.html">Light Rail Transit Line 1</a></td>
+						</tr>
+						<tr>
+							<td class="bdb"><a href="page/kinupitdahilsakorapsyon.html">Kinupit Dahil Sa Korapsyon</a></td>
 						</tr>
 						<tr>
 							<td rowspan="2"><a href="page/letter.html">Justin sent a letter to LRT-1 management</a></td>
@@ -157,7 +163,7 @@
 							<td class="bdt bdb" colspan="2"><a href="page/elections.html">LRT Elections and Officers</a></td>
 						</tr>
 						<tr>
-							<td class="bdb" colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
+							<td colspan="2"><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a></td>
 						</tr>
 						<tr>
 							<td colspan="2"><a href="page/lrt1bingo.html">LRT-1 Bingo</a></td>
@@ -219,6 +225,10 @@
 						<tr>
 							<td><a href="page/apps/musicplayer.html">Music Player</a></td>
 							<td><a href="page/apps/videotoimage.html">Video to Image</a></td>
+						</tr>
+						<tr>
+							<td><a href="page/apps/gps.html">GPS tracker</a></td>
+							<td><a href="page/apps/texttomorsecode.html">Text to morse code converter</a></td>
 						</tr>
 					</table>
 				</div>
@@ -304,7 +314,7 @@
 			alert("First published in Github. It supposed to be www.justinlrt.com but there's have a problem regarding to DNS.")
 		}
 		function darkmodeinfo() {
-			alert("To ensure proper rendering of graphics and elements, you MUST disable the dark mode in your browser for this site when enabling this theme. Otherwise, some elements may appear much darker or fail to render properly.")
+			alert("To ensure proper rendering of graphics and elements, you MUST disable the dark mode in your browser for this site when visiting our website. Otherwise, some elements may appear much darker or fail to render properly.")
 		}
 
 		document.addEventListener("DOMContentLoaded", () => {
