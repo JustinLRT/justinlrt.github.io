@@ -62,11 +62,11 @@
 		<div class="box2">
 			<table>
 				<tr>
-					<td><h3 id="lowestBpmBox">Lowest: N/A</h3></td>
+					<td><h3 id="lowestBpmBox">Lowest: 0</h3></td>
 					<td><h3 id="currentBpmBox">Current: 0</h3></td>
 				</tr>
 				<tr>
-					<td><h3 id="highestBpmBox">Highest: N/A</h3></td>
+					<td><h3 id="highestBpmBox">Highest: 0</h3></td>
 					<td><h3 id="averageBpmBox">Average: 0</h3></td>
 				</tr>
 			</table>
@@ -108,8 +108,8 @@
 		function updateDisplay() {
 			const averageBpm = taps.length > 0 ? Math.round(taps.reduce((a, b) => a + b) / taps.length) : 0;
 			const currentBpm = taps.length > 1 ? taps[taps.length - 1] : 0;
-			const lowestBpm = taps.length > 0 ? Math.min(...taps) : "N/A";
-			const highestBpm = taps.length > 0 ? Math.max(...taps) : "N/A";
+			const lowestBpm = taps.length > 0 ? Math.min(...taps) : "0";
+			const highestBpm = taps.length > 0 ? Math.max(...taps) : "0";
 
 			document.getElementById('averageBpmBox').innerText = `Average: ${averageBpm}`;
 			document.getElementById('currentBpmBox').innerText = `Current: ${currentBpm}`;
