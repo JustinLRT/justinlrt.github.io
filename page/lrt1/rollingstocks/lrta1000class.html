@@ -22,6 +22,40 @@
 		col.legend {
 			width: 5%;
 		}
+		.btm-margin {
+			margin-bottom: 12px;
+		}
+@media (min-width: 600px) {
+			/* Float left */
+			.left {
+				float: left;
+				margin-right: 10px;
+				width: 300px;
+			}
+			/* Float right */
+			.right {
+				float: right;
+				margin-left: 10px;
+				width: 300px;
+			}
+			.main-photo {
+				flex-direction: row;
+				display: flex;
+			}
+			.exterior {
+				order: 1;
+				max-width: 50%;
+				margin-right: 2.5px;
+			}
+			.interior {
+				order: 2;
+				max-width: 50%;
+				margin-left: 2.5px;
+			}
+			.btm-margin {
+				margin-bottom: 0px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -43,8 +77,17 @@
 			<a href="../../../home.html">Home</a> &#8594; <a href="../../lrt1.html">LRT-1</a>
 		</div>
 		<div class="box2">
-			The <b>LRTA 1000 class</b> is the first-generation class of high-floor light rail vehicles (LRV) of the LRT Line 1.
+			The <b>LRTA 1000 class</b> is the first-generation class of high-floor light rail vehicles (LRV) of the Manila LRT Line 1. Purchased under soft loans from the Belgian Government, the trains first entered service under the Light Rail Transit Authority (LRTA) in 1984.
 			<br>
+			<br>It has undergone two refurbishments; the first from 1999 to 2008, and the most recent by the Light Rail Manila Corporation (LRMC) from 2016 to 2017. The newer 13000 class trains have gradually replaced the older 1000 class trains since July 2023.
+			<br>
+			<br>
+			<div class="ad">
+				<a href="../../advertise.html">
+					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+					<br>Click this to place your ad here
+				</a>
+			</div>
 			<br>
 			<table>
 				<tr>
@@ -52,14 +95,19 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gcarriedo1.jpg" />
-						<div class="center-text desc">
-							A 1000 class train at Carriedo station in 2023
-						</div>
-						<br>
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior4.jpg" />
-						<div class="center-text desc">
-							Interior of 1000 class LRV (first refurbishment) with new onboard equipment installed during the 2022 signalling upgrade.
+						<div class="main-photo">
+							<div class="exterior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gcarriedo1.jpg" />
+								<div class="center-text desc btm-margin">
+									A 1000 class train at Carriedo station in 2023
+								</div>
+							</div>
+							<div class="interior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior4.jpg" />
+								<div class="center-text desc">
+									Interior of 1000 class in March 2022
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
@@ -69,7 +117,7 @@
 				</tr>
 				<tr>
 					<td><b>In service</b></td>
-					<td>1984–present</td>
+					<td>1984–2025</td>
 				</tr>
 				<tr>
 					<td><b>Manufacturer</b></td>
@@ -106,7 +154,7 @@
 				</tr>
 				<tr>
 					<td><b>Number in service</b></td>
-					<td>26 vehicles</td>
+					<td>None</td>
 				</tr>
 				<tr>
 					<td><b>Number scrapped or decommissioned</b></td>
@@ -126,7 +174,11 @@
 				</tr>
 				<tr>
 					<td><b>Capacity</b></td>
-					<td>748–1,122 passengers</td>
+					<td>
+						374 per car
+						<br>748–1,122 passengers
+						<br>(162–243 seats)
+					</td>
 				</tr>
 				<tr>
 					<td><b>Operator(s)</b></td>
@@ -156,8 +208,8 @@
 				<tr>
 					<td><b>Train length</b></td>
 					<td>
-						<b>2-car trainset:</b> 59.59 m
-						<br><b>3-car trainset:</b> 89.37 m
+						<b>2-car:</b> 59.59 m
+						<br><b>3-car:</b> 89.37 m
 					</td>
 				</tr>
 				<tr>
@@ -189,7 +241,7 @@
 				</tr>
 				<tr>
 					<td><b>Doors</b></td>
-					<td>5 sets of 1.3 m double-leaf plug door per side<sup><a id="note-4" onclick="note4()">[note 4]</a></sup></td>
+					<td>Double-leaf 1.3 m plug-type; 5 per side<sup><a id="note-4" onclick="note4()">[note 4]</a></sup></td>
 				</tr>
 				<tr>
 					<td><b>Articulated sections</b></td>
@@ -213,7 +265,10 @@
 				</tr>
 				<tr>
 					<td><b>Maximum speed</b></td>
-					<td>60 km/h</td>
+					<td>
+						<b>Design:</b> 80 km/h
+						<br><b>Service:</b> 60 km/h
+					</td>
 				</tr>
 				<tr>
 					<td><b>Weight</b></td>
@@ -306,8 +361,11 @@
 				<tr>
 					<td><b>Safety system(s)</b></td>
 					<td>
-						ATS (1984–2007)
-						<br>ATP (2007–present; for active trains)
+						<ul>
+							<li>ACEC fixed block relay-type ATS (1984–2007)</li>
+							<li>Siemens fixed block ATP/ATS (2007–2022)</li>
+							<li>Alstom Atlas 100 ETCS-1 with subsystem of ATP (2022–present)</li>
+						</ul>
 					</td>
 				</tr>
 				<tr>
@@ -330,25 +388,17 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<div class="ad">
-				<a href="../../advertise.html">
-					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-					<br>Click this to place your ad here
-				</a>
-			</div>
-			<br>Purchased under soft loans from the Belgian Government, the trains first entered service under the Light Rail Transit Authority (LRTA) in 1984. It has undergone two refurbishments; the first from 1999 to 2008, and the most recent by the Light Rail Manila Corporation (LRMC) from 2016 to 2017.
-			<br>
-			<br>The newer 13000 class trains have gradually replaced the older 1000 class trains since 2023.
 		</div>
-		<button class="collapsible">Operational history</button>
+		<button class="collapsible">History</button>
 		<div class="content">
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gbelgium.jpg" />
-			<div class="center-text desc">
-				LRTA 1000 class LRVs under construction in the BN plant in Bruges, Belgium
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gbelgium.jpg" />
+				<div class="center-text desc">
+					LRTA 1000 class LRVs under construction in the BN plant in Bruges, Belgium
+				</div>
+				<br>
 			</div>
-			<br>
 			<h2>Purchase</h2>
 			The construction of the original 15-kilometer section of the LRT Line 1 was funded by a ₱300 million soft and interest-free loan from the Belgian Government. Additional funding for the project was later sourced from a ₱700 million loan provided by the consortium of ACEC (Ateliers de Constructions Electriques de Charleroi), BN (Constructions Ferroviaires et Metalliques, formerly Brugeoise et Nivelles), TEI (Tractionnel Engineering International), and TC (Transurb Consult). The trains were included in the second loan package, along with the power systems, signaling, and telecommunications.
 			<br>
@@ -360,7 +410,7 @@
 			<br>
 			<br>
 			<h2>First refurbishment</h2>
-			From 1999 to 2001, 32 LRVs underwent the first refurbishment, carried out by BN, ACEC Transport SA, Transurb Consult, and Tractebel. The car body was repaired and a new livery design was added. Seats were also replaced, new components were installated, and modifications were made on the roof for the installation of air conditioning units. Replacement and cleaning of electrical components were not included.
+			From 1999 to 2001, 32 LRVs underwent the first refurbishment, carried out by BN, ACEC Transport SA, Transurb Consult, and Tractebel. The car body was repaired, and a new livery design was added. Seats were also replaced, new components were installed, and modifications were made on the roof for the installation of air conditioning units. Replacement and cleaning of electrical components were not included.
 			<br>
 			<br>The 31 remaining LRVs that were not modernized in Phase 1 underwent refurbishment by the Light Rail Transit Authority from 2004 to January 2008. This involved the replacement of the electrical components of the trains, along with additional works in the 32 refurbished LRVs.
 			<br>
@@ -378,7 +428,7 @@
 			<br>
 			<br>
 			<h2>Retirement</h2>
-			The first-generation 1000 class trains are planned to be replaced with the newer 13000 class fourth-generation trains.
+			The first-generation 1000 class trains have been gradually to be replaced with the newer 13000 class fourth-generation trains, with some trains been relocated in order to accommodate the new trains.
 			<br>
 			<br>As of 2021, there are eight decommissioned 1000 class LRVs from accidents, cannibalized trains and 1037, involved in a terrorist attack. These were previously stored at the LRT Line 1 Baclaran Depot until these were transferred to the LRT Line 2 Santolan Depot due to the expansion of the former, and the last known train to be operated was seen on February 7, 2025, as a school train.
 		</div>
@@ -400,43 +450,55 @@
 			<br>Prior to the 2003 refurbishment, each light rail vehicle had 12 roof-mounted forced ventilation units. A refurbished light rail vehicle has five roof-mounted air-conditioning units.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1g2caredsa.jpg" />
-			<div class="center-text desc">
-				A two-car 1000 class train approaching EDSA station
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1g2caredsa.jpg" />
+				<div class="center-text desc">
+					A two-car 1000 class train approaching EDSA station
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gun.jpg" />
+				<div class="center-text desc">
+					A 1000 class train approaching United Nations station
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gled.jpg" />
+				<div class="center-text desc">
+					A newly refurbished 1000 class LRV with an LED destination front display
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gcarriedo2.jpg" />
+				<div class="center-text desc">
+					A 1000 class
+					train at Carriedo station
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/monumento.jpg">
+				<div class="center-text desc">
+					A three-car 1000 class train at Monumento station
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gun.jpg" />
-			<div class="center-text desc">
-				A 1000 class train approaching United Nations station
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gled.jpg" />
-			<div class="center-text desc">
-				A newly refurbished 1000 class LRV with an LED destination front display
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1gcarriedo2.jpg" />
-			<div class="center-text desc">
-				A 1000 class
-				train at Carriedo station
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/monumento.jpg">
-			<div class="center-text desc">A three-car 1000 class train at Monumento station</div>
-			<br>
 			<h2>Interior</h2>
 			Each LRV has five door swing plug-type doors per side. Each train car has a capacity of 81 seated passengers and 293 standing passengers, carrying a total of 374 passengers. Seats are colored blue and are longitudinal-type.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior1.jpg">
-			<div class="center-text desc">Interior of 1000 class LRV (first refurbishment)</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior2.jpg">
-			<div class="center-text desc">Interior of 1000 class LRV (second refurbishment)</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior3.jpg">
-			<div class="center-text desc">Interior with new Alstom signaling equipment on the left.</div>
-			<br>
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior1.jpg">
+				<div class="center-text desc">
+					Interior of 1000 class LRV (first refurbishment)
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior2.jpg">
+				<div class="center-text desc">
+					Interior of 1000 class LRV (second refurbishment)
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/1ginterior3.jpg">
+				<div class="center-text desc">
+					Interior with new Alstom signaling equipment on the left.
+				</div>
+				<br>
+			</div>
 			<h2>Electrical and mechanical</h2>
 			A thyristor chopper traction control system is installed in the trains, powering two direct current (DC) straight-wound traction motors. Ateliers de Constructions Electriques de Charleroi (ACEC) manufactured the electrical and traction equipment for the trains.
 			<br>

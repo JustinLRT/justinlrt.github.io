@@ -41,17 +41,58 @@
 			overflow-x: auto;
 			white-space: nowrap;
 		}
+		.btm-margin {
+			margin-bottom: 12px;
+		}
+		table.center-text1 th,
+		table.center-text1 td {
+			text-align: center;
+		}
 		/* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (min-width: 600px) {
 			/* Add any specific styles for the scrollable table on smaller screens if needed */
 			.table-container {
 				width: 100% !important;
 				overflow-x: scroll;
 			}
-		}
-		table.center-text1 th,
-		table.center-text1 td {
-			text-align: center;
+			/* Float left */
+			.left {
+				float: left;
+				margin-right: 10px;
+				width: 300px;
+			}
+			/* Float right */
+			.right {
+				float: right;
+				margin-left: 10px;
+				width: 300px;
+			}
+			.main-photo {
+				flex-direction: row;
+				display: flex;
+			}
+			.exterior {
+				order: 1;
+				max-width: 50%;
+				margin-right: 2.5px;
+			}
+			.interior {
+				order: 2;
+				max-width: 50%;
+				margin-left: 2.5px;
+			}
+			.btm-margin {
+				margin-bottom: 0px;
+			}
+			.lrt1img {
+				order: 1;
+				width: 38%;
+				margin-right: 10px;
+			}
+			.lrt1desc {
+				order: 2;
+				width: 62%;
+			}
 		}
 	</style>
 </head>
@@ -74,8 +115,17 @@
 			<a href="../../../home.html">Home</a> &#8594; <a href="../../lrt1.html">LRT-1</a>
 		</div>
 		<div class="box2">
-			The <b>LRTA 1100 class</b> is the second-generation class of high-floor light rail vehicles of the LRT Line 1.
+			The <b>LRTA 1100 class</b> is the second-generation class of high-floor light rail vehicles of the Manila LRT Line 1. The trains were purchased in 1996 as part of a capacity expansion project funded by official development assistance (ODA) loans from Japan.
 			<br>
+			<br>Entering service in 1999, many vehicles were taken out of service due to lack of spare parts. The trains subsequently underwent re-engineering and refurbishment by Voith from 2019 to 2020. By 2024, all LRTA 1100 class trains were supplanted by the succeeding LRTA 1200 and LRTA 13000 class trainsets.
+			<br>
+			<br>
+			<div class="ad">
+				<a href="../../advertise.html">
+					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+					<br>Click this to place your ad here
+				</a>
+			</div>
 			<br>
 			<table>
 				<tr>
@@ -83,14 +133,19 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gmonumento.jpg">
-						<div class="center-text desc">
-							A 1100 class train at Monumento in December 2021
-						</div>
-						<br>
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior4.jpg" />
-						<div class="center-text desc">
-							Interior of the train captured in April 2024
+						<div class="main-photo">
+							<div class="exterior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gmonumento.jpg">
+								<div class="center-text desc btm-margin">
+									A 1100 class train at Monumento in December 2021
+								</div>
+							</div>
+							<div class="interior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior4.jpg" />
+								<div class="center-text desc">
+									Interior of 1100 clas in April 2024
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
@@ -100,7 +155,7 @@
 				</tr>
 				<tr>
 					<td><b>In service</b></td>
-					<td>1999–present</td>
+					<td>1999–2024</td>
 				</tr>
 				<tr>
 					<td><b>Manufacturer</b></td>
@@ -131,7 +186,11 @@
 				</tr>
 				<tr>
 					<td><b>Number in service</b></td>
-					<td>20 vehicles (5 sets)</td>
+					<td>None</td>
+				</tr>
+				<tr>
+					<td><b>Number retied</b></td>
+					<td>4 vehicles</td>
 				</tr>
 				<tr>
 					<td><b>Formation</b></td>
@@ -143,7 +202,10 @@
 				</tr>
 				<tr>
 					<td><b>Capacity</b></td>
-					<td>1,358 passengers</td>
+					<td>
+						1,358 passengers
+						<br>(320 seats)
+					</td>
 				</tr>
 				<tr>
 					<td><b>Operator(s)</b></td>
@@ -205,7 +267,7 @@
 				</tr>
 				<tr>
 					<td><b>Doors</b></td>
-					<td>4 sets of 1.5 m × 1.9 m double-leaf pocket doors per side</td>
+					<td>Double-leaf 1.5 m × 1.9 m pocket-type; 4 per side</td>
 				</tr>
 				<tr>
 					<td><b>Articulated sections</b></td>
@@ -228,7 +290,10 @@
 				</tr>
 				<tr>
 					<td><b>Maximum speed</b></td>
-					<td>60 km/h</td>
+					<td>
+						<b>Design:</b> 80 km/h
+						<br><b>Service:</b> 60 km/h
+					</td>
 				</tr>
 				<tr>
 					<td><b>Weight</b></td>
@@ -326,8 +391,11 @@
 				<tr>
 					<td><b>Safety system(s)</b></td>
 					<td>
-						ATS (1999–2007)
-						<br>ATP (2007–present)
+						<ul>
+							<li>ACEC fixed block relay-type ATS (1984–2007)</li>
+							<li>Siemens fixed block ATP/ATS (2007–2022)</li>
+							<li>Alstom Atlas 100 ETCS-1 with subsystem of ATP (2022–present)</li>
+						</ul>
 					</td>
 				</tr>
 				<tr>
@@ -350,16 +418,8 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<div class="ad">
-				<a href="../../advertise.html">
-					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-					<br>Click this to place your ad here
-				</a>
-			</div>
-			<br>The trains were purchased in 1996 as part of a capacity expansion project funded by official development assistance (ODA) loans from Japan. Entering service in 1999,[6][13] many vehicles were taken out of service due to lack of spare parts. The trains subsequently underwent re-engineering and refurbishment by Voith from 2019 to 2020.
 		</div>
-		<button class="collapsible">Operational history</button>
+		<button class="collapsible">History</button>
 		<div class="content">
 			<br><h2>Background and purchase</h2>
 			By 1990, the LRT Line 1 in Metro Manila reached its capacity, necessitating the need for capacity expansion. The project, launched in 1994 and undertaken at a cost of ₱4.1 billion, was one of the flagship projects of the administration of President Fidel V. Ramos. Initially, 32 cars with identical specifications to the 1000 class trains were planned to be ordered for the 32 two-car trains operating at the time so that each train would consist of three cars. However, with the increasing transport demand, four-car trains were considered instead.
@@ -393,48 +453,53 @@
 			</div>
 			<br>
 			<h2>Car body</h2>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gother1.jpg">
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gother2.jpg">
-			<div class="center-text desc">
-				The 1100 class trains resemble those of Adana Metro (top) and the LRV34 trains of Istanbul Tram Line T4 (above). Both trains were manufactured by Hyundai Precision's successor, Hyundai Rotem.
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gother1.jpg">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gother2.jpg">
+				<div class="center-text desc">
+					The 1100 class trains resemble those of Adana Metro (top) and the LRV34 trains of Istanbul Tram Line T4 (bottom). Both trains were manufactured by Hyundai Precision's successor, Hyundai Rotem.
+				</div>
+				<br>
 			</div>
-			<br>The train car body is made of stainless steel, sporting a silver body with yellow and blue cheatlines. Each LRV has four sliding pocket-type doors per side. The 1100 class trains are 90 millimeters wider than the 1000 class.
+			The train car body is made of stainless steel, sporting a silver body with yellow and blue cheatlines. Each LRV has four sliding pocket-type doors per side. The 1100 class trains are 90 millimeters wider than the 1000 class.
 			<br>
 			<br>
 			Similar to the 1000 class, the 1100 class have cheatlines of blue and yellow that run through its sides. The trains also served as a prototype for future LRVs made by Hyundai Precision, which bears resemblance to the trains used in the Adana Metro and the Hyundai Rotem LRV34 trains of the Line T4 of the Istanbul Tram.
-
-			Each light rail vehicle has two roof-mounted air-conditioning units. In total, there are eight air-conditioning units in a four-car train set.
+			<br>
+			<br>Each light rail vehicle has two roof-mounted air-conditioning units. In total, there are eight air-conditioning units in a four-car train set.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ggilpuyat.jpg" />
-			<div class="center-text desc">
-				1100 class train at Gil Puyat station in November 2006
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ggilpuyat.jpg" />
+				<div class="center-text desc">
+					1100 class train at Gil Puyat station in November 2006
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gun1.jpg">
+				<div class="center-text desc">
+					1100 class train at United Nations station in June 2020
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gun1.jpg">
-			<div class="center-text desc">
-				1100 class train at United Nations station in June 2020
-			</div>
-			<br>
-			<br>
 			<h2>Interior</h2>
 			The trains have longitudinal seating. A wheelchair provision is present near the articulated portion of the intermediate cars.
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior2.jpg" />
-			<div class="center-text desc">
-				Image shows stanchions, ACU vents, and briefly, the builders' plate.
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior2.jpg" />
+				<div class="center-text desc">
+					Image shows stanchions, ACU vents, and briefly, the builders' plate.
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior3.jpg" />
+				<div class="center-text desc">
+					1100 class train with seats removed, showing wheelchair space.
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gdrivercab.jpg" />
+				<div class="center-text desc">
+					View of driving cab before the 2019-2020 refurbishment.
+				</div>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2ginterior3.jpg" />
-			<div class="center-text desc">
-				1100 class train with seats removed, showing wheelchair space.
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gdrivercab.jpg" />
-			<div class="center-text desc">
-				View of driving cab before the 2019-2020 refurbishment.
-			</div>
-			<br>
 			<br>
 			<h2>Electrical</h2>
 			The 1100 class trains are the first Line 1 trains to have a propulsion system controlled by variable-voltage/variable frequency drive (VVVF) inverters with insulated-gate bipolar transistors (IGBT). The two inverters drive the four 3-phase alternating current, enclosed-type induction motors. Adtranz supplied the original electrical components, while Voith installed the new components. The traction equipment in a refurbished train consists of two Voith EmCon I1000-9AU traction inverters with 350 kilovolt-amperes continuous power in each, two auxiliary static inverters, and a VPort IO control unit.
@@ -446,9 +511,11 @@
 			Each LRV has three outside-frame bogies consisting of two motorized bogies at the ends of the LRV and one trailer bogie under the articulation. Unlike other trains, which have a bogie wheelbase of 1.9 meters, the long, 2.31-meter wheelbases of the 1100 class trains has caused restricted access to some tracks at the Baclaran Depot. The primary suspension is a chevron rubber spring, while the secondary suspension is an air suspension, similar to the 1200 class. Semi-permanent couplers are present in the ends of each light rail vehicle except the driving cab section of the MC car.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gbalintawak.jpg" />
-			<div class="center-text desc">
-				New underfloor traction equipment (Voith), outside-frame bogie and pantograph of a refurbished 1100 class. Semi-permanent couplers can also be seen on the right.
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/2gbalintawak.jpg" />
+				<div class="center-text desc">
+					New underfloor traction equipment (Voith), outside-frame bogie and pantograph of a refurbished 1100 class. Semi-permanent couplers can also be seen on the right.
+				</div>
 			</div>
 		</div>
 		<button class="collapsible">Train formation and build details</button>
@@ -599,6 +666,7 @@
 		<div class="content">
 			<br>
 			<ul class="pdl">
+				<li>On August 30, 2012 at 5:50 AM, a 1100 class train with LRV 1113A was involved after a woman committed suicide at EDSA station.</li>
 				<li>Two 1100 class trains, LRVs 1107 and 1120, collided at Baclaran Depot. LRV 1120, however, was subsequently repaired and refurbished in 2019.</li>
 				<li>On November 27, 2017, a 1100 class train door malfunctioned after a passenger forcibly opened it at Vito Cruz station, causing the sensor to malfunction. The train continued its journey with the door left open, and a passenger recorded this incident on camera.</li>
 				<li>On April 19, 2023, a 1100 class train stopped between Roosevelt and Balintawak Station.The 1100 class was coupled to a 1000 class train to be brought back to Baclaran Depot.</li>

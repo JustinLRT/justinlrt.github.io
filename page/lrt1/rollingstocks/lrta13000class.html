@@ -41,12 +41,44 @@
 			overflow-x: auto;
 			white-space: nowrap;
 		}
+		.btm-margin {
+			margin-bottom: 12px;
+		}
 		/* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (min-width: 600px) {
 			/* Add any specific styles for the scrollable table on smaller screens if needed */
 			.table-container {
 				width: 100% !important;
 				overflow-x: scroll;
+			}
+			/* Float left */
+			.left {
+				float: left;
+				margin-right: 10px;
+				width: 300px;
+			}
+			/* Float right */
+			.right {
+				float: right;
+				margin-left: 10px;
+				width: 300px;
+			}
+			.main-photo {
+				flex-direction: row;
+				display: flex;
+			}
+			.exterior {
+				order: 1;
+				max-width: 50%;
+				margin-right: 2.5px;
+			}
+			.interior {
+				order: 2;
+				max-width: 50%;
+				margin-left: 2.5px;
+			}
+			.btm-margin {
+				margin-bottom: 0px;
 			}
 		}
 	</style>
@@ -70,8 +102,19 @@
 			<a href="../../../home.html">Home</a> &#8594; <a href="../../lrt1.html">LRT-1</a>
 		</div>
 		<div class="box2">
-			The <b>LRTA 13000 class</b> is a class of fourth-generation high-floor light rail vehicles (LRV) of the LRT Line 1.
+			The <b>LRTA 13000 class</b> is a class of fourth-generation high-floor light rail vehicles (LRV) servicing the Manila LRT Line 1manufactured by CAF. Purchased in 2017 with Japanese funding as part of the Cavite extension of the line, the trains entered service in July 2023 to replace the aging first-generation 1000 class trains.
 			<br>
+			<br>Purchased in 2017 with Japanese funding as part of the south extension of the line, the trains, manufactured by CAF, entered service in July 2023 to replace the aging first-generation 1000 class trains.
+			<br>
+			<br>It is the first LRV in the system with 5 digits in the body number due to the class fleet exceeding 99 units, in comparison to the older fleet.
+			<br>
+			<br>
+			<div class="ad">
+				<a href="../../advertise.html">
+					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+					<br>Click this to place your ad here
+				</a>
+			</div>
 			<br>
 			<table>
 				<tr>
@@ -79,14 +122,19 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo.jpg" />
-						<div class="center-text desc">
-							A 13000 class train arriving at Carriedo in October 2024
-						</div>
-						<br>
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ginterior.jpg" />
-						<div class="center-text desc">
-							Interior of the 13000 class
+						<div class="main-photo">
+							<div class="exterior btm-margin">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo.jpg" />
+								<div class="center-text desc">
+									A 13000 class train arriving at Carriedo in October 2024
+								</div>
+							</div>
+							<div class="interior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ginterior.jpg" />
+								<div class="center-text desc">
+									Interior of the 13000 class
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
@@ -131,7 +179,7 @@
 				</tr>
 				<tr>
 					<td><b>Number in service</b></td>
-					<td>108 vehicles (27 sets)</td> <!--Sets 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 26, 27-->
+					<td>120 vehicles (30 sets)</td>
 				</tr>
 				<tr>
 					<td><b>Replaced</b></td>
@@ -206,7 +254,7 @@
 				</tr>
 				<tr>
 					<td><b>Doors</b></td>
-					<td>4 sets of 1,500 mm × 1,900 mm double-leaf pocket doors per side</td>
+					<td>Double-leaf 1.5 m × 1.9 m pocket-type; 4 per sidee</td>
 				</tr>
 				<tr>
 					<td><b>Articulated sections</b></td>
@@ -251,7 +299,7 @@
 				</tr>
 				<tr>
 					<td><b>Traction system</b></td>
-					<td>Mitsubishi Electric IGBT-VVVF</td>
+					<td>Mitsubishi Electric IGBT–VVVF Inverter</td>
 				</tr>
 				<tr>
 					<td><b>Traction motors</b></td>
@@ -267,8 +315,8 @@
 				<tr>
 					<td><b>Transmission</b></td>
 					<td>
-						Westinghouse-Natal (WN) drive
-						<br>7.48 gear ratio; 2-stage reduction
+						Westinghouse-Natal (WN) drive; 2-stage reduction
+						<br>7.48:1 gear ratio
 					</td>
 				</tr>
 				<tr>
@@ -321,7 +369,7 @@
 				</tr>
 				<tr>
 					<td><b>Safety system(s)</b></td>
-					<td>Alstom Atlas 100 ATP</td>
+					<td>Alstom Atlas 100 ETCS Level woth subsystem of ATP</td>
 				</tr>
 				<tr>
 					<td><b>Coupling system</b></td>
@@ -343,18 +391,8 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<div class="ad">
-				<a href="../../advertise.html">
-					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-					<br>Click this to place your ad here
-				</a>
-			</div>
-			<br>Purchased in 2017 with Japanese funding as part of the south extension of the line, the trains, manufactured by CAF, entered service in July 2023 to replace the aging first-generation 1000 class trains.
-			<br>
-			<br>It is the first LRV in the system with 5 digits in the body number due to the class fleet exceeding 99 units, in comparison to the older fleet.
 		</div>
-		<button class="collapsible">Operational history</button>
+		<button class="collapsible">History</button>
 		<div class="content">
 			<br><h2>Purchase</h2>
 			In 2013, feasibility studies were conducted by the Japan International Cooperation Agency (JICA) for a southward extension of the LRT Line 1 to Cavite. It determined that once the extension was completed, sixty-one trains would be required for operation, but thirty-one of those are existing ones. Therefore, JICA proposed the purchase of thirty new trains to meet growing demand.
@@ -367,11 +405,19 @@
 			<br>
 			<br>
 			<h2>Production and commissioning</h2>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gmockup.jpg">
-			<div class="center-text desc">
-				Mock-up model of the 13000 class
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gmockup.jpg">
+				<div class="center-text desc">
+					Mock-up model of the 13000 class
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gceremony.jpg">
+				<div class="center-text desc">
+					President Bongbong Marcos (center) leads the ribbon-cutting ceremony and inauguration of the 13000 class trains on July 19, 2023.
+				</div>
+				<br>
 			</div>
-			<br>Officials of the Department of Transportation (DOTr) unveiled a full-scale mock-up model of the 13000 class train on May 7, 2019.
+			Officials of the Department of Transportation (DOTr) unveiled a full-scale mock-up model of the 13000 class train on May 7, 2019.
 			<br>
 			<br>The first two sets (8 cars) were initially planned to be delivered in July 2020, however the delivery of the train sets were delayed due to the COVID-19 pandemic.
 			<br>
@@ -379,12 +425,7 @@
 			<br>
 			<br>The first trainset underwent static tests at the depot on September 15, 2021, followed by dynamic tests along the mainline on September 25. The trains then underwent 1,000-kilometer test runs conducted by the Light Rail Manila Corporation on May 4, 2022. Initially expected to enter in-service operations by the end of the month, the initial deadline was not met.
 			<br>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gceremony.jpg">
-			<div class="center-text desc">
-				President Bongbong Marcos (center) leads the ribbon-cutting ceremony and inauguration of the 13000 class trains on July 19, 2023.
-			</div>
-			<br>On July 19, 2023, the trains were inaugurated by President Bongbong Marcos. The first train set entered revenue service the next day. More trainsets from the 13000 class are expected to be incrementally entered into service, with one additional train set every week until every trainset enters service. All trains are expected to enter service by the fourth quarter of 2024, once the Cavite extension phase 1 is opened. As of December 23, 2024, 23 trainsets have been deployed for revenue service.
+			<br>On July 19, 2023, the trains were inaugurated by President Bongbong Marcos. The first train set entered revenue service the next day, with others following suit in the succeeding weeks.
 			<br>
 			<br>
 			<h2>Water leaks</h2>
@@ -395,11 +436,14 @@
 		<button class="collapsible">Design</button>
 		<div class="content">
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdoroteojose.jpg">
-			<div class="center-text desc">
-				13000 class train at Doroteo Jose in February 2024
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdoroteojose.jpg">
+				<div class="center-text desc">
+					13000 class train at Doroteo Jose in February 2024
+				</div>
+				<br>
 			</div>
-			<br>The 13000 class shares the 6-axle design present in the 1100 and 1200 class, consisting of two articulated cars. These are mainly operated in sets of four, and are capable of operating at a two- or three-car configuration under special circumstances.
+			The 13000 class shares the 6-axle design present in the 1100 and 1200 class, consisting of two articulated cars. These are mainly operated in sets of four, and are capable of operating at a two- or three-car configuration under special circumstances.
 			<br>
 			<br>
 			<div class="ad">
@@ -413,42 +457,46 @@
 			The train car body is made of stainless steel. Each vehicle has four pocket doors per side. Initially, the trains were to sport a silver-yellow livery, but was changed to crimson and silver after the mock-up model was unveiled in 2019. The trains also feature LED destination panels, like the 1200 class.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gfrontcab1.jpg">
-			<div class="center-text desc">
-				Driver's door at the front cab
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gfrontcab1.jpg">
+				<div class="center-text desc">
+					Driver's door at the front cab
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gexterior.jpg">
+				<div class="center-text desc">
+					13000 class exterior
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gresistor.jpg">
+				<div class="center-text desc">
+					Roof-mounted resistor for regenerative braking
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdoor.jpg">
+				<div class="center-text desc">
+					Light indicator above an open door of the 13000 class
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gexterior.jpg">
-			<div class="center-text desc">
-				13000 class exterior
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gresistor.jpg">
-			<div class="center-text desc">
-				Roof-mounted resistor for regenerative braking
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdoor.jpg">
-			<div class="center-text desc">
-				Light indicator above an open door of the 13000 class
-			</div>
-			<br>
 			<h3>Front cab variations</h3>
-			The fourth-generation trains vary in two frame colors. The first two sets (Trainsets 1 & 2), built in Spain, have a red-painted "forehead" above the windshield and LED sign, while sets 3 to 30, built in Mexico, received a black "forehead".
+			When it was first delievered, the  fourth-generation trains vary in two frame colors. The first two sets (Trainsets 1 & 2), built in Spain, have a red-painted "forehead" above the windshield and LED sign, while sets 3 to 30, built in Mexico, received a black <q>forehead</q>. Both of the first two trainsets built in Spain had since late its red forehead in April and May 2025.
 			<br>
 			<br>Some train sets has varying signage data as well; train sets that arrived and/or were certified prior to the renaming of Roosevelt station to Fernando Poe Jr. station retained its destination signage. Later train sets feature the correct destination name which is noted to scroll instead of being static. All train sets had its signage data been updated in preparation for opening of the Cavite Extension Phase 1.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo1.jpg">
-			<div class="center-text desc">
-				Front cab with black-painted "forehead"
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo1.jpg">
+				<div class="center-text desc">
+					Front cab with black-painted "forehead"
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo2.jpg">
+				<div class="center-text desc">
+					Front cab with red-painted "forehead"
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcarriedo2.jpg">
-			<div class="center-text desc">
-				Front cab with red-painted "forehead"
-			</div>
-			<br>
 			<h2>Interior</h2>
 			As opposed to the older rolling stock, the 13000 class includes hand straps aside from safety handrails installed above the train floor.
 			<br>
@@ -457,36 +505,43 @@
 			<br>Like the 1100 class and 1200 class, there are four pocket-type doors per side per car. For the driving cars, one door is installed on the side of the driving cab.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdrivingcar.jpg">
-			<div class="center-text desc">
-				Cab-end interior
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gdrivingcar.jpg">
+				<div class="center-text desc">
+					Cab-end interior
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gcockpit.jpg">
+				<div class="center-text desc">
+					Driver's cab
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gnoncabcarend.jpg">
+				<div class="center-text desc">
+					Non-cab end interior
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gintercom.jpg">
+				<div class="center-text desc">
+					Intercom
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ghandstraps.jpg">
+				<div class="center-text desc">
+					Hand straps
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ggangway.jpg">
+				<div class="center-text desc">
+					Car number and manufacturer's sticker above an open gangway
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ginteriordoor.jpg">
+				<div class="center-text desc">
+					Interior of the door area
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gnoncabcarend.jpg">
-			<div class="center-text desc">
-				Non-cab end interior
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gintercom.jpg">
-			<div class="center-text desc">
-				Intercom
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ghandstraps.jpg">
-			<div class="center-text desc">
-				Hand straps
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ggangway.jpg">
-			<div class="center-text desc">
-				Car number and manufacturer's sticker above an open gangway
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4ginteriordoor.jpg">
-			<div class="center-text desc">
-				Interior of the door area
-			</div>
-			<br>
 			<h2>Electrical and mechanical</h2>
 			Each LRV has three inside-frame bogies consisting of two motorized bogies at the ends and a Jacobs trailer bogie under the articulation. Semi-permanent couplers are installed at the ends of every light rail vehicle, except for the driving cab section of the head car.
 			<br>
@@ -495,26 +550,28 @@
 			<br>Like the 1100 class and 1200 class, each LRV consists of four 105-kilowatt 3-phase AC induction motors, driven by variable-voltage/variable-frequency drive (VVVF) inverters with insulated-gate bipolar transistors (IGBT). Auxiliary power is sourced from a static inverter, a low-power DC voltage supply, and batteries.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gbogie.jpg">
-			<div class="center-text desc">
-				Jacobs trailer bogie
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gbogie.jpg">
+				<div class="center-text desc">
+					Jacobs trailer bogie
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gvvvf.jpg">
+				<div class="center-text desc">
+					VVVF inverter
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gauxiliary.jpg">
+				<div class="center-text desc">
+					Auxiliary Power Supply
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gpantograph.jpg">
+				<div class="center-text desc">
+					Schunk pantograph
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gvvvf.jpg">
-			<div class="center-text desc">
-				VVVF inverter
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gauxiliary.jpg">
-			<div class="center-text desc">
-				Auxiliary Power Supply
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/4gpantograph.jpg">
-			<div class="center-text desc">
-				Schunk pantograph
-			</div>
-			<br>
 			<h2>Signaling and control systems</h2>
 			The trains are equipped with the automatic train protection (ATP) system. Alstom was awarded the signaling and communications contract for the south extension of the LRT Line 1 in 2016. The contractual scope included the upgrading of the signaling system and the installation of the Atlas 100 on-board signaling solution for 60 train sets across the existing three generations of trains and the 13000 class trains.
 			<br>
@@ -903,6 +960,8 @@
 			<br>
 			<ul class="pdl">
 				<li>On September 17, 2023, at 2:41 PM, a 4th generation trainset encountered a catenary fault issue at Balintawak station southbound, causing partial disruptions between Baclaran and Monumento stations. Full operations were restored the next day.</li>
+				<li>On June 18, 2025, a 13000 class train with LRV 13051 emitted smoke at the section between Redemptorist and Baclaran stations due to a catenary fault. As a result, LRMC implemented a provisionary service from Gil Puyat to Fernando Poe Jr. stations and vice versa at 8:54 AM, with full line operations later resumed at 5:38 PM.</li>
+				<li>On November 29, 2025, a 13000 class train had an inner mechanism fault between the stations Gil Puyat and Vito Cruz. As a result 240 Beep cards had more value after exiting an LRT-1 station.</li>
 			</ul>
 		</div>
 		<button class="collapsible">Gallery</button>

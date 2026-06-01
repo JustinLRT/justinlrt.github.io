@@ -41,12 +41,44 @@
 			overflow-x: auto;
 			white-space: nowrap;
 		}
+		.btm-margin {
+			margin-bottom: 12px;
+		}
 		/* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (min-width: 600px) {
 			/* Add any specific styles for the scrollable table on smaller screens if needed */
 			.table-container {
 				width: 100% !important;
 				overflow-x: scroll;
+			}
+			/* Float left */
+			.left {
+				float: left;
+				margin-right: 10px;
+				width: 300px;
+			}
+			/* Float right */
+			.right {
+				float: right;
+				margin-left: 10px;
+				width: 300px;
+			}
+			.main-photo {
+				flex-direction: row;
+				display: flex;
+			}
+			.exterior {
+				order: 1;
+				max-width: 50%;
+				margin-right: 2.5px;
+			}
+			.interior {
+				order: 2;
+				max-width: 50%;
+				margin-left: 2.5px;
+			}
+			.btm-margin {
+				margin-bottom: 0px;
 			}
 		}
 	</style>
@@ -70,8 +102,15 @@
 			<a href="../../../home.html">Home</a> &#8594; <a href="../../lrt1.html">LRT-1</a>
 		</div>
 		<div class="box2">
-			The <b>LRTA 1200 class</b> is the third-generation class of high-floor light rail vehicles (LRV) of the LRT Line 1.
+			The <b>LRTA 1200 class</b> is the third-generation class of high-floor light rail vehicles (LRV) of the Manila LRT Line 1, built by Kinki Sharyo and Nippon Sharyo. Purchased as part of the second phase of the capacity expansion of the line, the trains entered service in December 2006.
 			<br>
+			<br>
+			<div class="ad">
+				<a href="../../advertise.html">
+					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
+					<br>Click this to place your ad here
+				</a>
+			</div>
 			<br>
 			<table>
 				<tr>
@@ -79,14 +118,19 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3groosevelt.jpg" />
-						<div class="center-text desc">
-							A Kinki Sharyo-built 1200 class train at FPJ station in August 2023
-						</div>
-						<br>
-						<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior3.jpg" />
-						<div class="center-text desc">
-							Interior of the train captured in February 2022. This LRV was built by Nippon Sharyo
+						<div class="main-photo">
+							<div class="exterior btm-margin">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3groosevelt.jpg" />
+								<div class="center-text desc">
+									A Kinki Sharyo-built 1200 class train at FPJ station in August 2023
+								</div>
+							</div>
+							<div class="interior">
+								<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior3.jpg" />
+								<div class="center-text desc">
+									Interior of the train captured in February 2022. This LRV was built by Nippon Sharyo
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
@@ -114,7 +158,7 @@
 				</tr>
 				<tr>
 					<td><b>Constructed</b></td>
-					<td>2005–2006</td>
+					<td>2004–2006</td>
 				</tr>
 				<tr>
 					<td><b>Entered service</b></td>
@@ -138,7 +182,8 @@
 				</tr>
 				<tr>
 					<td><b>Capacity</b></td>
-					<td>1,388 passengers</td>
+					<td>1,388 passengers
+						<br>(272 seats)</td>
 				</tr>
 				<tr>
 					<td><b>Operator(s)</b></td>
@@ -197,7 +242,7 @@
 				</tr>
 				<tr>
 					<td><b>Doors</b></td>
-					<td>4 sets of 1.5 m × 1.9 m double-leaf pocket doors per side</td>
+					<td>Double-leaf 1.5 m × 1.9 m pocket-type; 4 per side</td>
 				</tr>
 				<tr>
 					<td><b>Articulated sections</b></td>
@@ -220,7 +265,9 @@
 				</tr>
 				<tr>
 					<td><b>Maximum speed</b></td>
-					<td>60 km/h</td>
+					<td>
+						<b>Design:</b> 80 km/h
+						<br><b>Service:</b> 60 km/h</td>
 				</tr>
 				<tr>
 					<td><b>Weight</b></td>
@@ -239,7 +286,7 @@
 				</tr>
 				<tr>
 					<td><b>Traction system</b></td>
-					<td>Mitsubishi Electric IGBT–VVVF</td>
+					<td>Mitsubishi Electric MAP-112-A55VD173 IGBT–VVVF Inverter</td>
 				</tr>
 				<tr>
 					<td><b>Traction motors</b></td>
@@ -306,8 +353,11 @@
 				<tr>
 					<td><b>Safety system(s)</b></td>
 					<td>
-						Siemens Mobility ATP (2007–2022)
-						<br>Alstom Atlas 100 ATP (2022–present)
+						<ul>
+							<li>ACEC fixed block relay-type ATS (1984–2007)</li>
+							<li>Siemens fixed block ATP/ATS (2007–2022)</li>
+							<li>Alstom Atlas 100 ETCS-1 with subsystem of ATP (2022–present)</li>
+						</ul>
 					</td>
 				</tr>
 				<tr>
@@ -330,23 +380,15 @@
 					</td>
 				</tr>
 			</table>
-			<br>
-			<div class="ad">
-				<a href="../../advertise.html">
-					AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-					<br>Click this to place your ad here
-				</a>
-			</div>
-			<br>Purchased as part of the second phase of the capacity expansion of the line, the trains entered service in December 2006
 		</div>
-		<button class="collapsible">Operational history</button>
+		<button class="collapsible">History</button>
 		<div class="content">
 			<br><h2>Background and purchase</h2>
 			With the completion of the initial capacity expansion of the LRT Line 1, its capacity was raised by half with the introduction of seven four-car trains and the upgrading of the existing two-car trains to three cars in 1999. However, its capacity was expected to become insufficient once the railway network in Metro Manila was completed in 2004 with the full opening of the LRT Line 2.
 			<br>
 			<br>On April 7, 2000, the Japan Bank for International Cooperation (JBIC) extended a ₱8.893 billion loan to finance the second phase of the capacity expansion project. While existing rolling stock were refurbished, twelve more four-car trains were purchased, in conjunction with other upgrades in signaling, telecommunications, and existing railway tracks as well as upgrades at stations and the depot.
 			<br>
-			<br>Two firms bidded for the project: Kanematsu and Kawasaki Steel Corporation, and the joint venture of Sumitomo Corporation and Itochu. Marubeni was disqualified from the bidding but questioned the technicalities of the bidding procedure. However, delays were encountered in the bidding process, with senator Francisco Tatad claiming on March 21, 2004, that "unconfirmed reports" reaching him disclosed that groups identifying themselves with the President of the Philippines attempted to extort US$1 million from each bidder supposedly as campaign funds for the May 2004 elections. This, according to Tatad, limited the bidders to the two aforementioned firms. His claims were denied by LRTA administrator Pacifico Fajardo, as well as the Department of Transportation. Fajardo later claimed that JBIC posed "no objection" to the bidding, and said that it was conducted with transparency.
+			<br>Two firms bidded for the project: Kanematsu and Kawasaki Steel Corporation, and the joint venture of Sumitomo Corporation and Itochu. Marubeni was disqualified from the bidding but questioned the technicalities of the bidding procedure. However, delays were encountered in the bidding process, with senator Francisco Tatad claiming on March 21, 2004, that "unconfirmed reports" reaching him disclosed that groups identifying themselves with the President of the Philippines (Gloria Macapagal Arroyo at the time) attempted to extort US$1 million from each bidder supposedly as campaign funds for the May 2004 elections. This, according to Tatad, limited the bidders to the two aforementioned firms. His claims were denied by LRTA administrator Pacifico Fajardo, as well as the Department of Transportation. Fajardo later claimed that JBIC posed "no objection" to the bidding, and said that it was conducted with transparency.
 			<br>
 			<br>After a delay of more than three years since 2001, Sumitomo and Itochu won the contract and was given the go-ahead in March 2005. Following this, they signed a construction contract with Kinki Sharyo and Nippon Sharyo to manufacture the light rail vehicles.
 			<br>
@@ -373,68 +415,81 @@
 			<br>
 			<br>
 			<h2>Car body</h2>
-			The car body has a length of 26 meters without couplers, a width of 2.59 meters, and a height of 3.91 meters. 1200 class LRVs have 4 electronic sliding doors on both sides. The train car body is made of beadless lightweight stainless steel, with composite materials on the indoor panels and aluminum on the inner bone to reduce weight. 1200 class LRVs have 4 electronic sliding doors on both sides.
+			The car body has a length of 26 meters without couplers, a width of 2.59 meters, and a height of 3.91 meters. The train car body is made of beadless lightweight stainless steel, with composite materials on the indoor panels and aluminum on the inner bone to reduce weight.
 			<br>
 			<br>Each light rail vehicle has two roof-mounted air-conditioning units that has a cooling capacity of 41,000 kilocalories. In total, there are eight air-conditioning units in a four-car train set.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody1.jpg" />
-			<div class="center-text desc">
-				A 1200 class train (end cab) at 5th Avenue station in October 2016.
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody1.jpg" />
+				<div class="center-text desc">
+					A 1200 class train (end cab) at 5th Avenue station in October 2016.
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbalintawak.jpg" />
+				<div class="center-text desc">
+					A 1200 class train at Balintawak station in December 2021.
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gwrapvitocruz.jpg">
+				<div class="center-text desc">
+					A 1200 class train with wrap advertising at Vito Cruz in August 2023.
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbalintawak.jpg" />
-			<div class="center-text desc">
-				A 1200 class train at Balintawak station in December 2021.
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gwrapvitocruz.jpg">
-			<div class="center-text desc">
-				A 1200 class train with wrap advertising at Vito Cruz in August 2023.
-			</div>
-			<br>
 			<h2>Interior</h2>
 			The interior is color-toned based on light and dark two-color green in the seats to complement the landscape of Manila. Seats are made of fiber reinforced plastic and has an aluminum bracket type cantilever longitudinal seat for reducing weight. Seating and grip sticks are designed to have ergonomic dimensions, aside from equipment arrangement inside the cab. A wheelchair-compatible space is provided beside the gangway of the intermediate car, alongside an equipped fire extinguisher.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior2.jpg" />
-			<div class="center-text desc">
-				1200 class interior with new door stickers
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior2.jpg" />
+				<div class="center-text desc">
+					1200 class interior with new door stickers
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior1.jpg" />
+				<div class="center-text desc">
+					Wheelchair strap and space, and fire extinguisher
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior4.jpg" />
+				<div class="center-text desc">
+					The now-unused Tube information system
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3ginterior1.jpg" />
-			<div class="center-text desc">
-				Wheelchair strap and space, and fire extinguisher
-			</div>
-			<br>
 			<h2>Electrical</h2>
 			Each LRV consists of four totally enclosed, self-ventilated 3-phase AC induction motors, driven by variable-voltage/variable-frequency drive (VVVF) inverters. Auxiliary power is sourced from 440-volt alternating current static inverters and 110-volt direct current batteries.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gvvvf.jpg">
-			<div class="center-text desc">
-				Mitsubishi Electric VVVF inverter of a 1200 class LRV.
+			<div class="right">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gvvvf.jpg">
+				<div class="center-text desc">
+					Mitsubishi Electric VVVF inverter of a 1200 class LRV.
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gpantograph.jpg">
+				<div class="center-text desc">
+					A single-arm pantograph above the driving car of the 1200 class
+				</div>
+				<br>
 			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gpantograph.jpg">
-			<div class="center-text desc">
-				A single-arm pantograph above the driving car of the 1200 class
-			</div>
-			<br>
 			<h2>Mechanical and braking</h2>
 			Each LRV has three inside-frame bogies, similar to the 1000 class. The bogies consist of two motorized bogies at the ends of the LRV and one shared trailer bogie under the articulation. The primary suspension is a chevron rubber spring, while the secondary suspension is an air suspension, similar to the 1100 class. Semi-permanent couplers are present in the ends of each light rail vehicle except the driving cab section of the MC car.
 			<br>
 			<br>The 1200 class employs a regenerative and electronically controlled pneumatic braking system manufactured by Knorr-Bremse. The resistors are mounted on the roof for backup regenerative brakes. Each VVVF controller is equipped with an Electronic Command Braking Device (ECBD). Disc brakes are present on the bogies.
 			<br>
 			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody4.jpg" />
-			<div class="center-text desc">
-				The inside-frame bogie of a 1200 class LRV
-			</div>
-			<br>
-			<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody2.jpg" />
-			<div class="center-text desc">
-				Semi-permanent couplers of the 1200 class
+			<div class="left">
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody4.jpg" />
+				<div class="center-text desc">
+					The inside-frame bogie of a 1200 class LRV
+				</div>
+				<br>
+				<img class="center-fit" loading="lazy" src="../../../media/aboutlrt1/3gbody2.jpg" />
+				<div class="center-text desc">
+					Semi-permanent couplers of the 1200 class
+				</div>
 			</div>
 		</div>
 		<button class="collapsible">Train formation and build details</button>
