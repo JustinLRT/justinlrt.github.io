@@ -4,11 +4,11 @@ body.dark-mode {
 	color: white;
 }
 body.dark-mode header {
-	background-color: #212934;
-	border-bottom: solid 3px #0080FF;
+	background-color: #102512;
+	border-bottom: solid 3px #4AAF39;
 }
 body.dark-mode .hamburger {
-	background-color: #212934;
+	background-color: #102512;
 	color: white;
 }
 body.dark-mode .hamburger a {
@@ -18,76 +18,48 @@ body.dark-mode .hamburger-menu {
 	color: white;
 }
 body.dark-mode a {
-	color: #0080FF;
+	color: #4AAF39;
 }
 body.dark-mode .dp {
-	border-color: #0080FF;
+	border-color: #4AAF39;
 }
 body.dark-mode button,select {
-	background-color: #0080FF;
+	background-color: #008000;
 	color: white;
 }
 body.dark-mode button:hover {
-	background-color: #4C90FF;
+	background-color: #4FFF4C;
 }
 body.dark-mode select {
-	border-color: #0080FF;
+	border-color: #4AAF39;
+	background-color: #003200;
+	color: white;
 }
 body.dark-mode .box1 {
-	border: solid 3px #0080FF;
+	border: solid 3px #4AAF39;
 }
 body.dark-mode .box2 {
-	border-top: solid 5px #0080FF;
-	background: #212934;
+	border-top: solid 5px #4AAF39;
+	background: #102512;
 	color: white;
 }
 body.dark-mode .box3 {
-	background: #212934;
+	background: #102512;
 	color: white;
 }
 body.dark-mode .box3 .box-title {
-	background: #0080FF;
+	background: #4AAF39;
 }
 body.dark-mode .desc {
 	color: #BBBBBB;
 }
-body.dark-mode audio {
-	filter: invert(1) sepia(1) hue-rotate(190deg) saturate(2.5) brightness(3.2) contrast(1.05);
-}
 body.dark-mode input[type="text"] {
-	background-color: #202020;
+	background-color: #121212;
 	color: white;
 }
 body.dark-mode input[type="text"]::placeholder {
 	color: white;
 	opacity: 1;
-}
-body.dark-mode input[type="radio"] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #4A5568;
-  border-radius: 50%;
-  background: #202020;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Ibalik mo yung blue dot pag checked */
-body.dark-mode input[type="radio"]:checked::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #0080FF;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-body.dark-mode input[type="radio"]:checked {
-  border-color: #0080FF;
 }
 body.dark-mode textarea {
 	background-color: #121212;
@@ -97,27 +69,26 @@ body.dark-mode textarea::placeholder {
 	color: white;
 	opacity: 1;
 }
-body.dark-mode td,
-body.dark-mode th {
-	border-color: #353535;
+body.dark-mode td, th {
+	border-color: 1px solid #dddddd;
 }
 body.dark-mode th {
-	background-color: #284066;
+	background-color: #003200;
 }
 body.dark-mode table.inner-table th {
-	background: #284066;
+	background: #003000;
 }
 body.dark-mode .td-bg {
-	background: #284066;
+	background: #003000;
 }
 body.dark-mode .collapsible {
-	background-color: #0080FF;
+	background-color: #008000;
 }
 body.dark-mode .active, .collapsible:hover {
-	background-color: #4C90FF;
+	background-color: #4FFF4C;
 }
 body.dark-mode .content {
-	background-color: #212934;
+	background-color: #102512;
 }
 body.dark-mode .red-bg {
 	background-color: #623033;
@@ -142,34 +113,6 @@ body.dark-mode .magenta-bg {
 }
 body.dark-mode .purple-bg {
 	background-color: #52376E;
-}
-body.dark-mode .line1 {
-	border-left: solid 18px #00B500;
-	border-right: solid 18px #00B500;
-}
-body.dark-mode .line2 {
-	border-left: solid 18px #690DAC;
-	border-right: solid 18px #690DAC;
-}
-body.dark-mode .line3 {
-	border-left: solid 18px #FDEC00;
-	border-right: solid 18px #FDEC00;
-}
-body.dark-mode .line6 {
-	border-left: solid 18px #A9A9A9;
-	border-right: solid 18px #A9A9A9;
-}
-body.dark-mode .line7 {
-	border-left: solid 18px #DB1E1E;
-	border-right: solid 18px #DB1E1E;
-}
-body.dark-mode .linepnr {
-	border-left: solid 18px #FF9900;
-	border-right: solid 18px #FF9900;
-}
-body.dark-mode .linemms {
-	border-left: solid 18px blue;
-	border-right: solid 18px blue;
 }
 body.dark-mode .g7-th {
 	background-color: #009900;
@@ -207,70 +150,17 @@ body.dark-mode .g11 {
 body.dark-mode .g12 {
 	background-color: orange;
 }
-body.dark-mode .red-temp,
-body.dark-mode .orange-temp,
-body.dark-mode .yellow-temp,
-body.dark-mode .green-temp,
-body.dark-mode .lightblue-temp,
-body.dark-mode .blue-temp,
-body.dark-mode .violet-temp
-{
-	color: #A2A9B1;
-	border-right: solid 1.25px #54595D;
-	border-top: solid 1.25px #54595D;
-	border-bottom: solid 1.25px #54595D;
-}
-body.dark-mode .red-temp1 {
-	background-color: #422829;
-	color: #A2A9B1;
-	border-right: solid 1.25px #54595D;
-	border-top: solid 1.25px #54595D;
-	border-bottom: solid 1.25px #54595D;
-}
-body.dark-mode .red-bg-temp,
-body.dark-mode .red-bg-temp1 {
-	background-color: #422829;
-}
-body.dark-mode .lightorange-bg-temp {
-	background-color: #362714;
-}
-body.dark-mode .orange-bg-temp {
-	background-color: #5A3020;
-}
-body.dark-mode .yellow-bg-temp,
-body.dark-mode .yellow-bg-temp1,
-body.dark-mode .yellow-bg-temp2,
-body.dark-mode .yellow-bg-temp3,
-body.dark-mode .yellow-bg-temp4 {
-	background-color: #312A00;
-}
-body.dark-mode .lightblue-bg-temp,
-body.dark-mode .lightblue-bg-temp1 {
-	background-color: #172F3B;
-}
-body.dark-mode .blue-bg-temp {
-	background-color: #242D3E;
-}
-body.dark-mode .violet-bg-temp {
-	background-color: #39304F;
-}
-body.dark-mode .grey-bg-temp {
-	background-color: #1F2025;
-}
-body.dark-mode .red {
-	color: red;
-}
 
 /*Hamburger*/
 header {
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5FFE5 /*Background color*/;
 	padding: 0px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 999;
-	border-bottom: solid 3px #0080FF /*Main color*/;
+	border-bottom: solid 3px #008000 /*Main color*/;
 }
 .hamburger a {
 	text-decoration: none;
@@ -284,13 +174,13 @@ header {
 	display: inline-block;
 	cursor: pointer;
 	padding: 0px 8px 10px 8px;
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5FFE5 /*Background color*/;
 	border: none;
 	color: #333;
 	font-size: 20px;
 }
 .hamburger:hover {
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5FFE5 /*Background color*/;
 }
 .font-margin {
 	padding-left: 10px;
@@ -324,7 +214,7 @@ td {
 }
 a {
 	text-decoration: none;
-	color: #0080FF;
+	color: #008000;
 	outline: none;
 }
 ol, ul {
@@ -332,6 +222,9 @@ ol, ul {
 }
 h1,h2 {
 	text-align: center;
+}
+audio {
+	outline: none;
 }
 button, select {
 	outline: none;
@@ -341,14 +234,14 @@ button, select {
 	border-radius: 5px;
 	padding: 10px 15px;
 	margin: 2px 1px;
-	background-color: #0080FF;
+	background-color: #008000;
 }
 input {
 	padding: 5px;
 	margin: 2px 1px;
 }
 button:hover {
-	background-color: #4C90FF;
+	background-color: #4FFF4C;
 }
 audio {
 	width: 100%;
@@ -357,8 +250,6 @@ audio {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	outline: none;
-	filter: sepia(1) hue-rotate(177deg) saturate(2.5) brightness(1.05);
 }
 textarea {
 	font-size: 1rem;
@@ -415,7 +306,7 @@ div.title h3 {
 	font-size: 0.7em;
 }
 .dp {
-	border-color: #0080FF /*Main color*/;
+	border-color: #008000 /*Main color*/;
 	border-radius: 10px;
 	border-style: solid;
 	float: left;
@@ -468,7 +359,7 @@ div.support {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	border: solid 3px #0080FF /*Main color*/;
+	border: solid 3px #008000 /*Main color*/;
 	text-align: center;
 }
 .box1 br {
@@ -480,8 +371,8 @@ div.support {
 	margin-top: 0%;
 	margin-bottom: 3%;
 	color: black;
-	background: #E5EFFF /*Background color*/;
-	border-top: solid 5px #0080FF /*Main color*/;
+	background: #E5FFE5 /*Background color*/;
+	border-top: solid 5px #008000 /*Main color*/;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 	border-radius: 10px;
 }
@@ -493,13 +384,13 @@ div.support {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	background: #E5EFFF /*Background color*/;
+	background: #E5FFE5 /*Background color*/;
 	border-radius: 10px;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 .box3 .box-title {
 	font-size: 1.2em;
-	background: #0080FF /*Main color*/;
+	background: #008000 /*Main color*/;
 	padding: 4px;
 	text-align: center;
 	color: #FFF;
@@ -595,19 +486,19 @@ td, th {
 	word-wrap: break-word;
 }
 th {
-	background-color: #AACBFF;
+	background-color: #B8FFAA;
 	/*#AAD0FF & #C0DCFF is the old*/
 }
 table.inner-table th {
-	background: #BAD4FF;
+	background: #C5FFBA;
 }
 .td-bg {
-	background: #BAD4FF;
+	background: #C5FFBA;
 }
 
 /*Collapsible*/
 .collapsible {
-	background-color: #0080FF /*Main color*/;
+	background-color: #008000 /*Main color*/;
 	color: white;
 	cursor: pointer;
 	padding: 10px;
@@ -619,14 +510,14 @@ table.inner-table th {
 	border-radius: 10px;
 }
 .active, .collapsible:hover {
-	background-color: #4C90FF;
+	background-color: #4FFF4C;
 }
 .content {
 	padding: 0 13px;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.22s ease-out;
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5FFE5 /*Background color*/;
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-bottom: 3%;
@@ -788,6 +679,7 @@ div.scal li {
 	background-color: #FFDBDB;
 	font-size: 85%;
 }
+
 .orange-temp {
 	padding: 0.5em 0.5em 0.5em 4em;
 	margin: 0% 0% 3% 0%;
@@ -870,6 +762,7 @@ div.scal li {
 }
 
 
+
 .red-bg-temp {
 	padding: 0.5em;
 	margin: 0% 0% 3% 0%;
@@ -881,6 +774,9 @@ div.scal li {
 	margin: 0% 0% 3% 0%;
 	border: solid 2.7px #B32424;
 	background-color: #FFDBDB;
+}
+body.dark-mode .red-bg-temp1 {
+	background-color: #422829;
 }
 .lightorange-bg-temp {
 	padding: 0.5em;
@@ -956,7 +852,7 @@ div.scal li {
 }
 
 .quotation-temp {
-	border-left: solid 3.5px #9D9D9D;
+	border-left: solid 3.5px #9DAF9D;
 	padding-left: 22px;
 	font-family: serif;
 }
