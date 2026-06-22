@@ -21,14 +21,16 @@
 			border: 0px;
 			font-size: 79%;
 			border-radius: 5px;
-			border-bottom: solid 4px #008000;
-			background-color: #E5FFE5;
-			color: lime;
+			border-bottom: solid 4px #0080FF;
+			background-color: #E5EFFF;
+			color: #0080FF;
 			padding: 1px 1px 3px 1px;
 		}
-		table button.intbtn:hover {
-		
+		body.dark-mode table button.intbtn {
+			background-color: #212934;
+			color: white;
 		}
+		table button.intbtn:hover {}
 		table {
 			border: 0px;
 		}
@@ -137,12 +139,9 @@
 	<script src="../script/html2canvas.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		function changeColor(element) {
-			var currentColor = element.style.backgroundColor;
-			if (currentColor == "green") {
-				element.style.backgroundColor = "";
-			} else {
-				element.style.backgroundColor = "green";
-			}
+			const isBlue = element.style.backgroundColor !== "";
+			element.style.backgroundColor = isBlue ? "": "#0080FF";
+			element.style.color = isBlue ? "": "white";
 		}
 	</script>
 	<noscript>

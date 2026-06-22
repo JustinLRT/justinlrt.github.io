@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#000000">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+	<link rel="apple-touch-icon" href="../../icon.png">
 	<title>LRT-1 train car guide</title>
 	<style>
 		table {
@@ -38,11 +39,11 @@
 			<a href="../home.html">Home</a>
 		</div>
 		<div class="box2">
-			<div class="calculator-container" id="check-id-number-container">
+			<div id="check-id-number-container">
 				Determine which train to board to arrive at the nearest exit at your destination for the convenient travel.
 				<br>
 				<br>
-				<div class="form-container" id="train-car-calculator">
+				<div id="train-car-calculator">
 					<form>
 						<table>
 							<tr>
@@ -50,40 +51,41 @@
 								<th>Destination</th>
 							</tr>
 							<tr>
-								<td><div class="mb-3">
-									<select class="form-select" id="origin-station">
-										<option value="25" selected disabled>Origin</option>
-										<option value="24">Dr. Santos</option>
-										<option value="23">Ninoy Aquino</option>
-										<option value="22">Asia World</option>
-										<option value="21">MIA</option>
-										<option value="20">Redemptorist</option>
-										<option value="19">Baclaran</option>
-										<option value="18">EDSA</option>
-										<option value="17">Libertad</option>
-										<option value="16">Gil Puyat</option>
-										<option value="15">Vito Cruz</option>
-										<option value="14">Quirino</option>
-										<option value="13">Pedro Gil</option>
-										<option value="12">United Nations</option>
-										<option value="11">Central Terminal</option>
-										<option value="10">Carriedo</option>
-										<option value="9">Doroteo Jose</option>
-										<option value="8">Bambang</option>
-										<option value="7">Tayuman</option>
-										<option value="6">Blumentritt</option>
-										<option value="5">Abad Santos</option>
-										<option value="4">R. Papa</option>
-										<option value="3">5th Avenue</option>
-										<option value="2">Monumento</option>
-										<option value="1">Balintawak</option>
-										<option value="0">Fernando Poe Jr.</option>
-									</select>
-								</div>
+								<td>
+									<div>
+										<select id="origin-station">
+											<option value="25" selected disabled>Origin</option>
+											<option value="24">Dr. Santos</option>
+											<option value="23">Ninoy Aquino</option>
+											<option value="22">Asia World</option>
+											<option value="21">MIA</option>
+											<option value="20">Redemptorist</option>
+											<option value="19">Baclaran</option>
+											<option value="18">EDSA</option>
+											<option value="17">Libertad</option>
+											<option value="16">Gil Puyat</option>
+											<option value="15">Vito Cruz</option>
+											<option value="14">Quirino</option>
+											<option value="13">Pedro Gil</option>
+											<option value="12">United Nations</option>
+											<option value="11">Central Terminal</option>
+											<option value="10">Carriedo</option>
+											<option value="9">Doroteo Jose</option>
+											<option value="8">Bambang</option>
+											<option value="7">Tayuman</option>
+											<option value="6">Blumentritt</option>
+											<option value="5">Abad Santos</option>
+											<option value="4">R. Papa</option>
+											<option value="3">5th Avenue</option>
+											<option value="2">Monumento</option>
+											<option value="1">Balintawak</option>
+											<option value="0">Fernando Poe Jr.</option>
+										</select>
+									</div>
 								</td>
 								<td>
-									<div class="mb-3">
-										<select class="form-select" id="destination-station">
+									<div>
+										<select id="destination-station">
 											<option value="26" selected disabled>Destination</option>
 											<option value="24">Dr. Santos</option>
 											<option value="23">Ninoy Aquino</option>
@@ -116,14 +118,14 @@
 							</tr>
 						</table>
 						<br>
-						<div class="row mb-4">
+						<div>
 							<!--Direction-->
 							<div>
 								<label for="direction" class="form-label">Train Direction: </label>
 								<input type="text" id="direction" value="Southbound" disabled readonly>
 							</div>
 							<!--Priority Car Option-->
-							<div class="col d-flex align-items-center flex-wrap">
+							<div>
 								<div class="form-check">
 									<input type="checkbox" value="" id="priority-car">
 									<label for="priority-car">Include priority car</label>
