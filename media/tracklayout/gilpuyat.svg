@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Grafika (https://www.grafika.cc/) -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4500" height="2500" viewBox="0 0 4500 2500" preserveAspectRatio="xMidYMid meet">
+	<defs>
+		<clipPath id="mask_1">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_2">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_3">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_4">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_5">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_6">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_7">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_8">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_9">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_10">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_11">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_12">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_13">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_14">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_15">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_16">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_17">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_18">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_19">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_20">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_21">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_22">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_23">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_24">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_25">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_26">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_27">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_28">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_29">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_30">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_31">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_32">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_33">
+			<rect x="2000" y="500" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_34">
+			<rect x="2000" y="1500" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_35">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_36">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_37">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_38">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+		<clipPath id="mask_39">
+			<rect x="-250" y="-250" width="500" height="500" />
+		</clipPath>
+	</defs>
+	<g id="Group 8712">
+		<g id="BSicon_uhvSTR.svg 612" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 3250.220703125, 1250)" clip-path="url(#mask_1)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+			<path d="M-250,-250 L-250,250M250,250 L250,-250" style="fill:#000000;stroke:#80A080;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;" />
+		</g>
+		<g id="BSicon_uhvSTR.svg 622" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1250.220703125, 1250)" clip-path="url(#mask_2)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+			<path d="M-250,-250 L-250,250M250,250 L250,-250" style="fill:#000000;stroke:#80A080;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;" />
+		</g>
+		<g id="BSicon_uhvSTR.svg 1462" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 750.22021484375, 1250)" clip-path="url(#mask_3)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+			<path d="M-250,-250 L-250,250M250,250 L250,-250" style="fill:#000000;stroke:#80A080;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;" />
+		</g>
+		<g id="BSicon_uhvSTR.svg 1492" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 3750.220703125, 1250)" clip-path="url(#mask_4)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+			<path d="M-250,-250 L-250,250M250,250 L250,-250" style="fill:#000000;stroke:#80A080;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;" />
+		</g>
+		<g id="BSicon_uvSTR.svg 332" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 2750.220703125, 1250)" clip-path="url(#mask_5)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+		</g>
+		<g id="BSicon_uvSTR.svg 352" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1750.220703125, 1250)" clip-path="url(#mask_6)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+		</g>
+		<g id="BSicon_PLTl.svg 332" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1750.220703125, 750)" clip-path="url(#mask_7)">
+			<rect x="125" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTl.svg 352" transform="matrix(-0.00000012554951922538748, 0.9999971985816956, -0.9999971985816956, -0.00000012554951922538748, 2750.22119140625, 750)" clip-path="url(#mask_8)">
+			<rect x="125" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTr.svg 482" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1750.21826171875, 1750)" clip-path="url(#mask_9)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTr.svg 492" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1750.21826171875, 1750)" clip-path="url(#mask_10)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTr.svg 522" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 2750.22021484375, 1750)" clip-path="url(#mask_11)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTr.svg 532" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 2750.22021484375, 1750)" clip-path="url(#mask_12)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_vNULfg.svg 152" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 3250.220703125, 1250)" clip-path="url(#mask_13)">
+			<path d="M75,0 L125,-50 L175,0 L175,50 L125,0 L75,50M-175,-50 L-125,0 L-75,-50 L-75,0 L-125,50 L-175,0" style="fill:#FFFFFF;" />
+		</g>
+		<g id="BSicon_vNULfg.svg 162" transform="matrix(-0.00000012554994555102894, 1.0000005960464478, -1.0000005960464478, -0.00000012554994555102894, 1250.220703125, 1250)" clip-path="url(#mask_14)">
+			<path d="M75,0 L125,-50 L175,0 L175,50 L125,0 L75,50M-175,-50 L-125,0 L-75,-50 L-75,0 L-125,50 L-175,0" style="fill:#FFFFFF;" />
+		</g>
+		<g id="BSicon_RP4CONTfq.svg 132" transform="matrix(-0.00000005915931211575298, -1.000000238418579, -1.000000238418579, 0.00000005915931211575298, 2249.998046875, 250)" clip-path="url(#mask_15)">
+			<g id="Group 3642" transform="matrix(-1, 0, 0, -1, 250, 250)">
+				<path d="M250,250 L500,250" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+				<path d="M250,250 L500,250" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			</g>
+			<g id="Group 3662" transform="matrix(0, -1, 1, 0, -500, 250)">
+				<path d="M250,250 L250,500" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:220;" />
+				<g id="Group 3652">
+					<path d="M250,250 L250,500" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;" />
+					<path d="M190,257.8 L190,492.2M310,257.8 L310,492.2" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:101.3;" />
+				</g>
+			</g>
+			<path d="M-48.6,146.3 L24.6,146.3 L170.9,-0 L24.6,-146.3 L-48.6,-146.3 L-48.6,146.3 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP4CONTfq.svg 122" transform="matrix(-0.00000005915931211575298, 1.000000238418579, -1.000000238418579, -0.00000005915931211575298, 2249.99755859375, 2250)" clip-path="url(#mask_16)">
+			<g id="Group 3612" transform="matrix(-1, 0, 0, -1, 250, 250)">
+				<path d="M250,250 L500,250" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+				<path d="M250,250 L500,250" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			</g>
+			<g id="Group 3632" transform="matrix(0, -1, 1, 0, -500, 250)">
+				<path d="M250,250 L250,500" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:220;" />
+				<g id="Group 3622">
+					<path d="M250,250 L250,500" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;" />
+					<path d="M190,257.8 L190,492.2M310,257.8 L310,492.2" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:101.3;" />
+				</g>
+			</g>
+			<path d="M-48.6,146.3 L24.6,146.3 L170.9,-0 L24.6,-146.3 L-48.6,-146.3 L-48.6,146.3 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP2.svg 962" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 2749.99755859375, 750)" clip-path="url(#mask_17)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 982" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 2749.99755859375, 1750)" clip-path="url(#mask_18)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1002" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 1750.00048828125, 1750)" clip-path="url(#mask_19)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1022" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 1750.00048828125, 750)" clip-path="url(#mask_20)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1012" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 1250.00048828125, 1750)" clip-path="url(#mask_21)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1382" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 750, 1750)" clip-path="url(#mask_22)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1412" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 3750, 1750)" clip-path="url(#mask_23)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1032" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 1250.00048828125, 750)" clip-path="url(#mask_24)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1372" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 750, 750)" clip-path="url(#mask_25)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 1422" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 3750, 750)" clip-path="url(#mask_26)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2CONTf.svg 172" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 250.00003051757812, 1750)" clip-path="url(#mask_27)">
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			<path d="M-100,-50 L-100,0 L0,100 L100,0 L100,-50 L-100,-50 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP2CONTf.svg 182" transform="matrix(-0.000000005805211866771742, 1.0000001192092896, -1.0000001192092896, -0.000000005805211866771742, 250.00003051757812, 750)" clip-path="url(#mask_28)">
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			<path d="M-100,-50 L-100,0 L0,100 L100,0 L100,-50 L-100,-50 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP2.svg 972" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 3249.99755859375, 750)" clip-path="url(#mask_29)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2.svg 992" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 3249.99755859375, 1750)" clip-path="url(#mask_30)">
+			<path d="M0,-250 L0,250" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-218.8 L0,250" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+		</g>
+		<g id="BSicon_RP2CONTf.svg 122" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 4250.0029296875, 750)" clip-path="url(#mask_31)">
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			<path d="M-100,-50 L-100,0 L0,100 L100,0 L100,-50 L-100,-50 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP2CONTf.svg 132" transform="matrix(0.000000005805211866771742, 1.0000001192092896, 1.0000001192092896, -0.000000005805211866771742, 4250.0029296875, 1750)" clip-path="url(#mask_32)">
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+			<path d="M0,-250 L0,0" style="fill:#000000;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;stroke-dashoffset:93.8;" />
+			<path d="M-100,-50 L-100,0 L0,100 L100,0 L100,-50 L-100,-50 Z" style="fill:#999999;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:1;" />
+		</g>
+		<g id="BSicon_RP4xRP2.svg2" clip-path="url(#mask_33)">
+			<g id="Group 3672">
+				<path d="M2250,500 L2250,1000" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:220;" />
+				<path d="M2310,531.3 L2310,1000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2190,531.3 L2190,1000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2250,500 L2250,1000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;" />
+				<path d="M2000,750 L2500,750" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+				<path d="M2031.2,750 L2140,750" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2468.7,750 L2360,750" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<rect x="2237.5" y="737.5" width="25" height="25" style="fill:#FFFFFF;" />
+			</g>
+		</g>
+		<g id="BSicon_RP4xRP2.svg 22" clip-path="url(#mask_34)">
+			<g id="Group 3682">
+				<path d="M2250,1500 L2250,2000" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:220;" />
+				<path d="M2310,1531.3 L2310,2000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2190,1531.3 L2190,2000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2250,1500 L2250,2000" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;" />
+				<path d="M2000,1750 L2500,1750" style="fill:none;stroke:#999999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:110;" />
+				<path d="M2031.2,1750 L2140,1750" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<path d="M2468.7,1750 L2360,1750" style="fill:none;stroke:#FFFFFF;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:25;stroke-dasharray:62.5;" />
+				<rect x="2237.5" y="1737.5" width="25" height="25" style="fill:#FFFFFF;" />
+			</g>
+		</g>
+		<g id="BSicon_uvSTR.svg2" transform="matrix(0.00000000075615558259301, -0.9999998807907104, 0.9999998807907104, 0.00000000075615558259301, 2250, 1250)" clip-path="url(#mask_35)">
+			<path d="M-125,-250 L-125,250M125,250 L125,-250" style="fill:#000000;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+		</g>
+		<g id="BSicon_PLTr.svg2" transform="matrix(0.0000000006186304801758524, -1.0000004768371582, 1.0000004768371582, 0.0000000006186304801758524, 2249.99755859375, 750)" clip-path="url(#mask_36)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_PLTr.svg 1232" transform="matrix(0.0000000002612732252771366, 1.0000005960464478, -1.0000005960464478, 0.0000000002612732252771366, 2249.99755859375, 1750)" clip-path="url(#mask_37)">
+			<rect x="-250" y="-250" width="125" height="500" style="fill:#888888;" />
+		</g>
+		<g id="BSicon_lhvCONTg++.svg 122" transform="matrix(0.00000000033581071257060557, -1.000000238418579, 1.000000238418579, 0.00000000033581071257060557, 250.00009155273438, 1250)" clip-path="url(#mask_38)">
+			<g id="Right_Track_and_Arrow 142">
+				<path d="M125,250 L125,50" style="fill:none;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+				<path d="M227.5,50 L227.5,0 L125,-102.5 L22.5,0 L22.5,50" style="fill:#00B500;" />
+			</g>
+			<g id="Left_Track_and_Ribbon_Tail 142">
+				<path d="M-75,250 L-75,-100 L-125,-50 L-175,-100 L-175,250" style="fill:#00B500;" />
+			</g>
+			<g id="Left_Elevated_Tails 142">
+				<path d="M-250,250 L-250,50" style="fill:none;stroke:#80A080;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;stroke-dasharray:0 75;" />
+			</g>
+			<g id="Right_Elevated_Tails 142">
+				<path d="M250,250 L250,50" style="fill:none;stroke:#80A080;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;stroke-dasharray:0 75;" />
+			</g>
+		</g>
+		<g id="BSicon_lhvCONTg++.svg 132" transform="matrix(0.0000000020619337348648514, 1.000000238418579, -1.000000238418579, 0.0000000020619337348648514, 4249.99755859375, 1250)" clip-path="url(#mask_39)">
+			<g id="Right_Track_and_Arrow 152">
+				<path d="M125,250 L125,50" style="fill:none;stroke:#00B500;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:100;" />
+				<path d="M227.5,50 L227.5,0 L125,-102.5 L22.5,0 L22.5,50" style="fill:#00B500;" />
+			</g>
+			<g id="Left_Track_and_Ribbon_Tail 152">
+				<path d="M-75,250 L-75,-100 L-125,-50 L-175,-100 L-175,250" style="fill:#00B500;" />
+			</g>
+			<g id="Left_Elevated_Tails 152">
+				<path d="M-250,250 L-250,50" style="fill:none;stroke:#80A080;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;stroke-dasharray:0 75;" />
+			</g>
+			<g id="Right_Elevated_Tails 152">
+				<path d="M250,250 L250,50" style="fill:none;stroke:#80A080;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-width:50;stroke-dasharray:0 75;" />
+			</g>
+		</g>
+	</g>
+</svg>
