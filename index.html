@@ -32,22 +32,19 @@
 @media (min-width: 600px) {
 			/* Wrap contents for left/right image */
 			.headmain,
-			.photographiesContainer,
-			.lrt1info,
-			.news,
-			.pcwhs {
+			.welcome {
 				flex-direction: row;
 				display: flex;
 			}
 
 			/* Following are conained in wrapped div above */
 			/* Main update */
-			.update {
+			.left-side {
 				order: 1;
 				width: 50%;
 				margin-right: 3px;
 			}
-			.randimg {
+			.right-side {
 				order: 2;
 				width: 50%;
 				vertical-align: center;
@@ -64,41 +61,7 @@
 				order: 2;
 				width: 62%;
 			}
-
-			/* LRT-1 */
-			.lrt1img {
-				order: 1;
-				width: 38%;
-				margin-right: 10px;
-			}
-			.lrt1desc {
-				order: 2;
-				width: 62%;
-			}
-
-			/* PCWHS */
-			.pcwhspic {
-				order: 2;
-				width: 38%;
-				margin-left: 10px;
-			}
-			.pcwhs-desc {
-				order: 1;
-				width: 62%;
-			}
-
-			/* Photographies */
-			.pics {
-				order: 1;
-				width: 30%;
-				margin-right: 10px;
-			}
-			.pht-desc {
-				order: 2;
-				width: 70%;
-			}
 		}
-
 	</style>
 	<title>Justin LRT</title>
 </head>
@@ -113,42 +76,46 @@
 		</header>
 		<div class="support" id="header-support"></div>
 		<div class="title">
-			<h1>Welcome to Justin LRT!</h1>
-			<h4>Last updated on June 26, 2026</h4>
+			<h1>Hi! I'm Justin LRT</h1>
 		</div>
-		<img class="center-fit" loading="lazy" src="media/cover.jpg" alt="Justin LRT Cover Banner" />
+		<div class="welcome">
+			<div class="box2 left-side">
+				<img class="dp" src="media/me.jpg" alt="Justin's Developer Profile Portrait" />
+				Hello there! My name is Justin. I am a independent street mobile photographer, a song composer, simple graphic designer and programmer, and a passionate rail enthusiast. I graduated with honors with a accountancy strand at Pasay City West High School batch 2026. I travel via the LRT-1 system regularly between Libertad and EDSA stations because I am inspired by its rapid speeds, strict safety protocols, and comfortable air-conditioned fleet.
+				<br>
+				<br>This site represents my introductory journey into front-end programming and web development. I actively applied advanced AI tools to help program, debug, and structure this website.
+				<br>
+				<br><a href="page/aboutme.html">View and read about me</a>
+			</div>
+			<div class="right-side">
+				<img class="center-fit" loading="lazy" src="media/cover.jpg" alt="Justin LRT Cover Banner" />
+			</div>
+		</div>
 		<br>
 		<div class="headmain">
-			<div class="box1 important update">
+			<div class="box1 important left-side">
 				Thank you so much for supporting this platform and making my independent project go viral across the community! If you enjoy exploring this space and want to keep these archives and apps accessible online, please consider following and supporting my official channels below:
-				<br>
-				<a href="https://facebook.com/justinlovelrt" target="_blank">Facebook <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
-				<br>
-				<a href="http://www.youtube.com/@JustinLRT" target="_blank">YouTube <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
-				<br>
-				<a href="https://www.tiktok.com/@justinlrt1" target="_blank">TikTok <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
+				<br><a href="https://facebook.com/justinlovelrt" target="_blank">Facebook <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
+				<br><a href="http://www.youtube.com/@JustinLRT" target="_blank">YouTube <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
+				<br><a href="https://www.tiktok.com/@justinlrt1" target="_blank">TikTok <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a>
 				<br>
 				<br>This platform is a dedicated web hub designed to help you explore fresh insights about the LRT-1 network and interact with custom, web-based commuter applications.
 				<br>
 				<br>My work is proudly inspired by the operations of the <a href="https://lrmc.ph/" target="_blank">Light Rail Manila Corporation <img class="extsvg" src="media/ui/external_link.svg" alt="External Link" /></a> and the dynamic student community of Pasay City West High School.
 			</div>
-			<div class="box3 important randimg">
+			<div class="box3 important right-side">
 				<div class="center-fit" id="banner-load"></div>
+				<div class="desc center-text">
+					Random image of your visit
+				</div>
 			</div>
 		</div>
-		<div class="ad">
-			<a href="page/advertise.html">
-				AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-				<br>Click here to place your ad
-			</a>
-		</div>
-		<br>
 		<div class="box2">
 			<h2>Latest Update</h2>
 			<div class="lightblue-bg-temp1">
 				Main page: <a href="page/updates/index.html">Justin LRT updates</a>
 			</div>
-			<h3>Justin LRT Graduate Message</h3>
+			<h3>My Graduation Message</h3>
 			<h4>March 26, 2026</h4>
 			<img class="dp1" src="media/justinlrt/graduate.jpg" />
 			<b>Justin LRT</b>
@@ -172,113 +139,405 @@
 		</div>
 		<div class="box2">
 			<h2>LRT-1</h2>
-				<div class="lightblue-bg-temp1">
-					Main article: <a href="page/lrt1.html">LRT Line 1</a>
-				</div>
-			<div class="lrt1info">
-				<div class="lrt1img">
-					<img class="center-fit" loading="lazy" src="media/aboutlrt1/3glibertad.jpg" alt="LRT-1 3G Train at Libertad Station" />
-					<br>
-				</div>
-				<div class="lrt1desc">
-					<b></b>
-					<ul>
-						<li><a href="page/lrt1/morelrt1.html">LRT-1 Navigation Page</a> - a direct shortcut for tracking rolling stock generations, station data, and system operators.</li>
-					</ul>
-					<br>The LRT-1 system is officially owned by the Light Rail Transit Authority (LRTA), while its day-to-day operations and network maintenance are managed by the Light Rail Manila Corporation (LRMC). Service starts on December 1, 1984, the LRT-1 stands as the historic first light rail transit system in Southeast Asia. Spanning a 26-kilometer track network across 25 active stations, it continues to provide rapid transit options featuring crisp air conditioning, fast commute speeds, and beautiful elevated city views.
-					<br>
-					<br>Explore my comprehensive logs tracking real-time updates, field trainspotting galleries, and commuter ride statistics compiled throughout my transit journeys.
-					<br>
-					<br>Access the dedicated modules below to learn more:
-					<br>
-					<ul>
-						<li><a href="page/lrt1updates.html">LRT-1 System Updates</a></li>
-						<li><a href="page/fareguide.html">LRT-1 Fare Guide & Matrix</a></li>
-						<li><a href="page/lrt1freeride.html">LRT-1 Free Ride Schedules</a></li>
-						<li><a href="page/lrt1trainspotting.html">LRT-1 Trainspotting by Justin LRT</a></li>
-						<li><a href="page/lrt1ride.html">LRT-1 Rides by Justin LRT</a></li>
-						<li><a href="page/lrtmrtsongs.html">Justin LRT Original Songs</a></li>
-						<li><a href="page/sytmmap.html">LRT and MRT Rapid System Map</a></li>
-						<li><a href="page/letter.html">Official Correspondence with LRT-1 Management</a></li>
-					</ul>
-					<br>
-					<h3 class="left-text">Custom LRT-1 Web Apps</h3>
-					<ul>
-						<li><a href="page/mylrt1travellevel.html">My LRT-1 Travel Level</a> - an interactive scorecard to calculate and visualize how well-traveled you are across the line.</li>
-						<li><a href="page/lrt1bingo.html">LRT-1 Bingo</a> - a fun dashboard tracking classic commuter milestones and experiences.</li>
-						<li><a href="page/lrt1carguide.html">LRT-1 Train Car Guide</a> - a technical boarding guide displaying exactly where to stand to align perfectly with station exits for efficient travel.</li>
-					</ul>
+			<div class="carousel-container">
+				<div class="carousel-track">
+					<!-- Use an <a> tag for the entire card -->
+					<a href="page/lrt1.html" class="card">
+						<div class="card-image" style="background-image: url('media/aboutlrt1/3glibertad.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								LRT Line 1
+							</p>
+							<span class="card-subtitle">Main article about LRT-1</span>
+							<p class="card-description">
+								The main article for entire information and history of LRT Line 1 in Metro Manila.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1/morelrt1.html" class="card">
+						<div class="card-image" style="background-image: url('media/aboutlrt1/monumento.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Stations, Rolling Stocks, and Operators
+							</p>
+							<span class="card-subtitle">All-in-one LRT-1 informations</span>
+							<p class="card-description">
+								Direct shortcut for tracking rolling stock generations, station data, and system operators.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1trainspotting.html" class="card">
+						<div class="card-image" style="background-image: url('media/lrt13gedsa.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Trainspotting
+							</p>
+							<span class="card-subtitle">My LRT-1 trainspotting</span>
+							<p class="card-description">
+								Explore and watch my collection of LRT-1 trainspotting videos.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1ride.html" class="card">
+						<div class="card-image" style="background-image: url('media/ride/libertad2.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Train Rides
+							</p>
+							<span class="card-subtitle">My LRT-1 train rides</span>
+							<p class="card-description">
+								Browse and watch my unforgettable train rides across all train generations.
+							</p>
+						</div>
+					</a>
+					<a href="page/lightrailtransitline1.html" class="card">
+						<div class="card-image" style="background-image: url('media/lightrailtransitline1.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Light Rail Transit Line 1
+							</p>
+							<span class="card-subtitle">My 2024 Song</span>
+							<p class="card-description">
+								Read, watch and listen to my track of the top-ranking Philippine Railway Song of 2024.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1freeride.html" class="card">
+						<div class="card-image" style="background-image: url('media/fr/freeride-1b.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Free Train Rides for Pasay City West High School Students
+							</p>
+							<span class="card-subtitle">My Community Program</span>
+							<p class="card-description">
+								Explore my special transit award for students of Pasay City West High School for free LRT-1 rides.
+							</p>
+						</div>
+					</a>
+					<a href="page/letter.html" class="card">
+						<div class="card-image" style="background-image: url('media/roosevelt.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								My Official Correspondence with LRT-1 Management
+							</p>
+							<span class="card-subtitle">My major milestone</span>
+							<p class="card-description">
+								Read the story behind my first official correspondence with LRMC.
+							</p>
+						</div>
+					</a>
 				</div>
 			</div>
+			<div class="dots-container"></div>
+			<div class="dots-container" id="dotsContainer"></div>
+			The LRT-1 system is officially owned by the Light Rail Transit Authority (LRTA), while its day-to-day operations and network maintenance are managed by the Light Rail Manila Corporation (LRMC). Launched on December 1, 1984, the LRT-1 stands as the historic first light rail transit system in Southeast Asia. Spanning a 26-kilometer track network across 25 active stations, it continues to provide rapid transit options featuring crisp air conditioning, fast commute speeds, and beautiful elevated city views.
+			<br>
+			<br>Explore my comprehensive logs tracking real-time updates, field trainspotting galleries, and commuter ride statistics compiled throughout my transit journeys.
+			<br>
+			<br>
+			<h3>My LRT-1 Web Projects</h3>
+			<div class="carousel-container">
+				<div class="carousel-track">
+					<a href="page/mylrt1travellevel.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/travellevel.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								My LRT-1 Travel Level
+							</p>
+							<span class="card-subtitle">Commuter's Travel Level</span>
+							<p class="card-description">
+								An interactive scorecard to calculate and visualize how well-traveled you are across the line.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1bingo.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/bingo.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								LRT-1 Bingo
+							</p>
+							<span class="card-subtitle">Commuter's Bingo</span>
+							<p class="card-description">
+								A fun dashboard tracking classic commuter milestones and experiences.
+							</p>
+						</div>
+					</a>
+					<a href="page/fareguide.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/farecalculator.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Fare Guide Calculator
+							</p>
+							<span class="card-subtitle">Fare Guide and Matrix Calculator</span>
+							<p class="card-description">
+								Calculate the exact fare from origin station to destination station.
+							</p>
+						</div>
+					</a>
+					<a href="page/lrt1carguide.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/traincar.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Train Car Guide Calculator
+							</p>
+							<span class="card-subtitle">Train Car Guide Calculator</span>
+							<p class="card-description">
+								Calculate which train car to board to arrive at the nearest exit at your destination.
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="dots-container"></div>
+			<div class="dots-container" id="dotsContainer"></div>
 		</div>
 		<div class="box2">
 			<h2>Pasay City West High School</h2>
-				<div class="lightblue-bg-temp1">
-					Main article: <a href="page/pcwhs.html">Pasay City West High School</a>
-				</div>
-			<div class="pcwhs">
-				<div class="pcwhspic">
-					<img class="center-fit" loading="lazy" src="media/photographs/pasaywest/pcwhs117.jpg" alt="Pasay City West High School Campus" />
-					<br>
-				</div>
-				<div class="pcwhs-desc">
-					Pasay City West High School is a premier, large-scale public secondary educational institution in Pasay City, Philippines, established in 1949. Located along Pasadeña Street, FB Harrison, the campus accommodates a vibrant student body of over 7,500 learners under the current leadership of principal Mr. Agapito Teodoro N. Manaog.
-					<br>
-					<br>I curated this to highlight the vibrant community, rich history, and ongoing campus milestones that make the largest public high school in Pasay City so exceptional.
-					<br>
-					<br>Browse the student logs below for detailed pages:
-					<ul>
-						<li><a href="page/pcwhs/announcements.html">Campus Announcements and Updates</a></li>
-						<li><a href="page/pcwhs/posts.html">Official School Press and Publications</a></li>
-						<li><a href="page/pcwhs/history.html">History of Pasay City West High School</a></li>
-						<li><a href="page/pcwhs/justinlrt.html">Justin LRT Student Files and Project Logs</a></li>
-					</ul>
+			<div class="carousel-container">
+				<div class="carousel-track">
+					<a href="page/pcwhs.html" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/pasaywest/pcwhs117.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Pasay City West High School
+							</p>
+							<span class="card-subtitle">Main article about the school</span>
+							<p class="card-description">
+								The main article for entire and complete information about Pasay City West High School.
+							</p>
+						</div>
+					</a>
+					<a href="page/pcwhs/history.html" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/pasaywest/pcwhs69.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								History
+							</p>
+							<span class="card-subtitle">School History</span>
+							<p class="card-description">
+								Read the entire history of Pasay City West High School since 1949.
+							</p>
+						</div>
+					</a>
+					<a href="page/pcwhs/posts.html" class="card">
+						<div class="card-image" style="background-image: url('media/coverphoto/ulatkanluran.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Official School Press and Publications
+							</p>
+							<span class="card-subtitle">School Publications</span>
+							<p class="card-description">
+								Explore and look all of the school's official publications in the campus.
+							</p>
+						</div>
+					</a>
+					<a href="page/pcwhs/justinlrt.html" class="card">
+						<div class="card-image" style="background-image: url('media/pcwhs/justinlrt/2024/02/08-students1.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								My Publications
+							</p>
+							<span class="card-subtitle">My Posts and Publications</span>
+							<p class="card-description">
+								Explore and look all of my publications and posts around the campus.
+							</p>
+						</div>
+					</a>
 				</div>
 			</div>
+			<div class="dots-container"></div>
+			<div class="dots-container" id="dotsContainer"></div>
+			Pasay City West High School is a premier, large-scale public secondary educational institution in Pasay City, Philippines, established in 1949. Located along Pasadeña Street, FB Harrison, the campus accommodates a vibrant student body of over 7,500 learners under the current leadership of principal Mr. Agapito Teodoro N. Manaog.
+			<br>
+			<br>I curated this to highlight the vibrant community, rich history, and ongoing campus milestones that make the largest public high school in Pasay City so exceptional.
 		</div>
 		<div class="box2">
-			<h2>Photography</h2>
-			<div class="photographiesContainer">
-				<div class="pics">
-					<table class="ptr-fit-td">
-						<tr>
-							<td colspan="2"><img class="center-fit" loading="lazy" src="media/photographs/lrt1/lrt1-20.jpg" alt="LRT-1" /></td>
-						</tr>
-						<tr>
-							<td><img class="center-fit" loading="lazy" src="media/photographs/moa/moa8.jpg" alt="Mall of Asia" /></td>
-							<td><img class="center-fit" loading="lazy" src="media/photographs/pasayrotonda/pasayrtd9.jpg" alt="Pasay Rotonda" /></td>
-						</tr>
-						<tr>
-							<td><img class="center-fit" loading="lazy" src="media/photographs/smewreinpsy/pasay2.jpg" alt="Pasay City" /></td>
-							<td><img class="center-fit" loading="lazy" src="media/photographs/pasaywest/pcwhs26.jpg" alt="Pasay West campus" /></td>
-						</tr>
-					</table>
-					<div class="center-text desc">
-						A look at urban transit and student life through my camera lens.
-					</div>
-				</div>
-				<br>
-				<div class="pht-desc">
-					As an avid digital photographer, I log upwards of 1,000 unique shots each year across Metro Manila. Alongside trainspotting, my goal is to share these visual catalogs publicly so everyone can witness how our local transit hubs, campus landscapes, and urban spaces adapt over time.
-					<br>
-					<br>Click <a href="page/ptgrphs.html">here</a> to access my full digital photography portfolio.
-				</div>
-			</div>
-		</div>
-		<div class="box2">
-			<h2>Interactive Web Applications</h2>
+			<h2>My Web Application Projects</h2>
 			My specialized web apps are custom-built utility tools designed specifically for this platform. These tools run directly within your browser window to offer zero-install commuter tracking, simulation, and entertainment features that you won't find anywhere else.
-			<br>
-			<br>Click <a href="page/apps.html">here</a> to launch the Web Apps Portal.
+			<div class="carousel-container">
+				<div class="carousel-track">
+					<a href="page/apps/videotoimage.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/videotoimage.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Video to Image
+							</p>
+							<span class="card-subtitle">Enhanced Video to Image Converter</span>
+							<p class="card-description">
+								Convert video to image as full-resolution screenshot manually with master features.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/gps.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/gpstracker.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								GPS Tracker
+							</p>
+							<span class="card-subtitle">Real-time GPS Tracker and Recording</span>
+							<p class="card-description">
+								A tool that allows you to track your position, distance, and speed in real-time with recording feature.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/notepad.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/notepad.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Notepad
+							</p>
+							<span class="card-subtitle">Secret Notepad</span>
+							<p class="card-description">
+								Simple notepad that allows you to encode and save secretly locally on your device.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/downloader.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/downloader.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								File Downloader
+							</p>
+							<span class="card-subtitle">Download raw files</span>
+							<p class="card-description">
+								Download raw media and files directly from a link.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/colorchange.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/changecolor.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Tap to Change Color
+							</p>
+							<span class="card-subtitle">Tap to Change Color</span>
+							<p class="card-description">
+								A tool that allows to change between two colors by tapping into the screen.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/musicplayer.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/musicplayer.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Music Player
+							</p>
+							<span class="card-subtitle">Multi-track Music Player</span>
+							<p class="card-description">
+								Import and play multiple music files at once comes with extreme features.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/bpmtapper.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/bpmtapper.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								BPM Tapper
+							</p>
+							<span class="card-subtitle">Tapping Rate in BPM</span>
+							<p class="card-description">
+								An interactive tap counter that tracks your speed in real time.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/morsecodetotext.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/morsetotext.png');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Morse Code to Text
+							</p>
+							<span class="card-subtitle">Morse Code to Text Converter</span>
+							<p class="card-description">
+								Convert morse code into readable text from any morse code formats.
+							</p>
+						</div>
+					</a>
+					<a href="page/apps/texttomorsecode.html" class="card">
+						<div class="card-image" style="background-image: url('media/cards/texttomorse.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Text to Morse Code
+							</p>
+							<span class="card-subtitle">Text to Morse Code Converter and Player</span>
+							<p class="card-description">
+								Convert text into morse code with adjustable playback and save audio features.
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="dots-container"></div>
+			<div class="dots-container" id="dotsContainer"></div>
 		</div>
 		<div class="box2">
-			<h2>About the Developer</h2>
-			<img class="dp" src="media/me.jpg" alt="Justin's Developer Profile Portrait" />
-			Hello there! My name is Justin. I am an honor graduate of Pasay City West High School (Batch 2026), an independent street photographer, a socio-political song composer, and a passionate rail enthusiast. I travel via the LRT-1 system regularly because I am inspired by its rapid speeds, strict safety protocols, and comfortable, air-conditioned fleet.
-			<br>
-			<br>This site represents my introductory journey into front-end programming and web development. I actively applied advanced AI tools to help program, debug, and structure these modules. If you have feedback, feature requests, or want to contribute to the code, please reach out!
-			<br>
-			<br>Click <a href="page/aboutme.html">here</a> for a deep dive into my personal background.
+			<h2>My Photographies Portfolio</h2>
+			As an mobile digital photographer, I log more than 1,500 unique shots around Metro Manila. Alongside trainspotting, my goal is to share these visual catalogs publicly so everyone can witness how our local transit, campus landscapes, and urban spaces adapt over time.
+			<div class="carousel-container">
+				<div class="carousel-track">
+					<a href="page/ptgrphs.html#section-4" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/lrt1/lrt1-20.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								LRT-1
+							</p>
+							<span class="card-subtitle">Photographies of LRT-1</span>
+							<p class="card-description">
+								Explore all of my images of LRT-1.
+							</p>
+						</div>
+					</a>
+					<a href="page/ptgrphs.html#section-3" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/moa/moa10.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Mall of Asia
+							</p>
+							<span class="card-subtitle">Photographies around Mall of Asia</span>
+							<p class="card-description">
+								Explore all of my images around the Mall of Asia.
+							</p>
+						</div>
+					</a>
+					<a href="page/ptgrphs.html#section-1" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/pasayrotonda/pasayrtd9.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								EDSA Pasay Rotonda
+							</p>
+							<span class="card-subtitle">Photographies around Pasay Rotonda in EDSA-Taft</span>
+							<p class="card-description">
+								Explore all of my images around the Pasay Rotonda area.
+							</p>
+						</div>
+					</a>
+					<a href="page/ptgrphs.html#section-2" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/smewreinpsy/pasay2.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Somewhere in Pasay Ctiy
+							</p>
+							<span class="card-subtitle">Photographies around Pasay City</span>
+							<p class="card-description">
+								Explore all of my images around Pasay City.
+							</p>
+						</div>
+					</a>
+					<a href="page/ptgrphs.html#section-5" class="card">
+						<div class="card-image" style="background-image: url('media/photographs/pasaywest/pcwhs25.jpg');"></div>
+						<div class="card-content">
+							<p class="card-title">
+								Pasay City West High School
+							</p>
+							<span class="card-subtitle">Photographies of Justin LRT's campus</span>
+							<p class="card-description">
+								Explore all of my images around the Pasay City West High School campus.
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="dots-container"></div>
+			<div class="dots-container" id="dotsContainer"></div>
 		</div>
 		<div class="box1">
 			If you enjoy using this independent web platform and want to keep it online and ad-free, please consider supporting my work. Thank you!
@@ -295,38 +554,38 @@
 	<script src="script/footer/footer.js" type="text/javascript" charset="utf-8"></script>
 	<script src="script/nav/nav.js" type="text/javascript" charset="utf-8"></script>
 	<!--<script>
-																				if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																					window.location.href = 'page/pterc.html';
-																				} else {
-																					if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																						if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																							window.location.href = 'page/pterc.html';
-																						} else {
-																							if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																								if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																									window.location.href = 'page/pterc.html';
-																								} else {
-																									if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																										if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																											window.location.href = 'page/pterc.html';
-																										} else {
-																											if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																												if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
-																													window.location.href = 'page/pterc.html';
-																												} else {
-																													if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
-																														alert("Error :(\n\nPlease click OK to browse Justin LRT.")
-																													}
-																												}
-																											}
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			</script>-->
+																														if (confirm("Sorry for interruption but please answer it first.\n\nAre you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																															window.location.href = 'page/pterc.html';
+																														} else {
+																															if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																																if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																																	window.location.href = 'page/pterc.html';
+																																} else {
+																																	if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																																		if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																																			window.location.href = 'page/pterc.html';
+																																		} else {
+																																			if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																																				if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																																					window.location.href = 'page/pterc.html';
+																																				} else {
+																																					if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																																						if (confirm("Are you the one of the admins of the Philippine Train Enthusiast and Railfans Club (PTERC)?\n\nOK = Yes\nCancel = No")) {
+																																							window.location.href = 'page/pterc.html';
+																																						} else {
+																																							if (confirm("Are you sure about that?\nBe honest because the God is watching you.")) {} else {
+																																								alert("Error :(\n\nPlease click OK to browse Justin LRT.")
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													</script>-->
 	<noscript>
 		<br>
 		<div class="box3 center-text">

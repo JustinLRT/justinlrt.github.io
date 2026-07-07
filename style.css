@@ -1,4 +1,4 @@
-/*Dark mode*/
+/* Dark mode */
 body.dark-mode {
 	background-color: #000000;
 	color: white;
@@ -18,7 +18,13 @@ body.dark-mode .hamburger-menu {
 	color: white;
 }
 body.dark-mode a {
-	color: #0080FF;
+	color: #4EA7FF;
+}
+body.dark-mode a:active {
+	color: orange;
+}
+body.dark-mode a:hover {
+	color: orange;
 }
 body.dark-mode .dp {
 	border-color: #0080FF;
@@ -63,31 +69,31 @@ body.dark-mode input[type="text"]::placeholder {
 	opacity: 1;
 }
 body.dark-mode input[type="radio"] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #4A5568;
-  border-radius: 50%;
-  background: #202020;
-  cursor: pointer;
-  position: relative;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #4A5568;
+	border-radius: 50%;
+	background: #202020;
+	cursor: pointer;
+	position: relative;
 }
 
-/* Ibalik mo yung blue dot pag checked */
+/*  Ibalik mo yung blue dot pag checked  */
 body.dark-mode input[type="radio"]:checked::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #0080FF;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	content: "";
+	width: 10px;
+	height: 10px;
+	background: #0080FF;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 body.dark-mode input[type="radio"]:checked {
-  border-color: #0080FF;
+	border-color: #0080FF;
 }
 body.dark-mode textarea {
 	background-color: #121212;
@@ -261,36 +267,40 @@ body.dark-mode .red {
 	color: red;
 }
 
-/*Hamburger*/
+/* Hamburger */
 header {
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5EFFF /* Background color */;
 	padding: 0px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 999;
-	border-bottom: solid 3px #0080FF /*Main color*/;
+	border-bottom: solid 3px #0080FF /* Main color */;
 }
 .hamburger a {
+	-webkit-tap-highlight-color: transparent !important;
 	text-decoration: none;
 	color: black;
 }
 .hamburger-menu {
+	-webkit-tap-highlight-color: transparent !important;
 	color: black;
 	text-decoration: none;
 }
 .hamburger {
+	-webkit-tap-highlight-color: transparent !important;
 	display: inline-block;
 	cursor: pointer;
 	padding: 0px 8px 10px 8px;
-	background-color: #E5EFFF /*Background color*/;
+	background-color: #E5EFFF /* Background color */;
 	border: none;
 	color: #333;
 	font-size: 20px;
 }
 .hamburger:hover {
-	background-color: #E5EFFF /*Background color*/;
+	-webkit-tap-highlight-color: transparent !important;
+	background-color: #E5EFFF /* Background color */;
 }
 .font-margin {
 	padding-left: 10px;
@@ -302,11 +312,18 @@ header {
 	padding: 0;
 }
 
-/*HTML page*/
+/* HTML page */
 * {
 	margin: 0px;
 	padding: 0px;
 	font-family: system-ui;
+	line-height: 1.27;
+}
+*:not(h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, b, b a, h3 span, strong, th, th a, th q, button, legend, div.name, div.ad a, div.ad, .card-title) {
+	font-weight: 440;
+}
+html {
+	font-size: 102%;
 }
 footer {
 	text-align: center;
@@ -323,9 +340,16 @@ td {
 	font-size: 96%;
 }
 a {
+	-webkit-tap-highlight-color: transparent !important;
 	text-decoration: none;
 	color: #0080FF;
 	outline: none;
+}
+a:active {
+	color: orange;
+}
+a:hover {
+	color: orange;
 }
 ol, ul {
 	padding-left: 22px;
@@ -373,7 +397,7 @@ ul.pdl li {
 ol.pdl li {
 	padding-top: 10px;
 }
-div.title h3 {
+div.title h3,h2 {
 	text-align: center;
 }
 .center-fit {
@@ -415,7 +439,7 @@ div.title h3 {
 	font-size: 0.7em;
 }
 .dp {
-	border-color: #0080FF /*Main color*/;
+	border-color: #0080FF /* Main color */;
 	border-radius: 10px;
 	border-style: solid;
 	float: left;
@@ -463,12 +487,12 @@ div.support {
 	transform: translate(0px,10px);
 }
 
-/*Boxes*/
+/* Boxes */
 .box1 {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	border: solid 3px #0080FF /*Main color*/;
+	border: solid 3px #0080FF /* Main color */;
 	text-align: center;
 }
 .box1 br {
@@ -480,8 +504,8 @@ div.support {
 	margin-top: 0%;
 	margin-bottom: 3%;
 	color: black;
-	background: #E5EFFF /*Background color*/;
-	border-top: solid 5px #0080FF /*Main color*/;
+	background: #E5EFFF /* Background color */;
+	border-top: solid 5px #0080FF /* Main color */;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 	border-radius: 10px;
 }
@@ -493,13 +517,13 @@ div.support {
 	padding: 0.5em 0.5em;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	background: #E5EFFF /*Background color*/;
+	background: #E5EFFF /* Background color */;
 	border-radius: 10px;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 .box3 .box-title {
 	font-size: 1.2em;
-	background: #0080FF /*Main color*/;
+	background: #0080FF /* Main color */;
 	padding: 4px;
 	text-align: center;
 	color: #FFF;
@@ -511,7 +535,7 @@ div.support {
 	margin: 0;
 }
 
-/*Background colors*/
+/* Background colors */
 .red-bg {
 	background-color: #FFBFBF;
 }
@@ -537,8 +561,8 @@ div.support {
 	background-color: #DFBFFF;
 }
 
-/*Background colors to represent each grade levels*/
-/*Best for table headings*/
+/* Background colors to represent each grade levels */
+/* Best for table headings */
 .g7-th {
 	background-color: #009900;
 }
@@ -558,7 +582,7 @@ div.support {
 	background-color: #FFB265;
 }
 
-/*Background solid colors (100% pure) represent each grade levels*/
+/* Background solid colors (100% pure) represent each grade levels */
 .g7 {
 	background-color: green;
 }
@@ -578,7 +602,7 @@ div.support {
 	background-color: orange;
 }
 
-/*Table*/
+/* Table */
 table {
 	border-collapse: collapse;
 	table-layout: fixed;
@@ -596,7 +620,7 @@ td, th {
 }
 th {
 	background-color: #AACBFF;
-	/*#AAD0FF & #C0DCFF is the old*/
+	/* #AAD0FF & #C0DCFF is the old */
 }
 table.inner-table th {
 	background: #BAD4FF;
@@ -605,9 +629,9 @@ table.inner-table th {
 	background: #BAD4FF;
 }
 
-/*Collapsible*/
+/* Collapsible */
 .collapsible {
-	background-color: #0080FF /*Main color*/;
+	background-color: #0080FF /* Main color */;
 	color: white;
 	cursor: pointer;
 	padding: 10px;
@@ -625,8 +649,8 @@ table.inner-table th {
 	padding: 0 13px;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.22s ease-out;
-	background-color: #E5EFFF /*Background color*/;
+	transition: max-height 0.15s ease-out;
+	background-color: #E5EFFF /* Background color */;
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-bottom: 3%;
@@ -638,8 +662,194 @@ table.inner-table th {
 	}
 }
 
-/*For train stations. Colored border lines left and right*/
-/*Only for stations under 'services'*/
+/* Card carousel */
+.card, .dot {
+	-webkit-tap-highlight-color: transparent !important;
+	/* Hides the blue hover highlights */
+}
+.carousel-container {
+	position: relative;
+	width: 100%;
+	max-width: 1024px;
+	height: 395px;
+	margin: 0 auto 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	perspective: 1000px;
+	overflow: hidden;
+	touch-action: pan-y;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	box-sizing: border-box;
+}
+.carousel-track {
+	position: relative;
+	width: 300px;
+	/* Perfectly scaled width */
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.card.active:active {
+	transform: translate3d(0, 0, 0) scale(1.05) !important;
+	/* Zooms out/expands by 5% */
+	box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+	/* Deepens the shadow to look higher up */
+	transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+	/* Snappy outward pop */
+}
+.card {
+	transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, z-index 0.4s ease !important;
+	/* Ensure your base transition handles the return smoothly */
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: white;
+	border: 1px solid #e2e8f0;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	opacity: 0;
+	pointer-events: none;
+	text-decoration: none !important;
+}
+.card-image {
+	width: 100%;
+	height: 40%;
+	background-color: #0080FF;
+	/* Placeholder for no image */
+	background-size: cover;
+	background-position: center;
+}
+.card-content {
+	padding: 20px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	flex-grow: 1;
+	box-sizing: border-box;
+	background-color: #D3EDFD;
+}
+.card-title {
+	font-size: 1.17rem;
+	font-weight: bold;
+	color: black;
+	margin: 0;
+}
+.card-subtitle {
+	font-size: 0.92rem;
+	color: #718096;
+	font-style: italic;
+}
+.card-description {
+	color: black;
+	line-height: 1.4;
+	margin-top: 4px;
+}
+.card.active {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translate3d(0, 0, 0) scale(1);
+	z-index: 5;
+}
+.card.prev {
+	opacity: 0.6;
+	pointer-events: auto;
+	transform: translate3d(-60%, 0, -100px) scale(0.85);
+	z-index: 3;
+}
+.card.next {
+	opacity: 0.6;
+	pointer-events: auto;
+	transform: translate3d(60%, 0, -100px) scale(0.85);
+	z-index: 3;
+}
+.card.far-prev {
+	opacity: 0.35;
+	/* Increased visibility from 0 so they don't disappear on desktop */
+	pointer-events: auto;
+	transform: translate3d(-110%, 0, -200px) scale(0.72);
+	z-index: 3;
+}
+.card.far-next {
+	opacity: 0.35;
+	/* Increased visibility from 0 so they don't disappear on desktop */
+	pointer-events: auto;
+	transform: translate3d(110%, 0, -200px) scale(0.72);
+	z-index: 3;
+}
+.card.far-far-prev {
+	opacity: 0.15;
+	pointer-events: auto;
+	transform: translate3d(-150%, 0, -300px) scale(0.6);
+	z-index: 2;
+}
+.card.far-far-next {
+	opacity: 0.15;
+	pointer-events: auto;
+	transform: translate3d(150%, 0, -300px) scale(0.6);
+	z-index: 2;
+}
+@media (max-width: 600px) {
+	.card.far-prev, .card.far-next, .card.far-far-prev, .card.far-far-next {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+.dots-container {
+	display: flex;
+	gap: 10px;
+	margin: 5px auto 5px auto;
+	justify-content: center;
+}
+.dot {
+	width: 12px;
+	height: 12px;
+	border: 2px solid #0080FF !important;
+	/* Styled using your Main Brand Blue color */
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 0 !important;
+	/* Resets your global button cell padding configuration */
+}
+.dot.active {
+	background: #0080FF !important;
+	box-shadow: inset 0 0 0 2px white;
+}
+body.dark-mode .card {
+	background: #212934;
+	border: 1px solid #353535;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+body.dark-mode .card-content {
+	background-color: #172F3B;
+}
+body.dark-mode .card-title {
+	color: white;
+}
+body.dark-mode .card-subtitle {
+	color: #BBBBBB;
+}
+body.dark-mode .card-description {
+	color: white;
+}
+body.dark-mode .dot {
+	border-color: #0080FF !important;
+}
+body.dark-mode .dot.active {
+	background: #0080FF !important;
+	box-shadow: inset 0 0 0 2px #000000;
+}
+
+/* For train stations. Colored border lines left and right */
+/* Only for stations under 'services' */
 .line1 {
 	border-left: solid 18px #00B500;
 	border-right: solid 18px #00B500;
@@ -672,7 +882,7 @@ table.inner-table th {
 	font-size: 90%;
 }
 
-/*Text color decoration for links for master lists in Pasay West represents as grade levels*/
+/* Text color decoration for links for master lists in Pasay West represents as grade levels */
 .g7-link {
 	color: green;
 }
@@ -692,14 +902,14 @@ table.inner-table th {
 	color: orange;
 }
 
-/*Countdown*/
+/* Countdown */
 .countdown {
 	font-size: 24px;
 	text-align: center;
 	font-weight: bold;
 }
 
-/*Posts*/
+/* Posts */
 .post {
 	display: flex;
 	padding-bottom: 15px;
@@ -709,9 +919,9 @@ table.inner-table th {
 	height: 50px;
 	border-radius: 50%;
 	object-fit: cover;
-	/* To make it circular */
+	/*  To make it circular  */
 	margin-right: 10px;
-	/* To maintain aspect ratio within the circle */
+	/*  To maintain aspect ratio within the circle  */
 }
 .post-details {
 	flex-grow: 1;
@@ -728,7 +938,7 @@ table.inner-table th {
 	font-size: 14px;
 }
 
-/*Calendar*/
+/* Calendar */
 table.calendar-days td {
 	text-align: center;
 }
@@ -770,7 +980,7 @@ div.scal li {
 	background-color: #FF6400;
 }
 
-/*Templates*/
+/* Templates */
 .red-temp {
 	padding: 0.5em 0.5em 0.5em 4em;
 	margin: 0% 0% 3% 0%;
@@ -958,35 +1168,46 @@ div.scal li {
 .quotation-temp {
 	border-left: solid 3.5px #9D9D9D;
 	padding-left: 22px;
-	font-family: serif;
+	font-family: serif !important;
+	font-style: italic;
 }
 
-/*SVG*/
+/* SVG */
 .external-link {
 	width: 12px;
 	height: 12px;
 }
+.feedback-svg {
+	width: 27px;
+	height: 27px;
+	vertical-align: middle;
+	margin-right: 3px;
+	margin-bottom: 2px;
+}
 .lrt1green-logo {
-	/*No styles yet*/
+	/* No styles yet */
 }
 
-/*SVG floating images*/
+/* SVG floating images */
 .ui {
 	float: left;
 	margin-right: 10px;
 	width: 42px;
 }
 .verifiedsvg {
-	/*No styles yet*/
+	/* No styles yet */
 }
 .extsvg {
 	vertical-align: -1px;
 	margin: 0px;
 }
+body.dark-mode .extsvg {
+	color: white;
+}
 .increasesvg, .decreasesvg, .steadysvg {
 	width: 10px;
 }
-/*Text color*/
+/* Text color */
 .red {
 	color: red;
 }
