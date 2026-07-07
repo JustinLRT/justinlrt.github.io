@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
 	<link rel="apple-touch-icon" href="../../icon.png">
-	<title>Video to Image</title>
+	<title>Video to Image Converter</title>
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -48,7 +48,7 @@
 			margin: 5px;
 			border-radius: 50px;
 			padding: 5px;
-			border: solid 1.5px white;
+			border: solid 1.5px #6B6B6B;
 		}
 		h1 {
 			margin: 2px;
@@ -58,7 +58,8 @@
 			margin-bottom: 5px;
 		}
 		#playPauseBtn {
-			background-color: lime;
+			background-color: green;
+			color: white;
 		}
 		#seek {
 			background-color: blue;
@@ -66,9 +67,11 @@
 		}
 		#seekf {
 			background-color: turquoise;
+			color: black;
 		}
 		#speed {
-			background-color: pink;
+			background-color: #602E39;
+			color: white;
 		}
 		#save {
 			background-color: red;
@@ -78,11 +81,11 @@
 </head>
 <body>
 	<h1>Video to Image</h1>
-
+	<h3>Ready to use offline!</h3>
 	<!-- File Input for Choosing Video -->
 	<input type="file" id="videoFile" accept="video/*">
 	<div>
-		<a href="javascript:window.history.back();">Go Back</a> | <a id="fullscreenBtn">Full Screen</a>
+		<a href="javascript:window.history.back();">Go Back</a> | <a id="fullscreenBtn">Full Screen</a> | <a href="files/Video to Image.html" download>Download a Copy</a>
 	</div>
 	<br>
 	<video id="video"></video>
