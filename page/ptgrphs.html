@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
 	<link rel="apple-touch-icon" href="../icon.png">
-	<title>Photographies</title>
+	<title>My Photographies Portfolio</title>
 	<style>
 		img {
 			margin: 0px;
@@ -15,16 +15,28 @@
 		h3 {
 			text-align: center;
 		}
+
+		/* The Image Styling */
 		.center-fit1 {
+			/* Allows the image width to grow or shrink perfectly to fill gaps */
+			flex: 1 1 calc(45% - 8px);
 			max-width: 49%;
 			max-height: 49vh;
-			margin: auto;
+			height: auto;
+			object-fit: cover;
+			/* Crops slightly to elegantly square-match mismatched pairs */
+			border-radius: 4px;
+			/* Optional: adds a clean subtle edge to photo cards */
 		}
-		imageContainer {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			flex: 100vw;
+
+		/* Landscape Mode Optimization */
+@media (min-width: 600px) {
+			.center-fit1 {
+				/* Dynamically scales to cleanly pack 4 items across wider viewpoints */
+				flex: 1 1 calc(22% - 8px);
+				max-width: 24%;
+				max-height: 45vh;
+			}
 		}
 	</style>
 </head>
@@ -39,24 +51,14 @@
 		</header>
 		<div class="support" id="header"></div>
 		<div class="title">
-			<h1>Photographies</h1>
-			<h2>By Justin LRT</h2>
+			<h1>My Photographies Portfolio</h1>
 		</div>
 		<div class="box3">
 			<a href="javascript:window.history.back();">Back</a>
 			<br>
 			<a href="../home.html">Home</a>
 		</div>
-		<div class="ad">
-			<a href="advertise.html">
-				AD SPACE FOR RENT<br>ONLY ₱20/MONTH!<br>
-				<br>Click this to place your ad here
-			</a>
-		</div>
-		<br>
-		<button class="collapsible">Somewhere in Pasay</button>
-		<div class="content">
-			<br>
+		<div class="box2" id="section-1">
 			<h3>EDSA-Taft Pasay Rotonda</h3>
 			<div id="imageContainer">
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasayrotonda/pasayrtd2.jpg" />
@@ -82,7 +84,8 @@
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasayrotonda/pasayrtd21.jpg" />
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasayrotonda/pasayrtd22.jpg" />
 			</div>
-			<br>
+		</div>
+		<div class="box2" id="section-2">
 			<h3>Somewhere in Pasay</h3>
 			<div id="imageContainer">
 				<img class="center-fit1" loading="lazy" src="../media/photographs/smewreinpsy/pasay1.jpg" />
@@ -129,7 +132,8 @@
 				<img class="center-fit1" loading="lazy" src="../media/photographs/smewreinpsy/pasay42.jpg" />
 				<img class="center-fit1" loading="lazy" src="../media/photographs/smewreinpsy/pasay40.jpg" />
 			</div>
-			<br>
+		</div>
+		<div class="box2" id="section-3">
 			<h3>Mall of Asia</h3>
 			<div id="imageContainer">
 				<img class="center-fit1" loading="lazy" src="../media/photographs/moa/moa1.jpg" />
@@ -153,9 +157,42 @@
 				<img class="center-fit1" loading="lazy" src="../media/photographs/moa/moa13.jpg" />
 			</div>
 		</div>
-		<button class="collapsible">Pasay City West High School</button>
-		<div class="content">
-			<br>
+		<div class="box2" id="section-4">
+			<h3>LRT-1</h3>
+			<div id="imageContainer">
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-1.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-8.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-3.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-4.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-10.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-6.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-7.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-11.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-9.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-5.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-15.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-12.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-13.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-14.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-2.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-19.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-16.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-17.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-18.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-20.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-21.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-28.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-23.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-24.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-25.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-26.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-29.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-22.jpg" />
+				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-27.jpg" />
+			</div>
+		</div>
+		<div class="box2" id="section-5">
+			<h3>Pasay City West High School</h3>
 			<div id="imageContainer">
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasaywest/pcwhs3.jpg" />
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasaywest/pcwhs2.jpg" />
@@ -280,47 +317,43 @@
 				<img class="center-fit1" loading="lazy" src="../media/photographs/pasaywest/pcwhs121.jpg" />
 			</div>
 		</div>
-		<button class="collapsible">LRT-1</button>
-		<div class="content">
-			<br>
-			<div id="imageContainer">
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-1.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-8.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-3.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-4.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-10.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-6.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-7.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-11.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-9.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-5.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-15.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-12.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-13.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-14.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-2.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-19.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-16.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-17.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-18.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-20.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-21.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-28.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-23.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-24.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-25.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-26.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-29.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-22.jpg" />
-				<img class="center-fit1" loading="lazy" src="../media/photographs/lrt1/lrt1-27.jpg" />
-			</div>
-		</div>
 		<footer id="footerA"></footer>
 	</div>
 	<script type='text/javascript' src='../script/jquery.min.js'></script>
 	<script src="../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.text').show(); [span_5](start_span)[span_5](end_span)
+
+			if (window.location.hash) {
+				const targetHash = window.location.hash;
+				const $targetElement = $(targetHash);
+
+				if ($targetElement.length) {
+					// 1. Prevent the initial glitchy native jump
+					window.scrollTo(0, 0);
+
+					// Function to safely execute the scroll position calculation
+					function scrollToSection() {
+						$('html, body').stop().animate({
+							scrollTop: $targetElement.offset().top - 10
+						}, 300);
+					}
+
+					// 2. Initial scroll to the section
+					setTimeout(scrollToSection, 350);
+
+					// 3. SECONDARY CORRECTION:
+					// As top images pop in and push the layout down,
+					// this re-adjusts the position so it doesn't move out of screen.
+					setTimeout(scrollToSection, 800);
+				}
+			}
+		});
+	</script>
+
 	<noscript>
 		<br>
 		<div class="box3 center-text">

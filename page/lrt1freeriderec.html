@@ -7,10 +7,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../style.css" type="text/css" media="all" />
 	<link rel="apple-touch-icon" href="../icon.png">
-	<title>Records of LRT-1 free ride</title>
+	<title>Records of LRT-1 Free Ride</title>
 	<style>
 		img {
 			padding: 2px;
+		}
+		h3 {
+			text-align: center;
 		}
 @media (min-width: 600px) {
 			img {
@@ -34,18 +37,19 @@
 				</div>
 			</nav>
 		</header>
+		<div class="support" id="header"></div>
 		<div class="title">
-			<h1>LRT-1 free rides</h1>
-			<h2>For Pasay City West High School students</h2>
-			<h3>Free ride records</h3>
+			<h1>LRT-1 Free Rides</h1>
+			<h2>For Pasay City West High School Students</h2>
+			<h3>Free Rides Records</h3>
 		</div>
 		<div class="box3">
 			<a href="javascript:window.history.back();">Back</a>
 			<br>
-			<a href="../home.html">Home</a> &#8594; <a href="lrt1freeride.html">LRT-1 free ride</a>
+			<a href="../home.html">Home</a> &#8594; <a href="lrt1freeride.html">LRT-1 Free Ride</a>
 		</div>
 		<div class="box2">
-			LRT-1 free ride for students of Pasay City West High School who ride LRT-1 going to Baclaran station. The offer is implemented to help students to save their spending for LRT-1 ride to save their money to buy their goods. This program is still running from Monday to Friday.
+			LRT-1 free rides for students of Pasay City West High School who rode the LRT-1 from Libertad station going to Baclaran station. The offer is implemented to help students to save their spending from riding the LRT-1 train that is intended to save and use it for school activities and personal spendings. This program run from Monday to Friday at evening.
 			<br>
 			<br>Total of students availed the free ride: <b>2</b>
 		</div>
@@ -70,46 +74,46 @@
 	<script src="../script/footer/footerA.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../script/nav/navA.js" type="text/javascript" charset="utf-8"></script>
 	<script>
-    // Set the timeout for 10 seconds (10,000 milliseconds)
-    const timeoutDuration = 5000;
-    let timeoutId;
+		// Set the timeout for 10 seconds (10,000 milliseconds)
+		const timeoutDuration = 5000;
+		let timeoutId;
 
-    // Function to redirect to page1.html
-    function redirectToPage1() {
-        window.location.href = 'page1.html';
-    }
+		// Function to redirect to page1.html
+		function redirectToPage1() {
+			window.location.href = 'page1.html';
+		}
 
-    // Function to reset the timeout
-    function resetTimeout() {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(redirectToPage1, timeoutDuration);
-    }
+		// Function to reset the timeout
+		function resetTimeout() {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(redirectToPage1, timeoutDuration);
+		}
 
-    // Set the initial timeout
-    resetTimeout();
+		// Set the initial timeout
+		resetTimeout();
 
-    // Listen for user interactions to reset the timeout
-    document.addEventListener('click', resetTimeout);
-    document.addEventListener('mousemove', resetTimeout);
-    document.addEventListener('keydown', resetTimeout);
+		// Listen for user interactions to reset the timeout
+		document.addEventListener('click', resetTimeout);
+		document.addEventListener('mousemove', resetTimeout);
+		document.addEventListener('keydown', resetTimeout);
 
-    // Function to check if the screen is off and redirect if off for the specified duration
-    function checkScreenOff() {
-        if (document.hidden) {
-            // Screen is off
-            resetTimeout();
-        } else {
-            // Screen is on
-            clearTimeout(timeoutId);
-        }
-    }
+		// Function to check if the screen is off and redirect if off for the specified duration
+		function checkScreenOff() {
+			if (document.hidden) {
+				// Screen is off
+				resetTimeout();
+			} else {
+				// Screen is on
+				clearTimeout(timeoutId);
+			}
+		}
 
-    // Check screen visibility initially
-    checkScreenOff();
+		// Check screen visibility initially
+		checkScreenOff();
 
-    // Listen for the visibilitychange event to check if the screen is off and reset the timeout
-    document.addEventListener('visibilitychange', checkScreenOff);
-</script>
+		// Listen for the visibilitychange event to check if the screen is off and reset the timeout
+		document.addEventListener('visibilitychange', checkScreenOff);
+	</script>
 	<noscript>
 		<br>
 		<div class="box3 center-text">
