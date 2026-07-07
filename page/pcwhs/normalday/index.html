@@ -509,13 +509,13 @@
 		} else {
 			// Clear the access_granted flag after redirection
 			localStorage.removeItem('access_granted');
-			if (confirm("This page you're accessing may contain theme, language, violence, sexual, horror, or drugs, that not suitable for younger audiences.\n\nAre you sure to want to access this page?\nClick OK to proceed, and Cancel to go back.\n\nYou have 3 minutes to access this page. After 3 minutes, you need to enter the passcode again.")) {
+			if (confirm("WARNING: This page you're accessing may contain theme, language, violence, horror, or drugs, that not suitable for younger audiences.\n\nAre you sure to want to access this page?\nClick OK to proceed with caution, or Cancel to go back.\n\nYou have a quick time to access this page. When you're out of time, you are kicked out from this page.")) {
 				function backPrev() {
-					alert("You've run out of time to access this page. Click OK to go back.");
+					alert("Session timed out. Click OK to return.");
 					window.location.href = "passcode.html";
 				}
 				// Delay the page load in ms
-				setTimeout(backPrev, 180000);
+				setTimeout(backPrev, 30000);
 			} else {
 				window.location.href = 'passcode.html';
 			}
