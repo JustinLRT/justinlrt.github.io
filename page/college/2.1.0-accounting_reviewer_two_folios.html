@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" href="../../icon.png">
+<title>Chapter 2 v2.1.0 - Integrated Accounting Fundamentals</title>
+<style>
+
+  html {
+  	margin-bottom: 190px;
+  }
+  :root{
+    --bg: #fbf7ef;
+    --ink: #241a0f;
+    --amber: #f2a71b;
+    --amber-dark: #d68c0a;
+    --dark: #2b1d0e;
+    --green: #1f8a4c;
+    --green-bg: #e6f6ec;
+    --red: #c0392b;
+    --red-bg: #fdecea;
+    --card: #ffffff;
+    --muted: #8a7a63;
+    --border: #ece2ce;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0;
+    font-family: Georgia, 'Iowan Old Style', serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 18px 12px 90px;
+  }
+  .wrap{ width:100%; max-width: 820px; }
+  header.top{
+    background: var(--dark);
+    color: #fff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  header.top h1{
+    font-size: 1.0rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    color: var(--amber);
+  }
+  .stat-row{ display:flex; gap: 10px; flex-wrap: wrap; }
+  .stat{ flex: 1 1 0; min-width: 80px; background: rgba(255,255,255,0.06); border-radius: 10px; padding: 8px 10px; text-align:center; }
+  .stat .num{ font-size:1.3rem; font-weight:700; font-family: Arial, sans-serif; }
+  .stat .label{ font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.07em; color:#cbb98c; margin-top:2px;}
+  .stat.correct .num{ color:#6fe3a0; }
+  .stat.wrong .num{ color:#ff8f80; }
+  .stat.answered .num{ color:#ffd479; }
+  .progress-bar{ height:6px; background: rgba(255,255,255,0.15); border-radius: 4px; margin-top:12px; overflow:hidden; }
+  .progress-fill{ height:100%; background: var(--amber); transition: width .25s ease; }
+  .combined-note{ font-family: Arial, sans-serif; font-size:0.72rem; color:#cbb98c; margin-top:8px; text-align:right;}
+
+  .tabs{ display:flex; gap:8px; margin-bottom: 12px; }
+  .tab{
+    flex:1; text-align:center; padding: 11px 10px; border-radius: 12px;
+    font-family: Arial, sans-serif; font-weight:700; font-size:0.85rem;
+    background: #fff; border: 1.5px solid var(--border); cursor:pointer; color: var(--muted);
+  }
+  .tab.active{ background: var(--dark); color: var(--amber); border-color: var(--dark); }
+
+  .restart-row{ display:flex; justify-content:flex-end; margin-bottom: 10px; }
+  .restart-btn{
+    font-family: Arial, sans-serif; font-size: 0.78rem; font-weight:700; color: var(--dark);
+    background: transparent; border: 1.5px solid var(--dark); border-radius: 999px; padding: 6px 14px; cursor:pointer;
+  }
+  .restart-btn:hover{ background: var(--dark); color:#fff; }
+
+  .card{ background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 20px 16px; box-shadow: 0 2px 10px rgba(60,40,10,0.06); }
+  .qmeta{ display:flex; justify-content:space-between; align-items:center; font-family: Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 10px; }
+  .qmeta .pill{ background: var(--amber); color: #2b1d0e; padding: 3px 10px; border-radius: 999px; font-weight: 700; }
+
+  .question-text{ font-size: 1.1rem; line-height: 1.5; margin: 4px 0 18px 0; font-weight: 600; }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{ display:flex; align-items:flex-start; gap: 10px; border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; cursor:pointer; transition: background .15s ease, border-color .15s ease; font-family: Arial, sans-serif; font-size: 0.95rem; line-height: 1.4; }
+  .opt:hover{ background: #fff8ea; border-color: var(--amber); }
+  .opt .letter{ font-weight:700; color: var(--amber-dark); min-width: 20px; }
+  .opt.correct{ background: var(--green-bg); border-color: var(--green); }
+  .opt.incorrect{ background: var(--red-bg); border-color: var(--red); }
+  .opt.disabled{ cursor:default; }
+  .opt.dim{ opacity: 0.55; }
+
+  .result-banner{ margin-top: 14px; font-family: Arial, sans-serif; font-weight: 700; font-size: 0.92rem; padding: 10px 14px; border-radius: 10px; }
+  .result-banner.correct{ background: var(--green-bg); color: var(--green); }
+  .result-banner.incorrect{ background: var(--red-bg); color: var(--red); }
+  .correct-match-line{ font-family: Arial, sans-serif; font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+
+  .match-select-row{ display:flex; align-items:center; gap:12px; margin-top: 6px;}
+  select.big-select{
+    flex:1; padding: 12px 12px; border-radius: 10px; border: 1.5px solid var(--border);
+    font-family: Arial, sans-serif; font-size: 0.95rem; background:#fff;
+  }
+  select.big-select:disabled{ opacity: 0.85; }
+
+  .exp-toggle{ margin-top: 14px; background: none; border: 1.5px dashed var(--amber-dark); color: var(--amber-dark); font-family: Arial, sans-serif; font-weight: 700; font-size: 0.85rem; padding: 9px 14px; border-radius: 10px; cursor: pointer; }
+  .exp-toggle:hover{ background: #fff8ea; }
+  .explanation{ margin-top: 12px; background: #f4ecdb; border-left: 4px solid var(--amber-dark); padding: 12px 14px; border-radius: 8px; font-family: Arial, sans-serif; font-size: 0.9rem; line-height: 1.55; color: #4a3a20; display:none; }
+  .explanation.show{ display:block; }
+
+  nav.bottom{ position: fixed; bottom: 0; left:0; right:0; background: var(--dark); padding: 12px 16px; display:flex; justify-content:center; gap: 14px; box-shadow: 0 -4px 14px rgba(0,0,0,0.18); }
+  nav.bottom .inner{ width:100%; max-width: 820px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  nav.bottom button{ font-family: Arial, sans-serif; font-weight:700; font-size: 0.9rem; padding: 11px 20px; border-radius: 10px; border:none; cursor:pointer; background: var(--amber); color: var(--dark); flex: 0 0 auto; }
+  nav.bottom button:disabled{ opacity:0.35; cursor:not-allowed; }
+  nav.bottom .center-label{ color:#e8dcc0; font-family: Arial, sans-serif; font-size: 0.82rem; text-align:center; flex: 1 1 auto; }
+
+  .legend-wrap{
+    margin-top: 16px; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px;
+  }
+  .legend-title{ font-family: Arial, sans-serif; font-weight:700; font-size: 0.85rem; color: var(--dark); margin-bottom: 4px; }
+  .legend-sub{ font-family: Arial, sans-serif; font-size: 0.74rem; color: var(--muted); margin-bottom: 12px; }
+  .legend-grid{
+    max-height: 380px; overflow-y: auto;
+    display:grid; grid-template-columns: 1fr; gap: 6px;
+    font-family: Arial, sans-serif; font-size: 0.83rem;
+  }
+  @media (min-width: 620px){
+    .legend-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .legend-item{
+    display:flex; gap:8px; padding: 6px 8px; border-radius: 8px; background: #fbf7ef;
+  }
+  .legend-item b{ color: var(--amber-dark); min-width: 34px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 id="headerTitle">Folio A — Matching Type</h1>
+    <div class="stat-row">
+      <div class="stat correct"><div class="num" id="statCorrect">0</div><div class="label">Correct</div></div>
+      <div class="stat wrong"><div class="num" id="statWrong">0</div><div class="label">Wrong</div></div>
+      <div class="stat answered"><div class="num" id="statAnswered">0/50</div><div class="label">Answered</div></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="combined-note" id="combinedNote">Combined total: 0/100 answered</div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" id="tabA">Folio A — Matching (50)</div>
+    <div class="tab" id="tabB">Folio B — Multiple Choice (50)</div>
+  </div>
+
+  <div class="restart-row">
+    <button class="restart-btn" id="restartBtn">Shuffle &amp; Restart Both Folios</button>
+  </div>
+
+  <div class="card" id="cardArea"></div>
+  <div id="legendArea"></div>
+</div>
+
+<nav class="bottom">
+  <div class="inner">
+    <button id="prevBtn">◀ Previous</button>
+    <div class="center-label" id="slideLabel">Item 1 / 50</div>
+    <button id="nextBtn">Next ▶</button>
+  </div>
+</nav>
+
+<script>
+/* ============================================================
+   FOLIO A CONTENT — 50 matching statements + 8 decoy choices
+   (58 choices total: A–Z, AA–ZZ, AAA–FFF)
+============================================================ */
+const FOLIO_A_RAW = [
+{statement:"A present economic resource controlled by the entity as a result of past events that has the potential to produce economic benefits.", term:"Asset", exp:"This is the Conceptual Framework's definition of an asset."},
+{statement:"A present obligation of the entity to transfer an economic resource as a result of past events.", term:"Liability", exp:"This is the definition of a liability."},
+{statement:"The residual interest in the assets of the entity after deducting all its liabilities.", term:"Equity", exp:"Equity equals assets minus liabilities."},
+{statement:"Increases in economic benefits during the period, other than those relating to contributions from equity holders.", term:"Income", exp:"Income excludes owner contributions."},
+{statement:"Decreases in economic benefits during the period, other than those relating to distributions to equity holders.", term:"Expenses", exp:"Expenses exclude owner distributions."},
+{statement:"A system that views a transaction as having a two-fold effect on accounting values.", term:"Double-entry Bookkeeping", exp:"Double-entry reflects both a value received and a value parted with."},
+{statement:"A method of tracking assets, liabilities, income, and expenses by recording each transaction only once.", term:"Single-entry Bookkeeping", exp:"Used by small businesses with few, simple transactions."},
+{statement:"The systematic and chronological recording of transactions and events in the books of account.", term:"Bookkeeping", exp:"Bookkeeping is the recording phase of accounting."},
+{statement:"The idea that every transaction has a two-fold effect reflected in the accounting records.", term:"Concept of Duality", exp:"Duality is one of the two pillars of the double-entry system."},
+{statement:"The idea that the two-fold effects of transactions keep the accounting equation in balance.", term:"Concept of Equilibrium", exp:"Equilibrium keeps total debits equal to total credits."},
+{statement:"The basic storage of information recording increases and decreases in a specific financial statement item.", term:"Account", exp:"An account tracks changes in a single asset, liability, equity, income, or expense item."},
+{statement:"A list of all the accounts used by a business.", term:"Chart of Accounts", exp:"The chart of accounts enumerates every account a business uses."},
+{statement:"An account presented in the financial statements as a deduction to its related account.", term:"Contra Account", exp:"Contra accounts reduce their related account's balance."},
+{statement:"An account presented in the financial statements as an addition to its related account.", term:"Adjunct Account", exp:"Adjunct accounts add to their related account's balance."},
+{statement:"A temporary account used when the proper ledger account could not be determined at the time of recording.", term:"Suspense Account", exp:"Suspense accounts hold amounts until the correct account is identified."},
+{statement:"An account with a running balance that accumulates continually across periods.", term:"Real Account", exp:"Real (permanent) accounts carry balances forward period to period."},
+{statement:"An account that zeroes out at the end of each accounting period.", term:"Nominal Account", exp:"Nominal (temporary) accounts close to zero at period-end."},
+{statement:"The formula expressing that Assets equal Liabilities plus Capital.", term:"Accounting Equation", exp:"Assets = Liabilities + Capital is the fundamental accounting equation."},
+{statement:"The formula that breaks Capital down into contributions, withdrawals, income, and expenses.", term:"Expanded Accounting Equation", exp:"This expands Capital into Capital − Withdrawals + Income − Expenses."},
+{statement:"The book of original entries where transactions are first recorded.", term:"Journal", exp:"The journal is where transactions are first entered."},
+{statement:"The book used for transactions that cannot be recorded in a special journal.", term:"General Journal", exp:"Miscellaneous transactions go in the general journal."},
+{statement:"A book used to record transactions of a similar nature, such as sales or purchases.", term:"Special Journal", exp:"Special journals group transactions with common characteristics."},
+{statement:"A special journal used to record credit sales transactions.", term:"Sales Journal", exp:"The sales journal captures sales made on credit."},
+{statement:"A special journal used to record credit purchase transactions.", term:"Purchases Journal", exp:"The purchases journal captures purchases made on credit."},
+{statement:"A special journal used to record all cash collected by the business.", term:"Cash Receipts Journal", exp:"This journal records all incoming cash."},
+{statement:"A special journal used to record all cash paid out by the business.", term:"Cash Disbursements Journal", exp:"This journal records all outgoing cash payments."},
+{statement:"The book of final entries used to classify the effects of transactions on accounts.", term:"Ledger", exp:"The ledger classifies and accumulates transaction effects by account."},
+{statement:"The ledger that contains all the accounts appearing in the trial balance.", term:"General Ledger", exp:"The general ledger holds every account in the trial balance."},
+{statement:"A ledger that provides a breakdown of the balances of a controlling account.", term:"Subsidiary Ledger", exp:"Subsidiary ledgers detail a control account, such as Accounts Receivable."},
+{statement:"The Latin-derived accounting term meaning the 'left' side of an account.", term:"Debit", exp:"Debit comes from 'debere,' meaning to owe, and denotes the left side."},
+{statement:"The Latin-derived accounting term meaning the 'right' side of an account.", term:"Credit", exp:"Credit comes from 'credere,' meaning to entrust, and denotes the right side."},
+{statement:"The side on which increases in an asset account are normally recorded.", term:"Normal Balance of Asset (Debit)", exp:"Assets increase on the debit side."},
+{statement:"The side on which increases in a liability account are normally recorded.", term:"Normal Balance of Liability (Credit)", exp:"Liabilities increase on the credit side."},
+{statement:"The side on which increases in an equity account are normally recorded.", term:"Normal Balance of Equity (Credit)", exp:"Equity increases on the credit side."},
+{statement:"The side on which increases in an income account are normally recorded.", term:"Normal Balance of Income (Credit)", exp:"Income increases on the credit side."},
+{statement:"The side on which increases in an expense account are normally recorded.", term:"Normal Balance of Expense (Debit)", exp:"Expenses increase on the debit side."},
+{statement:"The multistep process used to create an accurate record of a company's financial position.", term:"Accounting Cycle", exp:"The accounting cycle produces the financial statements each period."},
+{statement:"The first step of the accounting cycle.", term:"Identifying and Analyzing Transactions", exp:"Every cycle starts by analyzing transactions before recording."},
+{statement:"The second step of the accounting cycle, recording transactions in the journal.", term:"Journalizing", exp:"Journalizing follows transaction analysis."},
+{statement:"The third step of the accounting cycle, transferring journal entries to the ledger.", term:"Posting", exp:"Posting moves journal entries into ledger accounts."},
+{statement:"A list of account balances prepared before adjustments, to check that debits equal credits.", term:"Unadjusted Trial Balance", exp:"This is prepared right after posting, step four of the cycle."},
+{statement:"A working paper used to organize account balances before adjustments and financial statements.", term:"Worksheet", exp:"The worksheet is step five, an optional organizing tool."},
+{statement:"Entries made to update certain accounts before financial statements are prepared.", term:"Adjusting Entries", exp:"Adjusting entries are step six of the accounting cycle."},
+{statement:"A list of account balances prepared after adjusting entries have been posted.", term:"Adjusted Trial Balance", exp:"This trial balance reflects all adjustments, step seven."},
+{statement:"Entries made to zero out nominal accounts at the end of the period.", term:"Closing Entries", exp:"Closing entries are step nine, resetting temporary accounts."},
+{statement:"A trial balance prepared after closing entries to confirm only real accounts have balances.", term:"Post-closing Trial Balance", exp:"This is step ten, verifying only permanent accounts remain."},
+{statement:"Optional entries made at the start of a new period to simplify certain transactions.", term:"Reversing Entries", exp:"Reversing entries are the eleventh and final, optional step."},
+{statement:"The original record that proves a transaction occurred and provides evidence of its details.", term:"Source Document", exp:"Source documents are the foundation of every recorded transaction."},
+{statement:"A source document that states the amount the buyer owes the seller for goods.", term:"Sales Invoice", exp:"The sales invoice documents amounts owed for goods sold."},
+{statement:"A source document formerly known as the Official Receipt, used for services rendered.", term:"Service Invoice", exp:"The Service Invoice replaced the Official Receipt (OR) for services."},
+];
+const FOLIO_A_DISTRACTORS = ["Promissory Note","Debit Memo","Credit Memo","Bank Statement","Petty Cash Voucher","Payment Voucher","Statement of Account","Partnership"];
+
+/* ============================================================
+   FOLIO B CONTENT — 50 multiple-choice items (ABCD, balanced option length)
+============================================================ */
+const FOLIO_B_RAW = [
+{q:"A present economic resource controlled by an entity is called a(n):", options:["Asset","Liability","Equity","Expense"], correct:0, exp:"An asset is a present economic resource controlled by the entity."},
+{q:"A present obligation to transfer an economic resource is called a(n):", options:["Income","Liability","Asset","Equity"], correct:1, exp:"A liability is a present obligation to transfer resources."},
+{q:"Assets minus liabilities equals:", options:["Income","Expense","Equity","Liability"], correct:2, exp:"Equity is the residual after deducting liabilities from assets."},
+{q:"Increases in economic benefits, excluding owner contributions, define:", options:["Income","Expense","Liability","Asset"], correct:0, exp:"Income excludes contributions from owners."},
+{q:"Decreases in economic benefits, excluding owner distributions, define:", options:["Equity","Expense","Income","Asset"], correct:1, exp:"Expenses exclude distributions to owners."},
+{q:"Every transaction has a two-fold effect under the concept of:", options:["Duality","Equilibrium","Materiality","Prudence"], correct:0, exp:"Duality means each transaction affects accounts in two ways."},
+{q:"The book of original entries is the:", options:["Ledger","Journal","Worksheet","Trial Balance"], correct:1, exp:"The journal is where transactions are first recorded."},
+{q:"The book of final entries is the:", options:["Journal","Voucher","Ledger","Invoice"], correct:2, exp:"The ledger classifies transaction effects into accounts."},
+{q:"Transactions not fitting a special journal go into the:", options:["Cash Journal","Sales Journal","General Journal","Purchases Journal"], correct:2, exp:"Miscellaneous transactions are recorded in the general journal."},
+{q:"Credit sales are typically recorded in the:", options:["Sales Journal","Cash Journal","General Ledger","Purchases Journal"], correct:0, exp:"The sales journal captures credit sales."},
+{q:"Credit purchases are typically recorded in the:", options:["Sales Journal","Purchases Journal","Cash Journal","General Journal"], correct:1, exp:"The purchases journal captures credit purchases."},
+{q:"Cash collections are recorded in the:", options:["Purchases Journal","Sales Journal","Cash Receipts Journal","General Journal"], correct:2, exp:"The cash receipts journal records incoming cash."},
+{q:"Cash payments are recorded in the:", options:["Cash Disbursements Journal","Sales Journal","General Ledger","Purchases Journal"], correct:0, exp:"The cash disbursements journal records outgoing cash."},
+{q:"The ledger that holds all trial balance accounts is the:", options:["Subsidiary Ledger","General Ledger","Special Ledger","Cash Ledger"], correct:1, exp:"The general ledger contains all accounts in the trial balance."},
+{q:"A ledger that breaks down a control account is the:", options:["General Ledger","Subsidiary Ledger","Special Ledger","Cash Ledger"], correct:1, exp:"Subsidiary ledgers detail a controlling account's balance."},
+{q:"The term 'debit' means:", options:["Right","Left","Total","Balance"], correct:1, exp:"Debit means 'left' side of an account."},
+{q:"The term 'credit' means:", options:["Left","Right","Zero","Total"], correct:1, exp:"Credit means 'right' side of an account."},
+{q:"The normal balance of an Asset account is:", options:["Credit","Debit","Zero","None"], correct:1, exp:"Assets normally carry a debit balance."},
+{q:"The normal balance of a Liability account is:", options:["Debit","Credit","Zero","None"], correct:1, exp:"Liabilities normally carry a credit balance."},
+{q:"The normal balance of an Equity account is:", options:["Debit","Credit","Zero","None"], correct:1, exp:"Equity normally carries a credit balance."},
+{q:"The normal balance of an Income account is:", options:["Debit","Credit","Zero","None"], correct:1, exp:"Income normally carries a credit balance."},
+{q:"The normal balance of an Expense account is:", options:["Credit","Debit","Zero","None"], correct:1, exp:"Expenses normally carry a debit balance."},
+{q:"A debit to an Asset account will:", options:["Decrease it","Increase it","Zero it","Close it"], correct:1, exp:"Debits increase asset accounts."},
+{q:"A credit to a Liability account will:", options:["Decrease it","Increase it","Zero it","Reverse it"], correct:1, exp:"Credits increase liability accounts."},
+{q:"A debit to an Expense account will:", options:["Decrease it","Increase it","Zero it","Close it"], correct:1, exp:"Debits increase expense accounts."},
+{q:"An account presented as a deduction to a related account is a(n):", options:["Adjunct account","Contra account","Suspense account","Real account"], correct:1, exp:"Contra accounts deduct from their related account."},
+{q:"An account presented as an addition to a related account is a(n):", options:["Contra account","Adjunct account","Suspense account","Nominal account"], correct:1, exp:"Adjunct accounts add to their related account."},
+{q:"An account used when the proper ledger account is unknown is a(n):", options:["Real account","Nominal account","Suspense account","Contra account"], correct:2, exp:"Suspense accounts hold unidentified amounts temporarily."},
+{q:"Accounts with running balances that accumulate are called:", options:["Nominal accounts","Real accounts","Suspense accounts","Contra accounts"], correct:1, exp:"Real (permanent) accounts carry balances forward."},
+{q:"Accounts that zero out each period are called:", options:["Real accounts","Nominal accounts","Contra accounts","Adjunct accounts"], correct:1, exp:"Nominal (temporary) accounts close to zero each period."},
+{q:"The first step of the accounting cycle is:", options:["Journalizing","Posting","Analyzing transactions","Closing entries"], correct:2, exp:"The cycle starts by identifying and analyzing transactions."},
+{q:"The second step of the accounting cycle is:", options:["Posting","Journalizing","Analyzing transactions","Adjusting entries"], correct:1, exp:"Journalizing follows transaction analysis."},
+{q:"The third step of the accounting cycle is:", options:["Posting","Journalizing","Closing entries","Reversing entries"], correct:0, exp:"Posting transfers journal entries to ledger accounts."},
+{q:"The step right after posting is preparing the:", options:["Adjusted Trial Balance","Unadjusted Trial Balance","Worksheet","Financial Statements"], correct:1, exp:"The unadjusted trial balance follows posting."},
+{q:"Entries made to update accounts before statements are prepared are called:", options:["Closing entries","Adjusting entries","Reversing entries","Opening entries"], correct:1, exp:"Adjusting entries update accounts before statements."},
+{q:"Entries made to zero out nominal accounts are called:", options:["Adjusting entries","Closing entries","Reversing entries","Opening entries"], correct:1, exp:"Closing entries reset temporary accounts to zero."},
+{q:"The optional final step of the accounting cycle is:", options:["Closing entries","Reversing entries","Posting","Journalizing"], correct:1, exp:"Reversing entries are the optional last step."},
+{q:"A trial balance prepared after closing entries is the:", options:["Adjusted Trial Balance","Unadjusted Trial Balance","Post-closing Trial Balance","Worksheet"], correct:2, exp:"The post-closing trial balance follows closing entries."},
+{q:"Documents that prove a transaction occurred are called:", options:["Financial statements","Source documents","Ledgers","Journals"], correct:1, exp:"Source documents are original evidence of transactions."},
+{q:"A document stating the amount a buyer owes a seller is a(n):", options:["Receipt","Invoice","Voucher","Memo"], correct:1, exp:"An invoice states the amount owed by the buyer."},
+{q:"The Service Invoice was formerly called the:", options:["Sales Invoice","Official Receipt","Debit Memo","Credit Memo"], correct:1, exp:"The Service Invoice replaced the Official Receipt (OR)."},
+{q:"A memo reducing a previously issued invoice is a(n):", options:["Debit Memo","Credit Memo","Payment Voucher","Petty Cash Voucher"], correct:1, exp:"A credit memo reduces a previously issued invoice."},
+{q:"A memo adding to a previously issued invoice is a(n):", options:["Credit Memo","Debit Memo","Bank Statement","Promissory Note"], correct:1, exp:"A debit memo adds to a previously issued invoice."},
+{q:"A document prepared by the bank showing account activity is a(n):", options:["Invoice","Bank Statement","Voucher","Receipt"], correct:1, exp:"Banks prepare bank statements for customer accounts."},
+{q:"A written promise to pay a specified sum is a(n):", options:["Invoice","Promissory Note","Memo","Voucher"], correct:1, exp:"A promissory note is a written promise to pay."},
+{q:"A smaller version of the payment voucher is the:", options:["Cash Voucher","Petty Cash Voucher","Bank Voucher","Sales Voucher"], correct:1, exp:"The petty cash voucher is a smaller payment voucher."},
+{q:"The accounting equation is expressed as:", options:["Assets = Liabilities + Capital","Capital = Assets + Liabilities","Liabilities = Assets + Capital","Assets = Capital − Liabilities"], correct:0, exp:"Assets = Liabilities + Capital is the fundamental equation."},
+{q:"Rearranged, Capital equals:", options:["Assets + Liabilities","Liabilities − Assets","Assets − Liabilities","Liabilities × Assets"], correct:2, exp:"Capital equals Assets minus Liabilities."},
+{q:"Rearranged, Liabilities equals:", options:["Assets − Capital","Assets + Capital","Capital − Assets","Capital ÷ Assets"], correct:0, exp:"Liabilities equals Assets minus Capital."},
+{q:"A list of all accounts used by a business is called the:", options:["General Ledger","Chart of Accounts","Trial Balance","Journal"], correct:1, exp:"The chart of accounts lists every account a business uses."},
+];
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function genLetterCodes(){
+  const codes = [];
+  for(let i=0;i<26;i++) codes.push(String.fromCharCode(65+i));           // A - Z
+  for(let i=0;i<26;i++){ const c = String.fromCharCode(65+i); codes.push(c+c); } // AA - ZZ
+  ["AAA","BBB","CCC","DDD","EEE","FFF"].forEach(t=>codes.push(t));       // AAA - FFF
+  return codes; // length 58
+}
+
+/* ============================================================
+   STATE
+============================================================ */
+let folioA = { items: [], legend: [], current: 0 };
+let folioB = { items: [], current: 0 };
+let activeFolio = 'A';
+let showExp = false;
+
+function buildFolioA(){
+  const allTexts = shuffle(FOLIO_A_RAW.map(r=>r.term).concat(FOLIO_A_DISTRACTORS));
+  const codes = genLetterCodes(); // fixed order A..FFF
+  const textToLetter = {};
+  const legend = codes.map((code, i) => {
+    textToLetter[allTexts[i]] = code;
+    return { code, text: allTexts[i] };
+  });
+
+  const orderedItems = shuffle(FOLIO_A_RAW.map(r => ({
+    statement: r.statement,
+    term: r.term,
+    exp: r.exp,
+    correctLetter: textToLetter[r.term],
+    selected: null,
+    answered: false
+  })));
+
+  folioA = { items: orderedItems, legend, current: 0 };
+}
+
+function buildFolioB(){
+  const items = shuffle(FOLIO_B_RAW).map(raw => {
+    const idxOrder = shuffle(raw.options.map((o,i)=>i));
+    const newOptions = idxOrder.map(i=>raw.options[i]);
+    const newCorrect = idxOrder.indexOf(raw.correct);
+    return {
+      q: raw.q,
+      options: newOptions,
+      correct: newCorrect,
+      exp: raw.exp,
+      selected: null,
+      answered: false
+    };
+  });
+  folioB = { items, current: 0 };
+}
+
+function buildAll(){
+  buildFolioA();
+  buildFolioB();
+}
+buildAll();
+
+/* ============================================================
+   STATS
+============================================================ */
+function folioStats(folio){
+  let correct=0, wrong=0, answered=0;
+  const total = folio.items.length;
+  folio.items.forEach(it=>{
+    if(it.answered){
+      answered++;
+      const isCorrect = (activeIsA(folio)) ? (it.selected === it.correctLetter) : (it.selected === it.correct);
+      if(isCorrect) correct++; else wrong++;
+    }
+  });
+  return { correct, wrong, answered, total };
+}
+function activeIsA(folio){ return folio === folioA; }
+
+function updateHeader(){
+  const folio = activeFolio === 'A' ? folioA : folioB;
+  const st = folioStats(folio);
+  document.getElementById('headerTitle').textContent = activeFolio === 'A' ? 'Folio A — Matching Type' : 'Folio B — Multiple Choice';
+  document.getElementById('statCorrect').textContent = st.correct;
+  document.getElementById('statWrong').textContent = st.wrong;
+  document.getElementById('statAnswered').textContent = st.answered + '/' + st.total;
+  const pct = st.total ? Math.round((st.answered/st.total)*100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  const stA = folioStats(folioA);
+  const stB = folioStats(folioB);
+  document.getElementById('combinedNote').textContent =
+    'Combined total: ' + (stA.answered+stB.answered) + '/100 answered · ' +
+    (stA.correct+stB.correct) + ' correct · ' + (stA.wrong+stB.wrong) + ' wrong';
+}
+
+/* ============================================================
+   RENDER — FOLIO A (Matching)
+============================================================ */
+function renderFolioA(){
+  const card = document.getElementById('cardArea');
+  card.innerHTML = '';
+  const it = folioA.items[folioA.current];
+
+  const meta = document.createElement('div');
+  meta.className = 'qmeta';
+  meta.innerHTML = `<span>Matching Type</span><span class="pill">Item ${folioA.current+1} / ${folioA.items.length}</span>`;
+  card.appendChild(meta);
+
+  const qEl = document.createElement('div');
+  qEl.className = 'question-text';
+  qEl.textContent = it.statement;
+  card.appendChild(qEl);
+
+  const row = document.createElement('div');
+  row.className = 'match-select-row';
+  const select = document.createElement('select');
+  select.className = 'big-select';
+  select.disabled = it.answered;
+
+  const blank = document.createElement('option');
+  blank.value = '';
+  blank.textContent = '— choose a letter —';
+  select.appendChild(blank);
+
+  folioA.legend.forEach(entry => {
+    const o = document.createElement('option');
+    o.value = entry.code;
+    o.textContent = entry.code;
+    if(it.selected === entry.code) o.selected = true;
+    select.appendChild(o);
+  });
+
+  select.addEventListener('change', (e) => {
+    if(!e.target.value) return;
+    it.selected = e.target.value;
+    it.answered = true;
+    render();
+  });
+
+  row.appendChild(select);
+  card.appendChild(row);
+
+  if(it.answered){
+    const isCorrect = it.selected === it.correctLetter;
+    const banner = document.createElement('div');
+    banner.className = 'result-banner ' + (isCorrect ? 'correct' : 'incorrect');
+    banner.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect.';
+    card.appendChild(banner);
+
+    const correctLine = document.createElement('div');
+    correctLine.className = 'correct-match-line';
+    correctLine.textContent = `Correct match: ${it.correctLetter} — ${it.term}`;
+    card.appendChild(correctLine);
+
+    appendExplanation(card, it.exp);
+  }
+
+  renderLegend();
+}
+
+function renderLegend(){
+  const legendArea = document.getElementById('legendArea');
+  if(activeFolio !== 'A'){ legendArea.innerHTML = ''; return; }
+  legendArea.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'legend-wrap';
+  wrap.innerHTML = `
+    <div class="legend-title">Full Choice Bank (A – FFF)</div>
+    <div class="legend-sub">58 lettered choices for 50 items — refer here for the exact wording of every choice.</div>
+  `;
+  const grid = document.createElement('div');
+  grid.className = 'legend-grid';
+  folioA.legend.forEach(entry=>{
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<b>${entry.code}.</b><span>${entry.text}</span>`;
+    grid.appendChild(item);
+  });
+  wrap.appendChild(grid);
+  legendArea.appendChild(wrap);
+}
+
+/* ============================================================
+   RENDER — FOLIO B (MCQ)
+============================================================ */
+function renderFolioB(){
+  document.getElementById('legendArea').innerHTML = '';
+  const card = document.getElementById('cardArea');
+  card.innerHTML = '';
+  const it = folioB.items[folioB.current];
+
+  const meta = document.createElement('div');
+  meta.className = 'qmeta';
+  meta.innerHTML = `<span>Multiple Choice</span><span class="pill">Item ${folioB.current+1} / ${folioB.items.length}</span>`;
+  card.appendChild(meta);
+
+  const qEl = document.createElement('div');
+  qEl.className = 'question-text';
+  qEl.textContent = it.q;
+  card.appendChild(qEl);
+
+  const optsWrap = document.createElement('div');
+  optsWrap.className = 'options';
+  const letters = ['A','B','C','D'];
+
+  it.options.forEach((opt, i) => {
+    const row = document.createElement('div');
+    row.className = 'opt';
+    row.innerHTML = `<span class="letter">${letters[i]}.</span><span>${opt}</span>`;
+    if(it.answered){
+      row.classList.add('disabled');
+      if(i === it.correct) row.classList.add('correct');
+      else if(i === it.selected) row.classList.add('incorrect');
+      else row.classList.add('dim');
+    } else {
+      row.addEventListener('click', () => {
+        it.answered = true;
+        it.selected = i;
+        render();
+      });
+    }
+    optsWrap.appendChild(row);
+  });
+  card.appendChild(optsWrap);
+
+  if(it.answered){
+    const isCorrect = it.selected === it.correct;
+    const banner = document.createElement('div');
+    banner.className = 'result-banner ' + (isCorrect ? 'correct' : 'incorrect');
+    banner.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect — the correct answer is highlighted above.';
+    card.appendChild(banner);
+
+    appendExplanation(card, it.exp);
+  }
+}
+
+function appendExplanation(card, expText){
+  showExp = false;
+  const toggle = document.createElement('button');
+  toggle.className = 'exp-toggle';
+  toggle.textContent = 'Add Explanation';
+  const expEl = document.createElement('div');
+  expEl.className = 'explanation';
+  expEl.textContent = expText;
+
+  toggle.addEventListener('click', () => {
+    showExp = !showExp;
+    expEl.classList.toggle('show', showExp);
+    toggle.textContent = showExp ? 'Hide Explanation' : 'Add Explanation';
+  });
+
+  card.appendChild(toggle);
+  card.appendChild(expEl);
+}
+
+/* ============================================================
+   MAIN RENDER + NAV
+============================================================ */
+function render(){
+  if(activeFolio === 'A') renderFolioA(); else renderFolioB();
+  updateHeader();
+  updateNav();
+}
+
+function updateNav(){
+  const folio = activeFolio === 'A' ? folioA : folioB;
+  document.getElementById('prevBtn').disabled = folio.current === 0;
+  document.getElementById('nextBtn').disabled = folio.current === folio.items.length - 1;
+  document.getElementById('slideLabel').textContent = `Item ${folio.current+1} / ${folio.items.length}`;
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const folio = activeFolio === 'A' ? folioA : folioB;
+  if(folio.current > 0){ folio.current--; render(); }
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const folio = activeFolio === 'A' ? folioA : folioB;
+  if(folio.current < folio.items.length-1){ folio.current++; render(); }
+});
+
+document.getElementById('tabA').addEventListener('click', () => {
+  activeFolio = 'A';
+  document.getElementById('tabA').classList.add('active');
+  document.getElementById('tabB').classList.remove('active');
+  render();
+});
+document.getElementById('tabB').addEventListener('click', () => {
+  activeFolio = 'B';
+  document.getElementById('tabB').classList.add('active');
+  document.getElementById('tabA').classList.remove('active');
+  render();
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  buildAll();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
