@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" href="../../icon.png">
+<title>TOEIC Reviewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B2A4A;
+  --ink-2:#2C3F66;
+  --paper:#EFEDE6;
+  --paper-2:#F7F6F1;
+  --gold:#C99A2E;
+  --gold-2:#E3B94A;
+  --stamp:#B4433A;
+  --green:#3C7A5C;
+  --line:#D8D3C4;
+  --shadow: 0 8px 24px rgba(27,42,74,0.14);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(27,42,74,0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+  font-family:'Inter',sans-serif;
+  color:var(--ink);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:28px 16px 60px;
+}
+.wrap{width:100%;max-width:760px;}
+
+/* ---- Ticket header ---- */
+.ticket{
+  background:var(--ink);
+  color:var(--paper-2);
+  border-radius:14px;
+  padding:20px 24px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.ticket::before{
+  content:"";
+  position:absolute;
+  right:-40px; top:-40px;
+  width:160px;height:160px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(227,185,74,0.18), transparent 70%);
+}
+.ticket-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.ticket-title{
+  font-family:'Archivo',sans-serif;
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:0.02em;
+  margin:0;
+}
+.ticket-sub{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  color:var(--gold-2);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+.ticket-code{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  text-align:right;
+  color:var(--paper-2);
+  opacity:0.85;
+  line-height:1.5;
+}
+.perf{
+  height:1px;
+  margin:16px 0 14px;
+  background-image: repeating-linear-gradient(to right, rgba(247,246,241,0.35) 0 6px, transparent 6px 12px);
+}
+.ticket-meta{display:flex;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--paper-2);opacity:0.85;flex-wrap:wrap;}
+.ticket-meta b{color:var(--gold-2);font-weight:600;}
+
+/* ---- Scantron progress bubbles ---- */
+.scantron{
+  display:flex;
+  gap:3px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+.bubble{
+  width:9px;height:9px;border-radius:50%;
+  background:rgba(247,246,241,0.18);
+  flex:0 0 auto;
+}
+.bubble.done{background:var(--gold-2);}
+.bubble.current{background:var(--paper-2); box-shadow:0 0 0 2px var(--gold);}
+
+/* ---- Card ---- */
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin-top:18px;
+  padding:26px 26px 24px;
+  box-shadow:var(--shadow);
+}
+.qmeta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  color:var(--ink-2);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:14px;
+}
+.qmeta .tag{
+  background:var(--ink);
+  color:var(--gold-2);
+  padding:3px 9px;
+  border-radius:20px;
+  font-size:10.5px;
+}
+.qtext{
+  font-size:18px;
+  line-height:1.55;
+  font-weight:600;
+  margin:0 0 18px;
+  color:var(--ink);
+}
+.passage{
+  background:var(--paper);
+  border-left:3px solid var(--gold);
+  padding:12px 14px;
+  font-size:14.5px;
+  line-height:1.6;
+  margin-bottom:16px;
+  border-radius:0 8px 8px 0;
+  color:var(--ink-2);
+}
+
+/* ---- MCQ / TF options: scantron bubble style ---- */
+.options{display:flex;flex-direction:column;gap:10px;}
+.opt{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;
+  border:1.5px solid var(--line);
+  border-radius:10px;
+  background:var(--paper-2);
+  cursor:pointer;
+  transition:border-color .15s, background .15s;
+  font-size:15px;
+}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--ink-2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;font-weight:600;
+  flex:0 0 auto;
+  color:var(--ink-2);
+}
+.opt.selected{border-color:var(--ink); background:#E9E4F5; }
+.opt.selected .letter{background:var(--ink);color:var(--gold-2);border-color:var(--ink);}
+.opt.correct{border-color:var(--green); background:rgba(60,122,92,0.10);}
+.opt.correct .letter{background:var(--green);border-color:var(--green);color:#fff;}
+.opt.incorrect{border-color:var(--stamp); background:rgba(180,67,58,0.08);}
+.opt.incorrect .letter{background:var(--stamp);border-color:var(--stamp);color:#fff;}
+
+/* ---- Matching ---- */
+.match-row{
+  display:flex;align-items:center;gap:12px;margin-bottom:10px;
+  font-size:14.5px;
+}
+.match-term{
+  flex:0 0 42%;
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:9px 12px;border-radius:8px;
+  font-weight:600;
+}
+.match-select{
+  flex:1;
+  padding:9px 10px;
+  border-radius:8px;
+  border:1.5px solid var(--line);
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  background:var(--paper-2);
+  color:var(--ink);
+}
+.match-select.correct{border-color:var(--green);background:rgba(60,122,92,0.08);}
+.match-select.incorrect{border-color:var(--stamp);background:rgba(180,67,58,0.08);}
+
+/* ---- Footer / nav ---- */
+.navrow{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:10px;}
+button{
+  font-family:'Archivo',sans-serif;
+  font-weight:700;
+  font-size:13.5px;
+  letter-spacing:0.02em;
+  border:none;
+  border-radius:9px;
+  padding:12px 20px;
+  cursor:pointer;
+  transition:transform .1s, opacity .15s;
+}
+button:active{transform:scale(0.97);}
+button:disabled{opacity:0.35;cursor:not-allowed;}
+.btn-primary{background:var(--ink);color:var(--gold-2);}
+.btn-primary:hover:not(:disabled){background:var(--ink-2);}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1.5px solid var(--line);}
+.btn-ghost:hover:not(:disabled){border-color:var(--ink-2);}
+.hint{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-2);opacity:0.7;}
+
+/* ---- Start / summary screens ---- */
+.panel{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:32px 28px;
+  margin-top:18px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.panel h2{font-family:'Archivo',sans-serif;font-size:22px;margin:0 0 10px;}
+.panel p{color:var(--ink-2);line-height:1.6;font-size:14.5px;}
+.startgrid{display:flex;gap:14px;justify-content:center;margin:22px 0;flex-wrap:wrap;}
+.startchip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 16px;
+  min-width:110px;
+}
+.startchip b{display:block;font-size:18px;font-family:'Archivo',sans-serif;color:var(--ink);margin-bottom:2px;}
+
+/* score summary */
+.score-hero{
+  display:flex;flex-direction:column;align-items:center;gap:6px;margin:10px 0 22px;
+}
+.score-big{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:56px;color:var(--ink);
+  display:flex;align-items:baseline;gap:6px;
+}
+.score-big span{font-size:22px;color:var(--ink-2);font-weight:600;}
+.score-band{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:0.06em;text-transform:uppercase;
+  background:var(--gold);color:var(--ink);padding:4px 12px;border-radius:20px;font-weight:600;
+}
+.breakdown{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;text-align:left;}
+.bd-item{
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+}
+.bd-item .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;color:var(--ink-2);letter-spacing:0.05em;}
+.bd-item .v{font-family:'Archivo',sans-serif;font-size:19px;font-weight:700;margin-top:2px;}
+.review-list{text-align:left;margin-top:22px;max-height:420px;overflow-y:auto;padding-right:4px;}
+.review-item{
+  border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--paper);
+}
+.review-item.wrong{border-left:4px solid var(--stamp);}
+.review-item.right{border-left:4px solid var(--green);}
+.review-item .rq{font-size:13.5px;font-weight:600;margin-bottom:5px;}
+.review-item .ra{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-2);line-height:1.5;}
+.review-item .ra b{color:var(--ink);}
+
+@media (max-width:520px){
+  .ticket-code{display:none;}
+  .breakdown{grid-template-columns:1fr;}
+  .score-big{font-size:44px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="ticket">
+    <div class="ticket-row">
+      <div>
+        <p class="ticket-title">TOEIC® Reviewer</p>
+        <p class="ticket-sub">Test of English for International Communication</p>
+      </div>
+      <div class="ticket-code" id="ticketCode">FORM 120-A<br>SEAT —</div>
+    </div>
+    <div class="perf"></div>
+    <div class="ticket-meta">
+      <span>ITEMS <b id="metaTotal">120</b></span>
+      <span>ANSWERED <b id="metaAnswered">0</b></span>
+      <span>SECTION <b id="metaSection">—</b></span>
+    </div>
+    <div class="scantron" id="scantron"></div>
+  </div>
+
+  <!-- START SCREEN -->
+  <div class="panel" id="startPanel">
+    <h2>Ready to begin?</h2>
+    <p>120 items covering grammar &amp; sentence completion, vocabulary in context, true/false comprehension, and matching. Order is reshuffled every time you load this reviewer.</p>
+    <div class="startgrid">
+      <div class="startchip"><b>75</b>Multiple choice</div>
+      <div class="startchip"><b>20</b>True / False</div>
+      <div class="startchip"><b>25</b>Matching</div>
+    </div>
+    <button class="btn-primary" onclick="startTest()">Start Test</button>
+  </div>
+
+  <!-- QUESTION CARD -->
+  <div class="card" id="quizCard" style="display:none;">
+    <div class="qmeta">
+      <span id="qIndexLabel">Item 1 / 120</span>
+      <span class="tag" id="qTypeTag">GRAMMAR</span>
+    </div>
+    <div id="questionBody"></div>
+    <div class="navrow">
+      <button class="btn-ghost" id="prevBtn" onclick="goPrev()">← Previous</button>
+      <span class="hint" id="statusHint">Select an answer to continue</span>
+      <button class="btn-primary" id="nextBtn" onclick="goNext()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY SCREEN -->
+  <div class="panel" id="summaryPanel" style="display:none; text-align:left;">
+    <div style="text-align:center;">
+      <h2>Score Report</h2>
+      <div class="score-hero">
+        <div class="score-big" id="scorePct">0<span>%</span></div>
+        <div class="score-band" id="scoreBand">—</div>
+      </div>
+    </div>
+    <div class="breakdown" id="breakdown"></div>
+    <h2 style="font-size:16px;margin-top:26px;">Item Review</h2>
+    <div class="review-list" id="reviewList"></div>
+    <div style="text-align:center;margin-top:22px;">
+      <button class="btn-primary" onclick="location.reload()">Retake with new shuffle</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================= QUESTION BANK ============================= */
+/* GRAMMAR — sentence completion. Each: [sentence, [4 options], correctIndex, explanation] */
+const grammarRaw = [
+["The quarterly report ___ by the finance team before it reaches the board.", ["is reviewed","are reviewed","reviewing","review"],0,"Passive voice with a singular subject 'report' requires 'is reviewed'."],
+["Neither the manager nor the assistants ___ available for the meeting today.", ["is","are","was","be"],1,"With 'neither...nor', the verb agrees with the nearer subject 'assistants' (plural)."],
+["By the time the client arrives, we ___ the presentation.", ["will finish","will have finished","finish","are finishing"],1,"Future perfect describes an action completed before another future point."],
+["The new policy takes effect ___ January 1st.", ["in","on","at","by"],1,"Specific calendar dates use the preposition 'on'."],
+["She is one of the employees who ___ always on time.", ["is","are","was","be"],1,"'who' refers to 'employees' (plural), so the verb must be plural."],
+["If the shipment ___ delayed again, we will lose the contract.", ["is","was","were","be"],0,"First conditional (real future possibility) uses present simple in the if-clause."],
+["The proposal ___ by the committee last Friday.", ["approved","was approved","approves","has approve"],1,"Past passive: 'was approved' fits a completed past action with 'last Friday'."],
+["Employees are required to submit expense reports ___ the end of each month.", ["by","until","since","for"],0,"'by' indicates a deadline."],
+["The director insisted that the budget ___ revised immediately.", ["is","be","was","will be"],1,"After 'insist that', the subjunctive base form 'be' is used."],
+["Our sales figures have improved significantly ___ the new marketing campaign launched.", ["since","for","during","while"],0,"'since' introduces a point in time after which something has continued."],
+["The workshop has been ___ postponed due to the venue's renovation schedule.", ["temporary","temporarily","temporariness","temporal"],1,"An adverb is needed to modify the verb 'postponed'."],
+["Had we known about the delay, we ___ different arrangements.", ["would make","would have made","will make","made"],1,"Third conditional: 'had known' pairs with 'would have made'."],
+["Please make sure the invoice is sent ___ Mr. Alvarez, not his assistant.", ["to","for","toward","at"],0,"'send something to someone' is the standard collocation."],
+["The company's revenue grew ___ than analysts had predicted.", ["fast","faster","fastest","more fast"],1,"Comparative form is required before 'than'."],
+["The manual explains how the machine ___ operated safely.", ["should","should be","should being","is should"],1,"Passive modal: 'should be operated'."],
+["All visitors must sign in ___ the front desk before entering the office.", ["at","in","on","to"],0,"'at the front desk' is the correct fixed phrase."],
+["The negotiations, ___ lasted three days, ended in a signed agreement.", ["that","which","who","whose"],1,"Non-restrictive clause about a thing uses 'which', set off by commas."],
+["It is essential that every employee ___ the new safety guidelines.", ["follows","follow","following","followed"],1,"Subjunctive after 'it is essential that' uses the base form 'follow'."],
+["The CEO, along with two board members, ___ attending the summit.", ["is","are","were","be"],0,"'along with' does not change subject-verb agreement; the subject 'CEO' is singular."],
+["We look forward ___ from you regarding the partnership.", ["to hear","to hearing","hearing","hear"],1,"'look forward to' is followed by a gerund."],
+["The report would have been more persuasive if it ___ supporting data.", ["included","had included","includes","would include"],1,"Third conditional if-clause uses past perfect."],
+["This is the exact model ___ we discussed during the last call.", ["what","which","whom","whose"],1,"'which' refers to a thing (the model)."],
+["The intern was praised for ___ the deadline despite the setbacks.", ["meet","meeting","met","to meeting"],1,"'praised for' is followed by a gerund."],
+["Sales representatives are expected to respond to inquiries ___ 24 hours.", ["within","among","between","through"],0,"'within' indicates a time limit."],
+["Not only ___ the client satisfied, but she also recommended us to others.", ["was","did","is","were"],0,"Inverted structure after 'Not only' at the start of a clause: 'was the client'."],
+["The factory has reduced waste ___ 30 percent since installing new equipment.", ["by","with","of","in"],0,"'reduce by [amount]' is the standard collocation."],
+["Whoever ___ the highest score will receive the internship offer.", ["achieve","achieves","achieving","achieved"],1,"'Whoever' functions as a singular subject requiring the third-person singular verb."],
+["The team worked overtime ___ complete the audit on schedule.", ["for","so that","in order to","for that"],2,"'in order to' + base verb expresses purpose."],
+["The figures in the report ___ inconsistent with last quarter's data.", ["appears","appear","appearing","has appear"],1,"'figures' is plural, requiring 'appear'."],
+["The vendor agreed to lower the price provided that we ___ in bulk.", ["order","ordered","will order","are ordering"],0,"'provided that' introduces a condition using present simple."],
+["Despite ___ the deadline extended, the team still struggled to finish.", ["have","having","to have","had"],1,"'Despite' is followed by a gerund phrase."],
+["The consultant recommended that the firm ___ its supply chain.", ["diversify","diversifies","diversified","will diversify"],0,"Subjunctive after 'recommend that' uses the base form."],
+["The applicant's résumé was impressive; ___, the interview did not go well.", ["moreover","however","therefore","similarly"],1,"A contrast between the résumé and the interview requires 'however'."],
+["The board members were divided ___ whether to approve the merger.", ["about","of","for","at"],0,"'divided about/over' is the correct collocation for disagreement on a topic."],
+["Once the contract ___ signed, the funds will be released.", ["is","will be","was","being"],0,"Time clauses about the future use present simple, not future tense."],
+["The new intern adapted to the office culture more quickly ___ anyone expected.", ["as","that","than","so"],2,"Comparative structure requires 'than'."],
+["The client asked ___ the shipment could arrive earlier than scheduled.", ["that","if","what","so"],1,"Reported yes/no question uses 'if' (or whether)."],
+["The company's growth can be attributed ___ its investment in staff training.", ["to","for","with","from"],0,"'attribute something to something' is the fixed collocation."],
+["The technician repaired the printer ___ interrupting the office workflow.", ["with","without","despite of","not"],1,"'without' + gerund expresses an action done in the absence of another."],
+["Employees who arrive late three times ___ a formal warning.", ["will receive","receive","received","are receiving"],0,"A future consequence for a repeated condition uses 'will' + base verb."],
+["The spreadsheet contains errors that need ___ before submission.", ["correct","correcting","corrected","to correcting"],1,"'need + gerund' can express a passive meaning (needs correcting = needs to be corrected)."],
+["The merger talks broke down mainly ___ disagreements over valuation.", ["because","because of","due","so"],1,"'because of' precedes a noun phrase."],
+["The auditor found several figures that did not ___ up with the receipts.", ["add","adding","added","adds"],0,"Phrasal verb 'add up' means to be logically consistent."],
+["The company plans to expand its operations ___ Southeast Asia next year.", ["into","to","for","on"],0,"'expand into a region' is the standard collocation."],
+["The training session was rescheduled ___ several employees were traveling.", ["so","because","although","unless"],1,"'because' introduces the reason for the rescheduling."],
+["The results, once verified, ___ to all department heads.", ["will be circulated","circulate","will circulate","circulated"],0,"Passive future: the results (object) receive the action of circulating."]
+];
+grammarRaw.length = 45; // keep bank at exactly 45 grammar items for a clean 120-item total
+
+/* VOCABULARY IN CONTEXT — word/phrase choice. Same format. */
+const vocabRaw = [
+["The manager asked the team to ___ the proposal before the client meeting.", ["finalize","finalist","finality","finalizing"],0,"'finalize' (verb) means to complete something in its final form."],
+["Our department is currently ___ for two new software developers.", ["recruiting","recruitment","recruiter","recruited"],0,"The present continuous requires the base verb form 'recruiting'."],
+["The company issued a formal ___ after the product recall.", ["apology","apologize","apologetic","apologetically"],0,"A noun is needed after the article 'a'."],
+["The negotiations reached a ___ after months of discussion.", ["conclusion","concluding","conclusive","conclude"],0,"A noun is required as the object of 'reached'."],
+["Please ___ the attached file for your reference.", ["find","found","finding","founded"],0,"'Please find attached' is a standard business email phrase."],
+["The firm's ___ in renewable energy has grown steadily.", ["investment","invest","investing","invested"],0,"A noun is needed as the subject complement."],
+["The new regulations will have a significant ___ on small businesses.", ["impact","impacting","impacted","impactful"],0,"'have an impact on' is a fixed collocation."],
+["The board decided to ___ the launch until next quarter.", ["postpone","postponement","postponing","postponed"],0,"A base verb is required after 'decided to'."],
+["Customer ___ has improved since the new support system was introduced.", ["satisfaction","satisfy","satisfying","satisfied"],0,"A noun subject is needed."],
+["The report highlights several ___ in the current supply chain.", ["inefficiencies","inefficient","inefficiently","inefficacy"],0,"A plural noun is needed as the object of 'highlights'."],
+["We need to ___ our marketing strategy to reach younger customers.", ["revise","revision","revising","revised"],0,"A base verb follows 'need to'."],
+["The CEO's speech was well received by ___ at the conference.", ["attendees","attendance","attend","attending"],0,"A plural noun for people is needed."],
+["The company aims to ___ its carbon footprint by 2030.", ["reduce","reduction","reducing","reduced"],0,"A base verb follows 'aims to'."],
+["Her ___ to detail made her an excellent auditor.", ["attention","attentive","attentively","attend"],0,"'attention to detail' is a fixed phrase."],
+["The two firms signed a ___ to share research resources.", ["partnership","partner","partnering","partnered"],0,"A noun is needed as the object of 'signed'."],
+["The airline apologized for the ___ caused by the flight delay.", ["inconvenience","inconvenient","inconveniently","inconvenienced"],0,"A noun follows 'the' as the object of 'for'."],
+["Management is looking for ways to ___ employee turnover.", ["decrease","decreasing","decreased","decreasingly"],0,"Base verb follows 'ways to'."],
+["The seminar provided useful ___ into current market trends.", ["insight","insightful","insightfully","insighted"],0,"A noun is needed as the object of 'provided'."],
+["The vendor offered a substantial ___ for early payment.", ["discount","discounted","discounting","discountable"],0,"A noun follows the article 'a'."],
+["The committee will ___ the final decision next week.", ["announce","announcement","announcing","announced"],0,"Base verb follows the modal 'will'."],
+["The product's popularity can be ___ to its affordable price.", ["attributed","attribution","attribute","attributing"],0,"'be attributed to' is the correct passive collocation."],
+["The firm's reputation was ___ by the recent scandal.", ["damaged","damage","damaging","damages"],0,"Past participle needed for the passive verb 'was ___ '."],
+["Employees are encouraged to give ___ on the new workflow.", ["feedback","feedbacks","feeding back","feedbacked"],0,"'feedback' is uncountable and does not take a plural form."],
+["The startup managed to ___ significant funding within its first year.", ["secure","security","securely","secured"],0,"Base verb follows 'managed to'."],
+["The client requested a more detailed ___ of the project timeline.", ["breakdown","breaking down","broken down","break down"],0,"'breakdown' as a noun means a detailed analysis."],
+["The company's ___ policy allows staff to work from home twice a week.", ["flexible","flexibility","flex","flexibly"],0,"An adjective is needed to modify 'policy'."],
+["The report was ___ criticized for lacking supporting data.", ["widely","wide","widen","widest"],0,"An adverb is needed to modify the verb 'criticized'."],
+["The two companies are currently in ___ over a possible merger.", ["talks","talking","talked","talkative"],0,"'in talks' is a fixed idiom meaning in discussion."],
+["The manager's ___ decision surprised the entire team.", ["abrupt","abruptly","abruptness","abrupting"],0,"An adjective is needed to modify 'decision'."],
+["The firm is known for its ___ approach to customer service.", ["proactive","proactively","proactivity","proactivate"],0,"An adjective modifies 'approach'."],
+["Please ___ your availability for the upcoming interview.", ["confirm","confirmation","confirming","confirmed"],0,"Base verb follows 'please'."],
+["The budget cuts had a ___ effect on staff morale.", ["negative","negatively","negativity","negate"],0,"An adjective modifies 'effect'."],
+["The supplier failed to ___ the goods on time.", ["deliver","delivery","delivering","delivered"],0,"Base verb follows 'failed to'."],
+["The presentation was praised for its ___ and clarity.", ["conciseness","concise","concisely","concising"],0,"A noun is needed as the object of 'for its'."],
+["The company plans to ___ its operations to three new countries.", ["expand","expansion","expanding","expanded"],0,"Base verb follows 'plans to'."]
+];
+
+/* TRUE / FALSE — statement + correct boolean + explanation */
+const tfRaw = [
+["In most business emails, it is considered polite to open with a greeting such as 'Dear' or 'Hello' before stating the purpose of the message.", true, "Standard email etiquette recommends a greeting before the main content."],
+["A cover letter should generally be longer than the résumé it accompanies.", false, "Cover letters are typically shorter than résumés — usually one page or less."],
+["'CC' in an email header stands for 'carbon copy' and sends a visible copy of the message to additional recipients.", true, "CC recipients are visible to everyone on the email, unlike BCC."],
+["An agenda distributed before a meeting typically lists the topics to be discussed and their allotted time.", true, "This is the standard purpose of a meeting agenda."],
+["In TOEIC Reading Part 5, test-takers are asked to choose the best word or phrase to complete a sentence.", true, "Part 5 focuses on grammar and vocabulary in single sentences."],
+["A 'deadline' refers to the earliest possible date a task can be started.", false, "A deadline is the latest date by which a task must be completed, not the earliest start date."],
+["'BCC' recipients can see the names of all other recipients on the email, including other BCC recipients.", false, "BCC recipients are hidden from everyone else on the email, including other BCC recipients."],
+["A formal business letter typically ends with a closing phrase such as 'Sincerely' followed by the sender's name.", true, "This is the standard convention for formal correspondence."],
+["An invoice is a document that confirms a payment has already been received in full.", false, "An invoice requests payment for goods or services; a receipt confirms payment was received."],
+["A 'keynote speaker' is typically a minor participant who introduces the main speaker at a conference.", false, "A keynote speaker delivers the central, most important address of an event."],
+["In most offices, 'RSVP' on an invitation means the recipient is required to confirm attendance.", true, "RSVP (répondez s'il vous plaît) requests a response confirming attendance."],
+["A performance review is generally a one-time meeting held only when an employee is being dismissed.", false, "Performance reviews are typically regular, scheduled evaluations, not solely tied to dismissal."],
+["The term 'stakeholder' refers only to shareholders who own company stock.", false, "Stakeholders include anyone affected by a business, such as employees, customers, and suppliers, not only shareholders."],
+["A memo is usually used for internal communication within an organization rather than for external clients.", true, "Memos are standard internal communication documents."],
+["'Networking' in a professional context refers exclusively to setting up computer network infrastructure.", false, "In a professional/business context, networking means building professional relationships and contacts."]
+];
+
+/* MATCHING SETS — each set: {instruction, pairs:[[term,def],...]} — 5 sets x 5 pairs = 25 items */
+const matchingSets = [
+{title:"Match the business abbreviation to its meaning.", pairs:[
+  ["ASAP","As soon as possible"],
+  ["FYI","For your information"],
+  ["ETA","Estimated time of arrival"],
+  ["RFP","Request for proposal"],
+  ["Q&A","Question and answer session"]
+]},
+{title:"Match the workplace idiom to its meaning.", pairs:[
+  ["Touch base","Make brief contact to check in"],
+  ["Think outside the box","Consider unconventional ideas"],
+  ["On the same page","In agreement or aligned in understanding"],
+  ["Cut corners","Do something poorly to save time or money"],
+  ["Back to square one","Return to the starting point after no progress"]
+]},
+{title:"Match the term to its correct definition.", pairs:[
+  ["Revenue","Total income generated by a business before expenses"],
+  ["Overhead","Ongoing business expenses not tied to a specific product"],
+  ["Liability","A financial obligation or debt owed by a company"],
+  ["Equity","Ownership interest in a company after liabilities are subtracted"],
+  ["Turnover","The rate at which employees leave and are replaced"]
+]},
+{title:"Match the email/office abbreviation to its meaning.", pairs:[
+  ["OOO","Out of office"],
+  ["EOD","End of day"],
+  ["N/A","Not applicable"],
+  ["TBD","To be determined"],
+  ["POC","Point of contact"]
+]},
+{title:"Match the word to its closest synonym in a business context.", pairs:[
+  ["Feasible","Practical / achievable"],
+  ["Concise","Brief and clear"],
+  ["Redundant","No longer necessary"],
+  ["Prioritize","Rank by importance"],
+  ["Streamline","Make a process more efficient"]
+]}
+];
+
+/* ============================= BUILD QUESTION OBJECTS ============================= */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+const LETTERS = ["A","B","C","D"];
+
+let questions = [];
+
+grammarRaw.forEach((row,idx)=>{
+  const [sentence, opts, correctIdx, explain] = row;
+  const optOrder = shuffle(opts.map((text,i)=>({text,orig:i})));
+  const correctPos = optOrder.findIndex(o=>o.orig===correctIdx);
+  questions.push({
+    type:"mcq", section:"GRAMMAR",
+    text: sentence.replace("___","______"),
+    options: optOrder.map(o=>o.text),
+    correct: correctPos,
+    explain
+  });
+});
+
+vocabRaw.forEach((row)=>{
+  const [sentence, opts, correctIdx, explain] = row;
+  const optOrder = shuffle(opts.map((text,i)=>({text,orig:i})));
+  const correctPos = optOrder.findIndex(o=>o.orig===correctIdx);
+  questions.push({
+    type:"mcq", section:"VOCABULARY",
+    text: sentence.replace("___","______"),
+    options: optOrder.map(o=>o.text),
+    correct: correctPos,
+    explain
+  });
+});
+
+tfRaw.forEach(row=>{
+  const [statement, correctBool, explain] = row;
+  questions.push({
+    type:"tf", section:"TRUE / FALSE",
+    text: statement,
+    options:["True","False"],
+    correct: correctBool ? 0 : 1,
+    explain
+  });
+});
+
+matchingSets.forEach((set,setIdx)=>{
+  const terms = set.pairs.map(p=>p[0]);
+  const defs = set.pairs.map(p=>p[1]);
+  const shuffledDefs = shuffle(defs);
+  set.pairs.forEach((pair,i)=>{
+    questions.push({
+      type:"match", section:"MATCHING",
+      groupTitle:set.title,
+      groupId:setIdx,
+      term: pair[0],
+      correctDef: pair[1],
+      defOptions: shuffledDefs,
+      explain: `"${pair[0]}" pairs with "${pair[1]}".`
+    });
+  });
+});
+
+questions = shuffle(questions);
+questions.forEach((q,i)=>q.num=i+1);
+const TOTAL = questions.length;
+const answers = new Array(TOTAL).fill(null); // stores selected index (mcq/tf) or selected def string (match)
+let current = 0;
+let started = false;
+
+/* ============================= RENDER ============================= */
+document.getElementById("metaTotal").textContent = TOTAL;
+
+function renderScantron(){
+  const el = document.getElementById("scantron");
+  el.innerHTML = "";
+  questions.forEach((q,i)=>{
+    const b = document.createElement("div");
+    b.className = "bubble" + (answers[i]!==null?" done":"") + (i===current && started ? " current":"");
+    el.appendChild(b);
+  });
+}
+
+function updateMeta(){
+  const answeredCount = answers.filter(a=>a!==null).length;
+  document.getElementById("metaAnswered").textContent = answeredCount;
+  document.getElementById("metaSection").textContent = started ? questions[current].section : "—";
+}
+
+function startTest(){
+  started = true;
+  document.getElementById("startPanel").style.display = "none";
+  document.getElementById("quizCard").style.display = "block";
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById("qIndexLabel").textContent = `Item ${current+1} / ${TOTAL}`;
+  document.getElementById("qTypeTag").textContent = q.section;
+  const body = document.getElementById("questionBody");
+  body.innerHTML = "";
+
+  if(q.type === "mcq" || q.type === "tf"){
+    const qt = document.createElement("p");
+    qt.className = "qtext";
+    qt.textContent = (q.type==="tf" ? "" : "") + q.text;
+    body.appendChild(qt);
+
+    const optWrap = document.createElement("div");
+    optWrap.className = "options";
+    q.options.forEach((optText,i)=>{
+      const div = document.createElement("div");
+      div.className = "opt" + (answers[current]===i ? " selected":"");
+      div.innerHTML = `<span class="letter">${q.type==="tf" ? (i===0?"T":"F") : LETTERS[i]}</span><span>${optText}</span>`;
+      div.onclick = ()=>selectOption(i);
+      optWrap.appendChild(div);
+    });
+    body.appendChild(optWrap);
+  }
+
+  if(q.type === "match"){
+    const groupItems = questions.filter(x=>x.type==="match" && x.groupId===q.groupId);
+    const title = document.createElement("p");
+    title.className = "qtext";
+    title.textContent = q.groupTitle;
+    body.appendChild(title);
+
+    const passage = document.createElement("div");
+    passage.className = "passage";
+    passage.textContent = `Select the definition that matches: "${q.term}"`;
+    body.appendChild(passage);
+
+    const row = document.createElement("div");
+    row.className = "match-row";
+    const termBox = document.createElement("div");
+    termBox.className = "match-term";
+    termBox.textContent = q.term;
+    row.appendChild(termBox);
+
+    const select = document.createElement("select");
+    select.className = "match-select";
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "— choose a definition —";
+    select.appendChild(placeholder);
+    q.defOptions.forEach(def=>{
+      const o = document.createElement("option");
+      o.value = def; o.textContent = def;
+      select.appendChild(o);
+    });
+    if(answers[current]!==null) select.value = answers[current];
+    select.onchange = ()=>{ answers[current] = select.value; refreshNav(); renderScantron(); updateMeta(); };
+    row.appendChild(select);
+    body.appendChild(row);
+  }
+
+  refreshNav();
+  renderScantron();
+  updateMeta();
+}
+
+function selectOption(i){
+  answers[current] = i;
+  renderQuestion();
+}
+
+function refreshNav(){
+  document.getElementById("prevBtn").disabled = current===0;
+  const answered = answers[current]!==null && answers[current]!=="";
+  document.getElementById("nextBtn").disabled = !answered;
+  document.getElementById("nextBtn").textContent = current===TOTAL-1 ? "Finish Test →" : "Next →";
+  document.getElementById("statusHint").textContent = answered ? "Answer recorded" : "Select an answer to continue";
+}
+
+function goNext(){
+  if(current === TOTAL-1){
+    showSummary();
+    return;
+  }
+  current++;
+  renderQuestion();
+}
+function goPrev(){
+  if(current===0) return;
+  current--;
+  renderQuestion();
+}
+
+/* ============================= SUMMARY ============================= */
+function showSummary(){
+  document.getElementById("quizCard").style.display = "none";
+  document.getElementById("summaryPanel").style.display = "block";
+
+  let correctCount = 0;
+  const bySection = {};
+  const reviewHTML = [];
+
+  questions.forEach((q,i)=>{
+    const userAns = answers[i];
+    let isCorrect = false;
+    let userLabel = "No answer";
+    let correctLabel = "";
+
+    if(q.type==="mcq" || q.type==="tf"){
+      isCorrect = userAns === q.correct;
+      userLabel = userAns!==null ? (q.type==="tf" ? (userAns===0?"True":"False") : `${LETTERS[userAns]}. ${q.options[userAns]}`) : "No answer";
+      correctLabel = q.type==="tf" ? (q.correct===0?"True":"False") : `${LETTERS[q.correct]}. ${q.options[q.correct]}`;
+    } else if(q.type==="match"){
+      isCorrect = userAns === q.correctDef;
+      userLabel = userAns || "No answer";
+      correctLabel = q.correctDef;
+    }
+
+    if(isCorrect) correctCount++;
+    bySection[q.section] = bySection[q.section] || {correct:0,total:0};
+    bySection[q.section].total++;
+    if(isCorrect) bySection[q.section].correct++;
+
+    const qLabel = q.type==="match" ? `${q.groupTitle} — "${q.term}"` : q.text;
+    reviewHTML.push(`
+      <div class="review-item ${isCorrect?'right':'wrong'}">
+        <div class="rq">Item ${i+1} · ${q.section} ${isCorrect?'✓':'✗'}</div>
+        <div class="ra">${qLabel}</div>
+        <div class="ra" style="margin-top:6px;">Your answer: <b>${userLabel}</b></div>
+        ${!isCorrect ? `<div class="ra">Correct answer: <b>${correctLabel}</b></div>` : ``}
+        <div class="ra" style="margin-top:6px;opacity:0.8;">${q.explain||""}</div>
+      </div>
+    `);
+  });
+
+  const pct = Math.round((correctCount/TOTAL)*100);
+  document.getElementById("scorePct").innerHTML = `${pct}<span>%</span>`;
+  let band = "Needs Review";
+  if(pct>=90) band="Advanced";
+  else if(pct>=75) band="Proficient";
+  else if(pct>=60) band="Intermediate";
+  else if(pct>=40) band="Basic";
+  document.getElementById("scoreBand").textContent = `${band} · ${correctCount}/${TOTAL} correct`;
+
+  const bd = document.getElementById("breakdown");
+  bd.innerHTML = "";
+  Object.keys(bySection).forEach(sec=>{
+    const d = bySection[sec];
+    const secPct = Math.round((d.correct/d.total)*100);
+    const div = document.createElement("div");
+    div.className = "bd-item";
+    div.innerHTML = `<div class="k">${sec}</div><div class="v">${d.correct}/${d.total} <span style="font-size:12px;color:var(--ink-2);font-weight:500;">(${secPct}%)</span></div>`;
+    bd.appendChild(div);
+  });
+
+  document.getElementById("reviewList").innerHTML = reviewHTML.join("");
+}
+</script>
+</body>
+</html>
