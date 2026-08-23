@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrepreneurship Reviewer — Weeks 2–5</title>
+<style>
+  :root{
+    --navy:#152238;
+    --navy-2:#1f3358;
+    --navy-3:#26436f;
+    --gold:#d6a13c;
+    --gold-light:#f0c975;
+    --paper:#ffffff;
+    --ink:#1b1f27;
+    --ink-soft:#5a6274;
+    --line:#e3e6ee;
+    --green:#1e7a4c;
+    --green-bg:#e7f5ee;
+    --red:#b3392f;
+    --red-bg:#fbeae8;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 15% -10%, #1f3358 0%, transparent 55%),
+      radial-gradient(1000px 600px at 110% 10%, #26436f 0%, transparent 50%),
+      var(--navy);
+    min-height:100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color:var(--ink);
+    padding:28px 16px 60px;
+    margin-bottom: 180px;
+  }
+  .wrap{max-width:760px; margin:0 auto;}
+
+  /* ---------- Header ---------- */
+  .masthead{
+    text-align:center;
+    color:#fff;
+    margin-bottom:22px;
+  }
+  .masthead .eyebrow{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    border:1px solid rgba(214,161,60,.5);
+    border-radius:999px;
+    padding:5px 14px;
+    margin-bottom:14px;
+    background:rgba(214,161,60,.08);
+  }
+  .masthead h1{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight:700;
+    font-size:clamp(28px,5vw,40px);
+    margin:0 0 8px;
+    line-height:1.15;
+  }
+  .masthead p{
+    margin:0;
+    color:#c7cede;
+    font-size:14.5px;
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  /* ---------- Card shell ---------- */
+  .card{
+    background:var(--paper);
+    border-radius:var(--radius);
+    box-shadow:0 20px 50px rgba(6,12,26,.35);
+    overflow:hidden;
+    position:relative;
+  }
+  .card::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:6px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));
+  }
+
+  /* ---------- Start screen ---------- */
+  .start{
+    padding:38px 34px 34px;
+    text-align:center;
+  }
+  .start h2{
+    font-family: Georgia, serif;
+    font-size:22px;
+    margin:6px 0 10px;
+  }
+  .start p{color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0 0 22px;}
+  .week-chips{
+    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:24px;
+  }
+  .week-chips span{
+    font-size:12px; font-weight:600; color:var(--navy-3);
+    background:#eef2fb; border:1px solid var(--line);
+    padding:6px 12px; border-radius:999px;
+  }
+  .stat-row{
+    display:flex; justify-content:center; gap:28px; margin-bottom:26px;
+  }
+  .stat-row div{text-align:center;}
+  .stat-row .num{font-family:Georgia,serif; font-size:26px; font-weight:700; color:var(--navy);}
+  .stat-row .lbl{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  .btn{
+    appearance:none; border:none; cursor:pointer;
+    font-family:inherit; font-weight:700; font-size:15px;
+    padding:14px 30px; border-radius:10px;
+    background:var(--navy); color:#fff;
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow:0 8px 20px rgba(21,34,56,.25);
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn.gold{background:var(--gold); color:#3a2a05; box-shadow:0 8px 20px rgba(214,161,60,.35);}
+  .btn.outline{background:transparent; color:var(--navy); border:1.5px solid var(--navy); box-shadow:none;}
+  .btn:disabled{opacity:.45; cursor:not-allowed; transform:none;}
+
+  /* ---------- Quiz screen ---------- */
+  .quiz-head{
+    padding:18px 26px 14px;
+    border-bottom:1px solid var(--line);
+  }
+  .progress-line{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .progress-line .qcount{font-size:12.5px; font-weight:700; color:var(--navy); letter-spacing:.02em;}
+  .progress-line .weektag{
+    font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--navy-3); background:#eef2fb; padding:4px 10px; border-radius:999px;
+  }
+  .progress-track{height:6px; background:#eef0f5; border-radius:999px; overflow:hidden;}
+  .progress-fill{height:100%; background:linear-gradient(90deg,var(--navy-3),var(--gold)); width:0%; transition:width .3s ease;}
+
+  .qbody{padding:24px 26px 10px;}
+  .qtext{font-family:Georgia,serif; font-size:19px; line-height:1.45; margin:0 0 20px; color:var(--ink);}
+
+  .choices{display:flex; flex-direction:column; gap:10px;}
+  .choice{
+    display:flex; align-items:center; gap:12px;
+    text-align:left;
+    border:1.5px solid var(--line);
+    background:#fff;
+    padding:13px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14.5px;
+    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .choice:hover:not(.locked){border-color:var(--navy-3); background:#f7f9fd;}
+  .choice .tag{
+    flex:0 0 26px; height:26px; border-radius:7px;
+    background:#eef0f5; color:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:12.5px;
+  }
+  .choice.selected{border-color:var(--navy-3); background:#eef2fb;}
+  .choice.selected .tag{background:var(--navy-3); color:#fff;}
+  .choice.correct{border-color:var(--green); background:var(--green-bg);}
+  .choice.correct .tag{background:var(--green); color:#fff;}
+  .choice.wrong{border-color:var(--red); background:var(--red-bg);}
+  .choice.wrong .tag{background:var(--red); color:#fff;}
+  .choice.locked{cursor:default;}
+
+  .feedback{
+    margin:16px 0 4px;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:13.5px;
+    line-height:1.55;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.ok{background:var(--green-bg); color:#155534; border:1px solid #bfe3cf;}
+  .feedback.bad{background:var(--red-bg); color:#7a241b; border:1px solid #f0c4bd;}
+  .feedback b{display:inline-block; margin-bottom:2px;}
+
+  .qfoot{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 26px 22px;
+  }
+  .stamp{
+    font-family:Georgia,serif; font-weight:700; font-size:12px;
+    letter-spacing:.08em; text-transform:uppercase;
+    padding:6px 12px; border-radius:6px; border:2px solid transparent;
+    transform:rotate(-4deg);
+    opacity:0; transition:opacity .15s ease;
+  }
+  .stamp.show.ok{opacity:1; color:var(--green); border-color:var(--green);}
+  .stamp.show.bad{opacity:1; color:var(--red); border-color:var(--red);}
+
+  /* ---------- Live stat bar ---------- */
+  .statbar{
+    display:flex; justify-content:space-around;
+    background:var(--navy-2);
+    border-radius:12px;
+    margin-top:16px;
+    padding:14px 10px;
+    color:#fff;
+  }
+  .statbar .item{text-align:center;}
+  .statbar .n{font-family:Georgia,serif; font-size:19px; font-weight:700;}
+  .statbar .l{font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:#aab4cc; margin-top:2px;}
+  .statbar .item.correct .n{color:#7fe0ac;}
+  .statbar .item.wrong .n{color:#ff9c8f;}
+
+  /* ---------- Summary screen ---------- */
+  .summary{padding:34px 30px 30px;}
+  .score-ring-wrap{display:flex; justify-content:center; margin-bottom:6px;}
+  .score-ring{
+    width:150px; height:150px; border-radius:50%;
+    background: conic-gradient(var(--gold) calc(var(--pct)*1%), #eef0f5 0);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .score-ring::before{
+    content:""; position:absolute; width:118px; height:118px; border-radius:50%; background:#fff;
+  }
+  .score-ring .pctnum{position:relative; font-family:Georgia,serif; font-size:30px; font-weight:700; color:var(--navy);}
+  .score-msg{text-align:center; margin:14px 0 6px; font-family:Georgia,serif; font-size:19px; color:var(--navy);}
+  .score-sub{text-align:center; color:var(--ink-soft); font-size:13.5px; margin-bottom:22px;}
+
+  .summary-stats{display:flex; justify-content:center; gap:10px; margin-bottom:28px; flex-wrap:wrap;}
+  .summary-stats .box{
+    background:#f7f9fd; border:1px solid var(--line); border-radius:10px;
+    padding:12px 18px; text-align:center; min-width:88px;
+  }
+  .summary-stats .box .n{font-family:Georgia,serif; font-weight:700; font-size:20px; color:var(--navy);}
+  .summary-stats .box.correct .n{color:var(--green);}
+  .summary-stats .box.wrong .n{color:var(--red);}
+  .summary-stats .box .l{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-top:2px;}
+
+  .review-title{
+    font-family:Georgia,serif; font-size:16px; margin:0 0 4px; color:var(--navy);
+    display:flex; align-items:center; gap:8px;
+  }
+  .review-sub{font-size:13px; color:var(--ink-soft); margin:0 0 16px;}
+  .review-item{
+    border:1px solid var(--line); border-left:4px solid var(--red);
+    border-radius:10px; padding:14px 16px; margin-bottom:12px; background:#fffdfb;
+  }
+  .review-item .rweek{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--navy-3); margin-bottom:6px;}
+  .review-item .rq{font-weight:700; font-size:14.5px; margin-bottom:8px; line-height:1.4;}
+  .review-item .rrow{font-size:13px; margin-bottom:3px; line-height:1.5;}
+  .review-item .rrow.your{color:var(--red);}
+  .review-item .rrow.correctline{color:var(--green);}
+  .review-item .rexp{
+    margin-top:8px; padding-top:8px; border-top:1px dashed var(--line);
+    font-size:12.8px; color:var(--ink-soft); line-height:1.55;
+  }
+  .all-correct{
+    text-align:center; padding:20px; color:var(--green); font-weight:700; font-family:Georgia,serif;
+  }
+
+  .summary-actions{display:flex; justify-content:center; gap:12px; margin-top:24px; flex-wrap:wrap;}
+
+  .hidden{display:none !important;}
+
+  @media (max-width:480px){
+    .start{padding:28px 20px;}
+    .qbody{padding:20px 18px 6px;}
+    .quiz-head{padding:16px 18px 12px;}
+    .qfoot{padding:14px 18px 18px;}
+    .summary{padding:26px 18px 24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <span class="eyebrow">NU MOA · Entrepreneurship</span>
+    <h1>Weeks 2–5 Reviewer</h1>
+    <p>Entrepreneurial Mindset · Business Plan Foundations · Product &amp; Pricing Strategy · Marketing (7P's)</p>
+  </div>
+
+  <div class="card">
+
+    <!-- START SCREEN -->
+    <div id="startScreen" class="start">
+      <h2>Ready for the quiz?</h2>
+      <p>This reviewer randomizes question order every time you reload the page. Answer each item, then check your full results — including explanations for anything you miss — at the end.</p>
+      <P>TIP: If you're on a computer, laptop, or tablet, you can press A, B, C, and D in your keyboard for faster and instant answer! Press the Enter key or Spacebar to go to the next question.</P>
+      <div class="week-chips">
+        <span>Week 2 · Mindset &amp; Opportunity</span>
+        <span>Week 3 · Business Plan Ch.1–2</span>
+        <span>Week 4 · Product &amp; Pricing</span>
+        <span>Week 5 · Marketing 7P's</span>
+      </div>
+      <div class="stat-row">
+        <div><div class="num" id="totalQCount">0</div><div class="lbl">Questions</div></div>
+        <div><div class="num">4</div><div class="lbl">Weeks Covered</div></div>
+      </div>
+      <button class="btn gold" id="startBtn">Start Reviewer</button>
+    </div>
+
+    <!-- QUIZ SCREEN -->
+    <div id="quizScreen" class="hidden">
+      <div class="quiz-head">
+        <div class="progress-line">
+          <span class="qcount" id="qCounter">Question 1 of 48</span>
+          <span class="weektag" id="weekTag">Week 2</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div class="qbody">
+        <p class="qtext" id="qText"></p>
+        <div class="choices" id="choicesWrap"></div>
+        <div class="feedback" id="feedbackBox"></div>
+      </div>
+      <div class="qfoot">
+        <span class="stamp" id="stampBox">✓</span>
+        <button class="btn" id="nextBtn" disabled>Next Question</button>
+      </div>
+    </div>
+
+    <!-- SUMMARY SCREEN -->
+    <div id="summaryScreen" class="hidden summary">
+      <div class="score-ring-wrap">
+        <div class="score-ring" id="scoreRing" style="--pct:0"><span class="pctnum" id="pctNum">0%</span></div>
+      </div>
+      <p class="score-msg" id="scoreMsg">Great effort!</p>
+      <p class="score-sub" id="scoreSub"></p>
+
+      <div class="summary-stats">
+        <div class="box"><div class="n" id="sumAnswered">0</div><div class="l">Answered</div></div>
+        <div class="box correct"><div class="n" id="sumCorrect">0</div><div class="l">Correct</div></div>
+        <div class="box wrong"><div class="n" id="sumWrong">0</div><div class="l">Wrong</div></div>
+      </div>
+
+      <div class="review-title">📋 Review of missed items</div>
+      <p class="review-sub">Study these before your quiz — brief explanations included.</p>
+      <div id="reviewList"></div>
+
+      <div class="summary-actions">
+        <button class="btn gold" id="retryBtn">Retake (Reshuffled)</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ================= QUESTION BANK ================= */
+const QUESTIONS = [
+
+/* ---------------- WEEK 2: Entrepreneurial Mindset & Opportunity Recognition ---------------- */
+{week:"Week 2", q:"What best describes an entrepreneurial mindset?", choices:[
+  "Being proactive, adaptable, and opportunity-focused with a willingness to take calculated risks",
+  "Following strict routines and avoiding any form of risk",
+  "Relying only on formal education to succeed in business",
+  "Copying competitors' products exactly"
+], correct:0, explain:"An entrepreneurial mindset involves being proactive, adaptable, and opportunity-focused, with a willingness to take calculated risks."},
+
+{week:"Week 2", q:"A belief that qualities like intelligence and talent are fixed or changeable traits is called a:", choices:[
+  "Strategy","Mindset","Opportunity","Objective"
+], correct:1, explain:"A mindset is a belief about whether qualities like intelligence and talent are fixed or changeable traits."},
+
+{week:"Week 2", q:"People who believe their abilities can be developed through commitment, determination, and hard work have a:", choices:[
+  "Fixed mindset","Growth mindset","Passive mindset","Static mindset"
+], correct:1, explain:"People with a growth mindset trust that their traits can be changed, developed, and strengthened by working on them."},
+
+{week:"Week 2", q:"People who believe their talents and abilities are already set and sufficient have a:", choices:[
+  "Growth mindset","Adaptive mindset","Fixed mindset","Entrepreneurial mindset"
+], correct:2, explain:"People with a fixed mindset perceive that their talents and abilities are set and consider them sufficient to succeed."},
+
+{week:"Week 2", q:"\"When I fail, I learn\" reflects which type of mindset?", choices:[
+  "Fixed mindset","Growth mindset","Neutral mindset","Reactive mindset"
+], correct:1, explain:"Viewing failure as a learning opportunity — rather than proof of being \"no good\" — is characteristic of a growth mindset."},
+
+{week:"Week 2", q:"A means to generate profit by creating unique, innovative, and desirable products or services not yet found in the market is called a(n):", choices:[
+  "Opportunity","Business plan","Mindset","Pathway"
+], correct:0, explain:"An opportunity is a means to generate profits by creating unique, innovative, and desirable products or services not yet found in the market."},
+
+{week:"Week 2", q:"The process by which individuals and businesses use their entrepreneurial mindset to establish new businesses or ideas is called:", choices:[
+  "Market segmentation","Opportunity recognition","Product positioning","Capitalization"
+], correct:1, explain:"Opportunity recognition is the process by which individuals and businesses make use of their entrepreneurial mindset to establish new businesses or ideas."},
+
+{week:"Week 2", q:"Which \"way to start with ideas\" involves breaking a problem into details to improve or innovate products or services?", choices:[
+  "Imagination-Based","Analytical","Habit-Breaking","Interpersonal"
+], correct:1, explain:"The Analytical approach breaks a problem into details to produce ideas for improving or innovating products or services."},
+
+{week:"Week 2", q:"Which \"way to start with ideas\" involves interrupting doubts and dropping restrictions to produce fantasies or make-believe situations?", choices:[
+  "Search","Development","Imagination-Based","Relationship-Seeking"
+], correct:2, explain:"The Imagination-Based approach interrupts doubts and drops restrictions to produce fantasies or make-believe situations."},
+
+{week:"Week 2", q:"Which of the Four Pathways to Opportunity Identification assumes opportunities exist independently of entrepreneurs and are waiting to be found?", choices:[
+  "Find","Search","Effectuate","Design"
+], correct:1, explain:"The Search pathway assumes opportunities exist independently of entrepreneurs and are willing to be found."},
+
+{week:"Week 2", q:"Which pathway uses the entrepreneur's own skills, knowledge, and abilities to unearth an opportunity that suits them?", choices:[
+  "Find","Search","Effectuate","Design"
+], correct:2, explain:"The Effectuate pathway uses the entrepreneur's skills, knowledge, and abilities to unearth an opportunity that suits them."},
+
+{week:"Week 2", q:"Which pathway is described as the most difficult yet most value-creating?", choices:[
+  "Find","Search","Effectuate","Design"
+], correct:3, explain:"The Design pathway — seeing a problem and developing a solution — is described as the most difficult yet the most value-creating pathway."},
+
+{week:"Week 2", q:"In the Entrepreneurial Process, which step involves actively searching for ideas in a problem-rich environment (social, technological, political, or industry change)?", choices:[
+  "Identify","Discover","Enhance","Target"
+], correct:1, explain:"Discover involves actively searching for ideas in a problem-rich environment where social, technological, political, or industry change is occurring."},
+
+{week:"Week 2", q:"Which step of the Entrepreneurial Process involves assessing the viability, potential, and performance of a business idea (like a SWOT analysis)?", choices:[
+  "Anticipate","Target","Evaluate","Enhance"
+], correct:2, explain:"Evaluate involves assessing viability, potential, and performance — analyzing strengths, weaknesses, opportunities, and threats — to decide whether to pursue, refine, or abandon the idea."},
+
+/* ---------------- WEEK 3: Developing a Business Plan (Chapters 1-2) ---------------- */
+{week:"Week 3", q:"A document that integrates the opportunities, risks, resources required, and the qualities of the entrepreneurial team into a viable business model is called a:", choices:[
+  "Marketing plan","Business plan","Organizational chart","Financial statement"
+], correct:1, explain:"A business plan is a document that integrates opportunities, risks, resources required, and the qualities of the entrepreneurial team into a viable business model or venture concept."},
+
+{week:"Week 3", q:"Which of the following is NOT listed as a function of a business plan for a start-up venture?", choices:[
+  "It identifies the nature and context of a business opportunity",
+  "It serves as a tool for raising financial capital",
+  "It guarantees government tax exemption",
+  "It identifies factors that will determine the success of the business"
+], correct:2, explain:"The business plan's functions include identifying the opportunity, presenting the approach, identifying success factors, and raising capital — it does not guarantee tax exemption."},
+
+{week:"Week 3", q:"In the Parts of a Business Plan, which chapter covers \"Product and Pricing Strategy\"?", choices:["Chapter 2","Chapter 3","Chapter 4","Chapter 5"], correct:1, explain:"Chapter 3 of the business plan covers Product and Pricing Strategy (Product, Capitalization, Suggested Retail Price)."},
+
+{week:"Week 3", q:"Which chapter of the business plan covers the Marketing Plan (7 P's)?", choices:["Chapter 3","Chapter 4","Chapter 6","Chapter 7"], correct:1, explain:"Chapter 4 covers the Marketing Plan, organized around the 7 P's."},
+
+{week:"Week 3", q:"Which chapter of the business plan covers the Human Resource Management Plan (8 R's)?", choices:["Chapter 5","Chapter 6","Chapter 7","Chapter 4"], correct:1, explain:"Chapter 6 covers the Human Resource Management Plan (8 R's); Chapter 5 covers Operations Management (6 M's)."},
+
+{week:"Week 3", q:"VMO, discussed under Business Goals, stands for:", choices:[
+  "Value, Method, Outcome","Vision, Mission, Objectives","Venture, Market, Operations","Vision, Marketing, Ownership"
+], correct:1, explain:"VMO stands for Vision, Mission, and Objectives — the core business goals defined in Chapter 1."},
+
+{week:"Week 3", q:"\"The point of direction where your company wishes to go\" describes the:", choices:["Mission","Vision","Objective","Tagline"], correct:1, explain:"Vision is the point of direction where a company wishes to go."},
+
+{week:"Week 3", q:"\"The basic purpose of setting up the enterprise\" describes the:", choices:["Mission","Vision","Objective","Logo"], correct:0, explain:"Mission is the basic purpose of setting up the enterprise."},
+
+{week:"Week 3", q:"A target customer should be of sufficient size, sufficient paying capacity, and sufficient:", choices:[
+  "Distance from competitors","Interest to purchase the product","Government connections","Social media following"
+], correct:1, explain:"A target customer should have sufficient size, sufficient paying capacity, and sufficient interest to purchase the product."},
+
+{week:"Week 3", q:"Which key aspect of defining a target customer covers age, gender, income, education, and occupation?", choices:["Geographics","Psychographics","Demographics","Buying Behavior"], correct:2, explain:"Demographics includes age, gender, income, education, and occupation."},
+
+{week:"Week 3", q:"Which key aspect of defining a target customer covers lifestyle, values, interests, and personality traits?", choices:["Demographics","Psychographics","Geographics","Buying Behavior"], correct:1, explain:"Psychographics covers a customer's lifestyle, values, interests, and personality traits."},
+
+{week:"Week 3", q:"A visual representation showing job titles, roles, and reporting relationships within a company is called a(n):", choices:[
+  "Business model canvas","Organizational chart","Marketing funnel","Value chain"
+], correct:1, explain:"An organizational chart is a visual representation of a company's hierarchical structure, showing job titles, roles, and reporting relationships."},
+
+{week:"Week 3", q:"Which officer is responsible for providing overall strategic direction and pursuing the company's VMO?", choices:[
+  "Chief Operating Officer","Chief Marketing Officer","Chief Executive Officer","Human Resource Officer"
+], correct:2, explain:"The Chief Executive Officer (CEO) provides overall strategic direction and is responsible for pursuing the company's VMO."},
+
+/* ---------------- WEEK 4: Product and Pricing Strategy (Chapter 3) ---------------- */
+{week:"Week 4", q:"A strategy that outlines how a product will meet market needs, stand out from competitors, and achieve business objectives is called a:", choices:[
+  "Pricing strategy","Product strategy","Capitalization plan","Promotion plan"
+], correct:1, explain:"A product strategy outlines how a product will meet market needs, stand out from competitors, and achieve business objectives."},
+
+{week:"Week 4", q:"The total amount of money or resources a business has available to fund its operations, growth, and development is called:", choices:[
+  "Capitalization","Suggested Retail Price","Market demand","Value proposition"
+], correct:0, explain:"Capitalization refers to the total amount of money or resources a business has available to fund its operations, growth, and development."},
+
+{week:"Week 4", q:"Which of these is NOT one of the three sources of capitalization discussed?", choices:[
+  "Equity capital","Debt capital","Retained earnings","Crowdsourced donations"
+], correct:3, explain:"The three sources discussed are equity capital, debt capital, and retained earnings — crowdsourced donations was not among them."},
+
+{week:"Week 4", q:"The price at which a manufacturer or service provider recommends a product be sold to consumers is the:", choices:[
+  "Break-even price","Suggested Retail Price (SRP)","Wholesale price","Penetration price"
+], correct:1, explain:"SRP (Suggested Retail Price) is the price at which a manufacturer or service provider recommends a product be sold to consumers."},
+
+{week:"Week 4", q:"Which pricing principle means that pricing differences across customers reflect differences in value to the customer?", choices:["Proactive","Profit-driven","Value-based","Competitive"], correct:2, explain:"The Value-based principle means differences in pricing across customers or applications reflect differences in the value to customers."},
+
+{week:"Week 4", q:"Which pricing principle means the company anticipates disruptive events (like new competition) and develops strategies in advance?", choices:["Value-based","Proactive","Profit-driven","Reactive"], correct:1, explain:"The Proactive principle means companies anticipate disruptive events and develop strategies in advance to deal with them."},
+
+{week:"Week 4", q:"Which pricing principle evaluates success by what the company earns relative to alternative investments, rather than by market share?", choices:["Proactive","Value-based","Profit-driven","Competitive"], correct:2, explain:"The Profit-driven principle evaluates pricing success by earnings relative to alternative investments rather than market share or growth."},
+
+{week:"Week 4", q:"Calculating your costs and adding a profit margin describes which pricing strategy?", choices:[
+  "Competitive pricing","Price skimming","Cost-plus pricing","Penetration pricing"
+], correct:2, explain:"Cost-plus pricing means calculating your costs and adding a profit margin."},
+
+{week:"Week 4", q:"Setting a high price and lowering it as the market changes describes which pricing strategy?", choices:[
+  "Price skimming","Penetration pricing","Value-based pricing","Competitive pricing"
+], correct:0, explain:"Price skimming sets a high price initially and lowers it as the market changes (e.g., new console pricing)."},
+
+{week:"Week 4", q:"Setting a low price to enter a competitive market and raising it later describes which pricing strategy?", choices:[
+  "Price skimming","Penetration pricing","Cost-plus pricing","Value-based pricing"
+], correct:1, explain:"Penetration pricing sets a low price to enter a competitive market and raises it later."},
+
+{week:"Week 4", q:"The formula for computing Suggested Retail Price is:", choices:[
+  "SRP = Cost − (Cost × Markup %)","SRP = Cost + (Cost × Markup %)","SRP = Cost ÷ Markup %","SRP = Cost × Markup %"
+], correct:1, explain:"SRP = Cost + (Cost × Markup %)."},
+
+{week:"Week 4", q:"Which factor influencing SRP refers to raw materials, labor, utilities, and overhead costs?", choices:[
+  "Market demand","Competitor pricing","Cost of production","Perceived value"
+], correct:2, explain:"Cost of Production is the total expense to create the product — raw materials, labor, utilities, and overhead."},
+
+{week:"Week 4", q:"Which factor influencing SRP refers to the worth customers assign based on quality, brand reputation, and emotional appeal?", choices:[
+  "Perceived value","Market demand","Cost of production","Competitor pricing"
+], correct:0, explain:"Perceived Value is the worth customers assign to a product based on quality, brand reputation, and emotional appeal (e.g., branded perfume priced higher for its luxury image)."},
+
+/* ---------------- WEEK 5: Marketing Plan / 7 P's (Chapter 4) ---------------- */
+{week:"Week 5", q:"All activities a company undertakes to promote and facilitate the buying or selling of its products or services is called:", choices:[
+  "Marketing","Capitalization","Positioning","Packaging"
+], correct:0, explain:"Marketing encompasses all activities a company undertakes to promote and facilitate the buying or selling of its products or services."},
+
+{week:"Week 5", q:"Who is credited with the quote: \"Marketing is the science and art of exploring, creating, and delivering value to satisfy the needs of a target market at a profit\"?", choices:[
+  "Peter Drucker","Philip Kotler","Michael Porter","Seth Godin"
+], correct:1, explain:"This definition is attributed to Philip Kotler."},
+
+{week:"Week 5", q:"How many P's make up the extended marketing mix discussed in this lesson?", choices:["4","5","7","9"], correct:2, explain:"The lesson covers 7 P's: Product, Price, Promotion, Place, Packaging, Positioning, and People."},
+
+{week:"Week 5", q:"Which of the 7 P's is described as the ONLY element that generates revenue for a business?", choices:["Product","Price","Place","Promotion"], correct:1, explain:"Price is the only element of the 7 P's that generates revenue for a business."},
+
+{week:"Week 5", q:"Which of the 7 P's refers to the function of informing, persuading, and influencing the consumer's purchase decision?", choices:["Positioning","Packaging","Promotion","People"], correct:2, explain:"Promotion is the function of informing, persuading, and influencing the consumer's purchase decision."},
+
+{week:"Week 5", q:"Which of the 7 P's refers to where consumers buy the product or where they discover it?", choices:["Place","Packaging","Positioning","Product"], correct:0, explain:"Place refers to where consumers buy the product, or where they discover it."},
+
+{week:"Week 5", q:"Which of the 7 P's is the process of putting a product in a package or container, or bundling products/services to attract customers?", choices:["Positioning","Packaging","People","Place"], correct:1, explain:"Packaging is the process of putting the product in a package or container, and can also mean bundling products/services to attract customers."},
+
+{week:"Week 5", q:"Which of the 7 P's is the act of designing the company's offer and image so it occupies a distinct and valued place in the customer's mind?", choices:["Packaging","Promotion","Positioning","People"], correct:2, explain:"Positioning is the act of designing the company's offer and image so it occupies a distinct and valued place in the target customer's mind."},
+
+{week:"Week 5", q:"Which of the 7 P's refers to the customer-contact employees who are the face of the organization?", choices:["People","Place","Product","Price"], correct:0, explain:"People underpin the customer relationship — mainly the customer-contact employees who are the face of the organization."},
+
+{week:"Week 5", q:"A product that creates something new and never-before-seen, introducing it to new markets to create competitive advantage, is called a:", choices:[
+  "Copycat product","Niche product","Breakthrough product","Differentiated product"
+], correct:2, explain:"Breakthrough products create a new, never-before-seen product or service and introduce it to new markets for competitive advantage."},
+
+{week:"Week 5", q:"A product that has a specific target market and is also known as a \"focused product\" is a:", choices:[
+  "Breakthrough product","Niche product","Copycat product","Differentiated product"
+], correct:1, explain:"A niche product has a specific target market and is also known as a focused product."},
+
+{week:"Week 5", q:"Which type of promotion is any PAID, non-personal presentation of ideas, goods, or services by an identified sponsor?", choices:[
+  "Public Relations","Personal Selling","Advertising","Direct Marketing"
+], correct:2, explain:"Advertising is any paid form of non-personal presentation and promotion of ideas, goods, or services by an identified sponsor."},
+
+{week:"Week 5", q:"Which type of promotion involves short-term incentives such as discounts, coupons, and demonstrations?", choices:[
+  "Sales Promotion","Advertising","Public Relations","Direct Marketing"
+], correct:0, explain:"Sales Promotion uses short-term incentives (discounts, displays, coupons, demonstrations) to encourage purchase."},
+
+{week:"Week 5", q:"According to the lesson, branding serves three purposes: to be different, to avoid a commodity image, and to:", choices:[
+  "Lower production costs","Fill a space in the consumer's mind","Reduce advertising spend","Increase shelf space"
+], correct:1, explain:"Branding serves three purposes: to be different, to avoid a commodity image, and to fill a space in the consumer's mind."}
+
+];
+/* =================================================== */
+
+let order = [];
+let current = 0;
+let answers = []; // {qIndex, chosenIndex, correct}
+let locked = false;
+
+const startScreen = document.getElementById('startScreen');
+const quizScreen = document.getElementById('quizScreen');
+const summaryScreen = document.getElementById('summaryScreen');
+
+document.getElementById('totalQCount').textContent = QUESTIONS.length;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function initQuiz(){
+  order = shuffle(QUESTIONS.map((_,i)=>i));
+  current = 0;
+  answers = [];
+  locked = false;
+  startScreen.classList.add('hidden');
+  summaryScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  locked = false;
+  const qIndex = order[current];
+  const qObj = QUESTIONS[qIndex];
+
+  document.getElementById('qCounter').textContent = `Question ${current+1} of ${order.length}`;
+  document.getElementById('weekTag').textContent = qObj.week;
+  document.getElementById('progressFill').style.width = ((current)/order.length*100)+'%';
+  document.getElementById('qText').textContent = qObj.q;
+
+  const wrap = document.getElementById('choicesWrap');
+  wrap.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  qObj.choices.forEach((choiceText, idx)=>{
+    const btn = document.createElement('button');
+    btn.className = 'choice';
+    btn.innerHTML = `<span class="tag">${letters[idx]}</span><span>${choiceText}</span>`;
+    btn.addEventListener('click', ()=> selectChoice(idx));
+    wrap.appendChild(btn);
+  });
+
+  document.getElementById('feedbackBox').className = 'feedback';
+  document.getElementById('feedbackBox').innerHTML = '';
+  document.getElementById('stampBox').className = 'stamp';
+  document.getElementById('nextBtn').disabled = true;
+  document.getElementById('nextBtn').textContent = (current === order.length-1) ? 'Finish & See Results' : 'Next Question';
+
+  updateStatBarInline();
+}
+
+function selectChoice(idx){
+  if(locked) return;
+  locked = true;
+  const qIndex = order[current];
+  const qObj = QUESTIONS[qIndex];
+  const isCorrect = idx === qObj.correct;
+
+  const choiceButtons = document.querySelectorAll('#choicesWrap .choice');
+  choiceButtons.forEach((btn,i)=>{
+    btn.classList.add('locked');
+    if(i === qObj.correct) btn.classList.add('correct');
+    if(i === idx && !isCorrect) btn.classList.add('wrong');
+    if(i === idx) btn.classList.add('selected');
+  });
+
+  const fb = document.getElementById('feedbackBox');
+  fb.classList.add('show');
+  if(isCorrect){
+    fb.classList.add('ok');
+    fb.innerHTML = `<b>✔ Correct!</b> ${qObj.explain}`;
+  } else {
+    fb.classList.add('bad');
+    fb.innerHTML = `<b>✘ Not quite.</b> ${qObj.explain}`;
+  }
+
+  const stamp = document.getElementById('stampBox');
+  stamp.textContent = isCorrect ? '✓ CORRECT' : '✘ INCORRECT';
+  stamp.className = 'stamp show ' + (isCorrect ? 'ok' : 'bad');
+
+  answers.push({qIndex, chosen:idx, correct:isCorrect});
+  document.getElementById('nextBtn').disabled = false;
+  updateStatBarInline();
+}
+
+function updateStatBarInline(){
+  let bar = document.getElementById('inlineStatBar');
+  if(!bar){
+    bar = document.createElement('div');
+    bar.className = 'statbar';
+    bar.id = 'inlineStatBar';
+    bar.innerHTML = `
+      <div class="item"><div class="n" id="barAnswered">0</div><div class="l">Answered</div></div>
+      <div class="item correct"><div class="n" id="barCorrect">0</div><div class="l">Correct</div></div>
+      <div class="item wrong"><div class="n" id="barWrong">0</div><div class="l">Wrong</div></div>
+    `;
+    document.querySelector('.wrap').appendChild(bar);
+  }
+  const correctCount = answers.filter(a=>a.correct).length;
+  const wrongCount = answers.length - correctCount;
+  document.getElementById('barAnswered').textContent = answers.length;
+  document.getElementById('barCorrect').textContent = correctCount;
+  document.getElementById('barWrong').textContent = wrongCount;
+}
+
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  if(current === order.length-1){
+    finishQuiz();
+  } else {
+    current++;
+    renderQuestion();
+  }
+});
+
+function finishQuiz(){
+  document.getElementById('progressFill').style.width = '100%';
+  quizScreen.classList.add('hidden');
+  summaryScreen.classList.remove('hidden');
+  const bar = document.getElementById('inlineStatBar');
+  if(bar) bar.remove();
+
+  const total = order.length;
+  const correctCount = answers.filter(a=>a.correct).length;
+  const wrongCount = total - correctCount;
+  const pct = Math.round((correctCount/total)*100);
+
+  document.getElementById('scoreRing').style.setProperty('--pct', pct);
+  document.getElementById('pctNum').textContent = pct + '%';
+  document.getElementById('sumAnswered').textContent = total;
+  document.getElementById('sumCorrect').textContent = correctCount;
+  document.getElementById('sumWrong').textContent = wrongCount;
+
+  let msg, sub;
+  if(pct === 100){ msg = "Perfect score! 🎉"; sub = "You're fully ready for the quiz."; }
+  else if(pct >= 80){ msg = "Great job!"; sub = "Just a few gaps to close before quiz day."; }
+  else if(pct >= 60){ msg = "Good start."; sub = "Review the missed items below and try again."; }
+  else { msg = "Keep studying."; sub = "Go through the explanations below, then retake the reviewer."; }
+  document.getElementById('scoreMsg').textContent = msg;
+  document.getElementById('scoreSub').textContent = sub;
+
+  const reviewList = document.getElementById('reviewList');
+  reviewList.innerHTML = '';
+  const wrongAnswers = answers.filter(a=>!a.correct);
+
+  if(wrongAnswers.length === 0){
+    reviewList.innerHTML = '<div class="all-correct">🏆 No wrong answers — outstanding work!</div>';
+  } else {
+    const letters = ['A','B','C','D'];
+    wrongAnswers.forEach(a=>{
+      const qObj = QUESTIONS[a.qIndex];
+      const item = document.createElement('div');
+      item.className = 'review-item';
+      item.innerHTML = `
+        <div class="rweek">${qObj.week}</div>
+        <div class="rq">${qObj.q}</div>
+        <div class="rrow your">Your answer: ${letters[a.chosen]}. ${qObj.choices[a.chosen]}</div>
+        <div class="rrow correctline">Correct answer: ${letters[qObj.correct]}. ${qObj.choices[qObj.correct]}</div>
+        <div class="rexp">${qObj.explain}</div>
+      `;
+      reviewList.appendChild(item);
+    });
+  }
+}
+
+document.getElementById('startBtn').addEventListener('click', initQuiz);
+document.getElementById('retryBtn').addEventListener('click', initQuiz);
+
+/* ================= KEYBOARD SHORTCUTS ================= */
+document.addEventListener('keydown', (e) => {
+  // Prevent shortcuts when typing in inputs or textareas if added later
+  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+  const key = e.key.toLowerCase();
+
+  // If we are on the quiz screen
+  if (!quizScreen.classList.contains('hidden')) {
+    // Choice selection (A, B, C, D)
+    const choiceMap = { 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
+    if (key in choiceMap) {
+      selectChoice(choiceMap[key]);
+      return;
+    }
+
+    // Advance to next question (Spacebar or Enter)
+    if (e.key === ' ' || e.key === 'Enter') {
+      const nextBtn = document.getElementById('nextBtn');
+      if (!nextBtn.disabled) {
+        e.preventDefault(); // Prevents accidental page scrolling on Spacebar
+        nextBtn.click();
+      }
+    }
+  } 
+  // If we are on the start or summary screen (Press Enter or Spacebar to Start/Retake)
+  else if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    if (!startScreen.classList.contains('hidden')) {
+      document.getElementById('startBtn').click();
+    } else if (!summaryScreen.classList.contains('hidden')) {
+      document.getElementById('retryBtn').click();
+    }
+  }
+});
+
+</script>
+</body>
+</html>
