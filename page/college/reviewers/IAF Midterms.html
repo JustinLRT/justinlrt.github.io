@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="../../icon.png">
+    <title>Basic Financial Accounting & Reporting - Interactive Midterms Reviewer</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --correct: #16a34a;
+            --wrong: #dc2626;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .controls-card, .quiz-card, .summary-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .chapter-select-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #e2e8f0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stats-item span {
+            color: var(--primary);
+        }
+
+        .question-meta {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background-color: #f1f5f9;
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background-color: #eff6ff;
+        }
+
+        .option-btn.correct {
+            border-color: var(--correct);
+            background-color: #f0fdf4;
+            color: var(--correct);
+            font-weight: bold;
+        }
+
+        .option-btn.wrong {
+            border-color: var(--wrong);
+            background-color: #fef2f2;
+            color: var(--wrong);
+            font-weight: bold;
+        }
+
+        .shortcut-badge {
+            background: #e2e8f0;
+            border-radius: 4px;
+            padding: 2px 8px;
+            margin-right: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .next-btn {
+            width: auto;
+            min-width: 150px;
+        }
+
+        .shortcut-hint {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .summary-card h2 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .wrong-item {
+            border-left: 4px solid var(--wrong);
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .wrong-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .wrong-item-ans {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .explanation {
+            font-size: 0.9rem;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 4px;
+            color: #334155;
+            margin-top: 8px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Midterm Exam Reviewer</h1>
+        <p>Basic Financial Accounting & Reporting (Chapters 1 - 6)</p>
+    </header>
+
+    <div id="setup-card" class="controls-card">
+        <div class="chapter-select-group">
+            <label for="chapter-select">Select Scope/Chapter:</label>
+            <select id="chapter-select">
+                <option value="ALL">All Chapters (160 Questions Shuffled)</option>
+                <option value="1">Chapter 1: Accounting & Its Environment</option>
+                <option value="2">Chapter 2: Accounting Equation & Financial Statements</option>
+                <option value="3">Chapter 3: Recording Business Transactions</option>
+                <option value="4">Chapter 4: Adjusting the Accounts</option>
+                <option value="5">Chapter 5: Worksheet & Financial Statements</option>
+                <option value="6">Chapter 6: Completing the Accounting Cycle</option>
+            </select>
+        </div>
+        <button id="start-btn" class="btn">Start Interactive Review</button>
+    </div>
+
+    <div id="quiz-area" class="hidden">
+        <div class="stats-bar">
+            <div class="stats-item">Answered: <span id="stat-answered">0</span>/<span id="stat-total">160</span></div>
+            <div class="stats-item">Score: <span id="stat-score">0</span></div>
+            <div class="stats-item">Correct: <span id="stat-correct" style="color:var(--correct)">0</span></div>
+            <div class="stats-item">Wrong: <span id="stat-wrong" style="color:var(--wrong)">0</span></div>
+        </div>
+
+        <div class="quiz-card">
+            <div id="q-meta" class="question-meta">Chapter 1 • Question 1</div>
+            <div id="q-text" class="question-text">Loading question...</div>
+            
+            <div id="options-container" class="options-grid">
+                </div>
+
+            <div class="footer-nav">
+                <span class="shortcut-hint">Shortcuts: <strong>[A, B, C, D]</strong> Select Choice | <strong>[Enter/Space]</strong> Next</span>
+                <button id="next-btn" class="btn next-btn" disabled>Next Question</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="summary-area" class="summary-card hidden">
+        <h2>Exam Review Summary</h2>
+        <div class="stats-bar">
+            <div class="stats-item">Final Score: <span id="sum-score">0</span> / <span id="sum-total">0</span></div>
+            <div class="stats-item">Percentage: <span id="sum-pct">0%</span></div>
+        </div>
+
+        <h3 style="margin: 20px 0 10px 0;">Items Requiring Review:</h3>
+        <div id="wrong-items-container">
+            </div>
+
+        <button id="restart-btn" class="btn" style="margin-top:20px;">Take Another Quiz</button>
+    </div>
+</div>
+
+<script>
+// RAW DATA BANK - 160 ITEMS
+const questionBank = [
+    // CHAPTER 1 (25 Items)
+    {
+        ch: 1,
+        text: "Which of the following best defines accounting as a service activity?",
+        options: [
+            "It prepares tax returns for government filing.",
+            "It provides quantitative financial information about economic entities to assist in decision-making.",
+            "It records chronological receipts in a memorandum.",
+            "It tracks inventory levels exclusively."
+        ],
+        ans: 1,
+        exp: "According to SFAS No. 1, accounting is a service activity designed to provide quantitative financial information useful for making economic decisions."
+    },
+    {
+        ch: 1,
+        text: "Who is recognized as the father of double-entry accounting for publishing 'Summa de Arithmetica' in 1494?",
+        options: ["Amatino Manucci", "Jacques Savary", "Luca Pacioli", "Eugen Schmalenbach"],
+        ans: 2,
+        exp: "Luca Pacioli published 'Summa de Arithmetica, Geometria, Proportioni et Proportionalita' in 1494, describing the Method of Venice."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: ABC Corp. buys equipment for ₱500,000 cash. Under the fundamental business model, this transaction represents which type of activity?",
+        options: ["Financing Activity", "Investing Activity", "Operating Activity", "Equity Activity"],
+        ans: 1,
+        exp: "Investing activities involve acquiring long-term assets and resources used in the transformation process to generate future income."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: An accounting firm hires skilled lawyers and auditors to sell their time to clients. This business model falls under which category?",
+        options: ["Trader", "Manufacturer", "Service Entity", "Infrastructure Entity"],
+        ans: 2,
+        exp: "Service entities earn revenue by selling skilled staff time and expertise."
+    },
+    {
+        ch: 1,
+        text: "Under Republic Act 9501, an enterprise with total assets of ₱10,000,000 before financing is classified as:",
+        options: ["Micro Enterprise", "Small Enterprise", "Medium Enterprise", "Large Enterprise"],
+        ans: 1,
+        exp: "Small enterprises are defined as having net assets above ₱3,000,000 up to ₱15,000,000."
+    },
+    {
+        ch: 1,
+        text: "The fundamental accounting concept that treats the business as separate and distinct from its owners is the:",
+        options: ["Going Concern Concept", "Business Entity Concept", "Time Period Concept", "Accrual Concept"],
+        ans: 1,
+        exp: "The Business Entity Concept establishes that personal transactions of owners must be kept separate from company records."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: A sole proprietor withdraws ₱15,000 cash from the business for personal grocery shopping. How should this be recorded?",
+        options: [
+            "Debit Operating Expenses ₱15,000",
+            "Debit Owner's Withdrawal ₱15,000",
+            "Credit Cash ₱15,000 and Debit Accounts Receivable ₱15,000",
+            "It should not be recorded in the business books"
+        ],
+        ans: 1,
+        exp: "Personal withdrawals by the owner reduce equity via the Owner's Withdrawal/Drawings account."
+    },
+    {
+        ch: 1,
+        text: "In the event of a conflict between GAAP and the Tax Code in filing tax returns, which rule prevails?",
+        options: ["GAAP", "PFRS", "The Tax Code", "Management Discretion"],
+        ans: 2,
+        exp: "Tax returns must strictly conform to the Tax Code when tax laws conflict with GAAP."
+    },
+    {
+        ch: 1,
+        text: "Which phase of accounting involves grouping similar transactions into meaningful categories?",
+        options: ["Recording", "Classifying", "Summarizing", "Interpreting"],
+        ans: 1,
+        exp: "Classifying reduces the volume of recorded transactions into systematic groups, typically by posting to ledger accounts."
+    },
+    {
+        ch: 1,
+        text: "The historical record kept by the Inca Empire using knotted cords of different lengths and colors is known as:",
+        options: ["Bullae", "Quipu", "Clay Tablets", "Method of Venice"],
+        ans: 1,
+        exp: "The Incas used quipu (knotted cords) to maintain financial and inventory records."
+    },
+    {
+        ch: 1,
+        text: "Which branch of accounting focuses on financial reports intended primarily for external users such as creditors and investors?",
+        options: ["Management Accounting", "Financial Accounting", "Cost Accounting", "Auditing"],
+        ans: 1,
+        exp: "Financial Accounting prepares general-purpose financial statements for external decision-makers."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: A company pays dividends to its shareholders. This is classified under which business activity?",
+        options: ["Operating", "Investing", "Financing", "Production"],
+        ans: 2,
+        exp: "Paying returns (dividends) to equity capital providers is a financing activity."
+    },
+    {
+        ch: 1,
+        text: "Which form of business organization provides limited liability to its owners?",
+        options: ["Sole Proprietorship", "General Partnership", "Corporation", "Joint Venture"],
+        ans: 2,
+        exp: "Stockholders of a corporation are generally liable only up to the extent of their capital investment."
+    },
+    {
+        ch: 1,
+        text: "The principle that financial statements are prepared assuming the entity will continue operating indefinitely is:",
+        options: ["Monetary Unit Assumption", "Going Concern Principle", "Objectivity Principle", "Materiality"],
+        ans: 1,
+        exp: "Going concern assumes the entity will remain in business long enough to carry out its commitments."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: A business purchases land for ₱2,000,000 in 2018. In 2026, the fair market value rises to ₱3,500,000. At what value should the land be reported on the balance sheet under the Historical Cost Principle?",
+        options: ["₱3,500,000", "₱2,000,000", "₱1,500,000", "₱5,500,000"],
+        ans: 1,
+        exp: "Under historical cost, assets are recorded and reported at their original purchase price regardless of market value increases."
+    },
+    {
+        ch: 1,
+        text: "What is the primary objective of financial reporting?",
+        options: [
+            "To calculate exact tax payments",
+            "To provide decision-useful financial information to capital providers",
+            "To prevent fraud entirely",
+            "To track daily employee attendance"
+        ],
+        ans: 1,
+        exp: "Financial reporting aims to provide financial information useful to existing and potential investors, lenders, and creditors."
+    },
+    {
+        ch: 1,
+        text: "Which professional accounting body regulates the practice of accountancy in the Philippines under RA 9298?",
+        options: ["SEC", "BOA (Board of Accountancy)", "BIR", "COA"],
+        ans: 1,
+        exp: "The Board of Accountancy (BOA) regulates the accountancy profession in the Philippines."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: An accountant refuses to alter revenue figures to help the client obtain a bank loan. Which ethical principle is being upheld?",
+        options: ["Confidentiality", "Integrity", "Professional Courtesy", "Competence"],
+        ans: 1,
+        exp: "Integrity requires accountants to be straightforward and honest in all professional relationships."
+    },
+    {
+        ch: 1,
+        text: "Which early record-keeping system used sealed clay balls containing tokens to act as bills of lading?",
+        options: ["Bullae", "Quipu", "Scribe", "Ledger"],
+        ans: 0,
+        exp: "Bullae were clay balls containing commodity tokens broken upon delivery in ancient Mesopotamia."
+    },
+    {
+        ch: 1,
+        text: "SITUATIONAL: A business owner pays personal home utility bills using company cash. Which accounting concept is violated if recorded as business expense?",
+        options: ["Accrual Principle", "Entity Concept", "Cost Principle", "Periodicity"],
+        ans: 1,
+        exp: "The Entity Concept prohibits mixing personal expenses with business operations."
+    },
+    {
+        ch: 1,
+        text: "Micro-enterprises in the Philippines are defined as having net assets before financing of up to:",
+        options: ["₱1,500,000", "₱3,000,000", "₱5,000,000", "₱15,000,000"],
+        ans: 1,
+        exp: "RA 9501 sets the net assets limit for micro-enterprises at ₱3,000,000."
+    },
+    {
+        ch: 1,
+        text: "Who was the Florentine partner credited with the oldest existing complete double-entry records (1299-1300)?",
+        options: ["Luca Pacioli", "Amatino Manucci", "Nicolas Petri", "Eugen Schmalenbach"],
+        ans: 1,
+        exp: "Amatino Manucci maintained the Salon branch ledgers of Giovanni Farolfi & Co. (1299-1300)."
+    },
+    {
+        ch: 1,
+        text: "Which software created by Brinklin and Frankston in 1979 revolutionized computerized accounting?",
+        options: ["Excel", "Lotus 1-2-3", "VisiCalc", "QuickBooks"],
+        ans: 2,
+        exp: "VisiCalc for the Apple II was the first electronic spreadsheet."
+    },
+    {
+        ch: 1,
+        text: "The phase of accounting that involves preparing Financial Statements is:",
+        options: ["Identifying", "Measuring", "Summarizing", "Auditing"],
+        ans: 2,
+        exp: "Summarizing presents classified accounting entries into comprehensive financial statements."
+    },
+    {
+        ch: 1,
+        text: "A business model activity involving marketing, manufacturing, and distribution is:",
+        options: ["Financing", "Investing", "Operating", "Capitalizing"],
+        ans: 2,
+        exp: "Operating activities pertain to core revenue-generating actions including manufacturing, selling, and marketing."
+    },
+
+    // CHAPTER 2 (25 Items)
+    {
+        ch: 2,
+        text: "What is the basic accounting equation?",
+        options: [
+            "Assets + Liabilities = Owner's Equity",
+            "Assets = Liabilities + Owner's Equity",
+            "Assets + Owner's Equity = Liabilities",
+            "Assets = Revenue - Expenses"
+        ],
+        ans: 1,
+        exp: "The fundamental accounting equation is Assets = Liabilities + Owner's Equity."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: ABC Company has total assets of ₱850,000 and total liabilities of ₱320,000. What is the total Owner's Equity?",
+        options: ["₱1,170,000", "₱530,000", "₱320,000", "₱850,000"],
+        ans: 1,
+        exp: "Equity = Assets - Liabilities = ₱850,000 - ₱320,000 = ₱530,000."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: At the beginning of the year, Equity was ₱200,000. During the year, Assets increased by ₱100,000 and Liabilities decreased by ₱30,000. What is the ending Equity?",
+        options: ["₱270,000", "₱330,000", "₱130,000", "₱300,000"],
+        ans: 1,
+        exp: "ΔAssets = ΔLiabilities + ΔEquity => +100,000 = -30,000 + ΔEquity => ΔEquity = +130,000. Ending Equity = 200,000 + 130,000 = ₱330,000."
+    },
+    {
+        ch: 2,
+        text: "Which of the following is classified as a Current Asset?",
+        options: ["Equipment", "Accounts Receivable", "Building", "Unearned Revenue"],
+        ans: 1,
+        exp: "Accounts Receivable is expected to be collected within 12 months or the operating cycle, making it a current asset."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: A business renders service to a client on account for ₱45,000. How does this affect the accounting equation?",
+        options: [
+            "Increase Cash, Increase Revenue",
+            "Increase Accounts Receivable, Increase Equity",
+            "Increase Cash, Decrease Accounts Receivable",
+            "Increase Accounts Receivable, Increase Liabilities"
+        ],
+        ans: 1,
+        exp: "Rendering services on account increases Accounts Receivable (Asset) and increases Revenue (Equity)."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: The owner invests ₱100,000 cash and personal office equipment worth ₱50,000 into the business. The net effect on total assets is:",
+        options: ["Increase of ₱100,000", "Increase of ₱50,000", "Increase of ₱150,000", "No change"],
+        ans: 2,
+        exp: "Assets increase by Cash (₱100k) + Equipment (₱50k) = ₱150,000 total increase."
+    },
+    {
+        ch: 2,
+        text: "Which financial statement reports an entity's financial position at a SPECIFIC POINT in time?",
+        options: ["Income Statement", "Statement of Financial Position (Balance Sheet)", "Statement of Cash Flows", "Statement of Owner's Equity"],
+        ans: 1,
+        exp: "The Balance Sheet provides a snapshot of assets, liabilities, and equity at a specific date."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: An entity collected ₱20,000 from a customer for services previously billed. What is the effect on the total assets?",
+        options: ["Increase by ₱20,000", "Decrease by ₱20,000", "No total change", "Increase by ₱40,000"],
+        ans: 2,
+        exp: "Cash increases by ₱20,000 while Accounts Receivable decreases by ₱20,000. Total assets remain unchanged."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: During 2025, Revenues were ₱500,000, Expenses were ₱320,000, and Owner Withdrawals were ₱50,000. What was the Net Income?",
+        options: ["₱180,000", "₱130,000", "₱230,000", "₱500,000"],
+        ans: 0,
+        exp: "Net Income = Revenues - Expenses = ₱500,000 - ₱320,000 = ₱180,000. (Withdrawals affect equity, not net income)."
+    },
+    {
+        ch: 2,
+        text: "Which financial statement details the causes of changes in owner's capital during a given period?",
+        options: ["Balance Sheet", "Statement of Changes in Equity", "Income Statement", "Cash Flow Statement"],
+        ans: 1,
+        exp: "Statement of Changes in Equity details investments, profit/loss, and withdrawals."
+    },
+    {
+        ch: 2,
+        text: "Unearned Revenues are classified under which section of the Balance Sheet?",
+        options: ["Current Assets", "Current Liabilities", "Owner's Equity", "Non-current Assets"],
+        ans: 1,
+        exp: "Unearned Revenue represents an obligation to perform services in the future, thus it is a liability."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: If total assets increased by ₱80,000 and equity increased by ₱50,000, total liabilities must have:",
+        options: ["Increased by ₱30,000", "Decreased by ₱30,000", "Increased by ₱130,000", "Decreased by ₱130,000"],
+        ans: 0,
+        exp: "ΔLiabilities = ΔAssets - ΔEquity = ₱80,000 - ₱50,000 = +₱30,000."
+    },
+    {
+        ch: 2,
+        text: "Which of the following elements is NOT an Asset?",
+        options: ["Prepaid Insurance", "Accrued Expenses", "Notes Receivable", "Supplies"],
+        ans: 1,
+        exp: "Accrued Expenses represent liabilities (unpaid obligations)."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: A company purchases ₱10,000 supplies on account. This transaction:",
+        options: [
+            "Increases Assets and Decreases Equity",
+            "Increases Assets and Increases Liabilities",
+            "Decreases Assets and Decreases Liabilities",
+            "Increases Equity and Decreases Liabilities"
+        ],
+        ans: 1,
+        exp: "Supplies (Asset) increases by ₱10,000, Accounts Payable (Liability) increases by ₱10,000."
+    },
+    {
+        ch: 2,
+        text: "Economic resources controlled by an entity as a result of past events are called:",
+        options: ["Liabilities", "Assets", "Equities", "Revenues"],
+        ans: 1,
+        exp: "Assets are present economic resources controlled by the entity due to past events."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: Operating expenses paid in cash amounted to ₱12,000. How does this affect the accounting equation?",
+        options: [
+            "Decreases Assets and Decreases Equity",
+            "Increases Assets and Increases Equity",
+            "Decreases Liabilities and Decreases Equity",
+            "Increases Assets and Decreases Liabilities"
+        ],
+        ans: 0,
+        exp: "Cash (Asset) decreases and Expenses reduce Owner's Equity."
+    },
+    {
+        ch: 2,
+        text: "Claims by outsiders against the assets of the business are called:",
+        options: ["Equity", "Liabilities", "Capital", "Net Assets"],
+        ans: 1,
+        exp: "Liabilities represent debts or claims of creditors against business resources."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: ABC Firm paid ₱25,000 to settle an existing Accounts Payable. What is the effect?",
+        options: [
+            "Asset decreases, Equity decreases",
+            "Asset decreases, Liability decreases",
+            "Asset increases, Liability increases",
+            "No effect on total assets"
+        ],
+        ans: 1,
+        exp: "Paying accounts payable decreases Cash (Asset) and decreases Accounts Payable (Liability)."
+    },
+    {
+        ch: 2,
+        text: "The accounting equation component representing residual interest in assets after deducting liabilities is:",
+        options: ["Gross Profit", "Working Capital", "Owner's Equity", "Net Revenue"],
+        ans: 2,
+        exp: "Owner's Equity is the residual interest in assets after deducting liabilities."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: Total revenue for the year was ₱600,000, total expenses were ₱650,000. The result is a:",
+        options: ["Net Income of ₱50,000", "Net Loss of ₱50,000", "Gain of ₱50,000", "Net Profit of ₱600,000"],
+        ans: 1,
+        exp: "Expenses exceeding revenues results in a Net Loss (₱650k - ₱600k = ₱50k loss)."
+    },
+    {
+        ch: 2,
+        text: "Which of the following is a non-current liability?",
+        options: ["Accounts Payable", "Salaries Payable", "10-Year Mortgage Payable", "Unearned Income"],
+        ans: 2,
+        exp: "Long-term debts due beyond 1 year (such as a 10-year mortgage) are non-current liabilities."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: Business borrows ₱200,000 from a bank signing a 2-year note. Assets and Liabilities change by:",
+        options: ["Assets +200k, Liabilities +200k", "Assets +200k, Equity +200k", "Liabilities +200k, Equity -200k", "No change"],
+        ans: 0,
+        exp: "Cash (Asset) increases by ₱200,000 and Notes Payable (Liability) increases by ₱200,000."
+    },
+    {
+        ch: 2,
+        text: "Which financial statement reports cash receipts and cash payments categorized into operating, investing, and financing?",
+        options: ["Balance Sheet", "Income Statement", "Statement of Cash Flows", "Statement of Retained Earnings"],
+        ans: 2,
+        exp: "The Statement of Cash Flows reports cash inflows and outflows across three core business activities."
+    },
+    {
+        ch: 2,
+        text: "Prepaid Expenses are classified as:",
+        options: ["Liabilities", "Assets", "Expenses", "Equities"],
+        ans: 1,
+        exp: "Prepaid expenses represent future economic benefits paid in advance, making them assets."
+    },
+    {
+        ch: 2,
+        text: "SITUATIONAL: Beginning Capital was ₱100,000. Profit was ₱40,000. Additional Investment was ₱20,000. Drawings were ₱15,000. Ending Capital is:",
+        options: ["₱145,000", "₱160,000", "₱125,000", "₱175,000"],
+        ans: 0,
+        exp: "Ending Capital = 100k + 40k + 20k - 15k = ₱145,000."
+    },
+
+    // CHAPTER 3 (30 Items)
+    {
+        ch: 3,
+        text: "An account on the left side of the ledger is called a:",
+        options: ["Credit", "Debit", "Balance", "Posting"],
+        ans: 1,
+        exp: "The left side of any T-account is always the Debit side."
+    },
+    {
+        ch: 3,
+        text: "What is the normal balance of Asset and Expense accounts?",
+        options: ["Credit", "Debit", "Zero", "Variable"],
+        ans: 1,
+        exp: "Assets and Expenses have normal DEBIT balances."
+    },
+    {
+        ch: 3,
+        text: "Which of the following account types normally carries a CREDIT balance?",
+        options: ["Assets and Expenses", "Liabilities, Equity, and Revenue", "Withdrawals and Assets", "Expenses and Liabilities"],
+        ans: 1,
+        exp: "Liabilities, Owner's Equity, and Revenue accounts have normal CREDIT balances."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Purchased equipment costing ₱80,000 by paying ₱30,000 cash and issuing a note for the balance. The journal entry requires:",
+        options: [
+            "Debit Equipment 80k; Credit Cash 80k",
+            "Debit Equipment 80k; Credit Cash 30k, Credit Notes Payable 50k",
+            "Debit Cash 30k, Debit Notes Payable 50k; Credit Equipment 80k",
+            "Debit Equipment 50k; Credit Notes Payable 50k"
+        ],
+        ans: 1,
+        exp: "Equipment (Asset) increases by ₱80k (Debit). Cash decreases by ₱30k (Credit). Notes Payable increases by ₱50k (Credit)."
+    },
+    {
+        ch: 3,
+        text: "The book of original entry where transactions are first recorded chronologically is the:",
+        options: ["General Ledger", "General Journal", "Trial Balance", "Worksheet"],
+        ans: 1,
+        exp: "The General Journal is known as the book of original entry."
+    },
+    {
+        ch: 3,
+        text: "The process of transferring journal entries to ledger accounts is called:",
+        options: ["Journalizing", "Posting", "Balancing", "Adjusting"],
+        ans: 1,
+        exp: "Posting is the transfer of debits and credits from the journal to ledger accounts."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Paid ₱12,000 cash for 1-year store rent in advance. The debit entry should be:",
+        options: ["Rent Expense", "Prepaid Rent", "Cash", "Accounts Payable"],
+        ans: 1,
+        exp: "Advance payments for future benefits are debited to an Asset account (Prepaid Rent)."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Collected ₱15,000 cash from a customer billed last month. The journal entry is:",
+        options: [
+            "Debit Cash 15k, Credit Service Revenue 15k",
+            "Debit Cash 15k, Credit Accounts Receivable 15k",
+            "Debit Accounts Receivable 15k, Credit Cash 15k",
+            "Debit Service Revenue 15k, Credit Cash 15k"
+        ],
+        ans: 1,
+        exp: "Collection on account increases Cash (Debit) and reduces Accounts Receivable (Credit)."
+    },
+    {
+        ch: 3,
+        text: "What is a trial balance?",
+        options: [
+            "A formal financial statement showing net income",
+            "A list of all open ledger accounts with their debit or credit balances at a specific date",
+            "A record of individual daily cash transactions",
+            "A tax filing document"
+        ],
+        ans: 1,
+        exp: "A trial balance lists accounts and balances to test total debits equal total credits."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: A debit posting of ₱5,000 to Cash was incorrectly posted as a credit of ₱5,000. By how much will the trial balance debit/credit totals differ?",
+        options: ["₱0", "₱5,000", "₱10,000", "₱15,000"],
+        ans: 2,
+        exp: "Posting a debit as a credit creates an error equal to twice the amount (2 x ₱5,000 = ₱10,000 difference)."
+    },
+    {
+        ch: 3,
+        text: "Which error causes a trial balance to be out of balance?",
+        options: [
+            "Omitting an entire journal entry",
+            "Posting a entry twice",
+            "Posting a ₱4,000 debit as ₱400 debit and ₱400 credit",
+            "Posting a ₱1,200 debit to cash as a ₱1,200 credit to cash while crediting revenue ₱1,200"
+        ],
+        ans: 3,
+        exp: "Posting two credits and no debit destroys equality of total debits and credits."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Received ₱25,000 cash in advance for consulting services to be performed next month. The credit entry is:",
+        options: ["Consulting Revenue", "Unearned Consulting Revenue", "Accounts Receivable", "Owner's Capital"],
+        ans: 1,
+        exp: "Cash received before performance creates a liability account (Unearned Revenue)."
+    },
+    {
+        ch: 3,
+        text: "The Chart of Accounts is best described as:",
+        options: [
+            "A financial statement",
+            "A listing of account names and numbers within the ledger",
+            "A list of daily expenditures",
+            "The final report submitted to management"
+        ],
+        ans: 1,
+        exp: "A chart of accounts lists all account titles and identification numbers in the ledger."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Owner withdraws ₱8,000 cash for personal use. The journal entry includes:",
+        options: [
+            "Debit Owner's Capital ₱8,000",
+            "Debit Owner's Withdrawal ₱8,000",
+            "Credit Salaries Expense ₱8,000",
+            "Credit Owner's Withdrawal ₱8,000"
+        ],
+        ans: 1,
+        exp: "Personal withdrawals are recorded with a debit to Owner's Drawings/Withdrawal."
+    },
+    {
+        ch: 3,
+        text: "Which account increases with a DEBIT entry?",
+        options: ["Accounts Payable", "Service Revenue", "Prepaid Insurance", "Owner's Equity"],
+        ans: 2,
+        exp: "Prepaid Insurance is an asset, which increases with a debit."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Paid monthly utility bill of ₱3,500 cash. Entry:",
+        options: [
+            "Debit Utilities Expense 3.5k, Credit Cash 3.5k",
+            "Debit Cash 3.5k, Credit Utilities Expense 3.5k",
+            "Debit Utilities Expense 3.5k, Credit Accounts Payable 3.5k",
+            "Debit Accounts Payable 3.5k, Credit Cash 3.5k"
+        ],
+        ans: 0,
+        exp: "Paying utilities increases Expense (Debit) and decreases Cash (Credit)."
+    },
+    {
+        ch: 3,
+        text: "A compound journal entry is an entry that:",
+        options: [
+            "Is posted at year-end only",
+            "Contains more than one debit or more than one credit",
+            "Uses only cash accounts",
+            "Involves errors"
+        ],
+        ans: 1,
+        exp: "A compound journal entry involves three or more individual account elements."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Purchased office supplies on credit for ₱6,000. Entry includes:",
+        options: [
+            "Debit Cash 6,000",
+            "Credit Accounts Payable 6,000",
+            "Debit Accounts Payable 6,000",
+            "Credit Supplies Expense 6,000"
+        ],
+        ans: 1,
+        exp: "Purchasing on credit increases Accounts Payable (Credit)."
+    },
+    {
+        ch: 3,
+        text: "The column in the General Journal that links entries to ledger accounts is:",
+        options: ["Date", "Explanation", "Posting Reference (PR)", "Debit Amount"],
+        ans: 2,
+        exp: "The PR (Posting Reference) column shows ledger account numbers posted."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Performed services for ₱50,000; collected ₱20,000 cash, balance billed to client. Entry includes:",
+        options: [
+            "Debit Cash 20k, Debit Accounts Receivable 30k, Credit Service Revenue 50k",
+            "Debit Cash 50k, Credit Service Revenue 50k",
+            "Debit Service Revenue 50k, Credit Cash 20k, Credit Accounts Receivable 30k",
+            "Debit Accounts Receivable 50k, Credit Service Revenue 50k"
+        ],
+        ans: 0,
+        exp: "Cash increases 20k (Debit), Receivables increases 30k (Debit), and Revenue is 50k (Credit)."
+    },
+    {
+        ch: 3,
+        text: "Double-entry accounting requires that for every transaction:",
+        options: [
+            "At least two cash accounts are affected",
+            "Total debits must equal total credits",
+            "Assets must equal liabilities",
+            "Income equals expenses"
+        ],
+        ans: 1,
+        exp: "Under double-entry bookkeeping, monetary debits must always equal monetary credits."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Paid ₱10,000 on account to a supplier. Entry:",
+        options: [
+            "Debit Cash 10k, Credit Accounts Payable 10k",
+            "Debit Accounts Payable 10k, Credit Cash 10k",
+            "Debit Accounts Receivable 10k, Credit Cash 10k",
+            "Debit Supplies Expense 10k, Credit Cash 10k"
+        ],
+        ans: 1,
+        exp: "Settling debt decreases Accounts Payable (Debit) and Cash (Credit)."
+    },
+    {
+        ch: 3,
+        text: "Which of these errors will NOT cause trial balance debit and credit totals to differ?",
+        options: [
+            "Posting a debit to rent as ₱5,000 and credit to cash as ₱500",
+            "Omitting the posting of a ₱2,000 credit",
+            "Recording a ₱3,000 cash purchase of supplies as a ₱3,000 debit to Equipment and credit to Cash",
+            "Entering only a debit side of an entry"
+        ],
+        ans: 2,
+        exp: "Debiting the wrong asset (Equipment instead of Supplies) maintains equal debits and credits."
+    },
+    {
+        ch: 3,
+        text: "T-account format consists of how many primary parts?",
+        options: ["Two (Debit & Credit)", "Three (Title, Left/Debit side, Right/Credit side)", "Four", "One"],
+        ans: 1,
+        exp: "A T-account has 3 parts: Title, Left (Debit) side, and Right (Credit) side."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Rendered services for ₱18,000 cash. Entry:",
+        options: [
+            "Debit Service Revenue 18k, Credit Cash 18k",
+            "Debit Cash 18k, Credit Service Revenue 18k",
+            "Debit Cash 18k, Credit Accounts Receivable 18k",
+            "Debit Accounts Receivable 18k, Credit Service Revenue 18k"
+        ],
+        ans: 1,
+        exp: "Immediate cash receipt for services debits Cash and credits Service Revenue."
+    },
+    {
+        ch: 3,
+        text: "Which account is credited when the owner makes a cash investment?",
+        options: ["Cash", "Owner's Withdrawal", "Owner's Capital", "Investments Expense"],
+        ans: 2,
+        exp: "Owner capital contributions credit the Owner's Capital account."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: Received phone bill of ₱2,000 to be paid next month. Entry:",
+        options: [
+            "Debit Utilities Expense 2k, Credit Accounts Payable 2k",
+            "Debit Utilities Expense 2k, Credit Cash 2k",
+            "Debit Accounts Payable 2k, Credit Cash 2k",
+            "No entry required until paid"
+        ],
+        ans: 0,
+        exp: "Incurring expenses on credit debits Expense and credits Accounts Payable."
+    },
+    {
+        ch: 3,
+        text: "The usual sequence of steps in the accounting cycle is:",
+        options: [
+            "Journalizing, Posting, Trial Balance, Adjusting",
+            "Posting, Journalizing, Trial Balance, Financial Statements",
+            "Trial Balance, Journalizing, Posting, Closing",
+            "Financial Statements, Adjusting, Posting, Journalizing"
+        ],
+        ans: 0,
+        exp: "The correct order begins with Journalizing -> Posting -> Unadjusted Trial Balance -> Adjusting."
+    },
+    {
+        ch: 3,
+        text: "SITUATIONAL: If a ₱1,500 cash payment for rent was incorrectly recorded as a debit to Rent Expense for ₱15,000 and credit to Cash for ₱15,000, the correcting entry requires:",
+        options: [
+            "Debit Cash 13,500, Credit Rent Expense 13,500",
+            "Debit Rent Expense 13,500, Credit Cash 13,500",
+            "Credit Rent Expense 15,000, Debit Cash 15,000",
+            "No entry needed"
+        ],
+        ans: 0,
+        exp: "Expense and Cash were overstated by 13,500. Debiting Cash 13,500 and crediting Rent Expense 13,500 corrects both."
+    },
+    {
+        ch: 3,
+        text: "Normal balance of Unearned Revenue is:",
+        options: ["Debit", "Credit", "Zero", "Flexible"],
+        ans: 1,
+        exp: "Unearned revenue is a liability and carries a normal CREDIT balance."
+    },
+
+    // CHAPTER 4 (30 Items)
+    {
+        ch: 4,
+        text: "Adjusting entries are prepared primarily to adhere to which accounting principles?",
+        options: [
+            "Historical Cost and Entity Concept",
+            "Revenue Recognition and Matching Principles (Accrual Basis)",
+            "Objectivity and Consistency",
+            "Monetary Unit and Going Concern"
+        ],
+        ans: 1,
+        exp: "Adjusting entries update accounts under accrual accounting to align revenues and matched expenses in proper periods."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Supplies account showed a beginning balance of ₱5,000. Purchases during the year were ₱12,000. A physical count at year-end reveals ₱4,000 supplies remaining. Supplies Expense for the year is:",
+        options: ["₱13,000", "₱17,000", "₱4,000", "₱9,000"],
+        ans: 0,
+        exp: "Supplies Used = Beginning (5k) + Purchases (12k) - Ending Count (4k) = ₱13,000."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: On Oct 1, 2025, a firm paid ₱36,000 for a 1-year fire insurance policy taking effect immediately. The adjusting entry on Dec 31, 2025 (calendar year) involves a debit to Insurance Expense for:",
+        options: ["₱36,000", "₱9,000", "₱27,000", "₱3,000"],
+        ans: 1,
+        exp: "Insurance used for 3 months (Oct, Nov, Dec): ₱36,000 x (3/12) = ₱9,000."
+    },
+    {
+        ch: 4,
+        text: "An entry adjusting an Accrued Revenue will always include a:",
+        options: [
+            "Debit to Asset, Credit to Revenue",
+            "Debit to Revenue, Credit to Liability",
+            "Debit to Expense, Credit to Liability",
+            "Debit to Cash, Credit to Revenue"
+        ],
+        ans: 0,
+        exp: "Accrued revenue represents uncollected earned revenue: Debit Asset (Receivable), Credit Revenue."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Employees are paid every Friday for a 5-day work week totaling ₱25,000 (₱5,000/day). Dec 31 falls on a Wednesday. The adjusting entry on Dec 31 includes:",
+        options: [
+            "Debit Salaries Expense ₱15,000, Credit Salaries Payable ₱15,000",
+            "Debit Salaries Expense ₱25,000, Credit Cash ₱25,000",
+            "Debit Salaries Payable ₱15,000, Credit Salaries Expense ₱15,000",
+            "Debit Salaries Expense ₱10,000, Credit Salaries Payable ₱10,000"
+        ],
+        ans: 0,
+        exp: "3 days accrued (Mon, Tue, Wed) x ₱5,000 = ₱15,000 accrued expense."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Equipment purchased for ₱240,000 has an estimated salvage value of ₱40,000 and useful life of 5 years. Annual depreciation expense is:",
+        options: ["₱48,000", "₱40,000", "₱200,000", "₱44,000"],
+        ans: 1,
+        exp: "Depreciation = (Cost - Salvage Value) / Life = (240k - 40k) / 5 = ₱40,000 per year."
+    },
+    {
+        ch: 4,
+        text: "Accumulated Depreciation is what type of account?",
+        options: ["Asset", "Contra-Asset", "Liability", "Expense"],
+        ans: 1,
+        exp: "Accumulated Depreciation is a Contra-Asset account carrying a normal credit balance."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Received ₱60,000 cash on Nov 1 for 6 months of consulting services credited to Unearned Revenue. On Dec 31, the required adjusting entry is:",
+        options: [
+            "Debit Unearned Revenue 20k, Credit Service Revenue 20k",
+            "Debit Service Revenue 20k, Credit Unearned Revenue 20k",
+            "Debit Unearned Revenue 40k, Credit Service Revenue 40k",
+            "Debit Cash 20k, Credit Service Revenue 20k"
+        ],
+        ans: 0,
+        exp: "Earned 2 months (Nov, Dec): ₱60,000 x (2/6) = ₱20,000. Debit Unearned Revenue 20k, Credit Service Revenue 20k."
+    },
+    {
+        ch: 4,
+        text: "Failure to prepare an adjusting entry for accrued salaries results in:",
+        options: [
+            "Overstated Expenses and Overstated Liabilities",
+            "Understated Expenses and Understated Liabilities",
+            "Overstated Net Income and Overstated Liabilities",
+            "Understated Assets and Understated Equity"
+        ],
+        ans: 1,
+        exp: "Omitting accrued expense understates expenses and understates liabilities."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Borrowed ₱100,000 at 12% annual interest on Sept 1, 2025 payable in 1 year. The accrued interest adjusting entry on Dec 31, 2025 is:",
+        options: ["₱12,000", "₱4,000", "₱3,000", "₱1,000"],
+        ans: 1,
+        exp: "Interest = Principal x Rate x Time = ₱100,000 x 12% x (4/12 months: Sept, Oct, Nov, Dec) = ₱4,000."
+    },
+    {
+        ch: 4,
+        text: "Adjusting entries NEVER affect which of the following accounts?",
+        options: ["Service Revenue", "Cash", "Salaries Expense", "Accumulated Depreciation"],
+        ans: 1,
+        exp: "Adjusting entries NEVER involve Cash."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: If an entity fails to record depreciation expense at year-end, what is the impact on the Balance Sheet?",
+        options: [
+            "Assets understated, Equity overstated",
+            "Assets overstated, Equity overstated",
+            "Assets overstated, Liabilities understated",
+            "No effect on total assets"
+        ],
+        ans: 1,
+        exp: "Omitting depreciation leaves contra-assets understated (assets overstated) and expenses understated (net income & equity overstated)."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Rent Income account shows ₱48,000 received for 12 months starting April 1. Under the income method, the adjusting entry on Dec 31 includes a credit to Unearned Rent Income for:",
+        options: ["₱36,000", "₱12,000", "₱48,000", "₱4,000"],
+        ans: 1,
+        exp: "Earned = 9 months (Apr-Dec) = ₱36k. Unearned portion = 3 months (Jan-Mar) = ₱12,000. Credit Unearned Rent Income ₱12,000."
+    },
+    {
+        ch: 4,
+        text: "The book value of a depreciable asset is calculated as:",
+        options: [
+            "Original Cost - Salvage Value",
+            "Original Cost - Accumulated Depreciation",
+            "Market Value - Accumulated Depreciation",
+            "Replacement Cost - Salvage Value"
+        ],
+        ans: 1,
+        exp: "Book Value = Asset Original Cost minus its Accumulated Depreciation."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: On Dec 1, a firm performed ₱15,000 of services for a client but has not yet billed or recorded it. The Dec 31 adjusting entry is:",
+        options: [
+            "Debit Accounts Receivable 15k, Credit Service Revenue 15k",
+            "Debit Cash 15k, Credit Service Revenue 15k",
+            "Debit Unearned Revenue 15k, Credit Service Revenue 15k",
+            "No entry required"
+        ],
+        ans: 0,
+        exp: "Accruing unbilled earned revenue debits Accounts Receivable and credits Service Revenue."
+    },
+    {
+        ch: 4,
+        text: "Which of the following is an example of a Deferral?",
+        options: ["Accrued Interest Payable", "Prepaid Insurance", "Accrued Salaries", "Unbilled Service Revenue"],
+        ans: 1,
+        exp: "Deferrals involve cash payments/receipts before expense/revenue recognition (e.g., Prepaid Insurance, Unearned Revenue)."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Office Supplies asset account has a balance of ₱2,500. Supplies used during the year totaled ₱1,800. The ending balance of Office Supplies on the Balance Sheet is:",
+        options: ["₱2,500", "₱1,800", "₱700", "₱4,300"],
+        ans: 2,
+        exp: "Ending balance = ₱2,500 - ₱1,800 used = ₱700."
+    },
+    {
+        ch: 4,
+        text: "Accrued expenses are expenses that are:",
+        options: [
+            "Paid but not yet incurred",
+            "Incurred but not yet paid or recorded",
+            "Paid and fully consumed",
+            "Neither incurred nor paid"
+        ],
+        ans: 1,
+        exp: "Accrued expenses are incurred costs that have not yet been paid or recorded."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: A 3-year insurance policy was purchased for ₱36,000 on July 1, 2025. Prepaid Insurance on Dec 31, 2025 Balance Sheet should be:",
+        options: ["₱36,000", "₱6,000", "₱30,000", "₱12,000"],
+        ans: 2,
+        exp: "Monthly premium = 36k / 36 mos = ₱1,000/mo. Used 6 mos (₱6k). Unused balance = ₱30,000."
+    },
+    {
+        ch: 4,
+        text: "If an entity omits adjusting entry for unearned revenue earned during the period, Net Income will be:",
+        options: ["Overstated", "Understated", "Unaffected", "Zero"],
+        ans: 1,
+        exp: "Failing to recognize earned revenue keeps revenue understated, causing Net Income to be understated."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Machinery cost ₱500,000, salvage value ₱50,000, life 10 years. Straight-line annual depreciation is:",
+        options: ["₱50,000", "₱45,000", "₱55,000", "₱40,000"],
+        ans: 1,
+        exp: "(500,000 - 50,000) / 10 years = ₱45,000 per year."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: On Dec 31, tenant owes ₱10,000 rent for December. Adjusting entry:",
+        options: [
+            "Debit Rent Receivable 10k, Credit Rent Income 10k",
+            "Debit Rent Income 10k, Credit Rent Receivable 10k",
+            "Debit Cash 10k, Credit Rent Income 10k",
+            "Debit Unearned Rent 10k, Credit Rent Income 10k"
+        ],
+        ans: 0,
+        exp: "Accruing uncollected rent income requires Debit Rent Receivable, Credit Rent Income."
+    },
+    {
+        ch: 4,
+        text: "An account created to accumulate total depreciation recorded over the life of an asset is:",
+        options: ["Depreciation Expense", "Accumulated Depreciation", "Allowance for Bad Debts", "Retained Earnings"],
+        ans: 1,
+        exp: "Accumulated Depreciation tracks cumulative depreciation expense charged against an asset."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: Prepaid Rent initial debit was ₱24,000 for 6 months on Nov 1. On Dec 31, Rent Expense is:",
+        options: ["₱24,000", "₱8,000", "₱16,000", "₱4,000"],
+        ans: 1,
+        exp: "2 months expired (Nov, Dec): ₱24,000 x (2/6) = ₱8,000."
+    },
+    {
+        ch: 4,
+        text: "Accrual basis accounting records revenues when:",
+        options: ["Cash is collected", "Services are performed/earned", "Invoices are sent only", "Contracts are signed"],
+        ans: 1,
+        exp: "Under accrual accounting, revenue is recognized when earned regardless of cash flow."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: A company holds a ₱50,000, 10%, 6-month note dated Oct 1. Dec 31 accrued interest income is:",
+        options: ["₱5,000", "₱1,250", "₱2,500", "₱3,750"],
+        ans: 1,
+        exp: "Interest = ₱50,000 x 10% x (3/12 months: Oct, Nov, Dec) = ₱1,250."
+    },
+    {
+        ch: 4,
+        text: "Cash basis accounting records expenses when:",
+        options: ["Incurred", "Paid in cash", "Invoiced", "Planned"],
+        ans: 1,
+        exp: "Cash basis recognizes expenses only when cash payments are made."
+    },
+    {
+        ch: 4,
+        text: "SITUATIONAL: If a company fails to adjust for ₱5,000 accrued interest expense at year end, Liabilities are:",
+        options: ["Overstated by 5k", "Understated by 5k", "Correctly stated", "Overstated by 10k"],
+        ans: 1,
+        exp: "Omitting unpaid accrued expense leaves liabilities understated by ₱5,000."
+    },
+    {
+        ch: 4,
+        text: "The principle mandating that expenses incurred in generating revenue must be reported in the same period is:",
+        options: ["Revenue Principle", "Matching Principle", "Cost Principle", "Disclosure Principle"],
+        ans: 1,
+        exp: "The Matching Principle dictates matching efforts (expenses) with accomplishments (revenues)."
+    },
+    {
+        ch: 4,
+        text: "Adjusting entries are made at:",
+        options: ["Beginning of each week", "End of an accounting period", "Time of cash receipt", "Random intervals"],
+        ans: 1,
+        exp: "Adjusting entries are updated at the end of an accounting period before financial statements."
+    },
+
+    // CHAPTER 5 (25 Items)
+    {
+        ch: 5,
+        text: "A worksheet is best described as:",
+        options: [
+            "A mandatory financial statement for SEC",
+            "An informal working tool used by accountants to assemble financial data",
+            "A permanent ledger account",
+            "A primary tax document"
+        ],
+        ans: 1,
+        exp: "A worksheet is an optional informal tool that aids in preparing adjusting entries and financial statements."
+    },
+    {
+        ch: 5,
+        text: "How many standard money columns are in a typical full accounting worksheet?",
+        options: ["6", "8", "10", "12"],
+        ans: 2,
+        exp: "A standard worksheet contains 10 columns: Unadjusted TB (2), Adjustments (2), Adjusted TB (2), Income Statement (2), Balance Sheet (2)."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: On a 10-column worksheet, the Income Statement debit column total is ₱180,000 and the credit column total is ₱230,000. The business has a:",
+        options: ["Net Loss of ₱50,000", "Net Income of ₱50,000", "Net Income of ₱230,000", "Net Loss of ₱180,000"],
+        ans: 1,
+        exp: "Income Statement Credits (Revenues = 230k) exceed Debits (Expenses = 180k) by ₱50,000 Net Income."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: If a business earns Net Income, where does this balancing figure appear on the worksheet?",
+        options: [
+            "Income Statement Debit & Balance Sheet Credit",
+            "Income Statement Credit & Balance Sheet Debit",
+            "Income Statement Debit & Balance Sheet Debit",
+            "Income Statement Credit & Balance Sheet Credit"
+        ],
+        ans: 0,
+        exp: "Net Income is placed in the Income Statement DEBIT column to balance it, and in the Balance Sheet CREDIT column (adding to equity)."
+    },
+    {
+        ch: 5,
+        text: "In the worksheet, Owner's Drawings account balance is extended to which column?",
+        options: ["Income Statement Debit", "Income Statement Credit", "Balance Sheet Debit", "Balance Sheet Credit"],
+        ans: 2,
+        exp: "Drawings is a contra-equity account extended to the Balance Sheet DEBIT column."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: Adjusted Trial Balance shows Cash ₱15,000, Accounts Receivable ₱25,000, Supplies ₱5,000, Equipment ₱100,000, Accounts Payable ₱20,000. Total Balance Sheet Debits (before net income/loss balancing) equal:",
+        options: ["₱145,000", "₱165,000", "₱45,000", "₱125,000"],
+        ans: 0,
+        exp: "Balance Sheet Debits = Cash (15k) + AR (25k) + Supplies (5k) + Equipment (100k) = ₱145,000."
+    },
+    {
+        ch: 5,
+        text: "Which of the following accounts is extended to the Income Statement Credit column?",
+        options: ["Prepaid Rent", "Service Revenue", "Salaries Expense", "Owner's Capital"],
+        ans: 1,
+        exp: "Revenues carry credit balances and are extended to the Income Statement Credit column."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: If Income Statement Debits equal ₱300,000 and Income Statement Credits equal ₱250,000, the result is:",
+        options: ["Net Income ₱50,000", "Net Loss ₱50,000", "Net Income ₱250,000", "Balanced"],
+        ans: 1,
+        exp: "Expenses (Debits 300k) exceed Revenues (Credits 250k) resulting in ₱50,000 Net Loss."
+    },
+    {
+        ch: 5,
+        text: "Accumulated Depreciation is extended to which worksheet column?",
+        options: ["Income Statement Debit", "Income Statement Credit", "Balance Sheet Debit", "Balance Sheet Credit"],
+        ans: 3,
+        exp: "Accumulated Depreciation is a contra-asset account extended to the Balance Sheet CREDIT column."
+    },
+    {
+        ch: 5,
+        text: "In a worksheet, the process of combining Unadjusted Trial Balance amounts with Adjustments is called:",
+        options: ["Cross-footing", "Journalizing", "Balancing", "Closing"],
+        ans: 0,
+        exp: "Combining horizontally across rows to compute Adjusted Trial Balance is cross-footing."
+    },
+    {
+        ch: 5,
+        text: "Is the completion of a worksheet a required step to produce financial statements?",
+        options: ["Yes, always", "No, it is an optional tool", "Required by Tax Code only", "Required for Corporations only"],
+        ans: 1,
+        exp: "Worksheets are working papers used for accountant convenience; they are not mandatory statutory filings."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: Unadjusted Trial Balance shows Supplies ₱8,000. Adjustment column shows Credit ₱6,000. The Adjusted Trial Balance figure for Supplies is:",
+        options: ["₱14,000 Debit", "₱2,000 Debit", "₱2,000 Credit", "₱8,000 Debit"],
+        ans: 1,
+        exp: "Debit ₱8,000 - Credit ₱6,000 = ₱2,000 Debit balance."
+    },
+    {
+        ch: 5,
+        text: "Which statement is prepared directly from the Income Statement columns of the worksheet?",
+        options: ["Balance Sheet", "Income Statement", "Statement of Cash Flows", "Post-Closing Trial Balance"],
+        ans: 1,
+        exp: "The Income Statement columns contain revenue and expense items used to build the formal Income Statement."
+    },
+    {
+        ch: 5,
+        text: "Unearned Service Revenue is extended to which column?",
+        options: ["Balance Sheet Credit", "Balance Sheet Debit", "Income Statement Credit", "Income Statement Debit"],
+        ans: 0,
+        exp: "Unearned Revenue is a liability extended to the Balance Sheet Credit column."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: Net Loss of ₱20,000 occurs. On the worksheet, where is this ₱20,000 entered to balance the columns?",
+        options: [
+            "Income Statement Credit & Balance Sheet Debit",
+            "Income Statement Debit & Balance Sheet Credit",
+            "Income Statement Debit & Balance Sheet Debit",
+            "Income Statement Credit & Balance Sheet Credit"
+        ],
+        ans: 0,
+        exp: "Net Loss is added to Income Statement CREDIT (to equal debits) and Balance Sheet DEBIT (reducing equity)."
+    },
+    {
+        ch: 5,
+        text: "The financial statement that reports assets, liabilities, and equity is derived from which worksheet columns?",
+        options: ["Adjustments", "Income Statement", "Balance Sheet", "Unadjusted Trial Balance"],
+        ans: 2,
+        exp: "The Balance Sheet columns store all real/permanent accounts (assets, liabilities, equity)."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: An account has Debit ₱10,000 in Unadjusted TB and Debit ₱3,000 in Adjustments. Adjusted TB amount is:",
+        options: ["₱7,000 Debit", "₱13,000 Debit", "₱13,000 Credit", "₱3,000 Debit"],
+        ans: 1,
+        exp: "Two debits add up: ₱10,000 + ₱3,000 = ₱13,000 Debit."
+    },
+    {
+        ch: 5,
+        text: "Which of these is a temporary (nominal) account?",
+        options: ["Accounts Payable", "Depreciation Expense", "Prepaid Rent", "Owner's Capital"],
+        ans: 1,
+        exp: "Expenses (like Depreciation Expense) are temporary accounts extended to the Income Statement."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: Total Adjusted Trial Balance debits equal ₱500,000. What must total Adjusted Trial Balance credits equal?",
+        options: ["₱250,000", "₱500,000", "₱1,000,000", "Depends on net income"],
+        ans: 1,
+        exp: "Debits must always equal credits in any Trial Balance column pair."
+    },
+    {
+        ch: 5,
+        text: "When compiling a Statement of Owner's Equity, which figures are pulled from the worksheet?",
+        options: [
+            "Capital balance, Net Income/Loss, and Drawings",
+            "Revenues and Expenses only",
+            "Assets and Liabilities only",
+            "Cash flows from financing"
+        ],
+        ans: 0,
+        exp: "Statement of Owner's Equity requires Beginning Capital, Net Income/Loss (from IS columns), and Drawings (from BS columns)."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: If a ₱1,000 adjustment debit to Office Supplies Expense is extended accidentally to the Balance Sheet Debit column, what happens?",
+        options: [
+            "Income statement debits understated, Balance sheet debits overstated",
+            "Total worksheet won't balance",
+            "Net income is overstated",
+            "Both A and C"
+        ],
+        ans: 3,
+        exp: "Misclassifying expense as an asset understates expenses (overstates net income) and overstates balance sheet debits."
+    },
+    {
+        ch: 5,
+        text: "In what order are accounts listed on the worksheet?",
+        options: [
+            "Alphabetical order",
+            "Assets, Liabilities, Equity, Revenues, Expenses",
+            "Expenses, Revenues, Assets, Liabilities",
+            "Order of magnitude"
+        ],
+        ans: 1,
+        exp: "Accounts follow standard Chart of Accounts order: Assets, Liabilities, Equity, Revenues, Expenses."
+    },
+    {
+        ch: 5,
+        text: "SITUATIONAL: Balance Sheet Debit column total is ₱400,000 and Credit column total is ₱350,000 before balancing. The difference represents:",
+        options: ["Net Income of ₱50,000", "Net Loss of ₱50,000", "Error of ₱50,000", "Capital investment of ₱50,000"],
+        ans: 0,
+        exp: "Excess of Balance Sheet Debits over Credits indicates Net Income of ₱50,000 (which belongs on Credit side as equity)."
+    },
+    {
+        ch: 5,
+        text: "Adjustments on the worksheet must be recorded in the General Journal when?",
+        options: [
+            "Worksheet is completed",
+            "Before financial statements are prepared",
+            "After worksheet completion, before preparing final financial statements or closing",
+            "Never"
+        ],
+        ans: 2,
+        exp: "Worksheet adjustments are informal; they must be formally journalized and posted to update ledger accounts."
+    },
+    {
+        ch: 5,
+        text: "Which column pair comes immediately after Adjustments on a 10-column worksheet?",
+        options: ["Income Statement", "Adjusted Trial Balance", "Balance Sheet", "Post-Closing TB"],
+        ans: 1,
+        exp: "Order: Unadjusted TB -> Adjustments -> Adjusted Trial Balance -> Income Statement -> Balance Sheet."
+    },
+
+    // CHAPTER 6 (25 Items)
+    {
+        ch: 6,
+        text: "Which accounts are closed at the end of the accounting period?",
+        options: ["Real Accounts", "Temporary (Nominal) Accounts", "Asset Accounts", "Liability Accounts"],
+        ans: 1,
+        exp: "Temporary (nominal) accounts—Revenues, Expenses, Income Summary, Drawings—are closed to zero."
+    },
+    {
+        ch: 6,
+        text: "Which of the following is a Permanent (Real) account?",
+        options: ["Service Revenue", "Salaries Expense", "Accumulated Depreciation", "Owner's Drawings"],
+        ans: 2,
+        exp: "Accumulated Depreciation is a permanent contra-asset account whose balance carries forward."
+    },
+    {
+        ch: 6,
+        text: "The Income Summary account is closed to which account in a sole proprietorship?",
+        options: ["Cash", "Owner's Capital", "Service Revenue", "Owner's Drawings"],
+        ans: 1,
+        exp: "The net balance of Income Summary is closed directly into Owner's Capital."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Revenues are ₱150,000 and Expenses are ₱110,000. The entry to close Income Summary to Capital involves:",
+        options: [
+            "Debit Income Summary ₱40,000, Credit Owner's Capital ₱40,000",
+            "Debit Owner's Capital ₱40,000, Credit Income Summary ₱40,000",
+            "Debit Service Revenue ₱40,000, Credit Income Summary ₱40,000",
+            "Debit Income Summary ₱150,000, Credit Owner's Capital ₱150,000"
+        ],
+        ans: 0,
+        exp: "Credit balance in Income Summary (Net Income = 40k) is closed by Debiting Income Summary 40k and Crediting Capital 40k."
+    },
+    {
+        ch: 6,
+        text: "The entry to close Revenue accounts involves:",
+        options: [
+            "Debiting Revenue accounts and Crediting Income Summary",
+            "Crediting Revenue accounts and Debiting Income Summary",
+            "Debiting Revenue accounts and Crediting Owner's Capital",
+            "Debiting Cash and Crediting Revenue"
+        ],
+        ans: 0,
+        exp: "To bring credit-balanced Revenue accounts to zero, Debit Revenue and Credit Income Summary."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Total expenses are ₱85,000. The closing entry for expenses requires:",
+        options: [
+            "Debit Expenses ₱85,000, Credit Income Summary ₱85,000",
+            "Debit Income Summary ₱85,000, Credit Expense accounts ₱85,000",
+            "Debit Capital ₱85,000, Credit Expenses ₱85,000",
+            "Debit Income Summary ₱85,000, Credit Cash ₱85,000"
+        ],
+        ans: 1,
+        exp: "To close debit-balanced Expense accounts, Debit Income Summary ₱85,000 and Credit individual Expense accounts ₱85,000."
+    },
+    {
+        ch: 6,
+        text: "Which journal entry closes the Owner's Drawings account?",
+        options: [
+            "Debit Income Summary, Credit Owner's Drawings",
+            "Debit Owner's Capital, Credit Owner's Drawings",
+            "Debit Owner's Drawings, Credit Owner's Capital",
+            "Debit Owner's Drawings, Credit Cash"
+        ],
+        ans: 1,
+        exp: "Owner's Drawings is closed directly to Owner's Capital (Debit Capital, Credit Drawings)."
+    },
+    {
+        ch: 6,
+        text: "Which of the following accounts will appear on the Post-Closing Trial Balance?",
+        options: ["Service Revenue", "Utilities Expense", "Unearned Rent Income", "Owner's Drawings"],
+        ans: 2,
+        exp: "Only permanent/real accounts (Assets, Liabilities, Capital ending balance) appear on Post-Closing TB. Unearned Rent is a liability."
+    },
+    {
+        ch: 6,
+        text: "What is the primary purpose of preparing a Post-Closing Trial Balance?",
+        options: [
+            "To calculate final net income",
+            "To prove the equality of debit and credit balances of permanent accounts before the next period",
+            "To verify tax obligations",
+            "To record reversing entries"
+        ],
+        ans: 1,
+        exp: "Post-Closing TB verifies that total debits equal total credits for permanent accounts moving into the new period."
+    },
+    {
+        ch: 6,
+        text: "Reversing entries are prepared when in the accounting cycle?",
+        options: [
+            "At the end of the current period after closing",
+            "On the first day of the new accounting period",
+            "Before preparing adjusting entries",
+            "Middle of the fiscal year"
+        ],
+        ans: 1,
+        exp: "Reversing entries are optional entries made on the first day of the new accounting period."
+    },
+    {
+        ch: 6,
+        text: "Which types of adjusting entries are typically eligible for reversal?",
+        options: [
+            "Prepaid expenses under asset method",
+            "Accrued expenses and Accrued revenues",
+            "Depreciation adjustments",
+            "Bad debts adjustments"
+        ],
+        ans: 1,
+        exp: "Accrued revenues and accrued expenses are standard candidates for reversing entries."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: On Dec 31, accrued salaries of ₱6,000 were adjusted (Debit Salaries Expense, Credit Salaries Payable). If reversed on Jan 1, the entry is:",
+        options: [
+            "Debit Salaries Payable 6k, Credit Salaries Expense 6k",
+            "Debit Cash 6k, Credit Salaries Expense 6k",
+            "Debit Salaries Expense 6k, Credit Salaries Payable 6k",
+            "Debit Capital 6k, Credit Salaries Payable 6k"
+        ],
+        ans: 0,
+        exp: "A reversing entry exact-opposites the adjusting entry: Debit Salaries Payable 6k, Credit Salaries Expense 6k."
+    },
+    {
+        ch: 6,
+        text: "After closing entries are posted, what is the balance of temporary accounts?",
+        options: ["Equal to net income", "Zero", "Equal to ending capital", "Negative"],
+        ans: 1,
+        exp: "The closing process resets all temporary account balances to zero."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Before closing, Income Summary has Debits of ₱120,000 (expenses) and Credits of ₱180,000 (revenues). What is the status of the business?",
+        options: ["Net Loss ₱60,000", "Net Income ₱60,000", "Net Loss ₱120,000", "Net Income ₱180,000"],
+        ans: 1,
+        exp: "Credits (180k) exceed Debits (120k) by ₱60,000, representing Net Income."
+    },
+    {
+        ch: 6,
+        text: "Which account is NOT closed to Income Summary?",
+        options: ["Sales Revenue", "Rent Expense", "Owner's Drawings", "Advertising Expense"],
+        ans: 2,
+        exp: "Owner's Drawings is closed directly to Owner's Capital, NOT through Income Summary."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Owner's Capital had a beginning balance of ₱100,000. Net Loss was ₱15,000. Drawings were ₱10,000. Ending Capital on the Post-Closing Trial Balance is:",
+        options: ["₱75,000", "₱100,000", "₱125,000", "₱85,000"],
+        ans: 0,
+        exp: "Ending Capital = 100,000 - 15,000 (Loss) - 10,000 (Drawings) = ₱75,000."
+    },
+    {
+        ch: 6,
+        text: "Reversing entries are:",
+        options: ["Mandatory under PFRS", "Optional accounting procedures", "Required by BIR", "Prohibited"],
+        ans: 1,
+        exp: "Reversing entries are optional bookkeeping conveniences."
+    },
+    {
+        ch: 6,
+        text: "Which list represents the FINAL step in the accounting cycle?",
+        options: [
+            "Financial Statements",
+            "Post-Closing Trial Balance",
+            "Reversing Entries (optional)",
+            "Adjusting Entries"
+        ],
+        ans: 2,
+        exp: "The final optional step of the cycle is preparing Reversing Entries at the start of the new period."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: An accountant credits Income Summary ₱90,000 and debits various expense accounts ₱90,000 during closing. What is wrong with this entry?",
+        options: [
+            "Expenses have debit balances, so they must be CREDITED to be closed.",
+            "Income Summary should be debited for total revenues.",
+            "Drawings should be included.",
+            "Nothing, it is correct."
+        ],
+        ans: 0,
+        exp: "Expenses have normal debit balances; to close them to zero, expenses must be CREDITED and Income Summary DEBITED."
+    },
+    {
+        ch: 6,
+        text: "The Post-Closing Trial Balance contains:",
+        options: ["Only Nominal Accounts", "Only Real Accounts", "Both Nominal and Real Accounts", "Only Income Statement accounts"],
+        ans: 1,
+        exp: "Post-closing trial balance contains exclusively real (balance sheet) accounts."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Total revenues closed were ₱200,000, total expenses closed were ₱220,000. The entry to close Income Summary to Capital involves:",
+        options: [
+            "Debit Owner's Capital ₱20,000, Credit Income Summary ₱20,000",
+            "Debit Income Summary ₱20,000, Credit Owner's Capital ₱20,000",
+            "Debit Owner's Capital ₱220,000, Credit Expenses ₱220,000",
+            "Debit Cash ₱20,000, Credit Income Summary ₱20,000"
+        ],
+        ans: 0,
+        exp: "Net Loss = ₱20,000 leaves a debit balance in Income Summary. Closing requires Debit Owner's Capital ₱20k, Credit Income Summary ₱20k."
+    },
+    {
+        ch: 6,
+        text: "Why are temporary accounts closed?",
+        options: [
+            "To permanently delete account records",
+            "To reset their balances to zero so they can accumulate data for the next period",
+            "To satisfy tax audits",
+            "To adjust asset market values"
+        ],
+        ans: 1,
+        exp: "Temporary accounts measure performance per period; closing resets them to zero for the next period."
+    },
+    {
+        ch: 6,
+        text: "Income Summary account is classified as a:",
+        options: ["Permanent Asset", "Clearing / Temporary Account", "Liability", "Contra-Equity"],
+        ans: 1,
+        exp: "Income Summary is a temporary clearing account used strictly during the closing process."
+    },
+    {
+        ch: 6,
+        text: "SITUATIONAL: Drawings account balance is ₱12,000 Debit. Closing entry is:",
+        options: [
+            "Debit Owner's Capital 12k, Credit Owner's Drawings 12k",
+            "Debit Income Summary 12k, Credit Owner's Drawings 12k",
+            "Debit Owner's Drawings 12k, Credit Owner's Capital 12k",
+            "Debit Owner's Drawings 12k, Credit Cash 12k"
+        ],
+        ans: 0,
+        exp: "Drawings is closed by crediting Drawings 12k and debiting Owner's Capital 12k."
+    },
+    {
+        ch: 6,
+        text: "Which step comes immediately after preparing Financial Statements?",
+        options: ["Journalizing Adjusting Entries", "Journalizing and Posting Closing Entries", "Reversing Entries", "Unadjusted Trial Balance"],
+        ans: 1,
+        exp: "After financial statements are prepared, closing entries are journalized and posted."
+    }
+];
+
+// STATE MANAGEMENT
+let activeQuestions = [];
+let currentIndex = 0;
+let userAnswers = []; // store selected index
+let score = 0;
+
+// DOM ELEMENTS
+const setupCard = document.getElementById('setup-card');
+const quizArea = document.getElementById('quiz-area');
+const summaryArea = document.getElementById('summary-area');
+const chapterSelect = document.getElementById('chapter-select');
+const startBtn = document.getElementById('start-btn');
+const restartBtn = document.getElementById('restart-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const statAnswered = document.getElementById('stat-answered');
+const statTotal = document.getElementById('stat-total');
+const statScore = document.getElementById('stat-score');
+const statCorrect = document.getElementById('stat-correct');
+const statWrong = document.getElementById('stat-wrong');
+
+const qMeta = document.getElementById('q-meta');
+const qText = document.getElementById('q-text');
+const optionsContainer = document.getElementById('options-container');
+
+// SHUFFLE HELPER
+function shuffleArray(array) {
+    let arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+// SHUFFLE OPTIONS WHILE KEEPING TRACK OF CORRECT INDEX
+function prepareQuestion(q) {
+    let optionsWithIndices = q.options.map((opt, idx) => ({ text: opt, isCorrect: idx === q.ans }));
+    let shuffledOpts = shuffleArray(optionsWithIndices);
+    let newAnsIndex = shuffledOpts.findIndex(o => o.isCorrect);
+    return {
+        ch: q.ch,
+        text: q.text,
+        options: shuffledOpts.map(o => o.text),
+        ans: newAnsIndex,
+        exp: q.exp
+    };
+}
+
+// INIT QUIZ
+startBtn.addEventListener('click', () => {
+    const selectedCh = chapterSelect.value;
+    let filtered = [];
+    if (selectedCh === "ALL") {
+        filtered = questionBank;
+    } else {
+        filtered = questionBank.filter(q => q.ch === parseInt(selectedCh));
+    }
+
+    // Shuffle question order and prepare internal shuffled options
+    activeQuestions = shuffleArray(filtered).map(q => prepareQuestion(q));
+    currentIndex = 0;
+    userAnswers = new Array(activeQuestions.length).fill(null);
+    score = 0;
+
+    setupCard.classList.add('hidden');
+    summaryArea.classList.add('hidden');
+    quizArea.classList.remove('hidden');
+
+    updateStats();
+    renderQuestion();
+});
+
+restartBtn.addEventListener('click', () => {
+    summaryArea.classList.add('hidden');
+    setupCard.classList.remove('hidden');
+});
+
+function updateStats() {
+    let answeredCount = userAnswers.filter(a => a !== null).length;
+    let correctCount = 0;
+    let wrongCount = 0;
+
+    userAnswers.forEach((ans, idx) => {
+        if (ans !== null) {
+            if (ans === activeQuestions[idx].ans) correctCount++;
+            else wrongCount++;
+        }
+    });
+
+    statAnswered.innerText = answeredCount;
+    statTotal.innerText = activeQuestions.length;
+    statScore.innerText = correctCount;
+    statCorrect.innerText = correctCount;
+    statWrong.innerText = wrongCount;
+}
+
+function renderQuestion() {
+    if (currentIndex >= activeQuestions.length) {
+        showSummary();
+        return;
+    }
+
+    const currentQ = activeQuestions[currentIndex];
+    qMeta.innerText = `Chapter ${currentQ.ch} • Question ${currentIndex + 1} of ${activeQuestions.length}`;
+    qText.innerText = currentQ.text;
+
+    optionsContainer.innerHTML = '';
+    const optionPrefixes = ['A', 'B', 'C', 'D'];
+
+    currentQ.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<span class="shortcut-badge">${optionPrefixes[idx]}</span> ${optText}`;
+        
+        if (userAnswers[currentIndex] !== null) {
+            btn.disabled = true;
+            if (idx === currentQ.ans) {
+                btn.classList.add('correct');
+            }
+            if (userAnswers[currentIndex] === idx && idx !== currentQ.ans) {
+                btn.classList.add('wrong');
+            }
+        }
+
+        btn.addEventListener('click', () => handleSelectOption(idx));
+        optionsContainer.appendChild(btn);
+    });
+
+    nextBtn.disabled = userAnswers[currentIndex] === null;
+    nextBtn.innerText = (currentIndex === activeQuestions.length - 1) ? "Finish Review" : "Next Question";
+}
+
+function handleSelectOption(index) {
+    if (userAnswers[currentIndex] !== null) return; // already answered
+    userAnswers[currentIndex] = index;
+    updateStats();
+    renderQuestion();
+}
+
+nextBtn.addEventListener('click', () => {
+    if (userAnswers[currentIndex] === null) return;
+    currentIndex++;
+    renderQuestion();
+});
+
+// KEYBOARD SHORTCUTS
+document.addEventListener('keydown', (e) => {
+    if (quizArea.classList.contains('hidden')) return;
+
+    const key = e.key.toUpperCase();
+    if (['A', 'B', 'C', 'D'].includes(key)) {
+        const keyMap = { 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+        const targetIdx = keyMap[key];
+        if (targetIdx < activeQuestions[currentIndex].options.length) {
+            handleSelectOption(targetIdx);
+        }
+    } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (userAnswers[currentIndex] !== null) {
+            currentIndex++;
+            renderQuestion();
+        }
+    }
+});
+
+function showSummary() {
+    quizArea.classList.add('hidden');
+    summaryArea.classList.remove('hidden');
+
+    let correctCount = userAnswers.reduce((acc, ans, idx) => {
+        return ans === activeQuestions[idx].ans ? acc + 1 : acc;
+    }, 0);
+
+    let total = activeQuestions.length;
+    let pct = ((correctCount / total) * 100).toFixed(1);
+
+    document.getElementById('sum-score').innerText = correctCount;
+    document.getElementById('sum-total').innerText = total;
+    document.getElementById('sum-pct').innerText = `${pct}%`;
+
+    const wrongContainer = document.getElementById('wrong-items-container');
+    wrongContainer.innerHTML = '';
+
+    let wrongItemsFound = false;
+
+    activeQuestions.forEach((q, idx) => {
+        if (userAnswers[idx] !== q.ans) {
+            wrongItemsFound = true;
+            const item = document.createElement('div');
+            item.className = 'wrong-item';
+
+            const userSelectedText = userAnswers[idx] !== null ? q.options[userAnswers[idx]] : "None Selected";
+            const correctText = q.options[q.ans];
+
+            item.innerHTML = `
+                <div class="wrong-item-title">[Ch. ${q.ch}] Q${idx + 1}: ${q.text}</div>
+                <div class="wrong-item-ans">
+                    <span style="color:var(--wrong)">Your Answer: ${userSelectedText}</span><br>
+                    <span style="color:var(--correct)">Correct Answer: ${correctText}</span>
+                </div>
+                <div class="explanation"><strong>Explanation:</strong> ${q.exp}</div>
+            `;
+            wrongContainer.appendChild(item);
+        }
+    });
+
+    if (!wrongItemsFound) {
+        wrongContainer.innerHTML = '<p style="color:var(--correct); font-weight:bold;">Perfect Score! No wrong items to review.</p>';
+    }
+}
+</script>
+</body>
+</html>

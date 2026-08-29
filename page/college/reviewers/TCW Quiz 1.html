@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Contemporary World — Reviewer Quiz</title>
+<style>
+  :root{
+    --navy:#1b2a4a;
+    --navy-light:#2c4270;
+    --gold:#c8952a;
+    --green:#2f8f5b;
+    --red:#c0392b;
+    --bg:#f4f1ea;
+    --card:#ffffff;
+    --text:#242424;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+  }
+  .topbar{
+    background:var(--navy);
+    color:white;
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  .topbar h1{
+    font-size:17px;
+    margin:0;
+    font-weight:600;
+  }
+  .scoreboard{
+    display:flex;
+    gap:10px;
+  }
+  .score-pill{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .score-pill.correct{background:rgba(47,143,91,0.2);color:#7fe3a8;}
+  .score-pill.wrong{background:rgba(192,57,43,0.2);color:#ff9c8f;}
+  .score-pill.progress{background:rgba(200,149,42,0.2);color:#f0c778;}
+
+  .container{
+    max-width:760px;
+    margin:0 auto;
+    padding:24px 16px 60px;
+  }
+  .progress-bar-track{
+    height:8px;
+    background:#ddd6c7;
+    border-radius:4px;
+    overflow:hidden;
+    margin-bottom:24px;
+  }
+  .progress-bar-fill{
+    height:100%;
+    background:var(--gold);
+    transition:width .3s ease;
+  }
+  .card{
+    background:var(--card);
+    border-radius:14px;
+    padding:24px 22px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom:18px;
+  }
+  .section-tag{
+    display:inline-block;
+    background:var(--navy-light);
+    color:white;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:6px;
+    margin-bottom:14px;
+  }
+  .q-number{
+    font-size:13px;
+    color:#888;
+    margin-bottom:6px;
+  }
+  .q-text{
+    font-size:18px;
+    font-weight:600;
+    line-height:1.4;
+    margin-bottom:18px;
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .option-btn{
+    text-align:left;
+    padding:13px 16px;
+    border-radius:10px;
+    border:2px solid #e2ddd0;
+    background:#fbfaf6;
+    font-size:15px;
+    cursor:pointer;
+    transition:all .15s ease;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .option-btn:hover:not(.disabled){
+    border-color:var(--gold);
+    background:#fff8ea;
+  }
+  .option-letter{
+    font-weight:700;
+    color:var(--navy);
+    min-width:20px;
+  }
+  .option-btn.correct-answer{
+    border-color:var(--green);
+    background:#e9f7ef;
+  }
+  .option-btn.wrong-answer{
+    border-color:var(--red);
+    background:#fbebe9;
+  }
+  .option-btn.disabled{
+    cursor:default;
+  }
+  .tf-row{
+    display:flex;
+    gap:14px;
+  }
+  .tf-btn{
+    flex:1;
+    padding:16px;
+    font-size:16px;
+    font-weight:700;
+    border-radius:10px;
+    border:2px solid #e2ddd0;
+    background:#fbfaf6;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tf-btn:hover:not(.disabled){
+    border-color:var(--gold);
+    background:#fff8ea;
+  }
+  .tf-btn.correct-answer{border-color:var(--green);background:#e9f7ef;color:var(--green);}
+  .tf-btn.wrong-answer{border-color:var(--red);background:#fbebe9;color:var(--red);}
+  .tf-btn.disabled{cursor:default;}
+
+  .feedback{
+    margin-top:16px;
+    padding:14px 16px;
+    border-radius:10px;
+    font-size:14.5px;
+    line-height:1.5;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.correct{background:#e9f7ef;color:#1e5c3a;border:1px solid #b9e3c9;}
+  .feedback.wrong{background:#fbebe9;color:#7d241a;border:1px solid #f0c2bb;}
+  .feedback b{display:block;margin-bottom:4px;font-size:15px;}
+
+  .next-btn, .submit-btn, .restart-btn{
+    margin-top:18px;
+    padding:12px 22px;
+    background:var(--navy);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    display:none;
+  }
+  .next-btn.show, .submit-btn.show{display:inline-block;}
+  .next-btn:hover, .submit-btn:hover, .restart-btn:hover{background:var(--navy-light);}
+
+  .match-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:10px 0;
+    border-bottom:1px solid #eee5d0;
+  }
+  .match-term{
+    flex:1;
+    font-weight:600;
+    font-size:15px;
+  }
+  select.match-select{
+    flex:1.4;
+    padding:9px 10px;
+    border-radius:8px;
+    border:2px solid #e2ddd0;
+    font-size:14px;
+    background:#fbfaf6;
+  }
+  select.match-select.correct-answer{border-color:var(--green);background:#e9f7ef;}
+  select.match-select.wrong-answer{border-color:var(--red);background:#fbebe9;}
+
+  .intro-card{
+    text-align:center;
+  }
+  .intro-card h2{
+    color:var(--navy);
+    margin-top:0;
+  }
+  .start-btn{
+    padding:14px 30px;
+    background:var(--gold);
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  .start-btn:hover{background:#b17f22;}
+  .breakdown{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+    margin:20px 0;
+    flex-wrap:wrap;
+  }
+  .breakdown-item{
+    text-align:center;
+  }
+  .breakdown-item .num{
+    font-size:26px;
+    font-weight:800;
+  }
+  .breakdown-item .label{
+    font-size:13px;
+    color:#777;
+  }
+  .final-score{
+    font-size:48px;
+    font-weight:800;
+    color:var(--navy);
+    text-align:center;
+    margin:10px 0 0;
+  }
+  .final-pct{
+    text-align:center;
+    color:#777;
+    margin-bottom:10px;
+  }
+  .final-msg{
+    text-align:center;
+    font-size:16px;
+    margin-bottom:6px;
+  }
+  #matchSummary{
+    margin-top:10px;
+    font-size:14px;
+    color:#555;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>The Contemporary World — Reviewer</h1>
+  <div class="scoreboard">
+    <div class="score-pill progress">Q <span id="progNum">0</span>/<span id="progTotal">32</span></div>
+    <div class="score-pill correct">✓ <span id="correctCount">0</span></div>
+    <div class="score-pill wrong">✗ <span id="wrongCount">0</span></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div id="quizArea"></div>
+</div>
+
+<script>
+// ---------- QUESTION BANK ----------
+// Multiple Choice (12)
+const mcQuestions = [
+  {
+    q: "Which scholar describes globalization as the intensification of world-wide social relations that connects distant localities, such that local happenings are shaped by events occurring miles away?",
+    options: ["Held and McGrew", "Anthony Giddens", "Manfred Steger", "Arjun Appadurai"],
+    answer: 1,
+    explain: "Giddens (2003) defined globalization as the intensification of world-wide social relations linking distant localities, where local happenings are shaped by distant events and vice versa."
+  },
+  {
+    q: "According to Manfred Steger, globalization is the expansion and intensification of social relations and consciousness across what two dimensions?",
+    options: ["Nations and economies", "World-time and world-space", "Cultures and religions", "Markets and governments"],
+    answer: 1,
+    explain: "Steger defined globalization as the expansion and intensification of social relations and consciousness across world-time and across world-space."
+  },
+  {
+    q: "In Arjun Appadurai's concept of 'scapes,' which term refers specifically to the global movement of people?",
+    options: ["Mediascape", "Ethnoscape", "Technoscape", "Financescape"],
+    answer: 1,
+    explain: "Ethnoscape refers to the global movement of people, one of Appadurai's five dimensions of globalization."
+  },
+  {
+    q: "Which of the three views on globalization holds that globalization is a consequence of modernity?",
+    options: ["Historical Evolution View", "Pendulum View", "Modern Phenomenon View", "Traditionalist View"],
+    answer: 2,
+    explain: "The Modern Phenomenon View holds that globalization is a consequence of modernity."
+  },
+  {
+    q: "Which view on globalization describes it as swinging back and forth, with its ups and downs?",
+    options: ["Pendulum View", "Modern Phenomenon View", "Historical Evolution View", "Globalist View"],
+    answer: 0,
+    explain: "The Pendulum View describes globalization as swinging back and forth, having its ups and downs."
+  },
+  {
+    q: "Which group of thinkers views globalization as an inevitable social process and highlights the primacy of the global economy?",
+    options: ["Traditionalists", "Transformationalists", "Globalists", "Modernists"],
+    answer: 2,
+    explain: "Globalists see globalization as an inevitable process certain to affect local communities, emphasizing the primacy of the global economy."
+  },
+  {
+    q: "Which definition describes the State as a community of persons permanently occupying a definite territory, with a government to which inhabitants render obedience?",
+    options: ["Definition of the Nation", "Definition of the State", "Definition of Sovereignty", "Definition of Internationalism"],
+    answer: 1,
+    explain: "The State is defined as a community of persons permanently occupying a definite portion of territory, with a government of its own, enjoying freedom from external control."
+  },
+  {
+    q: "Among the elements of the State, which one is described as 'the agency that carries the will of the state'?",
+    options: ["People", "Territory", "Government", "Sovereignty"],
+    answer: 2,
+    explain: "Government is the agency that carries the will of the state, according to the elements of the State discussed in the lesson."
+  },
+  {
+    q: "The Social Contract Theory on the origin of the state comes from two kinds of agreement. What are they?",
+    options: [
+      "Pactum Unionis and Pactum Subjectionis",
+      "Divine Right and Necessity Theory",
+      "Liberalism and Socialism",
+      "Ethnoscape and Ideoscape"
+    ],
+    answer: 0,
+    explain: "The Social Contract Theory comes from two kinds of agreement: Pactum Unionis and Pactum Subjectionis."
+  },
+  {
+    q: "Which thinker describes the nation as 'a community of sentiment'?",
+    options: ["Benedict Anderson", "Ernest Renan", "Max Weber", "Immanuel Kant"],
+    answer: 2,
+    explain: "Max Weber described the nation as 'a community of sentiment,' based on the idea that a political unit corresponds to nations."
+  },
+  {
+    q: "Which historical figure established the Communist International (Comintern) in 1919?",
+    options: ["Karl Marx", "Joseph Stalin", "Vladimir Lenin", "Czar Nicolas II"],
+    answer: 2,
+    explain: "Vladimir Lenin, a Russian revolutionary, established the Communist International (Comintern) in 1919."
+  },
+  {
+    q: "Which form of internationalism offers orderliness and protection, arguing that without a world government the international system would be chaotic?",
+    options: ["Socialist Internationalism", "Liberal Internationalism", "Traditionalist Internationalism", "Modern Internationalism"],
+    answer: 1,
+    explain: "Liberal Internationalism offers orderliness and protection, holding that without a form of world government, the international system would be chaotic."
+  }
+];
+
+// True or False (10)
+const tfQuestions = [
+  {
+    q: "Held and McGrew (2003) defined globalization in terms of the expanding scale, growing magnitude, speeding-up, and deepening impact of interregional flows and patterns of social interaction.",
+    answer: true,
+    explain: "This is the exact definition attributed to Held and McGrew (2003) in the lesson."
+  },
+  {
+    q: "Appadurai's concept of 'scapes' describes globalization across five dimensions: ethnoscape, mediascape, technoscape, financescape, and ideoscape.",
+    answer: true,
+    explain: "Appadurai identified five 'scapes' that represent different, intersecting dimensions of global cultural flow."
+  },
+  {
+    q: "The Historical Evolution View holds that globalization is a completely new phenomenon that only recently began.",
+    answer: false,
+    explain: "The Historical Evolution View actually holds that globalization is nothing new — it has always been part of human history."
+  },
+  {
+    q: "According to Nestor Kirchner's quote in the lesson, globalization should be created in a way that works for everyone, not just for a few.",
+    answer: true,
+    explain: "Kirchner's quote states: 'We must create a kind of globalization that works for everyone... and not just for a few.'"
+  },
+  {
+    q: "Sovereignty, as an element of the State, is defined as the inhabitants living within the state.",
+    answer: false,
+    explain: "That description refers to 'People.' Sovereignty is the supreme power of the state to command or enforce obedience."
+  },
+  {
+    q: "The Divine Right Theory is one of the theories on the origin of the State discussed in the lesson.",
+    answer: true,
+    explain: "The lesson lists Divine Right Theory, Social Contract Theory, and Necessity or Force Theory as origin theories of the State."
+  },
+  {
+    q: "Benedict Anderson described the nation as an 'Imagined Community.'",
+    answer: true,
+    explain: "Benedict Anderson is credited with describing the nation as an 'Imagined Community.'"
+  },
+  {
+    q: "Socialist Internationalism is centered on achieving the greatest happiness of all nations taken together.",
+    answer: true,
+    explain: "This is the description given for Socialist Internationalism in the lesson."
+  },
+  {
+    q: "Karl Marx is the historical figure credited with dissolving the Comintern in 1943.",
+    answer: false,
+    explain: "It was Joseph Stalin, Lenin's successor, who dissolved the Comintern in 1943 and later re-established it as the Communist Information Bureau (Cominform)."
+  },
+  {
+    q: "Joseph Stalin re-established the Comintern as the Communist Information Bureau (Cominform).",
+    answer: true,
+    explain: "After dissolving the Comintern in 1943, Stalin re-established it as the Cominform."
+  }
+];
+
+// Matching Type (10 pairs) — term / correct definition, options are shuffled definitions
+const matchPairsRaw = [
+  { term: "Ethnoscape", def: "Global movement of people" },
+  { term: "Mediascape", def: "The flow of culture" },
+  { term: "Technoscape", def: "Circulation of mechanical goods and software" },
+  { term: "Financescape", def: "Global circulation of money" },
+  { term: "Ideoscape", def: "The realm where political ideas move around" },
+  { term: "Territory", def: "The domain of the state — terrestrial, fluvial, maritime, and aerial" },
+  { term: "Sovereignty", def: "The supreme power of the state to command or enforce obedience" },
+  { term: "Liberal Internationalism", def: "Offers orderliness and protection without a world government" },
+  { term: "Socialist Internationalism", def: "The greatest happiness of all nations taken together" },
+  { term: "Ernest Renan's view of the Nation", def: "A large-scale solidarity built on shared sacrifices, past and future" }
+];
+
+// ---------- STATE ----------
+let correctCount = 0;
+let wrongCount = 0;
+let currentIndex = 0; // index within combined mc+tf sequence; matching is its own final stage
+const sequence = [
+  ...mcQuestions.map(q => ({...q, type:'mc'})),
+  ...tfQuestions.map(q => ({...q, type:'tf'}))
+];
+const totalItems = sequence.length + matchPairsRaw.length; // 12+10+10 = 32
+let matchingDone = false;
+
+const quizArea = document.getElementById('quizArea');
+const progNum = document.getElementById('progNum');
+const progTotal = document.getElementById('progTotal');
+const correctCountEl = document.getElementById('correctCount');
+const wrongCountEl = document.getElementById('wrongCount');
+const progressFill = document.getElementById('progressFill');
+progTotal.textContent = totalItems;
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function updateScoreboard(answeredCount){
+  progNum.textContent = answeredCount;
+  correctCountEl.textContent = correctCount;
+  wrongCountEl.textContent = wrongCount;
+  progressFill.style.width = (answeredCount/totalItems*100)+"%";
+}
+
+function showIntro(){
+  quizArea.innerHTML = `
+    <div class="card intro-card">
+      <div class="section-tag">Reviewer</div>
+      <h2>The Contemporary World: Intro to Globalization &amp; Attributes of Globalization</h2>
+      <p style="color:#555;line-height:1.6;">
+        This reviewer covers <b>32 items</b> based on your two lecture decks —
+        definitions of globalization, Appadurai's "scapes," views &amp; perspectives on globalization,
+        the State and its elements, origin theories of the State, the Nation, and Internationalism.
+      </p>
+      <div class="breakdown">
+        <div class="breakdown-item"><div class="num">12</div><div class="label">Multiple Choice</div></div>
+        <div class="breakdown-item"><div class="num">10</div><div class="label">True / False</div></div>
+        <div class="breakdown-item"><div class="num">10</div><div class="label">Matching Type</div></div>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Start Reviewer</button>
+    </div>
+  `;
+}
+
+function startQuiz(){
+  currentIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  matchingDone = false;
+  updateScoreboard(0);
+  renderCurrent();
+}
+
+function renderCurrent(){
+  if(currentIndex < sequence.length){
+    const item = sequence[currentIndex];
+    if(item.type === 'mc') renderMC(item);
+    else renderTF(item);
+  } else if(!matchingDone){
+    renderMatching();
+  } else {
+    renderFinal();
+  }
+}
+
+function renderMC(item){
+  const letters = ['A','B','C','D'];
+  quizArea.innerHTML = `
+    <div class="card">
+      <div class="section-tag">Multiple Choice</div>
+      <div class="q-number">Question ${currentIndex+1} of ${sequence.length + matchPairsRaw.length}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="options" id="optsWrap">
+        ${item.options.map((opt,i)=>`
+          <button class="option-btn" data-idx="${i}" onclick="answerMC(${i})">
+            <span class="option-letter">${letters[i]}.</span><span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="feedback" id="feedbackBox"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+    </div>
+  `;
+}
+
+function answerMC(selectedIdx){
+  const item = sequence[currentIndex];
+  const buttons = document.querySelectorAll('#optsWrap .option-btn');
+  buttons.forEach(b=>b.classList.add('disabled'));
+  buttons.forEach(b=>b.onclick=null);
+  const isCorrect = selectedIdx === item.answer;
+  buttons[item.answer].classList.add('correct-answer');
+  if(!isCorrect) buttons[selectedIdx].classList.add('wrong-answer');
+
+  if(isCorrect) correctCount++; else wrongCount++;
+  updateScoreboard(currentIndex+1);
+
+  const fb = document.getElementById('feedbackBox');
+  fb.className = 'feedback show ' + (isCorrect?'correct':'wrong');
+  fb.innerHTML = `<b>${isCorrect?'✓ Correct!':'✗ Not quite.'}</b>${item.explain}`;
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function renderTF(item){
+  quizArea.innerHTML = `
+    <div class="card">
+      <div class="section-tag">True or False</div>
+      <div class="q-number">Question ${currentIndex+1} of ${sequence.length + matchPairsRaw.length}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="tf-row" id="tfWrap">
+        <button class="tf-btn" data-val="true" onclick="answerTF(true)">TRUE</button>
+        <button class="tf-btn" data-val="false" onclick="answerTF(false)">FALSE</button>
+      </div>
+      <div class="feedback" id="feedbackBox"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+    </div>
+  `;
+}
+
+function answerTF(selectedVal){
+  const item = sequence[currentIndex];
+  const buttons = document.querySelectorAll('#tfWrap .tf-btn');
+  buttons.forEach(b=>b.classList.add('disabled'));
+  buttons.forEach(b=>b.onclick=null);
+  const correctBtn = [...buttons].find(b=> (b.dataset.val === 'true') === item.answer);
+  const isCorrect = selectedVal === item.answer;
+  correctBtn.classList.add('correct-answer');
+  if(!isCorrect){
+    const wrongBtn = [...buttons].find(b=> (b.dataset.val === 'true') === selectedVal);
+    wrongBtn.classList.add('wrong-answer');
+  }
+
+  if(isCorrect) correctCount++; else wrongCount++;
+  updateScoreboard(currentIndex+1);
+
+  const fb = document.getElementById('feedbackBox');
+  fb.className = 'feedback show ' + (isCorrect?'correct':'wrong');
+  fb.innerHTML = `<b>${isCorrect?'✓ Correct!':'✗ Not quite.'}</b>${item.explain}`;
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQuestion(){
+  currentIndex++;
+  renderCurrent();
+}
+
+let shuffledDefs = [];
+function renderMatching(){
+  shuffledDefs = shuffle(matchPairsRaw.map(p=>p.def));
+  quizArea.innerHTML = `
+    <div class="card">
+      <div class="section-tag">Matching Type</div>
+      <div class="q-number">Items ${sequence.length+1}–${totalItems} of ${totalItems}</div>
+      <div class="q-text">Match each term on the left with its correct definition. Select an answer for every item, then submit.</div>
+      <div id="matchWrap">
+        ${matchPairsRaw.map((p,i)=>`
+          <div class="match-row">
+            <div class="match-term">${p.term}</div>
+            <select class="match-select" id="match-${i}">
+              <option value="">— Select definition —</option>
+              ${shuffledDefs.map(d=>`<option value="${encodeURIComponent(d)}">${d}</option>`).join('')}
+            </select>
+          </div>
+        `).join('')}
+      </div>
+      <div id="matchSummary"></div>
+      <button class="submit-btn show" id="submitMatchBtn" onclick="submitMatching()">Submit Matching</button>
+      <button class="next-btn" id="nextBtn" onclick="finishMatching()">See Final Results →</button>
+    </div>
+  `;
+}
+
+function submitMatching(){
+  let localCorrect = 0, localWrong = 0;
+  matchPairsRaw.forEach((p,i)=>{
+    const sel = document.getElementById('match-'+i);
+    sel.disabled = true;
+    const chosen = sel.value ? decodeURIComponent(sel.value) : "";
+    if(chosen === p.def){
+      sel.classList.add('correct-answer');
+      localCorrect++;
+    } else {
+      sel.classList.add('wrong-answer');
+      localWrong++;
+    }
+  });
+  correctCount += localCorrect;
+  wrongCount += localWrong;
+  updateScoreboard(totalItems);
+
+  document.getElementById('matchSummary').innerHTML =
+    `You got <b>${localCorrect}</b> out of ${matchPairsRaw.length} matching items correct.`;
+  document.getElementById('submitMatchBtn').classList.remove('show');
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function finishMatching(){
+  matchingDone = true;
+  renderCurrent();
+}
+
+function renderFinal(){
+  const pct = Math.round((correctCount/totalItems)*100);
+  let msg = "";
+  if(pct >= 90) msg = "Outstanding! You're more than ready for the quiz. 🌟";
+  else if(pct >= 75) msg = "Great job! Just review a few weak spots. 💪";
+  else if(pct >= 50) msg = "Decent start — go over the explanations again before tomorrow. 📖";
+  else msg = "Give the slides another read-through — you've got this! 🔁";
+
+  quizArea.innerHTML = `
+    <div class="card intro-card">
+      <div class="section-tag">Results</div>
+      <h2>Reviewer Complete</h2>
+      <div class="final-score">${correctCount} / ${totalItems}</div>
+      <div class="final-pct">${pct}% correct</div>
+      <div class="breakdown">
+        <div class="breakdown-item"><div class="num" style="color:var(--green)">${correctCount}</div><div class="label">Correct</div></div>
+        <div class="breakdown-item"><div class="num" style="color:var(--red)">${wrongCount}</div><div class="label">Wrong</div></div>
+      </div>
+      <div class="final-msg">${msg}</div>
+      <button class="restart-btn" style="display:inline-block;" onclick="showIntro()">Restart Reviewer</button>
+    </div>
+  `;
+}
+
+// init
+showIntro();
+</script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Contemporary World — Case File Reviewer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#16233A;
+  --ink-2:#1F3350;
+  --ink-3:#28405F;
+  --paper:#EDE7D8;
+  --paper-dim:#D9D2BE;
+  --paper-line:#c8c0a8;
+  --red:#B23A2E;
+  --red-dim:#8f2e24;
+  --green:#3F6B4F;
+  --green-dim:#325a41;
+  --gold:#C9A227;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--ink);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(201,162,39,0.06), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(178,58,46,0.07), transparent 45%);
+  color:var(--paper);
+  font-family:'IBM Plex Sans', sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:32px 16px 64px;
+}
+
+.wrap{width:100%;max-width:760px;}
+
+.masthead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  border-bottom:2px solid var(--paper-dim);
+  padding-bottom:14px;
+  margin-bottom:28px;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.masthead .kicker{
+  font-family:'IBM Plex Mono', monospace;
+  letter-spacing:0.14em;
+  font-size:11px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+.masthead h1{
+  font-family:'Source Serif 4', serif;
+  font-weight:700;
+  font-size:clamp(24px,4.5vw,34px);
+  margin:4px 0 0;
+  line-height:1.15;
+}
+.masthead .file-no{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--paper-dim);
+  text-align:right;
+  white-space:nowrap;
+}
+
+.card{
+  background:var(--ink-2);
+  border:1px solid var(--ink-3);
+  border-radius:2px;
+  padding:28px 26px;
+  position:relative;
+  box-shadow:0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* ---------- START SCREEN ---------- */
+#screen-start .lede{
+  font-family:'Source Serif 4', serif;
+  font-style:italic;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--paper);
+  border-left:3px solid var(--gold);
+  padding-left:16px;
+  margin:0 0 22px;
+}
+.brief-list{
+  list-style:none;
+  margin:0 0 26px;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 20px;
+}
+.brief-list li{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  color:var(--paper-dim);
+  border-top:1px solid var(--ink-3);
+  padding-top:8px;
+}
+.brief-list li b{color:var(--paper);font-weight:600;display:block;font-family:'IBM Plex Sans',sans-serif;font-size:14px;margin-top:2px;}
+@media(max-width:480px){.brief-list{grid-template-columns:1fr;}}
+
+.btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  background:var(--gold);
+  color:var(--ink);
+  border:none;
+  padding:13px 22px;
+  border-radius:2px;
+  cursor:pointer;
+  font-weight:600;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(201,162,39,0.25);}
+.btn:active{transform:translateY(0);}
+.btn.secondary{
+  background:transparent;
+  color:var(--paper);
+  border:1px solid var(--paper-dim);
+}
+.btn.secondary:hover{border-color:var(--gold);color:var(--gold);box-shadow:none;}
+
+.kb-hint{
+  margin-top:20px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px;
+  color:var(--paper-dim);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+}
+.kb-hint span{display:inline-flex;align-items:center;gap:6px;}
+kbd{
+  background:var(--ink);
+  border:1px solid var(--paper-dim);
+  border-bottom-width:2px;
+  border-radius:3px;
+  padding:2px 6px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  color:var(--paper);
+}
+
+/* ---------- QUIZ SCREEN ---------- */
+.progress-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--paper-dim);
+  margin-bottom:10px;
+}
+.progress-bar{
+  height:4px;
+  background:var(--ink-3);
+  border-radius:2px;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+.progress-bar-fill{
+  height:100%;
+  background:var(--gold);
+  transition:width .25s ease;
+}
+
+.tally{
+  display:flex;
+  gap:18px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px;
+  margin-bottom:20px;
+  color:var(--paper-dim);
+}
+.tally b{color:var(--paper);}
+.tally .ok b{color:var(--green);}
+.tally .bad b{color:var(--red);}
+
+.case-no{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.1em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.question{
+  font-family:'Source Serif 4', serif;
+  font-weight:600;
+  font-size:clamp(18px,3.2vw,22px);
+  line-height:1.4;
+  margin:0 0 22px;
+}
+
+.choices{display:flex;flex-direction:column;gap:10px;}
+.choice{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  text-align:left;
+  background:var(--ink);
+  border:1px solid var(--ink-3);
+  border-radius:2px;
+  padding:13px 14px;
+  cursor:pointer;
+  font-family:'IBM Plex Sans', sans-serif;
+  font-size:15px;
+  color:var(--paper);
+  transition:border-color .12s ease, background .12s ease;
+}
+.choice:hover:not(.locked){border-color:var(--gold);}
+.choice .letter{
+  font-family:'IBM Plex Mono', monospace;
+  font-weight:600;
+  font-size:12.5px;
+  color:var(--gold);
+  border:1px solid var(--paper-dim);
+  border-radius:50%;
+  width:24px;height:24px;
+  flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.choice.selected{border-color:var(--gold);background:var(--ink-3);}
+.choice.correct{border-color:var(--green);background:rgba(63,107,79,0.22);}
+.choice.correct .letter{background:var(--green);color:var(--paper);border-color:var(--green);}
+.choice.incorrect{border-color:var(--red);background:rgba(178,58,46,0.18);}
+.choice.incorrect .letter{background:var(--red);color:var(--paper);border-color:var(--red);}
+.choice.locked{cursor:default;}
+
+.feedback{
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:2px;
+  font-size:13.5px;
+  line-height:1.55;
+  display:none;
+  position:relative;
+  animation:stampIn .28s ease;
+}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(63,107,79,0.15);border:1px dashed var(--green);}
+.feedback.bad{background:rgba(178,58,46,0.13);border:1px dashed var(--red);}
+.feedback .stamp{
+  font-family:'IBM Plex Mono', monospace;
+  font-weight:700;
+  letter-spacing:0.1em;
+  font-size:12px;
+  text-transform:uppercase;
+  display:inline-block;
+  padding:2px 8px;
+  border:2px solid currentColor;
+  border-radius:3px;
+  transform:rotate(-3deg);
+  margin-bottom:8px;
+}
+.feedback.ok .stamp{color:var(--green);}
+.feedback.bad .stamp{color:var(--red);}
+.feedback p{margin:0;color:var(--paper);}
+
+@keyframes stampIn{
+  0%{opacity:0;transform:scale(1.15) rotate(-6deg);}
+  60%{opacity:1;}
+  100%{opacity:1;transform:scale(1) rotate(0deg);}
+}
+
+.next-row{margin-top:22px;display:flex;justify-content:flex-end;}
+
+/* ---------- SUMMARY SCREEN ---------- */
+.score-block{
+  text-align:center;
+  padding:10px 0 24px;
+  border-bottom:1px solid var(--ink-3);
+  margin-bottom:24px;
+}
+.score-block .pct{
+  font-family:'Source Serif 4', serif;
+  font-weight:700;
+  font-size:56px;
+  line-height:1;
+  color:var(--gold);
+}
+.score-block .verdict{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--paper-dim);
+  margin-top:8px;
+}
+.score-grid{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-top:18px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--paper-dim);
+}
+.score-grid b{display:block;font-size:20px;font-family:'IBM Plex Sans',sans-serif;color:var(--paper);}
+.score-grid .g b{color:var(--green);}
+.score-grid .r b{color:var(--red);}
+
+.review-title{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin:0 0 14px;
+}
+.review-item{
+  border:1px solid var(--ink-3);
+  border-left:3px solid var(--red);
+  border-radius:2px;
+  padding:14px 16px;
+  margin-bottom:12px;
+}
+.review-item .rq{
+  font-family:'Source Serif 4', serif;
+  font-weight:600;
+  font-size:15.5px;
+  margin:0 0 10px;
+  line-height:1.4;
+}
+.review-item .row{font-size:13px;margin:4px 0;line-height:1.5;}
+.review-item .row.your{color:var(--red);}
+.review-item .row.correct{color:var(--green);}
+.review-item .expl{
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px dashed var(--ink-3);
+  font-size:13px;
+  color:var(--paper-dim);
+  line-height:1.55;
+}
+.all-correct{
+  text-align:center;
+  font-family:'Source Serif 4', serif;
+  font-style:italic;
+  color:var(--paper-dim);
+  padding:20px 0;
+}
+
+.summary-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+
+.hidden{display:none !important;}
+
+footer.credit{
+  text-align:center;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:10.5px;
+  color:var(--ink-3);
+  margin-top:22px;
+  letter-spacing:0.05em;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div>
+      <div class="kicker">The Contemporary World · Reviewer</div>
+      <h1>Global Governance &amp; the Global Economy</h1>
+    </div>
+    <div class="file-no" id="file-no">CASE FILE — LOADING</div>
+  </div>
+
+  <!-- START SCREEN -->
+  <div class="card" id="screen-start">
+    <p class="lede">A field reviewer covering the interstate system, the United Nations, and the structures of the global economy. Every reshuffling of this file changes the order of questions.</p>
+    <ul class="brief-list" id="brief-list"></ul>
+    <button class="btn" id="btn-start">Open the file — Start</button>
+    <div class="kb-hint">
+      <span><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd><kbd>D</kbd> choose an answer</span>
+      <span><kbd>Space</kbd> / <kbd>Enter</kbd> next question</span>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="card hidden" id="screen-quiz">
+    <div class="progress-row">
+      <span id="progress-label">Question 1 of 41</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+
+    <div class="tally">
+      <span>Answered: <b id="tally-answered">0</b></span>
+      <span class="ok">Correct: <b id="tally-correct">0</b></span>
+      <span class="bad">Wrong: <b id="tally-wrong">0</b></span>
+    </div>
+
+    <div class="case-no" id="case-no">CASE 01</div>
+    <p class="question" id="question-text"></p>
+    <div class="choices" id="choices"></div>
+
+    <div class="feedback" id="feedback">
+      <div class="stamp" id="feedback-stamp"></div>
+      <p id="feedback-text"></p>
+    </div>
+
+    <div class="next-row">
+      <button class="btn" id="btn-next" disabled>Next question →</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY SCREEN -->
+  <div class="card hidden" id="screen-summary">
+    <div class="score-block">
+      <div class="pct" id="score-pct">0%</div>
+      <div class="verdict" id="score-verdict">FILE CLOSED</div>
+      <div class="score-grid">
+        <div>Total <b id="sum-total">0</b></div>
+        <div class="g">Correct <b id="sum-correct">0</b></div>
+        <div class="r">Wrong <b id="sum-wrong">0</b></div>
+      </div>
+    </div>
+
+    <div class="review-title">Items flagged for review</div>
+    <div id="review-list"></div>
+
+    <div class="summary-actions">
+      <button class="btn" id="btn-restart">Reshuffle &amp; retake</button>
+    </div>
+  </div>
+
+  <footer class="credit">Covers TCW 003 · TCW 004A · TCW 004B — offline reviewer, not affiliated with your instructor</footer>
+</div>
+
+<script>
+// ---------------------------------------------------------------
+// QUESTION BANK
+// ---------------------------------------------------------------
+const QUESTION_BANK = [
+{q:"According to the lesson, what is the first attribute of today's global system?",choices:["Countries or states that are independent and govern themselves","A single world government","The absence of borders","A universal currency"],correct:0,expl:"Today's global system begins with countries/states that are independent and self-governing, which then interact through diplomacy and international organizations."},
+{q:"How do independent states primarily interact with one another, according to the lesson?",choices:["Through military conquest","Through diplomacy","Through colonization","Through religious councils"],correct:1,expl:"Independent states interact with each other through diplomacy."},
+{q:"Beyond simply facilitating meetings between states, what do international organizations also do?",choices:["They dissolve automatically","They take on lives of their own","They become states themselves","They are banned from further activity"],correct:1,expl:"The lesson notes international organizations go beyond facilitating state meetings — they take on lives of their own."},
+{q:"How many elements does a \"state\" have, according to the lesson?",choices:["Two","Three","Four","Five"],correct:2,expl:"A state has four elements: people, territory, government, and sovereignty."},
+{q:"Which of the following correctly lists the four elements of a state?",choices:["People, territory, government, sovereignty","Language, religion, culture, army","Borders, currency, flag, capital","Population, GDP, military, diplomacy"],correct:0,expl:"The four elements of a state are people, territory, government, and sovereignty."},
+{q:"Who described a \"nation\" as an \"imagined community\"?",choices:["Max Weber","Benedict Anderson","Woodrow Wilson","Karl Marx"],correct:1,expl:"Anderson defined a nation as an \"imagined community.\""},
+{q:"According to the lesson, what is true of the terms \"nation\" and \"state\" within \"nation-state\"?",choices:["They are fully interchangeable","They are two non-interchangeable terms, and not all nations are states","A nation is legally required to become a state","States always predate nations"],correct:1,expl:"The nation-state is composed of two non-interchangeable terms — nation and state — and not all nations are states."},
+{q:"The origin of the present-day concept of sovereignty is traced back to which treaty?",choices:["Treaty of Versailles","Treaty of Westphalia","Treaty of Paris","Treaty of Tordesillas"],correct:1,expl:"Modern sovereignty traces back to the Treaty of Westphalia in 1648."},
+{q:"The Treaty of Westphalia (1648) marked the end of which conflict?",choices:["The Hundred Years' War","The Napoleonic Wars","The Thirty Years' War","World War I"],correct:2,expl:"Westphalia ended the Thirty Years' War among Europe's major continental powers."},
+{q:"The stability of the Westphalian System was eventually challenged by which historical figure?",choices:["Otto von Bismarck","Napoleon Bonaparte","Adolf Hitler","Louis XIV"],correct:1,expl:"The Westphalian System's stability was challenged by Napoleon Bonaparte."},
+{q:"The Concert of Europe was an alliance comprised of which four great powers?",choices:["France, Germany, Italy, Spain","UK, Austria, Russia, and Prussia","USA, UK, France, Russia","Austria, Germany, Ottoman Empire, Russia"],correct:1,expl:"The Concert of Europe comprised the UK, Austria, Russia, and Prussia."},
+{q:"What did the Concert of Europe seek to restore?",choices:["Free trade across colonies","Monarchical, hereditary, and religious privileges from before the French Revolution and Napoleonic Wars","A single European currency","Ottoman rule over Eastern Europe"],correct:1,expl:"It sought to restore monarchical, hereditary, and religious privileges predating the French Revolution and Napoleonic Wars."},
+{q:"What term is commonly used for intergovernmental groups primarily made up of member states?",choices:["Non-governmental organizations","International organizations","Trans-national corporations","Multilateral development banks"],correct:1,expl:"\"International organization\" commonly refers to intergovernmental groups primarily composed of member states."},
+{q:"Which of the following is NOT listed among the powers of international organizations in the lesson?",choices:["Power of classification","Power to fix meanings","Power to diffuse norms","Power to declare war"],correct:3,expl:"The listed powers are classification, fixing meanings, and diffusing norms — not declaring war."},
+{q:"When was the United Nations founded?",choices:["October 24, 1945","January 1, 1919","June 26, 1945","September 1, 1939"],correct:0,expl:"The UN was founded on October 24, 1945."},
+{q:"Which of the following is NOT one of the UN's stated founding purposes?",choices:["Maintaining international peace and security","Developing friendly relations among nations","Promoting social progress and human rights","Regulating global stock markets"],correct:3,expl:"The UN's purposes are peace/security, friendly relations, and social progress/human rights — not stock market regulation."},
+{q:"How many principal organs does the United Nations have?",choices:["Four","Five","Six","Seven"],correct:2,expl:"The UN has six principal organs."},
+{q:"Which of the following is NOT one of the six principal organs of the UN?",choices:["Security Council","General Assembly","World Trade Organization","Secretariat"],correct:2,expl:"The six organs are ECOSOC, Trusteeship Council, ICJ, General Assembly, Security Council, and Secretariat — the WTO is a separate body."},
+{q:"Which UN organ coordinates the economic and social work of the UN and consults with NGOs?",choices:["Security Council","Economic and Social Council (ECOSOC)","Trusteeship Council","International Court of Justice"],correct:1,expl:"ECOSOC coordinates the UN's economic and social work and maintains a link to civil society through NGOs."},
+{q:"How many members does ECOSOC have, and what is their term length?",choices:["15 members, 2-year terms","54 members, 3-year terms","193 members, 5-year terms","5 members, permanent terms"],correct:1,expl:"ECOSOC has 54 members elected by the General Assembly for three-year terms."},
+{q:"When did the Trusteeship Council suspend its operations, and why?",choices:["1994, after the independence of Palau","1945, at the founding of the UN","2001, after 9/11","1994, after the fall of the Soviet Union"],correct:0,expl:"It suspended operations on November 1, 1994, a month after Palau — its last remaining trust territory — became independent."},
+{q:"How many permanent members does the UN Security Council have?",choices:["Three","Five","Ten","Fifteen"],correct:1,expl:"The Security Council has five permanent members."},
+{q:"Which of the following is one of the five permanent members of the Security Council?",choices:["Germany","Japan","China","India"],correct:2,expl:"The five permanent members are China, France, the Russian Federation, the UK, and the US."},
+{q:"How many non-permanent members does the Security Council have, and what is their term?",choices:["Ten, elected for two-year terms","Five, elected for four-year terms","Fifteen, permanent","Twenty, elected for one-year terms"],correct:0,expl:"There are ten non-permanent members, elected by the General Assembly for two-year terms."},
+{q:"The General Assembly is composed of how many Member States, each with an equal vote?",choices:["54","15","5","193"],correct:3,expl:"The General Assembly comprises all 193 Member States, each with one equal vote."},
+{q:"Which of the following is a key decision made by the General Assembly?",choices:["Approving the UN budget","Commanding UN peacekeeping troops directly","Setting global interest rates","Issuing passports"],correct:0,expl:"The General Assembly approves the UN budget, appoints the Secretary-General (on Security Council recommendation), and elects non-permanent Security Council members."},
+{q:"The Secretary-General is appointed by the General Assembly on the recommendation of which organ?",choices:["Economic and Social Council","Security Council","International Court of Justice","Trusteeship Council"],correct:1,expl:"The General Assembly appoints the Secretary-General on the Security Council's recommendation."},
+{q:"Which organ carries out the day-to-day work of the UN and is headed by the Secretary-General?",choices:["Secretariat","General Assembly","Trusteeship Council","International Court of Justice"],correct:0,expl:"The Secretariat carries out the UN's day-to-day work and is headed by the Secretary-General."},
+{q:"Where is much of the UN Secretariat located?",choices:["Geneva, Switzerland","The Hague, Netherlands","New York City, USA","Vienna, Austria"],correct:2,expl:"Much of the Secretariat is located in New York City, USA, alongside three major offices and five regional commissions elsewhere."},
+{q:"One of the UN's challenges involves limits placed on its organs by the need to respect what?",choices:["State sovereignty","Corporate interests","Religious doctrine","Media freedom"],correct:0,expl:"The lesson lists respect for state sovereignty as a limiting challenge for UN organs and programs, alongside security-related issues."},
+{q:"According to the IMF, \"economic globalization\" is best described as what?",choices:["A recent phenomenon caused solely by the internet","A historical process representing the result of human innovation and technological progress","A government policy adopted after World War II","A temporary trend that is now reversing"],correct:1,expl:"The IMF describes economic globalization as a historical process resulting from human innovation and technological progress."},
+{q:"Economic globalization is characterized by increasing integration of economies for the movement of which three things across borders?",choices:["Goods, services, and capital","Culture, religion, and language","Military assets, diplomacy, and trade","People, food, and water"],correct:0,expl:"It involves increasing cross-border integration for the movement of goods, services, and capital."},
+{q:"Which of the following is NOT one of the four interconnected dimensions of economic globalization in the lesson?",choices:["Globalization of trade of goods and services","Globalization of financial and capital markets","Globalization of technology and communication","Globalization of political ideology"],correct:3,expl:"The four dimensions are trade, financial/capital markets, technology/communication, and production — not political ideology."},
+{q:"The fourth dimension of economic globalization listed in the lesson is the globalization of what?",choices:["Production","Education","Military power","Religion"],correct:0,expl:"The fourth dimension is the globalization of production."},
+{q:"How does the lesson define a \"global actor\"?",choices:["Any social structure able to act, influence, and engage in the global or international system","Only a national government","Only a private corporation","A celebrity with global influence"],correct:0,expl:"A global actor is any social structure able to act, influence, and engage in the global/international system."},
+{q:"An International Governmental Organization (IGO) is best described as an entity created through what?",choices:["A treaty involving two or more nations","A private business contract","A single country's constitution","A stock exchange listing"],correct:0,expl:"An IGO is created by treaty involving two or more nations working on issues of common interest."},
+{q:"Which global actor is described as providing the information that lets people make informed choices to participate in the global community?",choices:["Media","Trans-National Corporations","Nation-States","Multilateral Development Banks"],correct:0,expl:"Media is described as pertaining to the information that allows informed participation in the global community."},
+{q:"Multilateral Development Banks (MDBs) primarily provide which of the following to developing countries?",choices:["Military equipment","Loans, grants, guarantees, and technical assistance","Tourism promotion","Religious education"],correct:1,expl:"MDBs are international financial institutions owned by countries that provide loans, grants, guarantees, private equity, and technical assistance."},
+{q:"As a global actor, \"nation-states\" refer to political legitimacy based on what?",choices:["A sovereign entity within a sovereign territorial space","A shared religion across borders","A single global currency","A corporation's headquarters location"],correct:0,expl:"Nation-states refer to political legitimacy based on a sovereign entity within a sovereign territorial space."},
+{q:"NGOs (Non-Governmental Organizations) are described in the lesson as including which of the following?",choices:["Charities, non-profit advocacy groups, and business/cultural associations","National armies","Central banks","Royal families"],correct:0,expl:"NGOs include charities, non-profit advocacy groups, and business and cultural associations, aiming to provide economic aid to developing countries."},
+{q:"What distinguishes Trans-National Corporations (TNCs) according to the lesson?",choices:["They are always smaller than nation-states","Many are richer and more powerful than the states that seek to regulate them","They operate in only one country","They are non-profit organizations"],correct:1,expl:"TNCs exert great power in the globalized economy — many are richer and more powerful than the states trying to regulate them."}
+];
+
+// ---------------------------------------------------------------
+// STATE
+// ---------------------------------------------------------------
+let deck = [];         // shuffled questions with shuffled choices for this session
+let currentIndex = 0;
+let answered = 0, correctCount = 0, wrongCount = 0;
+let wrongItems = [];
+let locked = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function buildDeck(){
+  const shuffledQs = shuffle(QUESTION_BANK);
+  deck = shuffledQs.map(item=>{
+    const letters = ["A","B","C","D"];
+    const order = shuffle([0,1,2,3]); // indices into original choices
+    const choices = order.map(i=>item.choices[i]);
+    const correctIdx = order.indexOf(item.correct);
+    return {q:item.q, choices, correctIdx, expl:item.expl};
+  });
+}
+
+function fileNumber(){
+  const n = Math.floor(1000+Math.random()*9000);
+  return "CASE FILE NO. " + n;
+}
+
+// ---------------------------------------------------------------
+// ELEMENTS
+// ---------------------------------------------------------------
+const screenStart = document.getElementById('screen-start');
+const screenQuiz = document.getElementById('screen-quiz');
+const screenSummary = document.getElementById('screen-summary');
+
+const briefList = document.getElementById('brief-list');
+const btnStart = document.getElementById('btn-start');
+const btnNext = document.getElementById('btn-next');
+const btnRestart = document.getElementById('btn-restart');
+
+const progressLabel = document.getElementById('progress-label');
+const progressPct = document.getElementById('progress-pct');
+const progressFill = document.getElementById('progress-fill');
+const tallyAnswered = document.getElementById('tally-answered');
+const tallyCorrect = document.getElementById('tally-correct');
+const tallyWrong = document.getElementById('tally-wrong');
+const caseNo = document.getElementById('case-no');
+const questionText = document.getElementById('question-text');
+const choicesEl = document.getElementById('choices');
+const feedback = document.getElementById('feedback');
+const feedbackStamp = document.getElementById('feedback-stamp');
+const feedbackText = document.getElementById('feedback-text');
+
+document.getElementById('file-no').textContent = fileNumber();
+
+briefList.innerHTML = `
+  <li><b>${QUESTION_BANK.length} questions</b>drawn from Weeks 1–4</li>
+  <li><b>Multiple choice</b>four options per item</li>
+  <li><b>New order</b>every time you open the file</li>
+  <li><b>Full recap</b>wrong items explained at the end</li>
+`;
+
+// ---------------------------------------------------------------
+// FLOW
+// ---------------------------------------------------------------
+function startQuiz(){
+  buildDeck();
+  currentIndex = 0; answered = 0; correctCount = 0; wrongCount = 0; wrongItems = [];
+  screenStart.classList.add('hidden');
+  screenSummary.classList.add('hidden');
+  screenQuiz.classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  locked = false;
+  const item = deck[currentIndex];
+  const letters = ["A","B","C","D"];
+
+  caseNo.textContent = "CASE " + String(currentIndex+1).padStart(2,'0');
+  questionText.textContent = item.q;
+  progressLabel.textContent = `Question ${currentIndex+1} of ${deck.length}`;
+  progressPct.textContent = Math.round((currentIndex)/deck.length*100) + "%";
+  progressFill.style.width = (currentIndex/deck.length*100) + "%";
+
+  tallyAnswered.textContent = answered;
+  tallyCorrect.textContent = correctCount;
+  tallyWrong.textContent = wrongCount;
+
+  choicesEl.innerHTML = "";
+  item.choices.forEach((choiceText, i)=>{
+    const div = document.createElement('button');
+    div.className = "choice";
+    div.setAttribute('data-idx', i);
+    div.innerHTML = `<span class="letter">${letters[i]}</span><span>${choiceText}</span>`;
+    div.addEventListener('click', ()=>selectChoice(i));
+    choicesEl.appendChild(div);
+  });
+
+  feedback.className = "feedback";
+  feedback.classList.remove('show');
+  btnNext.disabled = true;
+  btnNext.textContent = (currentIndex === deck.length-1) ? "See summary →" : "Next question →";
+}
+
+function selectChoice(i){
+  if(locked) return;
+  locked = true;
+  const item = deck[currentIndex];
+  const isCorrect = (i === item.correctIdx);
+  answered++;
+  if(isCorrect){ correctCount++; } else { wrongCount++; wrongItems.push({...item, yourIdx:i}); }
+
+  const nodes = choicesEl.querySelectorAll('.choice');
+  nodes.forEach(node=>{
+    const idx = parseInt(node.getAttribute('data-idx'));
+    node.classList.add('locked');
+    if(idx === item.correctIdx) node.classList.add('correct');
+    if(idx === i && !isCorrect) node.classList.add('incorrect');
+    if(idx === i) node.classList.add('selected');
+  });
+
+  feedback.className = "feedback show " + (isCorrect ? "ok" : "bad");
+  feedbackStamp.textContent = isCorrect ? "Verified — Correct" : "Flagged — Incorrect";
+  feedbackText.textContent = item.expl;
+
+  tallyAnswered.textContent = answered;
+  tallyCorrect.textContent = correctCount;
+  tallyWrong.textContent = wrongCount;
+
+  btnNext.disabled = false;
+}
+
+function nextQuestion(){
+  if(!locked) return; // must answer first
+  if(currentIndex === deck.length-1){
+    showSummary();
+  } else {
+    currentIndex++;
+    renderQuestion();
+  }
+}
+
+function showSummary(){
+  progressFill.style.width = "100%";
+  screenQuiz.classList.add('hidden');
+  screenSummary.classList.remove('hidden');
+
+  const pct = Math.round((correctCount/deck.length)*100);
+  document.getElementById('score-pct').textContent = pct + "%";
+  document.getElementById('sum-total').textContent = deck.length;
+  document.getElementById('sum-correct').textContent = correctCount;
+  document.getElementById('sum-wrong').textContent = wrongCount;
+
+  let verdict = "FILE CLOSED";
+  if(pct === 100) verdict = "CASE FULLY SOLVED";
+  else if(pct >= 85) verdict = "COMMENDABLE WORK";
+  else if(pct >= 70) verdict = "PASSABLE — REVIEW FLAGGED ITEMS";
+  else verdict = "REOPEN THE FILE — MORE STUDY NEEDED";
+  document.getElementById('score-verdict').textContent = verdict;
+
+  const letters = ["A","B","C","D"];
+  const reviewList = document.getElementById('review-list');
+  if(wrongItems.length === 0){
+    reviewList.innerHTML = `<div class="all-correct">Every item verified correct. No flags in this file.</div>`;
+  } else {
+    reviewList.innerHTML = wrongItems.map(item=>`
+      <div class="review-item">
+        <p class="rq">${item.q}</p>
+        <div class="row your">Your answer: ${letters[item.yourIdx]}. ${item.choices[item.yourIdx]}</div>
+        <div class="row correct">Correct answer: ${letters[item.correctIdx]}. ${item.choices[item.correctIdx]}</div>
+        <div class="expl">${item.expl}</div>
+      </div>
+    `).join("");
+  }
+}
+
+// ---------------------------------------------------------------
+// EVENTS
+// ---------------------------------------------------------------
+btnStart.addEventListener('click', startQuiz);
+btnNext.addEventListener('click', nextQuestion);
+btnRestart.addEventListener('click', ()=>{
+  document.getElementById('file-no').textContent = fileNumber();
+  screenSummary.classList.add('hidden');
+  screenStart.classList.remove('hidden');
+});
+
+document.addEventListener('keydown', (e)=>{
+  const key = e.key.toLowerCase();
+
+  if(!screenStart.classList.contains('hidden')){
+    if(key === 'enter' || key === ' '){ e.preventDefault(); startQuiz(); }
+    return;
+  }
+
+  if(!screenQuiz.classList.contains('hidden')){
+    if(['a','b','c','d'].includes(key)){
+      if(locked) return;
+      const idx = ['a','b','c','d'].indexOf(key);
+      if(idx < deck[currentIndex].choices.length) selectChoice(idx);
+    } else if(key === 'enter' || key === ' '){
+      e.preventDefault();
+      if(locked) nextQuestion();
+    }
+    return;
+  }
+
+  if(!screenSummary.classList.contains('hidden')){
+    if(key === 'enter' || key === ' '){
+      e.preventDefault();
+      document.getElementById('file-no').textContent = fileNumber();
+      screenSummary.classList.add('hidden');
+      screenStart.classList.remove('hidden');
+    }
+  }
+});
+</script>
+</body>
+</html>
