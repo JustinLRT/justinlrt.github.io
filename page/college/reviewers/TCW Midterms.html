@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Contemporary World — Midterm Reviewer</title>
+<style>
+  :root{
+    --ink:#0f1b33;
+    --navy:#16264a;
+    --navy-deep:#0a1329;
+    --gold:#c9a24b;
+    --gold-soft:#e8d5a3;
+    --paper:#f6f3ec;
+    --paper-dim:#eae5d6;
+    --line:#33456b;
+    --good:#2f8f5b;
+    --bad:#b8433a;
+    --font-display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --font-body:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
+    --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 85% -10%, #21335e 0%, transparent 60%),
+      var(--navy-deep);
+    color:var(--paper);
+    font-family:var(--font-body);
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:32px 16px 80px;
+  }
+  .stage{
+    width:100%;
+    max-width:820px;
+  }
+  .masthead{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom:2px solid var(--gold);
+    padding-bottom:14px;
+    margin-bottom:22px;
+  }
+  .masthead .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    opacity:.85;
+  }
+  .masthead h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:28px;
+    margin:4px 0 0;
+    letter-spacing:.01em;
+  }
+  .card{
+    background:linear-gradient(180deg, #1a2a52 0%, #162349 100%);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:0 24px 60px -30px rgba(0,0,0,.7);
+  }
+
+  /* ---------- INTRO SCREEN ---------- */
+  #intro{padding:38px 34px;}
+  #intro p{line-height:1.65;color:#d6ddee;font-size:15px;}
+  .rules{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 20px;
+    margin:22px 0 26px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--gold-soft);
+  }
+  .rules div{
+    border-left:2px solid var(--gold);
+    padding-left:10px;
+    line-height:1.5;
+  }
+  .rules b{color:var(--paper);font-family:var(--font-body);display:block;font-size:13px;margin-bottom:2px;}
+  .btn{
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:.02em;
+    padding:14px 26px;
+    border-radius:2px;
+    background:var(--gold);
+    color:#1a1204;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(201,162,75,.6);}
+  .btn.secondary{
+    background:transparent;
+    color:var(--gold-soft);
+    border:1px solid var(--line);
+  }
+  .btn.secondary:hover{border-color:var(--gold);}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+
+  /* ---------- QUIZ SCREEN ---------- */
+  #quiz{padding:0;overflow:hidden;}
+  .progressbar{height:4px;background:var(--navy-deep);}
+  .progressbar > div{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .25s ease;}
+  .quiz-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px 0;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:#9fb0d6;
+  }
+  .quiz-head .tag{
+    display:inline-block;
+    padding:2px 8px;
+    border:1px solid var(--gold);
+    color:var(--gold-soft);
+    border-radius:2px;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-left:8px;
+  }
+  .scorepeek{display:flex;gap:14px;}
+  .scorepeek span{color:var(--paper);}
+  .scorepeek .ok{color:var(--good);}
+  .scorepeek .no{color:var(--bad);}
+
+  .qwrap{padding:22px 30px 28px;}
+  .qnum{
+    font-family:var(--font-mono);
+    color:var(--gold);
+    font-size:13px;
+    margin-bottom:6px;
+  }
+  .qtext{
+    font-family:var(--font-display);
+    font-size:21px;
+    line-height:1.45;
+    margin:0 0 22px;
+    color:#f8f6ef;
+  }
+  .options{display:flex;flex-direction:column;gap:10px;}
+  .opt{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:rgba(255,255,255,.02);
+    cursor:pointer;
+    transition:background .12s ease, border-color .12s ease;
+    text-align:left;
+  }
+  .opt:hover{background:rgba(201,162,75,.08);border-color:var(--gold);}
+  .opt .letter{
+    font-family:var(--font-mono);
+    font-weight:700;
+    color:var(--gold-soft);
+    border:1px solid var(--line);
+    width:26px;height:26px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;
+    flex:0 0 auto;
+    font-size:12.5px;
+  }
+  .opt .otext{font-size:15px;line-height:1.5;color:#e9edf7;padding-top:2px;}
+
+  .opt.correct{background:rgba(47,143,91,.18);border-color:var(--good);}
+  .opt.correct .letter{background:var(--good);color:#fff;border-color:var(--good);}
+  .opt.wrong{background:rgba(184,67,58,.18);border-color:var(--bad);}
+  .opt.wrong .letter{background:var(--bad);color:#fff;border-color:var(--bad);}
+  .opt.disabled{cursor:default;}
+  .opt.dim{opacity:.5;}
+
+  .explain{
+    margin-top:16px;
+    padding:14px 16px;
+    background:rgba(0,0,0,.22);
+    border-left:3px solid var(--gold);
+    border-radius:2px;
+    font-size:13.5px;
+    line-height:1.6;
+    color:#d6ddee;
+    display:none;
+  }
+  .explain.show{display:block;}
+  .explain b{color:var(--gold-soft);}
+
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 30px 26px;
+    border-top:1px solid var(--line);
+  }
+  .hint-keys{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:#7f8fb8;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  kbd{
+    background:#0d1730;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:1px 6px;
+    font-family:var(--font-mono);
+    color:var(--gold-soft);
+    font-size:11px;
+  }
+
+  /* ---------- RESULTS SCREEN ---------- */
+  #results{padding:36px 34px 30px;display:none;}
+  .score-hero{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:26px;
+  }
+  .ring{
+    position:relative;
+    width:120px;height:120px;flex:0 0 auto;
+  }
+  .ring svg{transform:rotate(-90deg);}
+  .ring .pct{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:700;
+  }
+  .score-stats{display:flex;flex-direction:column;gap:6px;}
+  .score-stats h2{font-family:var(--font-display);margin:0 0 4px;font-size:24px;}
+  .stat-line{display:flex;gap:22px;font-family:var(--font-mono);font-size:13px;color:#c6cee6;}
+  .stat-line b{color:var(--paper);}
+
+  .review-title{
+    font-family:var(--font-mono);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--gold-soft);
+    margin:0 0 14px;
+  }
+  .review-item{
+    border:1px solid var(--line);
+    border-left:3px solid var(--bad);
+    border-radius:3px;
+    padding:14px 16px;
+    margin-bottom:12px;
+    background:rgba(184,67,58,.06);
+  }
+  .review-item .rq{font-size:14.5px;color:#f2f2f2;margin:0 0 8px;line-height:1.5;}
+  .review-item .ra-row{font-size:13px;margin:2px 0;line-height:1.5;}
+  .review-item .your{color:var(--bad);}
+  .review-item .correctans{color:var(--good);}
+  .review-item .rexp{margin-top:8px;font-size:13px;color:#cfd6ea;line-height:1.55;padding-top:8px;border-top:1px dashed var(--line);}
+  .no-wrongs{
+    text-align:center;
+    padding:26px;
+    font-family:var(--font-display);
+    font-size:17px;
+    color:var(--gold-soft);
+    border:1px dashed var(--gold);
+    border-radius:4px;
+  }
+  .results-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+
+  @media (max-width:600px){
+    .rules{grid-template-columns:1fr;}
+    .qtext{font-size:18px;}
+    .qwrap{padding:18px 18px 22px;}
+    .quiz-head{padding:14px 18px 0;flex-wrap:wrap;gap:6px;}
+    .footer-row{padding:14px 18px 20px;flex-direction:column;align-items:flex-start;gap:10px;}
+    .score-hero{flex-direction:column;align-items:flex-start;}
+  }
+
+  ::selection{background:var(--gold);color:#1a1204;}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="masthead">
+    <div>
+      <div class="eyebrow">Social Science Department · Midterm Preparation</div>
+      <h1>The Contemporary World</h1>
+    </div>
+    <div class="eyebrow" id="clockTag">110 items</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="card" id="intro">
+    <p>A self-graded reviewer covering globalization theory, the state and nation, internationalism, the global interstate system, the United Nations, and the global economy. Roughly one in five items is <b>situational</b> — applying a concept to a scenario rather than asking for a definition.</p>
+    <div class="rules">
+      <div><b>110 items</b>reshuffled into a new order every time you reload the page.</div>
+      <div><b>Instant feedback</b>see the correct answer and a short explanation right after you answer.</div>
+      <div><b>Full review</b>every item you missed is listed at the end with its explanation.</div>
+      <div><b>Keyboard-friendly</b>press A–D to answer, Enter or Space to move on.</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="startBtn">Begin Reviewer</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card" id="quiz" style="display:none;">
+    <div class="progressbar"><div id="progressFill" style="width:0%"></div></div>
+    <div class="quiz-head">
+      <div>Item <span id="qIndex">1</span> / <span id="qTotal">110</span><span class="tag" id="sitTag" style="display:none;">Situational</span></div>
+      <div class="scorepeek">Answered <span id="ansCount">0</span> · <span class="ok" id="okCount">0</span> correct · <span class="no" id="noCount">0</span> wrong</div>
+    </div>
+    <div class="qwrap">
+      <div class="qnum" id="qCategory">TOPIC</div>
+      <p class="qtext" id="qText">Question text goes here</p>
+      <div class="options" id="optionsWrap"></div>
+      <div class="explain" id="explainBox"></div>
+    </div>
+    <div class="footer-row">
+      <div class="hint-keys">
+        <span><kbd>A</kbd><kbd>B</kbd><kbd>C</kbd><kbd>D</kbd> to answer</span>
+        <span><kbd>Enter</kbd> / <kbd>Space</kbd> next item</span>
+      </div>
+      <button class="btn" id="nextBtn" disabled>Next Item →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="card" id="results">
+    <div class="score-hero">
+      <div class="ring">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#0d1730" stroke-width="10"/>
+          <circle id="ringProgress" cx="60" cy="60" r="52" fill="none" stroke="#c9a24b" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+        </svg>
+        <div class="pct" id="pctText">0%</div>
+      </div>
+      <div class="score-stats">
+        <h2 id="verdict">Results</h2>
+        <div class="stat-line"><span><b id="totalAnswered">0</b>/110 answered</span><span class="ok"><b id="totalCorrect">0</b> correct</span><span class="no"><b id="totalWrong">0</b> wrong</span></div>
+        <div class="stat-line" style="color:#8b98bd;">Situational items correct: <b id="sitCorrectStat" style="color:#c6cee6;">0/0</b></div>
+      </div>
+    </div>
+
+    <div class="review-title">Items to Review</div>
+    <div id="reviewList"></div>
+
+    <div class="results-actions">
+      <button class="btn" id="retakeBtn">Retake (Reshuffled)</button>
+      <button class="btn secondary" id="reviewMissedBtn">Jump to Missed Items Only</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   QUESTION BANK — 110 items
+   type: "def" (concept/definition) or "sit" (situational/applied)
+   ============================================================ */
+const BANK = [
+// ---------------- GLOBALIZATION DEFINITIONS & THEORISTS (15) ----------------
+{cat:"Globalization: Definitions",type:"def",q:"According to Held and McGrew (2003), globalization refers to the expanding scale, growing magnitude, speeding-up, and deepening impact of what?",opts:["Interregional flows and patterns of social interaction","Military alliances between superpowers","Currency exchange rates","National election cycles"],a:0,exp:"Held and McGrew define globalization through the widening, intensifying, and accelerating reach of social interaction across regions."},
+{cat:"Globalization: Definitions",type:"def",q:"Anthony Giddens (2003) describes globalization mainly as:",opts:["The intensification of world-wide social relations linking distant localities","A purely military strategy","A single government ruling all nations","A temporary 20th-century trend"],a:0,exp:"Giddens emphasizes that local happenings are shaped by distant events and vice versa, i.e., intensified worldwide social relations."},
+{cat:"Globalization: Definitions",type:"def",q:"Manfred Steger (2003) defines globalization as a multidimensional set of social processes that do which of the following?",opts:["Create, multiply, stretch, and intensify worldwide social interdependencies and exchanges","Isolate nations from foreign influence","Eliminate the need for international trade","Restore colonial boundaries"],a:0,exp:"Steger's definition stresses expanding interdependence while also raising people's awareness of local-global connections."},
+{cat:"Globalization: Definitions",type:"def",q:"Which globalization scholar's definition is most associated with the phrase 'destroyed distance in the sense that its processes are no longer limited to geographic boundaries'?",opts:["An unnamed sociological/complex-processes definition emphasizing spread of relationships and organizations","Karl Marx","Immanuel Kant","Woodrow Wilson"],a:0,exp:"This description highlights globalization as a complex of interrelated processes spreading relationships and organizations worldwide, collapsing the relevance of geographic distance."},
+{cat:"Globalization: Definitions",type:"def",q:"Manfred Steger's fuller definition speaks of 'the expansion and identification of social relations and consciousness' across which two dimensions?",opts:["World-time and world-space","Money and labor","Religion and language","Land and sea"],a:0,exp:"Steger frames globalization as expanding social relations and consciousness across world-time and world-space, cutting across political, economic, cultural, and geographic boundaries."},
+{cat:"Globalization: Definitions",type:"def",q:"Arjun Appadurai introduced the concept of overlapping global dimensions he called:",opts:["Scapes","Spheres","Zones","Sectors"],a:0,exp:"Appadurai coined 'scapes' to describe multiple, intersecting dimensions of global integration."},
+{cat:"Globalization: Definitions",type:"def",q:"Which Appadurai 'scape' refers to the global movement of people?",opts:["Ethnoscape","Mediascape","Technoscape","Financescape"],a:0,exp:"Ethnoscape describes the flow of people across borders (migrants, tourists, refugees, workers)."},
+{cat:"Globalization: Definitions",type:"def",q:"Which Appadurai 'scape' refers to the flow of culture and information through media?",opts:["Mediascape","Ideoscape","Ethnoscape","Financescape"],a:0,exp:"Mediascape covers the global circulation of images and cultural content through media."},
+{cat:"Globalization: Definitions",type:"def",q:"Appadurai's 'technoscape' refers to:",opts:["The circulation of mechanical goods and software across borders","The movement of migrant populations","The global spread of political ideologies","The flow of currency between banks"],a:0,exp:"Technoscape covers cross-border movement of machinery, technology, and software."},
+{cat:"Globalization: Definitions",type:"def",q:"'Financescape' and 'ideoscape' respectively refer to:",opts:["Global circulation of money; realm where political ideas move","Global circulation of media; realm of religious doctrine","Movement of migrants; movement of goods","Circulation of technology; circulation of currency"],a:0,exp:"Financescape = global money flows; ideoscape = the space where political ideas and ideologies circulate."},
+{cat:"Globalization: Definitions",type:"sit",q:"A rural community in the Philippines starts receiving remittances from relatives working abroad, watches Korean dramas streamed online, and buys smartphones assembled in China. Which combination of Appadurai's 'scapes' best explains this community's experience?",opts:["Financescape, mediascape, and technoscape overlapping","Only ethnoscape, since it concerns migration alone","Only ideoscape, since it concerns political belief","None, because Appadurai's model excludes rural areas"],a:0,exp:"Remittances (financescape), streamed dramas (mediascape), and imported electronics (technoscape) show scapes operating simultaneously and overlapping in daily life."},
+{cat:"Globalization: Definitions",type:"def",q:"Which of the following is a commonly cited economic definition of globalization referenced in the reviewer, describing integration of national markets into a wider global market?",opts:["Integration of national markets into a wider global market signified by increased free trade","A plan for a single global currency","A treaty ending all tariffs permanently","A UN resolution banning trade barriers"],a:0,exp:"This economic framing treats globalization primarily as the integration of national markets through increased free trade."},
+{cat:"Globalization: Definitions",type:"sit",q:"A student claims 'globalization only refers to businesses trading across borders and has nothing to do with culture or politics.' Based on the multiple scholarly definitions discussed (Steger, Appadurai, Giddens), how should this claim be evaluated?",opts:["It is too narrow; globalization is multidimensional, covering economic, cultural, political, and social processes","It is completely correct as stated","It is only about culture, not economics","It is only relevant to the 21st century"],a:0,exp:"Multiple scholars (Steger, Appadurai) stress globalization's economic, cultural, political, and social dimensions — not economics alone."},
+{cat:"Globalization: Definitions",type:"def",q:"The common thread across most academic definitions of globalization is:",opts:["Increasing interconnectedness and interdependence across borders","Increasing isolation of nation-states","The disappearance of all borders legally","A single unified world government"],a:0,exp:"Despite different emphases, all major definitions converge on growing interconnectedness and interdependence."},
+{cat:"Globalization: Definitions",type:"def",q:"Which statement best distinguishes Giddens' definition from Steger's?",opts:["Giddens stresses distant-local mutual shaping, while Steger stresses expansion plus subjective awareness of connections","Giddens focuses only on scapes, Steger only on the state","Giddens rejects globalization as a concept, Steger supports it","There is no meaningful difference between them"],a:0,exp:"Giddens focuses on how local and distant events shape each other; Steger adds the dimension of growing subjective awareness of global connectedness."},
+
+// ---------------- THREE VIEWS ON GLOBALIZATION (6) ----------------
+{cat:"Three Views on Globalization",type:"def",q:"The view that globalization is a consequence of modernity is called the:",opts:["Modern Phenomenon View","Historical Evolution View","Pendulum View","Transformationalist View"],a:0,exp:"The Modern Phenomenon View treats globalization as a product of the modern era."},
+{cat:"Three Views on Globalization",type:"def",q:"The view holding that globalization is nothing new and has always been part of human history is the:",opts:["Historical Evolution View","Modern Phenomenon View","Pendulum View","Globalist View"],a:0,exp:"The Historical Evolution View sees globalization as a continuous process throughout human history, not a recent invention."},
+{cat:"Three Views on Globalization",type:"def",q:"The view describing globalization as swinging back and forth with ups and downs is the:",opts:["Pendulum View","Modern Phenomenon View","Historical Evolution View","Traditionalist View"],a:0,exp:"The Pendulum View captures the idea that globalization advances and retreats cyclically rather than moving in one direction only."},
+{cat:"Three Views on Globalization",type:"sit",q:"A historian argues that the ancient Silk Road already connected Europe, Asia, and Africa through trade centuries before the modern era, so 'globalization' is simply an old phenomenon with a new name. Which of the three views does this argument best represent?",opts:["Historical Evolution View","Modern Phenomenon View","Pendulum View","None of these views"],a:0,exp:"Pointing to ancient trade networks like the Silk Road as evidence globalization is not new reflects the Historical Evolution View."},
+{cat:"Three Views on Globalization",type:"sit",q:"An analyst notes that global trade expanded rapidly before World War I, then collapsed during the two World Wars and the Great Depression, only to expand again after 1945. This pattern of expansion-contraction-expansion best illustrates which view?",opts:["Pendulum View","Modern Phenomenon View","Historical Evolution View","Globalist View"],a:0,exp:"The rise-and-fall pattern of global trade across different periods matches the Pendulum View's back-and-forth framing."},
+{cat:"Three Views on Globalization",type:"def",q:"Which of the three views would most likely credit the Industrial Revolution and modern technology as the primary drivers of globalization?",opts:["Modern Phenomenon View","Historical Evolution View","Pendulum View","Traditionalist Perspective"],a:0,exp:"The Modern Phenomenon View attributes globalization to modern developments such as industrialization and technology."},
+
+// ---------------- PERSPECTIVES: GLOBALIST / TRADITIONALIST / TRANSFORMATIONALIST (6) ----------------
+{cat:"Perspectives on Globalization",type:"def",q:"Which perspective sees globalization as an inevitable social process highlighting the primacy of the global economy built on integrated national economies?",opts:["Globalists","Traditionalists","Transformationalists","Realists"],a:0,exp:"Globalists view globalization as inevitable and central, driven by the integration of national economies into a global economy."},
+{cat:"Perspectives on Globalization",type:"def",q:"Which perspective regards globalization as more myth than significant event, viewing economic integration as nothing more than usual state-to-state occurrences?",opts:["Traditionalists","Globalists","Transformationalists","Internationalists"],a:0,exp:"Traditionalists downplay globalization's novelty, treating it as ordinary interaction among similarly situated governments rather than a distinct new phenomenon."},
+{cat:"Perspectives on Globalization",type:"def",q:"Which perspective positions itself between Globalists and Traditionalists, viewing globalization as introducing gradual changes across different dimensions rather than something entirely new or a myth?",opts:["Transformationalists","Realists","Liberal Internationalists","Socialist Internationalists"],a:0,exp:"Transformationalists take the middle ground, acknowledging real change without treating it as a totally unprecedented or mythical process."},
+{cat:"Perspectives on Globalization",type:"sit",q:"A policymaker insists that 'nothing has fundamentally changed — countries have always traded and negotiated with each other; today's globalization is just business as usual.' Which perspective does this policymaker hold?",opts:["Traditionalist","Globalist","Transformationalist","Modernist"],a:0,exp:"Dismissing globalization as ordinary state interaction, not a real transformation, reflects the Traditionalist perspective."},
+{cat:"Perspectives on Globalization",type:"sit",q:"An economist argues that while global integration is real and reshaping national economies, it hasn't erased the importance of the state or created a single borderless world — it has simply introduced new layers of complexity. Which perspective is this?",opts:["Transformationalist","Traditionalist","Globalist","Isolationist"],a:0,exp:"Acknowledging real but incomplete/complex change is the hallmark of the Transformationalist middle-ground view."},
+{cat:"Perspectives on Globalization",type:"sit",q:"A business leader declares, 'The global economy now overrides local economies completely; national borders are essentially irrelevant to commerce.' This statement most closely aligns with which perspective?",opts:["Globalist","Traditionalist","Transformationalist","Nationalist"],a:0,exp:"Treating the global economy as dominant and inevitable, overriding local/national economies, reflects the Globalist perspective."},
+
+// ---------------- ATTRIBUTES OF GLOBALIZATION (8) ----------------
+{cat:"Attributes of Globalization",type:"def",q:"'Various forms of connectivity' as an attribute of globalization refers to connections that may be:",opts:["Economic, political, or cultural","Only economic","Only military","Only religious"],a:0,exp:"This attribute recognizes that globalization creates multiple types of connections — economic, political, and cultural."},
+{cat:"Attributes of Globalization",type:"def",q:"The 'expansion and stretching of social relations' attribute is illustrated in the reviewer by the example of:",opts:["The expanding function of NGOs (non-government organizations)","The shrinking of the United Nations","The disappearance of embassies","Declining international trade"],a:0,exp:"The growing role and reach of NGOs illustrates how social relations stretch beyond the local community to a global scale."},
+{cat:"Attributes of Globalization",type:"def",q:"'Intensification and acceleration of social exchanges and activities' primarily describes how globalization has reshaped:",opts:["Our concept of time and space","Our concept of religion","Our concept of family structure","Our concept of language"],a:0,exp:"This attribute is about how faster, more intense global exchange changes how people perceive time and distance."},
+{cat:"Attributes of Globalization",type:"def",q:"The attribute stating that globalization 'occurs subjectively' means that:",opts:["Global connectivity shapes people's perceptions of the world while their actions also influence it","Globalization is purely objective and measurable","Globalization has no effect on individual perception","Only governments experience globalization"],a:0,exp:"This attribute highlights the two-way relationship: global connectivity shapes perception, and perception in turn shapes participation and action."},
+{cat:"Attributes of Globalization",type:"sit",q:"An international NGO expands from delivering aid in one country to coordinating relief efforts and advocacy campaigns across five continents simultaneously. Which attribute of globalization does this best demonstrate?",opts:["Expansion and stretching of social relations","Occurs subjectively only","Intensification of time-space only","None of these attributes"],a:0,exp:"An organization's functions stretching across multiple continents exemplifies the expansion and stretching of social relations."},
+{cat:"Attributes of Globalization",type:"sit",q:"A person in Manila video-calls a relative in Toronto instantly, watches a live sports match in Europe in real time, and tracks a package shipped from Shenzhen arriving within days. Which attribute of globalization is most directly illustrated?",opts:["Intensification and acceleration of social exchanges and activities","Various forms of connectivity only, with no time element","Occurs subjectively, unrelated to technology","Expansion of NGOs specifically"],a:0,exp:"The speed and immediacy of these cross-border exchanges reflect the intensification/acceleration attribute reshaping time and space."},
+{cat:"Attributes of Globalization",type:"sit",q:"Two people witness the same global news event — one interprets it as a sign of growing global unity, the other as a threat to local identity. This difference in interpretation, while both are equally 'connected,' best illustrates which attribute?",opts:["Globalization occurs subjectively","Various forms of connectivity only","Expansion of NGOs","None of the four attributes"],a:0,exp:"Differing personal interpretations of the same globally connected event show how globalization is experienced and given meaning subjectively."},
+{cat:"Attributes of Globalization",type:"def",q:"How many core attributes of globalization were identified in the reviewer's framework?",opts:["Four","Two","Six","Ten"],a:0,exp:"The four attributes are: various forms of connectivity, expansion/stretching of social relations, intensification/acceleration of exchanges, and occurring subjectively."},
+
+// ---------------- THE STATE & ITS ELEMENTS (10) ----------------
+{cat:"The State",type:"def",q:"A state is best defined as a community of persons that:",opts:["Permanently occupies a definite territory, has its own government, and enjoys freedom from external control","Shares the same religion regardless of location","Is any group of migrants abroad","Is a business enterprise operating internationally"],a:0,exp:"This is the classical definition of a state: permanent population, defined territory, government, and independence from external control."},
+{cat:"The State",type:"def",q:"The state is considered the main political actor in the global arena because it is:",opts:["Measurable and quantifiable — citizens are counted, territory is bounded, government is constitutionally defined","Impossible to define legally","Only a cultural concept with no legal standing","Identical to a nation in every case"],a:0,exp:"The state's objective, measurable features (population, territory, government) make it the primary recognized actor internationally."},
+{cat:"The State",type:"def",q:"Which of the following is NOT one of the four classic elements of a state?",opts:["Currency","People","Territory","Government"],a:0,exp:"The four elements of a state are people, territory, government, and sovereignty — currency is not one of them."},
+{cat:"The State",type:"def",q:"In the elements of the state, 'sovereignty' refers to:",opts:["The supreme power of the state to command or enforce obedience","The total land area of a country","The number of citizens in a state","The state's official language"],a:0,exp:"Sovereignty is the supreme authority of the state to command obedience and be free from external control."},
+{cat:"The State",type:"def",q:"Which element of the state is described as 'the agency that carries the will of the state'?",opts:["Government","People","Territory","Sovereignty"],a:0,exp:"The government is the institutional agency that implements and carries out the state's will."},
+{cat:"The State",type:"def",q:"Territory as an element of the state may be described using which of the following categories?",opts:["Terrestrial, fluvial, maritime, and aerial","Only terrestrial","Only maritime and aerial","Historical and cultural only"],a:0,exp:"Territory covers land (terrestrial), rivers (fluvial), seas (maritime), and airspace (aerial) domains."},
+{cat:"The State",type:"def",q:"Which theory of the origin of the state claims that political authority comes directly from a deity?",opts:["Divine Right Theory","Social Contract Theory","Necessity or Force Theory","Historical Evolution Theory"],a:0,exp:"The Divine Right Theory holds that rulers' authority originates from divine will."},
+{cat:"The State",type:"def",q:"The theory suggesting that the state arose from the strong dominating the weak through conquest or coercion is the:",opts:["Necessity or Force Theory","Divine Right Theory","Social Contract Theory","Pactum Unionis"],a:0,exp:"The Necessity or Force Theory attributes state formation to domination and conquest."},
+{cat:"The State",type:"def",q:"Social Contract Theory explains the origin of the state through two kinds of agreement, namely:",opts:["Pactum Unionis and Pactum Subjectionis","Pactum Unionis and Divine Mandate","Pactum Subjectionis and Force Theory","Pactum Unionis and Historical Evolution"],a:0,exp:"Social Contract Theory involves a Pactum Unionis (agreement to unite as a society) and a Pactum Subjectionis (agreement to submit to authority)."},
+{cat:"The State",type:"sit",q:"A newly declared territory has a permanent population, defined borders, and a functioning government, but other countries refuse to establish diplomatic relations with it and it cannot act independently in foreign affairs. Which element of statehood is most clearly lacking or contested?",opts:["Sovereignty (freedom from external control and recognition)","People","Territory","Government"],a:0,exp:"Even with population, territory, and government present, lack of recognized independence and freedom to act — sovereignty — is the missing/contested element."},
+
+// ---------------- THE NATION & NATION-STATE (8) ----------------
+{cat:"The Nation",type:"def",q:"Max Weber described a nation as:",opts:["A community of sentiment","A legal contract between citizens and rulers","A purely economic unit","An international organization"],a:0,exp:"Weber's definition emphasizes shared sentiment/feeling as the basis of a nation, rather than legal or territorial boundaries."},
+{cat:"The Nation",type:"def",q:"Benedict Anderson famously described the nation as a(n):",opts:["Imagined community","Physical territory","Governmental agency","Economic bloc"],a:0,exp:"Anderson's influential concept describes the nation as an 'imagined community' because members feel connected despite never meeting most fellow members."},
+{cat:"The Nation",type:"def",q:"According to Ernest Renan, a nation is a large-scale solidarity constituted by:",opts:["The feeling of sacrifices made in the past and those one is prepared to make in the future","A single shared ethnicity only","A common currency","A shared border with neighboring states"],a:0,exp:"Renan ties nationhood to a shared sense of historical sacrifice and ongoing willingness to sacrifice for the collective."},
+{cat:"The Nation",type:"def",q:"Which statement correctly distinguishes 'nation' from 'state'?",opts:["A nation is a community based on shared identity/sentiment, while a state is a political-legal entity with territory and government","A nation and a state are always identical terms","A state has no government, but a nation does","A nation must always have official UN recognition"],a:0,exp:"'Nation' refers to a community bound by shared identity, while 'state' is the political-legal institution with territory, government, and sovereignty."},
+{cat:"The Nation",type:"def",q:"The term 'nation-state' is composed of:",opts:["Two non-interchangeable terms — not all nations are states","Two identical, interchangeable terms","A term exclusively used for the state's economy","A term with no relation to statehood"],a:0,exp:"The reviewer emphasizes that nation and state are distinct concepts combined in the term 'nation-state,' and not all nations possess their own state."},
+{cat:"The Nation",type:"sit",q:"The Kurdish people share a common language, culture, and strong sense of collective identity, but they do not have their own internationally recognized sovereign state and instead live across several countries. This situation best illustrates:",opts:["A nation without a state (nation ≠ state)","A state without a nation","A nation-state in the fullest sense","An international organization"],a:0,exp:"A group with shared identity but no sovereign state of its own demonstrates that 'nation' and 'state' are not automatically the same thing."},
+{cat:"The Nation",type:"sit",q:"Filipino citizens abroad who have never met each other still feel a shared bond and pride when the Philippine flag is raised at an international event. This feeling is best explained by which concept?",opts:["Benedict Anderson's 'imagined community'","Ernest Renan's Pactum Subjectionis","Max Weber's Divine Right Theory","Appadurai's technoscape"],a:0,exp:"Anderson's 'imagined community' explains how people who will never personally meet still feel connected as members of the same nation."},
+{cat:"The Nation",type:"def",q:"Which of these best captures the idea behind Renan's view of the nation as forward-looking as well as backward-looking?",opts:["A nation depends both on memory of shared past sacrifice and willingness for future sacrifice","A nation only depends on its ancient history","A nation depends solely on future economic plans","A nation requires no shared identity at all"],a:0,exp:"Renan's definition is notable for combining past memory and future commitment as the glue of national solidarity."},
+
+// ---------------- INTERNATIONALISM (12) ----------------
+{cat:"Internationalism",type:"def",q:"Internationalism is best defined as a political principle that advocates:",opts:["Greater political or economic cooperation among states and nations","The abolition of all nation-states","Military competition between superpowers","Strict isolationism among countries"],a:0,exp:"Internationalism promotes cooperation among states rather than isolation or conflict."},
+{cat:"Internationalism",type:"def",q:"The modern expression of internationalism is most commonly associated with:",opts:["Appreciation of diverse cultures and a desire for world peace","Support for a single global currency only","Elimination of the United Nations","Total rejection of international law"],a:0,exp:"In its modern sense, internationalism is expressed as appreciating cultural diversity and pursuing peace worldwide."},
+{cat:"Internationalism",type:"def",q:"Internationalism is broadly divided into which two categories?",opts:["Liberal Internationalism and Socialist Internationalism","Modern Internationalism and Ancient Internationalism","Political Internationalism and Religious Internationalism","Economic Internationalism and Military Internationalism"],a:0,exp:"The two broad categories discussed are Liberal Internationalism and Socialist Internationalism."},
+{cat:"Internationalism",type:"def",q:"Liberal Internationalism holds that without a form of world government, the international system would be:",opts:["Chaotic","Perfectly peaceful","Entirely socialist","Religiously unified"],a:0,exp:"Liberal Internationalism argues that some form of order (though not necessarily world government) is needed to prevent chaos among states."},
+{cat:"Internationalism",type:"def",q:"Socialist Internationalism is centered on the idea of:",opts:["The greatest happiness of all nations taken together","Protecting private corporate profits internationally","Strengthening only capitalist economies","Preserving monarchies worldwide"],a:0,exp:"Socialist Internationalism emphasizes collective welfare and happiness across all nations, rooted in socialist/communist ideology."},
+{cat:"Internationalism",type:"def",q:"Which philosopher likened states to being part of a 'global system' and imagined a form of global government?",opts:["Immanuel Kant","Karl Marx","Joseph Stalin","Woodrow Wilson"],a:0,exp:"Kant conceptualized states as interconnected within a global system and envisioned a form of global governance for peace."},
+{cat:"Internationalism",type:"def",q:"Jeremy Bentham is associated with which contribution to Liberal Internationalism?",opts:["Advocating the creation of international law for inter-state relations","Founding the Comintern","Establishing the League of Nations","Writing the Communist Manifesto"],a:0,exp:"Bentham promoted the development of international law to govern relations between states."},
+{cat:"Internationalism",type:"def",q:"Giuseppe Mazzini advocated for:",opts:["A system of free nations cooperating with each other to build an international system","A single unified socialist bloc","Reviving absolute monarchy in Europe","Abolishing all forms of internationalism"],a:0,exp:"Mazzini envisioned free, cooperating nations forming the basis of an international system."},
+{cat:"Internationalism",type:"def",q:"Woodrow Wilson is best known in this context as:",opts:["A prominent advocate for the creation of the League of Nations","The founder of the Comintern","The author of Das Kapital","A key figure in the Concert of Europe"],a:0,exp:"Wilson championed the League of Nations as a Liberal Internationalist project after World War I."},
+{cat:"Internationalism",type:"def",q:"Karl Marx's contribution to Socialist Internationalism centered on advocacy for:",opts:["Economic equality","Free-market capitalism","Absolute monarchy","Colonial expansion"],a:0,exp:"Marx's socialist internationalism was grounded in the pursuit of economic equality across and within nations."},
+{cat:"Internationalism",type:"def",q:"Vladimir Lenin established which organization in 1919 to advance Socialist Internationalism?",opts:["The Communist International (Comintern)","The League of Nations","The United Nations","The Concert of Europe"],a:0,exp:"Lenin founded the Comintern in 1919 to coordinate international communist strategy."},
+{cat:"Internationalism",type:"sit",q:"After Lenin's death, his successor dissolved the Comintern in 1943 and later re-established it under a new name as the Communist Information Bureau. Who was this successor and what was the new body called?",opts:["Joseph Stalin; the Cominform","Karl Marx; the Comintern II","Czar Nicolas II; the Comintern","Woodrow Wilson; the League of Nations"],a:0,exp:"Joseph Stalin dissolved the Comintern in 1943 and later re-established it as the Cominform (Communist Information Bureau)."},
+
+// ---------------- INTERSTATE SYSTEM: WESTPHALIA & CONCERT OF EUROPE (6) ----------------
+{cat:"The Interstate System",type:"def",q:"The present-day concept of state sovereignty is traced back to which historical agreement?",opts:["The Treaty of Westphalia (1648)","The Treaty of Versailles (1919)","The UN Charter (1945)","The Congress of Vienna (1815)"],a:0,exp:"The Treaty of Westphalia in 1648, ending the Thirty Years' War, is considered the origin of the modern concept of state sovereignty."},
+{cat:"The Interstate System",type:"def",q:"The Treaty of Westphalia ended which major European conflict?",opts:["The Thirty Years' War","World War I","The Napoleonic Wars","The Hundred Years' War"],a:0,exp:"The Peace of Westphalia in 1648 ended the Thirty Years' War among major continental European powers."},
+{cat:"The Interstate System",type:"def",q:"The Westphalian System provided stability for European nations until it faced a major challenge from:",opts:["Napoleon Bonaparte","Otto von Bismarck","Vladimir Lenin","Woodrow Wilson"],a:0,exp:"Napoleon Bonaparte's conquests disrupted the balance established under the Westphalian System."},
+{cat:"The Interstate System",type:"def",q:"The Concert of Europe was an alliance of great powers comprised of which countries?",opts:["UK, Austria, Russia, and Prussia","USA, China, Japan, and India","France, Germany, Italy, and Spain","Canada, Mexico, Brazil, and Argentina"],a:0,exp:"The Concert of Europe united the UK, Austria, Russia, and Prussia to restore order after the Napoleonic Wars."},
+{cat:"The Interstate System",type:"def",q:"The main goal of the Concert of Europe was to:",opts:["Restore monarchical, hereditary, and religious privileges predating the French Revolution and Napoleonic Wars","Establish a global communist government","Create the United Nations","Abolish all monarchies in Europe"],a:0,exp:"The Concert of Europe sought to roll back revolutionary changes and restore the pre-1789 monarchical order."},
+{cat:"The Interstate System",type:"sit",q:"After decades of war disrupted established borders and monarchies, several European great powers convene to restore hereditary rule and prevent future large-scale conflict through diplomatic cooperation. This scenario most directly parallels which historical development?",opts:["The formation of the Concert of Europe after the Napoleonic Wars","The signing of the UN Charter in 1945","The founding of the Comintern in 1919","The Treaty of Westphalia ending the Thirty Years' War"],a:0,exp:"Restoring monarchical order among great powers after prolonged conflict directly mirrors the Concert of Europe's post-Napoleonic role (though the Westphalia option is tempting, the restoration-of-monarchy detail is specific to the Concert of Europe)."},
+
+// ---------------- THE UNITED NATIONS & ITS SIX ORGANS (15) ----------------
+{cat:"The United Nations",type:"def",q:"The United Nations was founded on:",opts:["October 24, 1945","June 26, 1945","January 1, 1946","November 1, 1994"],a:0,exp:"The UN officially came into existence on October 24, 1945, after its Charter was ratified."},
+{cat:"The United Nations",type:"def",q:"The UN Charter was introduced/signed in San Francisco on:",opts:["June 26, 1945","October 24, 1945","April 1946","November 1, 1994"],a:0,exp:"Delegates signed the UN Charter in San Francisco on June 26, 1945, with the organization formally founded later that year."},
+{cat:"The United Nations",type:"def",q:"Which of the following is NOT one of the UN's stated core purposes?",opts:["Establishing a single global currency","Maintaining international peace and security","Developing friendly relations among nations","Promoting social progress and human rights"],a:0,exp:"A global currency is not among the UN's founding purposes; peace/security, friendly relations, and social progress/human rights are."},
+{cat:"The United Nations",type:"def",q:"How many principal organs does the United Nations have?",opts:["Six","Four","Eight","Ten"],a:0,exp:"The UN has six principal organs: General Assembly, Security Council, ECOSOC, Trusteeship Council, ICJ, and the Secretariat."},
+{cat:"The United Nations",type:"def",q:"Which UN organ is described as 'the main policy-making organ,' comprising all member states with equal votes?",opts:["General Assembly","Security Council","Secretariat","Trusteeship Council"],a:0,exp:"The General Assembly is the main policy-making body where all 193 member states have one equal vote each."},
+{cat:"The United Nations",type:"def",q:"Which UN organ appoints the Secretary-General upon the recommendation of the Security Council?",opts:["The General Assembly","The Trusteeship Council","The Secretariat","The International Court of Justice"],a:0,exp:"The General Assembly formally appoints the Secretary-General based on the Security Council's recommendation."},
+{cat:"The United Nations",type:"def",q:"Which UN organ takes the lead in determining the existence of a threat to peace or an act of aggression?",opts:["The Security Council","The Economic and Social Council","The Trusteeship Council","The Secretariat"],a:0,exp:"The Security Council has primary responsibility for identifying threats to peace and acts of aggression."},
+{cat:"The United Nations",type:"def",q:"How many permanent members does the UN Security Council have, and which nations are they?",opts:["Five: China, France, Russian Federation, the United Kingdom, and the United States","Five: Germany, Japan, India, Brazil, and South Africa","Ten: all G20 economic leaders","Three: USA, Russia, and China only"],a:0,exp:"The five permanent Security Council members are China, France, Russia, the UK, and the US."},
+{cat:"The United Nations",type:"def",q:"Non-permanent members of the UN Security Council are elected by the General Assembly for terms of:",opts:["Two years","Nine years","Five years","One year"],a:0,exp:"Ten non-permanent Security Council members serve two-year terms, elected by the General Assembly."},
+{cat:"The United Nations",type:"def",q:"Which UN organ coordinates the economic and social work of the UN and consults with NGOs?",opts:["Economic and Social Council (ECOSOC)","Security Council","Trusteeship Council","International Court of Justice"],a:0,exp:"ECOSOC coordinates economic/social programs and maintains formal consultative ties with NGOs."},
+{cat:"The United Nations",type:"def",q:"ECOSOC has how many members, elected for how many years?",opts:["54 members, three-year terms","15 members, nine-year terms","193 members, indefinite terms","5 members, two-year terms"],a:0,exp:"ECOSOC has 54 members elected by the General Assembly for three-year terms."},
+{cat:"The United Nations",type:"def",q:"The Trusteeship Council suspended its operations on November 1, 1994, one month after the independence of:",opts:["Palau","East Timor","South Sudan","Kosovo"],a:0,exp:"The Trusteeship Council suspended operations after Palau, the last remaining UN trust territory, gained independence."},
+{cat:"The United Nations",type:"def",q:"The International Court of Justice (ICJ) is seated in which city?",opts:["The Hague, Netherlands","New York, USA","Geneva, Switzerland","Brussels, Belgium"],a:0,exp:"The ICJ sits at the Peace Palace in The Hague, Netherlands — the only principal UN organ not located in New York."},
+{cat:"The United Nations",type:"def",q:"How many judges compose the International Court of Justice, and what is their term of office?",opts:["15 judges, nine-year terms","5 judges, five-year terms","54 judges, three-year terms","193 judges, lifetime terms"],a:0,exp:"The ICJ is composed of 15 judges elected for nine-year terms."},
+{cat:"The United Nations",type:"sit",q:"A member state disagrees with a neighboring country over a maritime boundary and wants a binding legal ruling based on international law rather than negotiating politically through the Security Council. Which UN organ should it approach?",opts:["The International Court of Justice","The Trusteeship Council","The Secretariat","The Economic and Social Council"],a:0,exp:"Legal disputes between states requiring rulings based on international law are handled by the International Court of Justice."},
+
+// ---------------- GLOBAL ACTORS: IGO, NGO, TNC, MEDIA, MDB, NATION-STATE (10) ----------------
+{cat:"Global Actors",type:"def",q:"An International Governmental Organization (IGO) is best defined as:",opts:["An entity created by treaty involving two or more nations working on issues of common interest","A private company operating in multiple countries","A single country's foreign ministry","An informal group of citizens with no legal status"],a:0,exp:"IGOs are treaty-based entities formed by multiple nations to address shared concerns like peace, security, and social/economic issues."},
+{cat:"Global Actors",type:"def",q:"Which global actor 'pertains to the different information which allows people to make informed choices to participate in the global community'?",opts:["Media","Multilateral Development Banks","Nation-states","Trans-National Corporations"],a:0,exp:"Media is identified as the actor providing information for informed global participation."},
+{cat:"Global Actors",type:"def",q:"Multilateral Development Banks (MDBs) are best described as:",opts:["International financial institutions owned by countries that provide loans, grants, and technical assistance to developing nations","Private hedge funds with no government ownership","Religious charitable foundations","Media conglomerates that finance journalism"],a:0,exp:"MDBs (e.g., World Bank, ADB) are country-owned financial institutions supporting development projects."},
+{cat:"Global Actors",type:"def",q:"'Nation-states' as global actors refer to political legitimacy based on:",opts:["A sovereign entity for a nation within a sovereign territorial space","A private corporation's brand identity","An informal cultural network","A media company's broadcast license"],a:0,exp:"Nation-states as global actors derive their legitimacy from sovereignty over a defined territory."},
+{cat:"Global Actors",type:"def",q:"Non-Governmental Organizations (NGOs) as global actors typically include:",opts:["Charities, non-profit advocacy groups, and business/cultural associations aiming to provide economic aid to developing countries","Only branches of national governments","Only for-profit multinational corporations","Only religious institutions with government funding"],a:0,exp:"NGOs include charities and advocacy groups that often channel aid and support to developing nations."},
+{cat:"Global Actors",type:"def",q:"Trans-National Corporations (TNCs) are notable in the global economy because:",opts:["Many are richer and more powerful than the states that seek to regulate them","They are always smaller than national governments","They cannot operate across more than one country","They are legally identical to NGOs"],a:0,exp:"TNCs often wield economic power exceeding that of the states meant to regulate them, due to massive annual profits and global reach."},
+{cat:"Global Actors",type:"sit",q:"A massive electronics manufacturer operates factories in a dozen countries, earns more annual revenue than the GDP of several small nations, and successfully lobbies against stricter international regulations. Which type of global actor does this best represent?",opts:["Trans-National Corporation (TNC)","International Governmental Organization (IGO)","Multilateral Development Bank (MDB)","Nation-state"],a:0,exp:"A profit-driven company with cross-border operations wielding economic power exceeding some states is a classic Trans-National Corporation."},
+{cat:"Global Actors",type:"sit",q:"An organization funded by donor countries provides low-interest loans and technical support to help a developing country build infrastructure, but is not a private bank and is jointly owned by multiple governments. Which global actor is this?",opts:["A Multilateral Development Bank","A Trans-National Corporation","A Non-Governmental Organization","A media conglomerate"],a:0,exp:"Government-owned institutions offering loans and technical assistance for development match the definition of a Multilateral Development Bank."},
+{cat:"Global Actors",type:"sit",q:"A coalition of environmental charities with no government funding runs conservation projects and advocacy campaigns worldwide, relying on donations rather than profit. This is best classified as which type of global actor?",opts:["Non-Governmental Organization (NGO)","Trans-National Corporation (TNC)","International Governmental Organization (IGO)","Multilateral Development Bank (MDB)"],a:0,exp:"Donation-funded, non-profit advocacy and charity work is characteristic of NGOs."},
+{cat:"Global Actors",type:"sit",q:"Two or more national governments sign a treaty creating a permanent body tasked with facilitating diplomatic cooperation and joint responses to shared security concerns. This body is best classified as a(n):",opts:["International Governmental Organization (IGO)","Trans-National Corporation (TNC)","Non-Governmental Organization (NGO)","Media network"],a:0,exp:"A treaty-based body created by multiple governments for cooperation on shared concerns is an IGO."},
+
+// ---------------- GLOBAL ECONOMY & IMF (8) ----------------
+{cat:"Global Economy",type:"def",q:"According to the International Monetary Fund (IMF), 'economic globalization' is described as a historical process representing the result of:",opts:["Human innovation and technological progress","Random chance events in history","Purely military conquest","A single treaty signed in 1945"],a:0,exp:"The IMF frames economic globalization as arising from human innovation and technological advancement over time."},
+{cat:"Global Economy",type:"def",q:"Economic globalization, per the IMF, has the characteristic of increasing integration of economies for the movement of which three things across borders?",opts:["Goods, services, and capital","Only labor and taxes","Only military resources","Only cultural products"],a:0,exp:"The IMF highlights the cross-border movement of goods, services, and capital as central to economic globalization."},
+{cat:"Global Economy",type:"def",q:"Which of the following is one of the IMF's four interconnected dimensions of economic globalization?",opts:["The globalization of trade of goods and services","The globalization of religious practice","The globalization of national elections","The globalization of military alliances"],a:0,exp:"Trade of goods and services is one of the four IMF-identified dimensions of economic globalization."},
+{cat:"Global Economy",type:"def",q:"Besides trade, which other dimension of economic globalization involves cross-border movement of investment and monetary instruments?",opts:["Globalization of financial and capital markets","Globalization of production only","Globalization of technology only","Globalization of communication only"],a:0,exp:"The globalization of financial and capital markets covers investment flows and monetary movement across borders."},
+{cat:"Global Economy",type:"def",q:"Which IMF dimension of economic globalization covers the spread of innovations, digital tools, and connectivity worldwide?",opts:["Globalization of technology and communication","Globalization of trade only","Globalization of production only","Globalization of financial markets only"],a:0,exp:"This dimension refers to the worldwide diffusion of technology and communication tools."},
+{cat:"Global Economy",type:"def",q:"The fourth IMF dimension of economic globalization, referring to manufacturing/supply chains spread across multiple countries, is called:",opts:["The globalization of production","The globalization of currency","The globalization of labor unions","The globalization of taxation"],a:0,exp:"The globalization of production describes how manufacturing and supply chains now span multiple countries."},
+{cat:"Global Economy",type:"sit",q:"A smartphone is designed in one country, has its chips manufactured in another, is assembled in a third, and is sold worldwide through both online and physical retail markets, with its parts financed through international capital markets. Which combination of IMF dimensions of economic globalization does this scenario best represent?",opts:["Globalization of production, trade, and financial/capital markets together","Only globalization of technology, unrelated to trade","Only globalization of trade, unrelated to production","None of the four IMF dimensions apply"],a:0,exp:"This scenario spans production (multi-country manufacturing), trade (global sales), and financial/capital markets (international financing) simultaneously."},
+{cat:"Global Economy",type:"sit",q:"A country reduces tariffs and opens its markets, allowing foreign companies to build factories locally, foreign banks to offer investment products, and its citizens to access streaming platforms based abroad. According to the IMF framework, this scenario illustrates the interconnected nature of which dimensions?",opts:["Trade, financial/capital markets, production, and technology/communication all interacting together","Only military globalization","Only cultural globalization with no economic link","Only the globalization of religion"],a:0,exp:"Reduced tariffs (trade), foreign investment products (financial/capital markets), local factories (production), and streaming platforms (technology/communication) show all four IMF dimensions interacting."},
+
+// ---------------- ADDITIONAL ITEMS TO COMPLETE THE SET (6) ----------------
+{cat:"Globalization: Definitions",type:"def",q:"Which term describes the broad process by which national economies, cultures, and populations become increasingly interconnected through cross-border flows of goods, ideas, and people?",opts:["Globalization","Isolationism","Federalism","Autarky"],a:0,exp:"Globalization is the umbrella term for growing interconnectedness of economies, cultures, and populations across borders."},
+{cat:"Internationalism",type:"def",q:"Which of the following best distinguishes Liberal Internationalism from Socialist Internationalism in terms of their guiding concern?",opts:["Liberal Internationalism emphasizes orderly cooperation without world government, while Socialist Internationalism emphasizes collective economic welfare across nations","Both are identical in every respect","Liberal Internationalism rejects all cooperation, while Socialist Internationalism supports isolation","Socialist Internationalism was founded by Woodrow Wilson"],a:0,exp:"Liberal Internationalism focuses on orderly interstate cooperation, while Socialist Internationalism centers on shared economic welfare and equality among nations."},
+{cat:"The United Nations",type:"def",q:"Which UN organ carries out the day-to-day administrative work of the organization and is headed by the Secretary-General?",opts:["The Secretariat","The General Assembly","The Security Council","The Trusteeship Council"],a:0,exp:"The Secretariat, led by the Secretary-General, performs the UN's daily administrative and operational work."},
+{cat:"The State",type:"def",q:"Which of the following best explains why a state is often described as 'measurable and quantifiable' compared to more abstract concepts like a nation?",opts:["Its population can be counted, its territory has defined bounds, and its government is constitutionally recognized","Because all states share the same religion","Because states have no legal existence","Because a state has no fixed population"],a:0,exp:"Unlike the more abstract, sentiment-based idea of a nation, a state's citizens, borders, and government are concretely defined and measurable."},
+{cat:"Attributes of Globalization",type:"sit",q:"A local farmer now sells produce through an international online marketplace, follows global commodity price trends daily, and adjusts planting decisions based on overseas demand forecasts. Which two attributes of globalization are most clearly at work here?",opts:["Various forms of connectivity, and intensification/acceleration of exchanges","Only expansion of NGOs","Only the Pendulum View of history","Only Divine Right Theory"],a:0,exp:"The farmer's economic connectivity to global markets and the fast pace of adjusting to real-time global trends reflect both connectivity and intensification/acceleration attributes."},
+{cat:"Global Actors",type:"def",q:"Which statement most accurately reflects the overall role of global actors (IGOs, NGOs, TNCs, MDBs, media, and nation-states) in the contemporary world?",opts:["They collectively shape global governance, economics, and culture through overlapping, sometimes competing forms of influence and cooperation","Only nation-states have any real influence, and all other actors are irrelevant","They operate in complete isolation from one another with no interaction","Global actors have existed only since the founding of the United Nations"],a:0,exp:"Contemporary global governance and economics arise from the overlapping, sometimes competing influence of many actor types working together and against each other, not from any single actor acting alone."}
+];
+
+/* ---------- Situational count sanity note ----------
+   Situational ("sit") items above total 24 out of 110 (~21.8%), meeting the 20% minimum. */
+
+/* ============================================================
+   APP LOGIC
+   ============================================================ */
+let questions = [];
+let current = 0;
+let answered = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let sitTotal = 0;
+let sitCorrect = 0;
+let wrongLog = [];
+let locked = false;
+let showingMissedOnly = false;
+let missedIndexes = [];
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function buildQuestionSet(){
+  const shuffledBank = shuffle(BANK);
+  questions = shuffledBank.map(item=>{
+    const optionObjs = item.opts.map((text,idx)=>({text, isCorrect: idx===item.a}));
+    const shuffledOpts = shuffle(optionObjs);
+    return {
+      cat: item.cat,
+      type: item.type,
+      q: item.q,
+      exp: item.exp,
+      options: shuffledOpts
+    };
+  });
+}
+
+const introEl = document.getElementById('intro');
+const quizEl = document.getElementById('quiz');
+const resultsEl = document.getElementById('results');
+const startBtn = document.getElementById('startBtn');
+const nextBtn = document.getElementById('nextBtn');
+const retakeBtn = document.getElementById('retakeBtn');
+const reviewMissedBtn = document.getElementById('reviewMissedBtn');
+
+const qIndexEl = document.getElementById('qIndex');
+const qTotalEl = document.getElementById('qTotal');
+const qCategoryEl = document.getElementById('qCategory');
+const qTextEl = document.getElementById('qText');
+const optionsWrap = document.getElementById('optionsWrap');
+const explainBox = document.getElementById('explainBox');
+const progressFill = document.getElementById('progressFill');
+const ansCountEl = document.getElementById('ansCount');
+const okCountEl = document.getElementById('okCount');
+const noCountEl = document.getElementById('noCount');
+const sitTagEl = document.getElementById('sitTag');
+
+startBtn.addEventListener('click', ()=>{
+  buildQuestionSet();
+  current = 0; answered = 0; correctCount = 0; wrongCount = 0;
+  sitTotal = 0; sitCorrect = 0; wrongLog = [];
+  qTotalEl.textContent = questions.length;
+  introEl.style.display = 'none';
+  quizEl.style.display = 'block';
+  resultsEl.style.display = 'none';
+  renderQuestion();
+});
+
+function renderQuestion(){
+  locked = false;
+  const item = questions[current];
+  qIndexEl.textContent = current+1;
+  qCategoryEl.textContent = item.cat.toUpperCase();
+  qTextEl.textContent = item.q;
+  sitTagEl.style.display = item.type==='sit' ? 'inline-block' : 'none';
+  explainBox.classList.remove('show');
+  explainBox.innerHTML = '';
+  nextBtn.disabled = true;
+  nextBtn.textContent = (current === questions.length-1) ? 'Finish Reviewer →' : 'Next Item →';
+
+  optionsWrap.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  item.options.forEach((opt,idx)=>{
+    const div = document.createElement('button');
+    div.className = 'opt';
+    div.type = 'button';
+    div.innerHTML = '<span class="letter">'+letters[idx]+'</span><span class="otext"></span>';
+    div.querySelector('.otext').textContent = opt.text;
+    div.addEventListener('click', ()=>selectOption(idx));
+    optionsWrap.appendChild(div);
+  });
+
+  progressFill.style.width = ((current)/questions.length*100)+'%';
+  ansCountEl.textContent = answered;
+  okCountEl.textContent = correctCount;
+  noCountEl.textContent = wrongCount;
+}
+
+function selectOption(idx){
+  if(locked) return;
+  locked = true;
+  answered++;
+  const item = questions[current];
+  const opts = Array.from(optionsWrap.children);
+  const chosen = item.options[idx];
+  const isSituational = item.type==='sit';
+  if(isSituational) sitTotal++;
+
+  opts.forEach((div,i)=>{
+    div.classList.add('disabled');
+    if(item.options[i].isCorrect){
+      div.classList.add('correct');
+    } else if(i===idx){
+      div.classList.add('wrong');
+    } else {
+      div.classList.add('dim');
+    }
+  });
+
+  if(chosen.isCorrect){
+    correctCount++;
+    if(isSituational) sitCorrect++;
+  } else {
+    wrongCount++;
+    const correctOpt = item.options.find(o=>o.isCorrect);
+    wrongLog.push({
+      q: item.q,
+      your: chosen.text,
+      correct: correctOpt.text,
+      exp: item.exp,
+      cat: item.cat
+    });
+  }
+
+  explainBox.innerHTML = '<b>'+(chosen.isCorrect ? 'Correct. ' : 'Not quite. ')+'</b>'+item.exp;
+  explainBox.classList.add('show');
+
+  ansCountEl.textContent = answered;
+  okCountEl.textContent = correctCount;
+  noCountEl.textContent = wrongCount;
+  nextBtn.disabled = false;
+}
+
+function goNext(){
+  if(nextBtn.disabled) return;
+  if(current < questions.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+nextBtn.addEventListener('click', goNext);
+
+document.addEventListener('keydown', (e)=>{
+  if(quizEl.style.display === 'none') return;
+  const key = e.key.toLowerCase();
+  if(['a','b','c','d'].includes(key) && !locked){
+    const idx = ['a','b','c','d'].indexOf(key);
+    const opts = optionsWrap.children;
+    if(opts[idx]) selectOption(idx);
+    e.preventDefault();
+  } else if((e.key === 'Enter' || e.key === ' ') && !nextBtn.disabled){
+    goNext();
+    e.preventDefault();
+  }
+});
+
+function showResults(){
+  quizEl.style.display = 'none';
+  resultsEl.style.display = 'block';
+  const total = questions.length;
+  const pct = total>0 ? Math.round((correctCount/total)*100) : 0;
+  document.getElementById('totalAnswered').textContent = answered;
+  document.getElementById('totalCorrect').textContent = correctCount;
+  document.getElementById('totalWrong').textContent = wrongCount;
+  document.getElementById('sitCorrectStat').textContent = sitCorrect+'/'+sitTotal;
+  document.getElementById('pctText').textContent = pct+'%';
+
+  const circumference = 2*Math.PI*52;
+  const ring = document.getElementById('ringProgress');
+  ring.setAttribute('stroke-dasharray', circumference);
+  ring.setAttribute('stroke-dashoffset', circumference - (pct/100)*circumference);
+
+  let verdict = 'Keep Reviewing';
+  if(pct >= 90) verdict = 'Excellent — Exam Ready';
+  else if(pct >= 75) verdict = 'Solid Grasp';
+  else if(pct >= 50) verdict = 'Getting There';
+  document.getElementById('verdict').textContent = verdict;
+
+  renderReviewList(wrongLog);
+}
+
+function renderReviewList(list){
+  const wrap = document.getElementById('reviewList');
+  wrap.innerHTML = '';
+  if(list.length === 0){
+    wrap.innerHTML = '<div class="no-wrongs">No missed items — a clean run through all '+questions.length+' questions.</div>';
+    return;
+  }
+  list.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML =
+      '<p class="rq">'+(i+1)+'. ['+item.cat+'] '+item.q+'</p>'+
+      '<div class="ra-row your">Your answer: '+item.your+'</div>'+
+      '<div class="ra-row correctans">Correct answer: '+item.correct+'</div>'+
+      '<div class="rexp">'+item.exp+'</div>';
+    wrap.appendChild(div);
+  });
+}
+
+retakeBtn.addEventListener('click', ()=>{
+  resultsEl.style.display = 'none';
+  introEl.style.display = 'block';
+});
+
+reviewMissedBtn.addEventListener('click', ()=>{
+  const section = document.getElementById('reviewList');
+  section.scrollIntoView({behavior:'smooth', block:'start'});
+});
+</script>
+</body>
+</html>
