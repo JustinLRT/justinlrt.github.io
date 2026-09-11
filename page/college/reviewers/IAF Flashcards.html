@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrated Accounting Reviewer — Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cloth: #1f3b2e;
+    --cloth-dark: #16291f;
+    --paper: #f2ecd9;
+    --paper-line: #d8cfae;
+    --ink: #24261f;
+    --ink-soft: #565a4c;
+    --red: #a4402f;
+    --gold: #b3873f;
+    --gold-soft: #e4c98a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 700px at 15% -10%, #24462f 0%, transparent 60%),
+      var(--cloth);
+    background-color:var(--cloth);
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--paper);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:32px 16px 60px;
+  }
+  .masthead{
+    text-align:center;
+    max-width:640px;
+    margin-bottom:22px;
+  }
+  .masthead .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--gold-soft);
+    margin:0 0 8px;
+  }
+  .masthead h1{
+    font-family:'Spectral', serif;
+    font-weight:700;
+    font-size:clamp(26px, 4vw, 38px);
+    margin:0 0 8px;
+    color:#fbf8ee;
+    line-height:1.15;
+  }
+  .masthead p{
+    margin:0;
+    color:#cfe0cf;
+    font-size:14.5px;
+    line-height:1.5;
+  }
+
+  .deck-shell{
+    width:100%;
+    max-width:640px;
+  }
+
+  /* chapter tabs */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  .tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.03em;
+    color:#e7e2cc;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(228,201,138,0.35);
+    padding:7px 11px;
+    border-radius:3px 3px 0 0;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+    user-select:none;
+  }
+  .tab:hover{ background:rgba(255,255,255,0.13); }
+  .tab.active{
+    background:var(--gold-soft);
+    color:var(--cloth-dark);
+    border-color:var(--gold-soft);
+    font-weight:600;
+  }
+
+  /* status row */
+  .status{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#d8e4d3;
+    margin-bottom:10px;
+    padding:0 4px;
+  }
+  .status .count-track{
+    flex:1;
+    height:3px;
+    margin:0 14px;
+    background:rgba(255,255,255,0.15);
+    position:relative;
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .status .count-fill{
+    position:absolute; left:0; top:0; bottom:0;
+    background:var(--gold-soft);
+    width:0%;
+    transition:width .25s ease;
+  }
+  .shuffle-btn{
+    background:none;
+    border:1px solid rgba(228,201,138,0.4);
+    color:var(--gold-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:5px 9px;
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .shuffle-btn:hover{ background:rgba(228,201,138,0.12); }
+  .shuffle-btn.on{ background:var(--gold-soft); color:var(--cloth-dark); }
+
+  /* card */
+  .stage{
+    perspective:1600px;
+    margin-bottom:20px;
+  }
+  .card{
+    position:relative;
+    width:100%;
+    min-height:340px;
+    transform-style:preserve-3d;
+    transition:transform .5s cubic-bezier(.2,.7,.3,1);
+    cursor:pointer;
+  }
+  .card.flipped{ transform:rotateY(180deg); }
+  .face{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    background:var(--paper);
+    border-radius:4px;
+    box-shadow:0 18px 34px rgba(0,0,0,0.35), 0 2px 0 rgba(0,0,0,0.15) inset;
+    padding:30px 28px 26px;
+    display:flex;
+    flex-direction:column;
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 30px, var(--paper-line) 31px);
+    background-position: 0 78px;
+  }
+  .face::before{
+    /* punch holes */
+    content:"";
+    position:absolute;
+    left:14px; top:0; bottom:0;
+    width:2px;
+  }
+  .holes{
+    position:absolute;
+    left:14px; top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:74px;
+  }
+  .holes span{
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--cloth);
+    box-shadow:inset 0 2px 3px rgba(0,0,0,0.5);
+    display:block;
+  }
+  .face-inner{
+    margin-left:34px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    min-height:0;
+  }
+  .face.back{ transform:rotateY(180deg); }
+
+  .tag-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    color:#fff;
+    background:var(--cloth);
+    padding:4px 9px;
+    border-radius:2px;
+  }
+  .side-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    letter-spacing:.1em;
+  }
+  .side-label.back-label{ color:var(--red); }
+
+  .term{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:26px;
+    color:var(--ink);
+    line-height:1.28;
+    margin:auto 0;
+  }
+  .definition{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    color:var(--ink);
+    margin:auto 0;
+  }
+  .definition strong{ color:var(--red); }
+  .hint{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    margin-top:14px;
+    letter-spacing:.03em;
+  }
+
+  /* nav */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+  }
+  .nav button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:#fbf8ee;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(228,201,138,0.4);
+    padding:11px 18px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .nav button:hover{ background:rgba(255,255,255,0.16); }
+  .nav button:disabled{ opacity:.35; cursor:default; }
+  .nav .flip-word{
+    color:var(--gold-soft);
+    font-size:12px;
+  }
+  .keys{
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#a9c2ab;
+    margin-top:16px;
+  }
+
+  @media (max-width:480px){
+    .card{min-height:380px;}
+    .term{font-size:21px;}
+    .definition{font-size:14.5px;}
+  }
+</style>
+<!-- CSS_ADSBLOCK_START -->
+<link rel="stylesheet" href="https://adblockers.opera-mini.net/css_block/default-domainless.css" type="text/css" />
+<!-- CSS_ADSBLOCK_END -->
+</head>
+<body>
+
+  <div class="masthead">
+    <p class="kicker">MIDTERM REVIEWER · CHAPTERS 1–6</p>
+    <h1>Integrated Accounting Flashcards</h1>
+    <p>Definitions, standards, and formulas pulled from your reviewer. Tap a card to flip it, or use the arrow keys.</p>
+  </div>
+
+  <div class="deck-shell">
+    <div class="tabs" id="tabs"></div>
+
+    <div class="status">
+      <span id="counter">1 / 1</span>
+      <span class="count-track"><span class="count-fill" id="countFill"></span></span>
+      <button class="shuffle-btn" id="shuffleBtn">shuffle: off</button>
+    </div>
+
+    <div class="stage">
+      <div class="card" id="card">
+        <div class="face front">
+          <div class="holes"><span></span><span></span><span></span></div>
+          <div class="face-inner">
+            <div class="tag-row">
+              <span class="chip" id="chipFront">CH.1</span>
+              <span class="side-label">TERM</span>
+            </div>
+            <div class="term" id="termText">Loading…</div>
+            <div class="hint">tap or press space to reveal</div>
+          </div>
+        </div>
+        <div class="face back">
+          <div class="holes"><span></span><span></span><span></span></div>
+          <div class="face-inner">
+            <div class="tag-row">
+              <span class="chip" id="chipBack">CH.1</span>
+              <span class="side-label back-label">DEFINITION</span>
+            </div>
+            <div class="definition" id="defText">Loading…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button id="prevBtn">← prev</button>
+      <button id="flipBtn"><span class="flip-word">flip</span></button>
+      <button id="nextBtn">next →</button>
+    </div>
+    <div class="keys">← → to move · space/enter to flip · S to shuffle</div>
+  </div>
+
+<script>
+const CHAPTERS = [
+  {id:0, label:"All"},
+  {id:1, label:"Ch.1 Environment"},
+  {id:2, label:"Ch.2 Equation"},
+  {id:3, label:"Ch.3 Recording"},
+  {id:4, label:"Ch.4 Adjusting"},
+  {id:5, label:"Ch.5 Statements"},
+  {id:6, label:"Ch.6 Closing"},
+];
+
+const CARDS = [
+// ---------------- CHAPTER 1 ----------------
+{ch:1, term:"Accounting, per the Accounting Standards Council (ASC)", def:"A service activity whose function is to provide quantitative information, financial in nature, that is useful in making economic decisions."},
+{ch:1, term:"Accounting, per the American Accounting Association (AAA)", def:"The process of identifying, measuring, and communicating economic information."},
+{ch:1, term:"Accounting, per the AICPA", def:"The art of recording, classifying, and summarizing transactions."},
+{ch:1, term:"Identifying (1st of 3 accounting activities)", def:"Analyzing events to decide whether they should be recognized in the books."},
+{ch:1, term:"Measuring (2nd of 3 accounting activities)", def:"Assigning numbers, in monetary terms, to the economic events identified."},
+{ch:1, term:"Communicating (3rd of 3 accounting activities)", def:"Transforming economic data into useful accounting information, typically through reports."},
+{ch:1, term:"Sole Proprietorship", def:"Business owned by a single person with unlimited liability and no legal boundary from the owner. Registered with the DTI."},
+{ch:1, term:"Partnership", def:"Owned by two or more persons with unlimited liability — you're also liable for your partner's actions. Registered with the SEC (Art. 1767, Civil Code)."},
+{ch:1, term:"Corporation", def:"Owned by stockholders who enjoy limited liability. Registered with the SEC under RA 11232 (Revised Corporation Code)."},
+{ch:1, term:"MSME — Micro enterprise", def:"Assets before financing from ₱3.0M to below ₱1.5M... (as bracketed in reviewer) and employs not more than 9 workers."},
+{ch:1, term:"MSME — Small enterprise", def:"Assets before financing above ₱3.0M up to ₱15M, employing 10–99 workers."},
+{ch:1, term:"MSME — Medium enterprise", def:"Assets before financing above ₱15M up to ₱100M, employing 100–199 workers."},
+{ch:1, term:"Financing activities", def:"Methods an organization uses to obtain financial resources."},
+{ch:1, term:"Investing activities", def:"Buying resources that the business will use."},
+{ch:1, term:"Operating activities", def:"Use of resources to design, produce, distribute, and market goods and services."},
+{ch:1, term:"Classified (as in classified information)", def:"Reduces the effects of numerous transactions into useful groups or categories."},
+{ch:1, term:"Manufacturing business", def:"Converts raw materials into finished goods."},
+{ch:1, term:"Merchandising business", def:"Buys finished goods and resells them."},
+{ch:1, term:"Service business", def:"Provides a service instead of a tangible product."},
+{ch:1, term:"Father of Modern Accounting", def:"Luca Pacioli — he did not invent double-entry bookkeeping but was the first to formally codify, organize, and publish a detailed manual on it."},
+{ch:1, term:"Pacioli's key publications", def:"Summa de Arithmetica... (Nov. 10, 1494) and De Computis et Scripturis, a 27-page treatise detailing how to track business transactions."},
+{ch:1, term:"General purpose financial information", def:"Meets the common needs of users; governed by the PFRS."},
+{ch:1, term:"Special purpose financial information", def:"Meets specific needs of a particular user, not common needs."},
+{ch:1, term:"PFRS (Philippine Financial Reporting Standards)", def:"Provides the standards and guidelines for preparing general-purpose financial statements in the PH. Comprises PFRSs, PASs, and Interpretations."},
+{ch:1, term:"Primary users of financial information", def:"Existing and potential investors, and lenders/other creditors — they cannot demand information directly from the entity."},
+{ch:1, term:"Other users of financial information", def:"Employees, customers, government and its agencies, and the public."},
+{ch:1, term:"Internal users", def:"Management, Board of Directors, line managers/supervisors, and internal auditors — inside the organization."},
+{ch:1, term:"External users", def:"Investors/shareholders, lenders/creditors, suppliers, and customers — outside the organization. Employees also count as external users since they can't directly affect management decisions."},
+{ch:1, term:"Financial Accounting", def:"Produces general-purpose reports for the public, outside the organization."},
+{ch:1, term:"Managerial Accounting", def:"Produces special-purpose reports for private, internal use."},
+{ch:1, term:"Double-entry system", def:"Each accountable event is recorded in two parts — a debit and a credit."},
+{ch:1, term:"Going concern", def:"The entity is assumed to carry on its operations for an indefinite period."},
+{ch:1, term:"Separate entity concept", def:"The business is treated separately from its owners."},
+{ch:1, term:"Stable monetary unit", def:"Amounts in the financial statements use a common unit of measure; changes in purchasing power are ignored."},
+{ch:1, term:"Time period concept", def:"The life of a business is divided into a series of reporting periods."},
+{ch:1, term:"Materiality concept", def:"Information is material if its omission or misstatement could influence economic decisions."},
+{ch:1, term:"Cost-benefit concept", def:"The cost of processing and communicating information should not exceed the benefits derived from it."},
+{ch:1, term:"Accrual basis of accounting", def:"Effects of transactions are recognized when they occur, not when cash is received or paid."},
+{ch:1, term:"Historical cost concept", def:"The value of an asset is determined based on its acquisition cost."},
+{ch:1, term:"Concept of Articulation", def:"All the components of a complete set of financial statements are interrelated."},
+{ch:1, term:"Full disclosure principle", def:"Financial statements give enough detail to disclose matters that matter to users, while staying condensed enough to be understandable and cost-effective."},
+{ch:1, term:"Consistency concept", def:"Financial statements are prepared using accounting policies applied consistently from one period to the next."},
+{ch:1, term:"Matching principle", def:"Costs are recognized as expenses when the related revenue is recognized."},
+{ch:1, term:"Residual equity theory", def:"Applies when two classes of shares exist (ordinary and preferred): Assets − Liabilities − Preferred SE = Ordinary SE."},
+{ch:1, term:"Fund theory", def:"The accounting objective is the custody and administration of funds."},
+{ch:1, term:"Realization", def:"The process of converting non-cash assets into cash or claims for cash."},
+{ch:1, term:"Prudence (Conservatism)", def:"Exercising a degree of caution when making estimates under uncertainty, so assets/income aren't overstated and liabilities/expenses aren't understated."},
+{ch:1, term:"RA 9298", def:"The Philippine Accountancy Act of 2004; it mandated the PRC to create accounting and auditing standard-setting bodies."},
+{ch:1, term:"Board of Accountancy (BOA)", def:"The body authorized to promulgate rules and regulations for the practice of accountancy in the PH, and responsible for preparing and grading the CPA exam."},
+{ch:1, term:"Financial accounting (branch)", def:"Focuses on general-purpose financial statements."},
+{ch:1, term:"Management accounting (branch)", def:"Focuses on special-purpose financial reports for an entity's management."},
+{ch:1, term:"Cost accounting (branch)", def:"Systematic recording and analysis of the costs of materials, labor, and overhead incident to production."},
+{ch:1, term:"Auditing (branch)", def:"Evaluating the correspondence of certain assertions with established criteria and expressing an opinion on them."},
+{ch:1, term:"Tax accounting (branch)", def:"Preparation of tax returns and rendering of tax advice."},
+{ch:1, term:"Government accounting (branch)", def:"Accounting for the government."},
+{ch:1, term:"Qualitative characteristics", def:"The qualities that make financial information useful to users; the objective is to ensure information is useful for economic decisions."},
+{ch:1, term:"Relevance", def:"A fundamental qualitative characteristic — information is relevant if it can affect or influence users' decisions."},
+{ch:1, term:"Predictive value", def:"Information can be used in making predictions."},
+{ch:1, term:"Confirmatory value", def:"Information can be used to confirm past predictions."},
+{ch:1, term:"Materiality as an aspect of relevance", def:"An entity-specific aspect of relevance, also called the doctrine of convenience; factors include relative size and nature."},
+{ch:1, term:"Faithful representation", def:"A fundamental qualitative characteristic — information gives a true, correct, and complete depiction of what it represents."},
+{ch:1, term:"Completeness", def:"All information necessary for users is included; must be accompanied by Notes to Financial Statements to be complete."},
+{ch:1, term:"Neutrality", def:"Information is selected or presented without bias."},
+{ch:1, term:"Free from error", def:"No errors exist in the description or in how the information was selected and applied."},
+{ch:1, term:"Substance over form", def:"Emphasized when economic substance differs from legal form; not treated as a separate faithful-representation component since that would be redundant."},
+{ch:1, term:"Comparability", def:"An enhancing characteristic — identifying similarities and differences between sets of information (intra/inter-comparability and consistency)."},
+{ch:1, term:"Verifiability", def:"An enhancing characteristic — different users could reach consensus on what the information represents (direct or indirect)."},
+{ch:1, term:"Timeliness", def:"An enhancing characteristic — information is available in time to influence users' decisions."},
+{ch:1, term:"Understandability", def:"An enhancing characteristic — assumes users have reasonable business knowledge and a willingness to study the information diligently."},
+{ch:1, term:"Complete set of financial statements", def:"Income statement, statement of changes in equity, balance sheet, statement of cash flows, and notes."},
+{ch:1, term:"Four sectors in the practice of accountancy", def:"Public accountancy, commerce and industry, government, and education/academe."},
+{ch:1, term:"ACPAPP / ACPACI / GACPA / NaCPAE", def:"The four major accountancy organizations — Public Practice, Commerce & Industry, Government, and Education, respectively."},
+{ch:1, term:"PICPA", def:"Philippine Institute of Certified Public Accountants — the national professional organization of CPAs in the PH, recognized as the APO in 1975."},
+{ch:1, term:"APO (Accredited Professional Organization)", def:"A professional body officially recognized by the PRC."},
+{ch:1, term:"PRC (Professional Regulation Commission)", def:"The government agency that regulates and supervises licensed professions in the PH."},
+{ch:1, term:"Certificate of Accreditation renewal", def:"Renewed once every three years."},
+{ch:1, term:"CPD — RA 10912", def:"Law mandating and strengthening the CPD program; all CPAs must comply with 120 CPD units, but only 15 units are needed to renew a CPA license (CPAs turning 65 are exempt)."},
+{ch:1, term:"US GAAP", def:"Rules and procedures developed by accountants based on experience, reason, customs, and practical necessity; establishing GAAP is a political process, and it is required by the SEC."},
+{ch:1, term:"FASB (Financial Accounting Standards Board)", def:"An independent, private-sector, non-profit organization established in 1973 to establish and improve GAAP."},
+{ch:1, term:"IFRS origin", def:"Traces back to historical initiatives centered in London, UK, in the early 1970s."},
+{ch:1, term:"IASC / IASB", def:"IASC (1973) laid the foundation for global standards; IASB, formed in April 2001, replaced the IASC as a full-time independent body. Both remain based in London."},
+{ch:1, term:"IFRS's Principles-Based Framework", def:"Requires companies to report the true economic substance of a transaction rather than just follow a literal rule."},
+{ch:1, term:"FRSC / FSRSC", def:"FRSC replaced the ASC in Nov. 1981 to adopt PFRSs; in Sept. 2022 it was renamed the Financial and Sustainability Reporting Standards Council (FSRSC) to also adopt future IFRS sustainability disclosure standards."},
+{ch:1, term:"ISSB (International Sustainability Standards Board)", def:"Formed Nov. 3, 2021 at COP26 in Glasgow; delivers cost-effective, decision-useful, market-informed sustainability standards, helping companies avoid double-reporting."},
+{ch:1, term:"IFAC (International Federation of Accountants)", def:"Founded Oct. 7, 1977 in Munich; the global 'voice' of the accountancy profession, headquartered in NYC, with 180 members across 135 countries."},
+{ch:1, term:"COA (Commission on Audit)", def:"The Philippines' Supreme Audit Institution; audits and settles accounts on government revenues, receipts, expenditures, and property held in trust."},
+{ch:1, term:"SEC (Securities and Exchange Commission)", def:"Regulates the corporate sector and securities market, protects investors, monitors Corporation Code compliance, and has considerable influence over GAAP and disclosure requirements."},
+{ch:1, term:"BIR (Bureau of Internal Revenue)", def:"Primarily raises revenue for government; also sets extra requirements for audited financial statements."},
+{ch:1, term:"BSP (Bangko Sentral ng Pilipinas)", def:"Maintains price stability and preserves monetary stability/peso convertibility; sets policy on money, banking, and credit, and supervises banks."},
+{ch:1, term:"Insurance Commission", def:"Promulgates and implements policies for insurance and pre-need activities, including audit requirements for regulated entities."},
+{ch:1, term:"CMA / CFA / CIA / CFE / CISA / CGMA / EA / CPP / CTP", def:"Certifications: Management Accountant, Chartered Financial Analyst, Internal Auditor, Fraud Examiner, Information Systems Auditor, Chartered Global Management Accountant, Enrolled Agent, Payroll Professional, Treasury Professional."},
+{ch:1, term:"Ethical dilemma", def:"A situation with no obvious right or wrong decision, but rather a choice between two 'right' answers."},
+{ch:1, term:"Fundamental ethics principles", def:"Integrity, objectivity, professional competence and due care, confidentiality, and professional behavior."},
+{ch:1, term:"Professional competence and due care", def:"A continuing duty to maintain professional knowledge and skill, and to act diligently per applicable technical/professional standards."},
+
+// ---------------- CHAPTER 2 ----------------
+{ch:2, term:"Parts of an information system", def:"People, Procedures, Software, Hardware, and Data working together to support an organization."},
+{ch:2, term:"System vs. Application software", def:"System software runs in the background managing internal resources; application software performs useful work on general-purpose problems."},
+{ch:2, term:"CPU vs. Memory (primary storage)", def:"The CPU controls and manipulates data to produce information; memory temporarily holds data, instructions, and processed data."},
+{ch:2, term:"Modem", def:"A communication device that connects a microcomputer to a telephone line."},
+{ch:2, term:"Accounting Information System (AIS)", def:"Generates reliable financial information needed by decision-makers."},
+{ch:2, term:"Accounting manual", def:"Specifies the policies and procedures to be followed in accumulating information within the AIS."},
+{ch:2, term:"Effective accounting information principles", def:"Cost-benefit, control, compatibility, and flexibility principles."},
+{ch:2, term:"Manual vs. Computer-based vs. Database AIS", def:"Manual: paper-based journals. Computer-based: replaces paper with computer records. Database: embeds accounting data within the business event data itself."},
+{ch:2, term:"Single-entry bookkeeping", def:"Tracks assets, liabilities, income, and expenses by recording each transaction only once."},
+{ch:2, term:"Bookkeeping", def:"The recording phase of accounting — systematic and chronological recording of transactions in books of account."},
+{ch:2, term:"Double-entry bookkeeping", def:"Records the two-fold effect of every transaction — a value received and a value parted with (concept of duality and equilibrium)."},
+{ch:2, term:"Account", def:"The basic storage unit of accounting information; a record of increases and decreases in a specific asset, liability, equity, income, or expense item."},
+{ch:2, term:"Chart of accounts", def:"A list of all the accounts used by a business."},
+{ch:2, term:"Contra account vs. Adjunct account", def:"A contra account is presented as a deduction from its related account; an adjunct account is presented as an addition to it."},
+{ch:2, term:"Suspense account", def:"A general ledger account where amounts are temporarily recorded."},
+{ch:2, term:"Real (Permanent) vs. Nominal (Temporary) accounts", def:"Real accounts carry running balances across periods; nominal accounts don't — they're zeroed out at the end of each accounting period."},
+{ch:2, term:"Asset (per the five major accounts)", def:"A present economic resource controlled by the entity as a result of past events — a right with the potential to produce economic benefits."},
+{ch:2, term:"Liability", def:"A present obligation of the entity to transfer an economic resource as a result of past events."},
+{ch:2, term:"Equity", def:"Assets minus liabilities."},
+{ch:2, term:"Income", def:"Increases in economic benefits."},
+{ch:2, term:"Expenses", def:"Decreases in economic benefits."},
+{ch:2, term:"The accounting equation", def:"Represents the relationship between a business's assets, liabilities, and capital."},
+{ch:2, term:"Accounting event vs. Transaction", def:"An accounting event is any economic occurrence that changes assets, liabilities, or equity. A transaction specifically involves the transfer of something of value between two entities."},
+{ch:2, term:"Four types/effects of transactions", def:"Source of assets, exchange of assets, use of assets, and exchange of claims."},
+
+// ---------------- CHAPTER 3 ----------------
+{ch:3, term:"Accounting cycle", def:"The series of sequential steps or procedures performed to complete the accounting process."},
+{ch:3, term:"Source documents", def:"Original records that identify and describe transactions/events entering the accounting process, serving as the basis for journal entries and evidence transactions occurred (objectivity concept)."},
+{ch:3, term:"Invoice / Credit note / Debit note", def:"Seller-issued credit documents: an invoice shows what the buyer owes; a credit note reduces the invoice amount; a debit note adds to it."},
+{ch:3, term:"Receipt / Payment voucher / Petty cash voucher / Memo", def:"Internal cash-transaction documents: receipt acknowledges money received, payment voucher covers payment of credit purchases, petty cash voucher is a smaller version for the petty cash fund, and memo records owner contributions/drawings."},
+{ch:3, term:"Bank statement", def:"A document received from the bank, prepared by the bank."},
+{ch:3, term:"Journalizing", def:"The process of recording a transaction."},
+{ch:3, term:"Journal", def:"The book of original entry — a chronological record showing all the debit/credit effects of a transaction; the general journal is the simplest form."},
+{ch:3, term:"Simple entry vs. Compound entry", def:"A simple entry affects only 2 accounts; a compound entry affects 3 or more accounts."},
+{ch:3, term:"The ledger", def:"Groups the entity's accounts and organizes information by account."},
+{ch:3, term:"General ledger", def:"The 'reference book' used to classify and summarize transactions and prepare data for financial statements; split into balance sheet (permanent) and income statement (temporary) accounts."},
+{ch:3, term:"Chart of accounts (ledger)", def:"A listing of all accounts and their account numbers in the ledger."},
+{ch:3, term:"Posting", def:"Transferring amounts from the journal to the appropriate accounts in the ledger."},
+{ch:3, term:"Footing", def:"Adding all the debits and credits in a ledger account to determine its balance."},
+{ch:3, term:"Trial balance", def:"A list of all accounts with their respective debit or credit balances; a control device that helps minimize accounting errors."},
+{ch:3, term:"Locating trial balance errors", def:"Prove the addition, check if the discrepancy is divisible by 9 (transposition/slide), compare, recompute, and trace."},
+{ch:3, term:"Transposition vs. Slide error", def:"Transposition reverses the order of digits (e.g., 45 for 54); a slide moves the decimal point."},
+
+// ---------------- CHAPTER 4 ----------------
+{ch:4, term:"Accrual basis of accounting (Ch.4)", def:"Transactions are recognized when they occur or are earned — not when cash is received or paid; timing of cash flow is immaterial for revenue/expense recognition."},
+{ch:4, term:"Cash basis of accounting", def:"Transactions aren't recorded until cash is received or paid; only the statement of cash flows uses this basis."},
+{ch:4, term:"Periodicity concept", def:"Divides a business's economic life into artificial time periods."},
+{ch:4, term:"Liquidation", def:"Going out of business — not a practical way to measure ongoing business performance."},
+{ch:4, term:"Fiscal year / Calendar year / Natural business year", def:"Fiscal year: any 12 consecutive months. Calendar year: ends Dec. 31. Natural business year: 12-month period ending when business activity is lowest."},
+{ch:4, term:"Recognition", def:"The process of capturing an item in the statement of financial position that meets the definition of asset, liability, equity, income, or expense; links the elements of the statements."},
+{ch:4, term:"Carrying amount", def:"The amount recognized for an item in the statement of financial position."},
+{ch:4, term:"Matching of costs with income", def:"Simultaneous recognition of both income and its related expenses."},
+{ch:4, term:"Derecognition", def:"Removal of all or part of a recognized asset or liability once it no longer meets the definition of an asset or liability."},
+{ch:4, term:"Purpose of adjusting entries", def:"To split mixed accounts into real and nominal elements, record unrecorded income/expense, and update account balances at period-end so they're correct."},
+{ch:4, term:"Solvency (Ch.4 usage)", def:"Having higher assets than liabilities."},
+{ch:4, term:"PFRS 15 approach to revenue", def:"Adopts an asset-liability approach as the basis for revenue recognition."},
+{ch:4, term:"Contract (PFRS 15)", def:"An agreement between two or more parties creating enforceable rights and obligations; it sets the transaction terms, measurement of consideration, and each party's promises."},
+{ch:4, term:"5 steps of revenue recognition", def:"1) Identify the contract, 2) identify performance obligations, 3) determine the transaction price, 4) allocate the price to performance obligations, 5) recognize revenue as each obligation is satisfied."},
+{ch:4, term:"Performance obligation", def:"A promise in a contract to provide a product or service to a customer."},
+{ch:4, term:"Transaction price", def:"The amount of consideration an entity expects to be entitled to in exchange for transferring promised goods or services."},
+{ch:4, term:"Deferral", def:"Postponing recognition of an expense already paid but not yet incurred, or revenue already collected but not yet earned; decreases balance sheet, increases income statement."},
+{ch:4, term:"Accrual (deferral vs. accrual)", def:"Increases both a balance sheet and an income statement account."},
+{ch:4, term:"Liability method (income for advance collections)", def:"Advance collections of income are initially credited to a liability; at period-end, the earned portion becomes income while the unearned portion stays a liability."},
+{ch:4, term:"Income method (advance collections)", def:"Advance collections of income are initially credited to income; at period-end, the unearned portion becomes a liability while the earned portion stays income."},
+{ch:4, term:"Asset method (prepaid expenses)", def:"Prepayments are initially debited to an asset; at period-end, the incurred portion becomes an expense while the unused portion stays an asset."},
+{ch:4, term:"Expense method (prepaid expenses)", def:"Prepayments are initially debited to an expense; at period-end, the unused portion becomes an asset while the incurred portion stays an expense."},
+{ch:4, term:"Depreciation", def:"Spreads an asset's cost over its expected useful life, giving a more accurate view of its value; it's the estimated amount allocated to one accounting period."},
+{ch:4, term:"Cost / Salvage value / Useful life", def:"Cost: amount paid to acquire the asset. Salvage value: expected resale amount at the end of useful life. Useful life: estimated number of periods the asset will be used."},
+{ch:4, term:"Accumulated depreciation vs. Book value", def:"Accumulated depreciation is the contra account recording total depreciation; book value is cost minus accumulated depreciation."},
+{ch:4, term:"Straight-line depreciation", def:"Recognizes depreciation evenly over the asset's useful life. Formula: (Cost − Salvage value) ÷ Useful life."},
+{ch:4, term:"Sum-of-the-years'-digits (SYD) method", def:"Applies a series of fractions to the depreciable amount. SYD denominator = Useful life × (life+1) ÷ 2; Depreciation = Depreciable amount × (remaining useful life ÷ SYD denominator)."},
+{ch:4, term:"Double declining balance method", def:"Applies a fixed rate to the asset's carrying amount (not depreciable amount), initially ignoring salvage value. Rate = 2 ÷ Life; Depreciation = Carrying amount × rate."},
+{ch:4, term:"Bad debts (doubtful accounts)", def:"The estimated loss a business expects from accounts receivable that prove uncollectible."},
+{ch:4, term:"Allowance method", def:"Recognizes a bad debts loss once an account is doubtful of collection, emphasizing the adjusting journal entry."},
+{ch:4, term:"Direct method (bad debts)", def:"Recognizes bad debts only once accounts are proven worthless; simple and used by small businesses, allowed by BIR for tax purposes, but violates the matching principle and isn't permitted under IFRS."},
+{ch:4, term:"Percentage of Sales approach", def:"Multiplies a historical rate by sales for the year to get doubtful account expense; follows the matching principle."},
+{ch:4, term:"Percentage of Accounts Receivable approach", def:"Multiplies a rate by ending accounts receivable to get the required allowance balance; conforms to NRV presentation but violates matching, and loss data can be unreliable."},
+{ch:4, term:"Aging of Accounts Receivable", def:"Classifies receivables into not-due and past-due categories, applying a different rate to each to compute the required allowance; conforms to NRV but violates matching and is time-consuming."},
+
+// ---------------- CHAPTER 5 ----------------
+{ch:5, term:"Worksheet", def:"Helps transfer data from the unadjusted trial balance to the financial statements; can reveal errors and is a summary device for the accountant's convenience."},
+{ch:5, term:"Cross-footing", def:"Adding figures from left to right across a worksheet to compute adjusted balances."},
+{ch:5, term:"Complete set of financial statements (Ch.5)", def:"Income statement, statement of changes in equity, statement of financial position, statement of cash flows, and notes to financial statements."},
+{ch:5, term:"Statement of financial performance", def:"Can be a single statement of comprehensive income, or two statements — one showing components of profit/loss, and another beginning with profit/loss and showing other comprehensive income."},
+{ch:5, term:"Statement of changes in equity", def:"Summarizes changes in owner's equity; a required statement under revised PAS No. 1. Beginning balance comes from the capital account; profit/loss from the income statement; withdrawals from the worksheet's balance sheet columns."},
+{ch:5, term:"Statement of Financial Position", def:"Shows an entity's condition by listing assets, liabilities, and owner's equity at a specific date; the net balance at period-end, used to evaluate liquidity."},
+{ch:5, term:"Financial flexibility", def:"The ability to take effective action to alter the amount/timing of cash flows in order to respond to unexpected needs or opportunities, including raising new capital."},
+{ch:5, term:"Solvency (Ch.5 definition)", def:"The availability of cash over the longer term to meet financial commitments as they fall due."},
+{ch:5, term:"Report format vs. Account format", def:"Report format lists items in vertical sequence; account format shows assets on the left and liabilities/equity on the right."},
+{ch:5, term:"Statement of cash flows", def:"Reports cash receipts and payments, classified into operating, investing, and financing activities; shows the net increase/decrease in cash and helps project future cash flows."},
+{ch:5, term:"Cash flows from operating activities", def:"Involve providing services and producing/delivering goods — generally the cash effects of transactions that enter into determining profit or loss."},
+{ch:5, term:"Direct vs. Indirect method (cash flows)", def:"Direct method adds inflows and subtracts outflows; indirect method adjusts profit for income/expense items not resulting from cash transactions (due to accrual basis)."},
+{ch:5, term:"Cash flows from investing activities", def:"Obtaining and selling property, equipment, and other productive assets."},
+{ch:5, term:"Cash flows from financing activities", def:"Obtaining resources from owners and creditors."},
+{ch:5, term:"IFRS 18", def:"Effective Jan. 1, 2027; replaces IAS 1. What entities report won't change, but how they present it will — introduces operating, investing, and financing categories in the statement of profit or loss."},
+{ch:5, term:"Analysis of operating expenses (IFRS 18)", def:"By nature — grouped by type without allocating to functions — or by function — grouped by purpose."},
+{ch:5, term:"IFRS 18 changes to cash flow statement", def:"Requires all entities to start indirect-method operating cash flows from the operating profit/loss subtotal; IAS 7 is amended so interest/dividend classification follows the entity's main business activities."},
+{ch:5, term:"Management-Defined Performance Measures (MPMs)", def:"A subtotal of income and expenses used to gauge whether a company is doing well; now disclosed transparently in the financial statements and subject to audit."},
+
+// ---------------- CHAPTER 6 ----------------
+{ch:6, term:"Closing entries", def:"Transfer the balances of temporary accounts into the capital account; the capital balance ends up representing the cumulative net result of income, expense, and withdrawal transactions."},
+{ch:6, term:"Step 1 — Close the income account", def:"Debit Revenue; Credit Income Summary."},
+{ch:6, term:"Step 2 — Close the expense account", def:"Debit Income Summary; Credit Expense."},
+{ch:6, term:"Step 3 — Close the income summary account", def:"Debit Income Summary; Credit Capital."},
+{ch:6, term:"Step 4 — Close the withdrawal account", def:"Debit Capital; Credit Withdrawal."},
+{ch:6, term:"Post-closing trial balance", def:"Prepared to test the equality of the accounts after closing entries are posted."},
+{ch:6, term:"Reversing entries", def:"Made on January 1; the exact opposite of a related adjusting entry, used to simplify recording regular transactions in the next period. They are optional."},
+{ch:6, term:"When to apply reversing entries", def:"For accruals, accrued revenue, and deferrals."},
+{ch:6, term:"When NOT to apply reversing entries", def:"For depreciation, bad debt expense, and adjustments that don't affect the next period's routine transactions."},
+];
+
+let activeChapter = 0;
+let order = CARDS.map((_,i)=>i);
+let pos = 0;
+let shuffleOn = false;
+
+const tabsEl = document.getElementById('tabs');
+const cardEl = document.getElementById('card');
+const termEl = document.getElementById('termText');
+const defEl = document.getElementById('defText');
+const chipFront = document.getElementById('chipFront');
+const chipBack = document.getElementById('chipBack');
+const counterEl = document.getElementById('counter');
+const fillEl = document.getElementById('countFill');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const flipBtn = document.getElementById('flipBtn');
+const shuffleBtn = document.getElementById('shuffleBtn');
+
+function chLabel(n){ return CHAPTERS.find(c=>c.id===n).label; }
+
+function buildTabs(){
+  tabsEl.innerHTML = '';
+  CHAPTERS.forEach(c=>{
+    const b = document.createElement('div');
+    b.className = 'tab' + (c.id===activeChapter ? ' active':'');
+    b.textContent = c.label;
+    b.onclick = ()=>{ activeChapter=c.id; rebuildOrder(); render(); };
+    tabsEl.appendChild(b);
+  });
+}
+
+function rebuildOrder(){
+  let idxs = CARDS.map((_,i)=>i).filter(i => activeChapter===0 || CARDS[i].ch===activeChapter);
+  if(shuffleOn){
+    for(let i=idxs.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [idxs[i],idxs[j]] = [idxs[j],idxs[i]];
+    }
+  }
+  order = idxs;
+  pos = 0;
+  buildTabs();
+}
+
+function render(){
+  cardEl.classList.remove('flipped');
+  const cardIndex = order[pos];
+  const c = CARDS[cardIndex];
+  termEl.textContent = c.term;
+  defEl.textContent = c.def;
+  chipFront.textContent = 'CH.' + c.ch;
+  chipBack.textContent = 'CH.' + c.ch;
+  counterEl.textContent = (pos+1) + ' / ' + order.length;
+  fillEl.style.width = (((pos+1)/order.length)*100) + '%';
+  prevBtn.disabled = pos===0;
+  nextBtn.disabled = pos===order.length-1;
+}
+
+function flip(){ cardEl.classList.toggle('flipped'); }
+function next(){ if(pos < order.length-1){ pos++; render(); } }
+function prev(){ if(pos > 0){ pos--; render(); } }
+
+cardEl.addEventListener('click', flip);
+prevBtn.addEventListener('click', prev);
+nextBtn.addEventListener('click', next);
+flipBtn.addEventListener('click', flip);
+shuffleBtn.addEventListener('click', ()=>{
+  shuffleOn = !shuffleOn;
+  shuffleBtn.textContent = 'shuffle: ' + (shuffleOn ? 'on':'off');
+  shuffleBtn.classList.toggle('on', shuffleOn);
+  rebuildOrder();
+  render();
+});
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'ArrowRight'){ next(); }
+  else if(e.key === 'ArrowLeft'){ prev(); }
+  else if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flip(); }
+  else if(e.key.toLowerCase() === 's'){ shuffleBtn.click(); }
+});
+
+buildTabs();
+rebuildOrder();
+render();
+</script>
+</body>
+</html>
