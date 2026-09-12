@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" href="../../icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living in the IT Era — Midterms Self-Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12161c;
+    --panel:#1c222c;
+    --panel-line:#333c49;
+    --paper:#f7f3ea;
+    --paper-dim:#ece6d6;
+    --text-on-paper:#221f19;
+    --text-dim:#5c5646;
+    --text-on-ink:#e9e4d6;
+    --text-on-ink-dim:#9aa1ad;
+    --gold:#c08a35;
+    --gold-soft:#e7c98a;
+    --green:#2f7a5b;
+    --green-soft:#dcefe4;
+    --red:#b8503e;
+    --red-soft:#f6ded9;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--text-on-ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    min-height:100vh;
+    margin-bottom: 150px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:28px 16px 60px;
+  }
+  .wrap{width:100%;max-width:720px;}
+
+  /* header */
+  .masthead{margin-bottom:18px;}
+  .masthead h1{
+    font-family:'Newsreader',serif;
+    font-weight:600;
+    font-size:1.7rem;
+    line-height:1.25;
+    margin:0 0 4px;
+    color:var(--text-on-ink);
+  }
+  .masthead p{
+    margin:0;
+    font-size:0.92rem;
+    color:var(--text-on-ink-dim);
+  }
+
+  /* stat bar */
+  .statbar{
+    display:flex;
+    gap:10px;
+    margin:18px 0 16px;
+  }
+  .stat{
+    flex:1;
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:var(--radius);
+    padding:10px 14px;
+  }
+  .stat .n{
+    font-family:'Newsreader',serif;
+    font-size:1.5rem;
+    font-weight:600;
+    line-height:1;
+  }
+  .stat .l{
+    font-size:0.75rem;
+    color:var(--text-on-ink-dim);
+    margin-top:4px;
+  }
+  .stat.correct .n{color:#7fcbaa;}
+  .stat.wrong .n{color:#e59485;}
+  .stat.progress .n{color:var(--gold-soft);}
+
+  .barbg{
+    height:6px;
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .barfill{
+    height:100%;
+    background:var(--gold);
+    width:0%;
+    transition:width .25s ease;
+  }
+
+  /* question card */
+  .card{
+    background:var(--paper);
+    color:var(--text-on-paper);
+    border-radius:var(--radius);
+    padding:26px 26px 22px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  }
+  .topic{
+    font-size:0.78rem;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .qtext{
+    font-family:'Newsreader',serif;
+    font-size:1.28rem;
+    font-weight:500;
+    line-height:1.45;
+    margin:0 0 20px;
+  }
+
+  .options{display:flex;flex-direction:column;gap:10px;}
+  .opt{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    text-align:left;
+    width:100%;
+    background:#fff;
+    border:1px solid #dcd4bf;
+    border-radius:8px;
+    padding:12px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:0.98rem;
+    line-height:1.4;
+    color:var(--text-on-paper);
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .opt:hover:not(.locked){border-color:var(--gold);background:#fffdf7;}
+  .opt .badge{
+    flex:0 0 auto;
+    width:26px;height:26px;
+    border-radius:50%;
+    border:1px solid #c9c0a6;
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.82rem;font-weight:600;
+    color:var(--text-dim);
+  }
+  .opt.selected .badge{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .opt.correct{background:var(--green-soft);border-color:var(--green);}
+  .opt.correct .badge{background:var(--green);color:#fff;border-color:var(--green);}
+  .opt.incorrect{background:var(--red-soft);border-color:var(--red);}
+  .opt.incorrect .badge{background:var(--red);color:#fff;border-color:var(--red);}
+  .opt.locked{cursor:default;}
+  .opt.dim{opacity:0.55;}
+
+  .feedback{
+    margin-top:18px;
+    border-top:1px dashed #cfc6ac;
+    padding-top:16px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback .tag{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:700;
+    padding:3px 9px;
+    border-radius:5px;
+    margin-bottom:8px;
+  }
+  .feedback .tag.right{background:var(--green);color:#fff;}
+  .feedback .tag.wrong{background:var(--red);color:#fff;}
+  .feedback p{margin:0;font-size:0.95rem;line-height:1.55;color:var(--text-on-paper);}
+
+  .navrow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:22px;
+    gap:10px;
+  }
+  button.nav{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    padding:10px 18px;
+    border-radius:8px;
+    border:1px solid var(--panel-line);
+    background:var(--panel);
+    color:var(--text-on-ink);
+    cursor:pointer;
+  }
+  button.nav:disabled{opacity:0.35;cursor:not-allowed;}
+  button.nav.primary{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:#1c1204;
+  }
+  button.nav.primary:disabled{opacity:0.35;}
+  a {color: #c08a35;}
+  .hint{
+    text-align:center;
+    font-size:0.78rem;
+    color:var(--text-on-ink-dim);
+    margin-top:16px;
+  }
+  .hint kbd{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:4px;
+    padding:1px 6px;
+    font-family:'Inter',sans-serif;
+    font-size:0.75rem;
+  }
+
+  /* summary */
+  .summary .card{padding:30px 28px;}
+  .summary h2{
+    font-family:'Newsreader',serif;
+    font-size:1.6rem;
+    margin:0 0 6px;
+  }
+  .summary .score-big{
+    font-family:'Newsreader',serif;
+    font-size:3rem;
+    font-weight:600;
+    margin:14px 0 2px;
+  }
+  .summary .score-sub{
+    color:var(--text-dim);
+    font-size:0.92rem;
+    margin-bottom:22px;
+  }
+  .breakdown{border-top:1px solid #dcd4bf;padding-top:16px;margin-top:6px;}
+  .breakdown .row{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    font-size:0.9rem;
+    border-bottom:1px solid #ece6d6;
+  }
+  .breakdown .row .pct{font-weight:600;}
+  .btnrow{display:flex;gap:10px;margin-top:24px;}
+  .btnrow button{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    padding:11px 18px;
+    border-radius:8px;
+    border:1px solid var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+    cursor:pointer;
+  }
+  .btnrow button.secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid #b9b092;
+  }
+
+  .hidden{display:none !important;}
+
+  @media (max-width:480px){
+    .qtext{font-size:1.12rem;}
+    .card{padding:20px 18px;}
+    .statbar{gap:8px;}
+    .stat{padding:9px 10px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <h1>Living in the IT Era — Midterms Self-Test</h1>
+    <p>Weeks 1–6: Microsoft Learn · Science, Culture &amp; Ethics in IT · Digital Technology &amp; Social Change · Digital Divide · Industrial Revolutions &amp; Industry 4.0 · Made by <a href="https://justinlrt.github.io">#JustinLRT</a></p>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div id="quizView">
+    <div class="statbar">
+      <div class="stat progress"><div class="n" id="statProgress">1 / 78</div><div class="l">Question</div></div>
+      <div class="stat correct"><div class="n" id="statCorrect">0</div><div class="l">Correct</div></div>
+      <div class="stat wrong"><div class="n" id="statWrong">0</div><div class="l">Wrong</div></div>
+    </div>
+    <div class="barbg"><div class="barfill" id="barfill"></div></div>
+
+    <div class="card">
+      <div class="topic" id="qTopic">Topic</div>
+      <div class="qtext" id="qText">Question text</div>
+      <div class="options" id="qOptions"></div>
+
+      <div class="feedback" id="feedback">
+        <span class="tag" id="fbTag">Correct</span>
+        <p id="fbText"></p>
+      </div>
+    </div>
+
+    <div class="navrow">
+      <button class="nav" id="btnPrev">Previous</button>
+      <button class="nav primary" id="btnNext" disabled>Next</button>
+    </div>
+
+    <p class="hint">Press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer · <kbd>Enter</kbd> or <kbd>Space</kbd> for next</p>
+  </div>
+
+  <!-- SUMMARY VIEW -->
+  <div id="summaryView" class="summary hidden">
+    <div class="card">
+      <h2 id="sumHeadline">Test complete</h2>
+      <div class="score-big" id="sumScoreBig">0%</div>
+      <div class="score-sub" id="sumScoreSub">0 of 78 correct</div>
+
+      <div class="breakdown" id="breakdown"></div>
+
+      <div class="btnrow">
+        <button id="btnReview">Review answers</button>
+        <button class="secondary" id="btnRestart">Restart (reshuffle)</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+// ---------- WEEK 1: MICROSOFT LEARN ----------
+{topic:"Week 1 · Microsoft Learn", q:"What is the URL used to log into Microsoft Learn, per the reviewer?", options:{A:"learn.microsoft.com/en-us/",B:"office.com/learn",C:"portal.azure.com",D:"teams.microsoft.com/learn"}, correct:"A", explain:"The reviewer directs learners to learn.microsoft.com/en-us/, logging in with their NU Microsoft Account."},
+{topic:"Week 1 · Microsoft Learn", q:"Which training path should be searched for under the \"Training\" tab?", options:{A:"Azure Fundamentals",B:"Get started with Office 365 and Windows – Training",C:"Microsoft 365 Certified: Fundamentals",D:"Windows Server Administration"}, correct:"B", explain:"Learners are told to go to the Training tab and search for \"Get started with Office 365 and Windows – Training,\" or use the direct link to the path."},
+{topic:"Week 1 · Microsoft Learn", q:"How many modules make up the Office 365 and Windows Modules course?", options:{A:"4",B:"5",C:"6",D:"8"}, correct:"C", explain:"The reviewer lists 6 modules, from Microsoft Forms to \"Use AI for everyday tasks.\""},
+{topic:"Week 1 · Microsoft Learn", q:"Which module is described as used for surveys, quizzes, and polls to increase student engagement?", options:{A:"OneNote for Education",B:"Microsoft Forms",C:"Microsoft Teams for Education",D:"Windows 11 for School Leaders"}, correct:"B", explain:"Microsoft Forms (1 hr, 11 units, 1200 XP) is used for surveys, quizzes, and polls, streamlining learning assessments."},
+{topic:"Week 1 · Microsoft Learn", q:"Which module is 43 minutes, 6 units, and 700 XP, and functions as a digital notebook for research and reflection?", options:{A:"OneNote for Education",B:"Microsoft Forms",C:"Create and Manage Teams and Channels",D:"Use AI for Everyday Tasks"}, correct:"A", explain:"OneNote for Education is described as a digital notebook for organizing information, research, and content, supporting collaboration and reflection."},
+{topic:"Week 1 · Microsoft Learn", q:"Ana finishes her Microsoft Learn Knowledge Check but gets two items wrong. Based on the stated requirements, what must she do?", options:{A:"Move on — partial credit is accepted",B:"Answer all questions correctly to pass the check",C:"Skip directly to the certificate",D:"Only complete three of the six modules"}, correct:"B", explain:"The requirements state learners must take the Knowledge Check evaluation and answer all questions correctly."},
+{topic:"Week 1 · Microsoft Learn", q:"Which generative AI tool is introduced in the \"Use AI for Everyday Tasks\" module?", options:{A:"ChatGPT",B:"Google Gemini",C:"Microsoft Copilot",D:"Siri"}, correct:"C", explain:"This module introduces generative AI (Microsoft Copilot) and how it simplifies daily, routine tasks."},
+{topic:"Week 1 · Microsoft Learn", q:"How many modules' reflective essays are required for Midterms versus Finals?", options:{A:"2 for Midterm, 4 for Finals",B:"3 for Midterm, 3 for Finals",C:"6 for Midterm, 0 for Finals",D:"1 for Midterm, 5 for Finals"}, correct:"B", explain:"Learners write a reflective essay/takeaways for 3 modules for Midterm and 3 modules for Finals."},
+
+// ---------- WEEK 2: SCIENCE, CULTURE & ETHICS IN IT ----------
+{topic:"Week 2 · Science & Technology", q:"According to the reviewer, what is Science?", options:{A:"The systematic study of the structure and behavior of the natural and physical world through observation and experiment",B:"The art of creating tools to solve problems",C:"A body of religious beliefs about the universe",D:"A set of government laws governing research"}, correct:"A", explain:"Science is defined as the systematic study of the structure and behavior of the natural and physical world through observations and experiments."},
+{topic:"Week 2 · Science & Technology", q:"Which of these is NOT one of the \"Different Facets of Science\" listed in the reviewer?", options:{A:"Science is a body of knowledge and a process",B:"Science is exciting",C:"Science is static and unchanging",D:"Science is a global human endeavor"}, correct:"C", explain:"The reviewer lists science as ongoing, not static — the facets given are: a body of knowledge/process, exciting, useful, ongoing, and a global human endeavor."},
+{topic:"Week 2 · Science & Technology", q:"The word \"technology\" originates from which Greek term?", options:{A:"technologia",B:"technos",C:"logica",D:"mechane"}, correct:"A", explain:"Technology comes from the Greek \"technologia\" — an art, skill, or ability used to create and develop products and acquire knowledge."},
+{topic:"Week 2 · Science & Technology", q:"\"Science as a direct source of new technological ideas,\" \"Science as a source of engineering,\" \"Technology as a source of scientific challenges,\" and \"Instrumentation and measurement techniques\" are listed under which heading?", options:{A:"Nature of Science and Technology",B:"Contribution of Science to Technology",C:"Different Facets of Science",D:"Elements of Culture"}, correct:"B", explain:"These four points are listed under \"Contribution of Science to Technology\" in the reviewer."},
+{topic:"Week 2 · Science & Technology", q:"A student says, \"Science tells us why the sky is blue; technology gives us cameras to capture it.\" Which concept does this best illustrate?", options:{A:"Culture influencing technology",B:"The difference between morals and ethics",C:"Science = knowing why things happen; Technology = using that knowledge to make things work",D:"The digital divide"}, correct:"C", explain:"This mirrors the reviewer's simple framing: Science = knowing why things happen, Technology = using that knowledge to make things work."},
+{topic:"Week 2 · Culture & Technology", q:"Culture is best described in the reviewer as:", options:{A:"A narrow term limited to religious practice",B:"An umbrella term for social behavior, norms, knowledge, beliefs, arts, laws, customs, and habits of a group",C:"A synonym for technology",D:"Only artistic and creative expression"}, correct:"B", explain:"Culture is defined as an umbrella term encompassing social behavior and norms, plus knowledge, beliefs, arts, laws, customs, capabilities, and habits."},
+{topic:"Week 2 · Culture & Technology", q:"Which sociologist defined culture as \"social heredity, transmitted from one generation to another with the accumulation of individual experiences\"?", options:{A:"Taylor",B:"Linton",C:"John Beattee",D:"Durkheim"}, correct:"B", explain:"This definition is attributed to Linton in the reviewer."},
+{topic:"Week 2 · Culture & Technology", q:"Which of the following is NOT one of the 8 Elements of Culture listed in the reviewer?", options:{A:"Religion",B:"Economy",C:"Technology",D:"Language"}, correct:"C", explain:"The 8 elements are Religion, Daily Life, Economy, Government, Arts, History, Social Group, and Language — Technology is not itself one of the 8 elements."},
+{topic:"Week 2 · Culture & Technology", q:"A farming community adopts irrigation systems because their long-standing agricultural values demand efficient water use. This best illustrates:", options:{A:"Technology influencing culture",B:"Culture influencing technology",C:"The digital divide",D:"Breach of duty of care"}, correct:"B", explain:"Culture influences technology: needs, values, and traditions guide what technologies people create — the reviewer gives plows/irrigation in agricultural societies as the example."},
+{topic:"Week 2 · IT Ethics", q:"Ethics in IT is best defined as:", options:{A:"The study of computer hardware components",B:"The study of what is right and wrong in the use of computers, digital systems, and information",C:"A law that punishes hackers",D:"A vendor certification program"}, correct:"B", explain:"Ethics in IT is the study of right and wrong in the use of computers, digital systems, and information, guiding fair, safe, and responsible technology use."},
+{topic:"Week 2 · IT Ethics", q:"Which of these is NOT listed as a Key Area of IT Ethics?", options:{A:"Privacy",B:"Security",C:"Marketing strategy",D:"Intellectual Property"}, correct:"C", explain:"The Key Areas of IT Ethics listed are Privacy, Security, Intellectual Property, Digital Responsibility, and Professional Conduct/Ethics."},
+{topic:"Week 2 · Morals, Ethics, Law", q:"Widely shared social conventions about right and wrong, forming an established consensus, describe:", options:{A:"Morals",B:"Morality",C:"Virtue",D:"Law"}, correct:"B", explain:"Morality is defined as social conventions about right and wrong so widely shared they form an established consensus."},
+{topic:"Week 2 · Morals, Ethics, Law", q:"A habit that inclines a person to do what is acceptable, practiced consistently until it becomes part of one's character, is called:", options:{A:"Morality",B:"Ethics",C:"Virtue",D:"Law"}, correct:"C", explain:"Virtue is a habit that inclines people toward acceptable behavior, practiced consistently — the reviewer's examples include courage, kindness, and patience."},
+{topic:"Week 2 · Morals, Ethics, Law", q:"A nurse privately believes lying is wrong, follows her hospital's professional standard of fairness to all patients, and knows falsifying records is illegal. These three represent, in order:", options:{A:"Law, Ethic, Moral",B:"Moral, Ethic, Law",C:"Virtue, Moral, Ethic",D:"Ethic, Law, Moral"}, correct:"B", explain:"Personal belief = Moral (\"I believe lying is wrong\"), professional standard = Ethic (\"As a teacher/professional, I must be fair\"), and government rule = Law (\"It is illegal...\")."},
+{topic:"Week 2 · Professional Code of Ethics", q:"A Professional Code of Ethics is best described as:", options:{A:"A voluntary suggestion with no real function",B:"Rules, principles, and guidelines professionals follow to act responsibly, fairly, and honestly",C:"A law enforced only by police",D:"Optional guidance meant only for managers"}, correct:"B", explain:"It is defined as a set of rules, principles, and guidelines professionals must follow to act responsibly, fairly, and honestly, since laws alone don't cover all ethical behavior."},
+{topic:"Week 2 · Professional Code of Ethics", q:"Which of these is NOT one of the Core Principles in IT and Other Professions listed in the reviewer?", options:{A:"Integrity",B:"Confidentiality",C:"Popularity",D:"Competence"}, correct:"C", explain:"The listed core principles are Integrity, Confidentiality, Competence, Fairness, Responsibility, Respect for Intellectual Property, and Public Interest."},
+{topic:"Week 2 · IT Professionals", q:"An IT professional who installs pirated software or misuses client data is primarily violating:", options:{A:"The Professional Code of Ethics",B:"The definition of the digital divide",C:"An Industry 4.0 pillar",D:"The Access Divide"}, correct:"A", explain:"The reviewer's example states an IT professional must not install pirated software or misuse client data — a direct violation of the professional code of ethics."},
+{topic:"Week 2 · IT Professionals", q:"Which IT role focuses on protecting networks and data from cyber threats?", options:{A:"Database Administrator",B:"Cybersecurity Specialist",C:"Web Developer",D:"Systems Analyst"}, correct:"B", explain:"The Cybersecurity Specialist is the role listed for protecting systems, among roles like Network Administrator and Software Developer."},
+{topic:"Week 2 · Malpractice & Duty of Care", q:"IT Professional Malpractice occurs due to all of the following EXCEPT:", options:{A:"Negligence",B:"Misconduct",C:"Lack of professional standards",D:"Strong adherence to duty of care"}, correct:"D", explain:"Malpractice results from negligence, misconduct, or lack of professional standards — strong adherence to duty of care is the opposite of malpractice."},
+{topic:"Week 2 · Malpractice & Duty of Care", q:"An IT administrator notices a known security flaw but ignores it, resulting in a massive data breach. This is a clear example of:", options:{A:"Fulfilling Duty of Care",B:"A Breach of Duty of Care",C:"A vendor certification issue",D:"The Access Divide"}, correct:"B", explain:"This is the reviewer's own example of a Breach of Duty of Care — failing to act with competence and caution, causing harm."},
+{topic:"Week 2 · Malpractice & Duty of Care", q:"The \"reasonable person standard\" (or \"reasonable professional standard\") is applied by courts to judge:", options:{A:"Whether a vendor certification is valid",B:"Whether a Duty of Care was breached",C:"The severity of the digital divide",D:"Which elements belong to culture"}, correct:"B", explain:"Courts apply this standard to judge whether a professional failed to act as a reasonable person/professional would have — i.e., whether Duty of Care was breached."},
+{topic:"Week 2 · Certifications", q:"Which organization's name reflects a focus on system administration, auditing, networking, and security?", options:{A:"ACM",B:"IEEE-CS",C:"AITP",D:"SANS Institute"}, correct:"D", explain:"SANS stands for SysAdmin, Audit, Network, Security — one of the four prominent IT-related professional organizations listed."},
+{topic:"Week 2 · Certifications", q:"Vendor certifications (e.g., from Cisco, Microsoft, Oracle) are best described as:", options:{A:"Broad, industry-wide credentials unrelated to any company",B:"Certifications tied to a specific company's products, relevant for specific job roles",C:"Government-issued professional licenses",D:"Free certifications with no requirements"}, correct:"B", explain:"Vendor certifications are offered by companies like Cisco, IBM, Microsoft for users of their own products, and are relevant to specific job roles."},
+{topic:"Week 2 · Ethical Issues for IT Users", q:"An employee spends work hours browsing unrelated entertainment sites and playing games instead of working. This is an example of:", options:{A:"Software piracy",B:"Inappropriate use of computing resources",C:"A breach of intellectual property law only",D:"The digital divide"}, correct:"B", explain:"Surfing unrelated sites and playing games at work is listed under \"Inappropriate Use of Computing Resources\" as a common ethical issue for IT users."},
+
+// ---------- WEEK 3: DIGITAL TECHNOLOGY AND SOCIAL CHANGE ----------
+{topic:"Week 3 · Digital Technology & Social Change", q:"Per the reviewer's \"Before vs. After\" comparison, how did communication change?", options:{A:"Face-to-face and handwritten letters shifted to instant messaging, video calls, and social media",B:"Streaming replaced radio broadcasts",C:"E-commerce replaced postal mail entirely with no digital step",D:"Cloud systems were replaced by typewriters"}, correct:"A", explain:"The table shows communication moving from face-to-face, letters, telegrams, and landline phones to instant messaging, email, video calls, and social media."},
+{topic:"Week 3 · Digital Technology & Social Change", q:"Which of the following is NOT listed as a role of digital technology in society?", options:{A:"Global Connectivity and Communication",B:"Online Activism and Advocacy",C:"Manual typewriting standardization",D:"E-Governance and Citizen Engagement"}, correct:"C", explain:"\"Manual typewriting standardization\" is not among the listed roles — those include global connectivity, social media/online communities, information access, online activism, e-governance, and VR/AR."},
+{topic:"Week 3 · Digital Tech Across Industries", q:"Which Industry 4.0-adjacent technology allows engineers to create a virtual replica of a physical system for simulation?", options:{A:"Digital Twin Technology",B:"CRM",C:"InsurTech",D:"EHR"}, correct:"A", explain:"Digital Twin Technology is listed under Engineering as a technology used alongside CAD, CAE, FEA, and CFD."},
+{topic:"Week 3 · Digital Tech Across Industries", q:"Which of these is explicitly listed under Finance (FinTech) in the reviewer?", options:{A:"CAD/CAM systems",B:"Digital payment systems and e-wallets",C:"Teledentistry",D:"Building Information Modeling (BIM)"}, correct:"B", explain:"FinTech examples given include online/mobile banking, digital payment systems, e-wallets, AI, blockchain, and cryptocurrency."},
+{topic:"Week 3 · Digital Tech Across Industries", q:"Intraoral scanners and CBCT imaging are digital technologies used in which industry, per the reviewer?", options:{A:"Engineering",B:"Dentistry",C:"Travel and Tourism",D:"Finance"}, correct:"B", explain:"Dentistry examples include digital X-rays, intraoral scanners, CAD/CAM systems, and CBCT imaging."},
+{topic:"Week 3 · Digital Tech Across Industries", q:"A local government launches an app for citizens to report potholes and track public budget spending. This best illustrates:", options:{A:"E-Governance and Citizen Engagement",B:"Digital Addiction",C:"The Access Divide",D:"Cyberbullying"}, correct:"A", explain:"This matches E-Governance and Citizen Engagement, listed as one of digital technology's roles in society."},
+{topic:"Week 3 · Threats in the Digital Age", q:"Which threat involves false or misleading information spreading quickly and influencing beliefs and decisions?", options:{A:"Privacy Concerns",B:"Misinformation",C:"Cyberbullying",D:"Digital Addiction"}, correct:"B", explain:"Misinformation is defined as false or misleading information that can spread quickly and influence beliefs and decisions."},
+{topic:"Week 3 · Harnessing Digital Technology", q:"Which strategy focuses on teaching people to find, evaluate, and use information safely and effectively (search, think, protect, communicate)?", options:{A:"Digital Literacy Education",B:"Regulating Emerging Technologies",C:"Environmental Sustainability in Technology",D:"Balancing Work-Life Integration"}, correct:"A", explain:"Digital Literacy Education is described as teaching people to find, evaluate, and use information safely and effectively."},
+{topic:"Week 3 · Harnessing Digital Technology", q:"Which of these is NOT a recommended action under \"Combatting Misinformation and Fake News\"?", options:{A:"Check the source",B:"Share unverified content quickly to warn others",C:"Check the date",D:"Verify before believing"}, correct:"B", explain:"The reviewer explicitly advises not to share unverified content, and instead to check sources/dates, verify claims, and report false information."},
+{topic:"Week 3 · Harnessing Digital Technology", q:"A company reduces e-waste, adopts sustainable production, and designs more durable, repairable products. This reflects which harnessing strategy?", options:{A:"Environmental Sustainability in Technology",B:"Digital Inclusion and Accessibility",C:"Online Safety and Cybersecurity Education",D:"Ethical Use of AI and Automation"}, correct:"A", explain:"Environmental Sustainability in Technology covers reducing energy consumption/e-waste, sustainable production, and durable/repairable products."},
+{topic:"Week 3 · Harnessing Digital Technology", q:"Ethical Use of AI and Automation, per the reviewer, emphasizes fairness, transparency, accountability, and:", options:{A:"Replacing all human workers",B:"Avoiding bias and using AI to augment (not replace) human potential",C:"Maximizing automation regardless of impact",D:"Removing all regulation on AI"}, correct:"B", explain:"The reviewer states this principle should avoid bias and use AI to augment, not replace, human potential."},
+{topic:"Week 3 · Conclusion", q:"The Week 3 conclusion emphasizes that society can fully capitalize on digital technology's potential through:", options:{A:"Unregulated, unchecked technology growth",B:"Responsible and mindful use of digital technology",C:"Avoiding the adoption of new technology",D:"Limiting technology access to wealthy nations"}, correct:"B", explain:"The conclusion states that responsible and mindful use of digital technology can lead to a more inclusive, informed, and connected world."},
+
+// ---------- WEEK 4: DIGITAL DIVIDE ----------
+{topic:"Week 4 · Digital Divide", q:"Digital Divide is best defined as:", options:{A:"The gap between demographics/regions with access to modern ICT and those without",B:"A type of computer virus",C:"A government tax policy",D:"A certification issued by SANS Institute"}, correct:"A", explain:"Digital Divide refers to the gap between demographics and regions that have access to modern ICT and those that don't, including the ability to use it."},
+{topic:"Week 4 · Digital Divide", q:"Which factor is described as \"the single biggest factor\" in the digital divide?", options:{A:"Gender differences",B:"Urban vs. rural (geographic) differences within countries",C:"Age differences",D:"Religious differences"}, correct:"B", explain:"Urban areas often have faster internet and better access than rural areas — considered the single biggest factor in the digital divide."},
+{topic:"Week 4 · Types of Digital Divide", q:"Differences in access to devices, internet connectivity, and ICT infrastructure describe which level of divide?", options:{A:"Skills Divide (2nd-Level)",B:"Usage Divide (3rd-Level)",C:"Access Divide (1st-Level)",D:"Disability Divide"}, correct:"C", explain:"The Access Divide (1st-Level) covers differences in access to devices, internet connectivity, and ICT infrastructure."},
+{topic:"Week 4 · Types of Digital Divide", q:"Differences in digital literacy, technical knowledge, and ability to use technology effectively describe:", options:{A:"Access Divide",B:"Skills Divide",C:"Usage Divide",D:"Gender Digital Divide"}, correct:"B", explain:"The Skills Divide (2nd-Level) covers differences in digital literacy and technical knowledge."},
+{topic:"Week 4 · Types of Digital Divide", q:"How many types of Digital Divide are identified in the reviewer?", options:{A:"5",B:"6",C:"8",D:"9"}, correct:"C", explain:"The reviewer lists 8 types: Access, Skills, Usage, Gender, Age-Based, Geographic, Socioeconomic, and Disability Divide."},
+{topic:"Week 4 · Digital Divide Factors", q:"How many Digital Divide Factors are identified in the reviewer?", options:{A:"6",B:"7",C:"8",D:"9"}, correct:"D", explain:"The reviewer lists 9 factors: Economic, Educational, Geographic, Age, Gender, Social & Cultural, Infrastructure, Disability & Accessibility, and Government Policies & Support."},
+{topic:"Week 4 · Digital Divide Factors", q:"A rural elderly woman has no reliable internet and limited digital skills, unlike her tech-savvy city-dwelling granddaughter. Which two factors are most directly illustrated?", options:{A:"Gender and Socioeconomic",B:"Geographic and Age",C:"Disability and Religious",D:"Economic and Legal"}, correct:"B", explain:"Her situation reflects the Geographic factor (rural vs. urban access) and the Age factor (older adults having lower internet use and fewer digital skills)."},
+{topic:"Week 4 · Consequences", q:"\"Limited access to online learning; students fall behind\" is a consequence categorized as:", options:{A:"Economic inequality",B:"Educational disadvantage",C:"Healthcare barriers",D:"Social exclusion"}, correct:"B", explain:"This is listed under Educational disadvantage as a key consequence of the digital divide."},
+{topic:"Week 4 · Consequences", q:"Reduced access to telemedicine and online health information is classified under which consequence?", options:{A:"Healthcare barriers",B:"Reduced civic engagement",C:"Information inequality",D:"Wider income disparities"}, correct:"A", explain:"Healthcare barriers refers to reduced access to telemedicine and online health information."},
+{topic:"Week 4 · Bridging the Divide", q:"Which global program is cited as coordinating efforts to end digital discrimination?", options:{A:"World Trade Organization",B:"UN Sustainable Development Goals (SDGs)",C:"WHO Digital Health Initiative",D:"ISO 9001"}, correct:"B", explain:"The reviewer cites the UN's Sustainable Development Goals (SDGs) as coordinating countries' efforts to end digital discrimination."},
+{topic:"Week 4 · Bridging the Divide", q:"Which of the following is NOT listed as a Key Strategy for Bridging the Digital Divide?", options:{A:"Expanding infrastructure",B:"Making technology affordable",C:"Restricting internet access to control costs",D:"Improving digital literacy"}, correct:"C", explain:"Restricting access is the opposite of the listed strategies, which include expanding infrastructure, affordability, digital literacy, and inclusive access."},
+{topic:"Week 4 · Bridging the Divide", q:"A government provides devices and translates online learning materials into local languages for indigenous communities. This is an example of:", options:{A:"Widening the digital divide",B:"An immediate action to remove technological discrimination",C:"IT professional malpractice",D:"A breach of duty of care"}, correct:"B", explain:"This matches the reviewer's immediate actions: using local languages in online learning materials and providing devices/resources."},
+{topic:"Week 4 · Key Takeaway", q:"The reviewer refers to the digital divide overall as:", options:{A:"A minor inconvenience with no real effects",B:"A major disadvantage — a \"curse\" — for modern society",C:"A fully solved global issue",D:"An issue exclusive to developed countries"}, correct:"B", explain:"The Key Takeaway states the digital divide is considered a major disadvantage (\"a curse\") for modern society."},
+{topic:"Week 4 · Types of Digital Divide", q:"Barriers faced by persons with disabilities in accessing and using digital technology describe the:", options:{A:"Age-Based Digital Divide",B:"Disability Divide",C:"Socioeconomic Divide",D:"Usage Divide"}, correct:"B", explain:"The Disability Divide covers barriers faced by persons with disabilities in accessing/using digital technology."},
+
+// ---------- WEEK 5-6: INDUSTRIAL REVOLUTIONS ----------
+{topic:"Week 5-6 · Industrial Revolutions", q:"Who popularized the term \"Industrial Revolution\" to describe Britain's economic growth from 1760–1840?", options:{A:"Arnold Toynbee",B:"Karl Marx",C:"Adam Smith",D:"Charles Darwin"}, correct:"A", explain:"The term was popularized by Arnold Toynbee to describe Britain's economic growth during this period."},
+{topic:"Week 5-6 · First Industrial Revolution", q:"The First Industrial Revolution (1.0) began in which country?", options:{A:"Germany",B:"United States",C:"Britain",D:"Japan"}, correct:"C", explain:"The First Industrial Revolution started in Britain during the 18th century and later spread worldwide."},
+{topic:"Week 5-6 · First Industrial Revolution", q:"Which invention is associated with the First Industrial Revolution?", options:{A:"Telephone",B:"Steam Engine",C:"Internet",D:"Smartphone"}, correct:"B", explain:"Inventions of the First Industrial Revolution include the Steam Engine, Steam Locomotive, Steam Boat, and Spinning Jenny."},
+{topic:"Week 5-6 · Second Industrial Revolution", q:"The Second Industrial Revolution (2.0) lasted roughly from:", options:{A:"1760–1840",B:"1870–1914",C:"Late 20th century",D:"Present day"}, correct:"B", explain:"The Second Industrial Revolution lasted from 1870 to 1914, ending around the start of World War I."},
+{topic:"Week 5-6 · Second Industrial Revolution", q:"In the Second Industrial Revolution, iron in industry was largely replaced by:", options:{A:"Steel",B:"Plastic",C:"Aluminum",D:"Bronze"}, correct:"A", explain:"Iron was replaced by steel in industry as a key characteristic of the Second Industrial Revolution."},
+{topic:"Week 5-6 · Second Industrial Revolution", q:"Which energy source became key during the Second Industrial Revolution, alongside electricity?", options:{A:"Coal alone",B:"Petroleum products",C:"Nuclear power",D:"Solar power"}, correct:"B", explain:"Steam was replaced by electricity, and petroleum products became a key energy source during this era."},
+{topic:"Week 5-6 · Third Industrial Revolution", q:"The Third Industrial Revolution is also known as the:", options:{A:"Steam Revolution",B:"Mechanical Revolution",C:"Digital Revolution",D:"Green Revolution"}, correct:"C", explain:"The Third Industrial Revolution (3.0) is called the \"Digital Revolution,\" shifting society from mechanical/analog to digital technology."},
+{topic:"Week 5-6 · Third Industrial Revolution", q:"Which invention marks the Third Industrial Revolution?", options:{A:"Steam Locomotive",B:"Assembly Line",C:"Internet",D:"Spinning Jenny"}, correct:"C", explain:"Inventions of the Third Industrial Revolution include Computers, the Internet, Smartphones, and Digital TV."},
+{topic:"Week 5-6 · Fourth Industrial Revolution", q:"Industry 4.0 combines advanced manufacturing with:", options:{A:"Steam power",B:"The Internet of Things (IoT)",C:"The Spinning Jenny",D:"Telegraph networks"}, correct:"B", explain:"Industry 4.0, the Fourth Industrial Revolution, combines advanced manufacturing with the Internet of Things (IoT)."},
+{topic:"Week 5-6 · Fourth Industrial Revolution", q:"Industry 4.0 is powered by cyber-physical systems and:", options:{A:"Vinyl record technology",B:"The Industrial Internet of Things (IIoT)",C:"Manual assembly lines",D:"Analog telephony"}, correct:"B", explain:"Industry 4.0 is powered by the Industrial Internet of Things (IIoT) and cyber-physical systems."},
+{topic:"Week 5-6 · Fourth Industrial Revolution", q:"A factory installs sensors on every machine so they can \"talk\" to each other, automatically adjusting production using real-time data. This best illustrates:", options:{A:"First Industrial Revolution",B:"Second Industrial Revolution",C:"Third Industrial Revolution",D:"Fourth Industrial Revolution (Industry 4.0)"}, correct:"D", explain:"Connected machines and systems that communicate and use data for smart decisions describe Industry 4.0, the Fourth Industrial Revolution."},
+{topic:"Week 5-6 · 9 Pillars of Industry 4.0", q:"The memory tip \"RIB-ACAR-CS\" in the reviewer helps recall:", options:{A:"The 4 Industrial Revolutions",B:"The 9 Pillars of Industry 4.0",C:"The 8 Elements of Culture",D:"The Core Principles of IT Ethics"}, correct:"B", explain:"RIB-ACAR-CS stands for Robotics, IIoT, Big Data, AI, Cloud, Additive Manufacturing, AR/VR, Cybersecurity, and System Integration."},
+{topic:"Week 5-6 · 9 Pillars of Industry 4.0", q:"Which technology \"builds objects layer by layer,\" reducing waste and speeding up prototyping?", options:{A:"Advanced Robotics",B:"Additive Manufacturing (3D Printing)",C:"Cloud Computing",D:"System Integration"}, correct:"B", explain:"Additive Manufacturing (3D Printing) builds objects layer by layer, reducing waste and enabling faster prototyping."},
+{topic:"Week 5-6 · 9 Pillars of Industry 4.0", q:"Which pillar of Industry 4.0 connects machines, departments, and systems such as ERP, CRM, and supply chains?", options:{A:"Big Data & Analytics",B:"System Integration",C:"Cybersecurity",D:"IIoT"}, correct:"B", explain:"System Integration links machines, departments, and systems like ERP/CRM/supply chains, per the reviewer's table of the 9 pillars."},
+{topic:"Week 5-6 · Quick Recall", q:"What is the key difference between AR and VR?", options:{A:"AR overlays digital elements on the real world; VR replaces the real world with a fully virtual one",B:"AR is older technology than VR",C:"VR overlays digital elements on reality; AR fully replaces it",D:"They are functionally identical"}, correct:"A", explain:"AR adds digital elements to the real world, while VR replaces the real world with a fully virtual one."},
+{topic:"Week 5-6 · Quick Recall", q:"What is the key difference between IoT and IIoT?", options:{A:"IoT connects industrial machines, IIoT connects consumer devices",B:"IoT connects everyday consumer devices; IIoT connects industrial machines/equipment for production use",C:"They refer to the exact same technology",D:"IIoT has no relation to manufacturing"}, correct:"B", explain:"IoT connects everyday consumer devices, while IIoT connects industrial machines and equipment for production use."},
+{topic:"Week 5-6 · Benefits of Industry 4.0", q:"\"Intelligent Factories\" under the Benefits of Industry 4.0 are exemplified by:", options:{A:"Siemens Amberg Factory and Tesla Gigafactory",B:"Netflix streaming servers",C:"Traditional artisan workshops",D:"Manual assembly lines from the 1800s"}, correct:"A", explain:"Intelligent Factories (Factory 4.0) are highly automated, digital factories — exemplified by Siemens Amberg Factory and Tesla Gigafactory."},
+{topic:"Week 5-6 · Benefits of Industry 4.0", q:"Workers at Boeing use AR glasses to receive real-time instructions while assembling aircraft parts, improving speed and reducing errors. This illustrates which Industry 4.0 benefit?", options:{A:"Intelligent Products",B:"Intelligent Factories",C:"Intelligent Assets",D:"Empowered People"}, correct:"D", explain:"\"Empowered People\" describes workers using AI, wearables, and AR/VR tools to improve productivity and safety — Boeing AR glasses is the reviewer's own example."},
+{topic:"Week 5-6 · Opportunities and Challenges", q:"Which of these is listed as a challenge businesses face when adopting Industry 4.0?", options:{A:"Decreased need for digital skills",B:"High cost of technology adoption",C:"Guaranteed success for all adopters",D:"No changes in job requirements"}, correct:"B", explain:"Challenges listed include the high cost of technology adoption, the need for advanced digital skills, and risk for companies that fail to adapt."},
+{topic:"Week 5-6 · Benefits of Industry 4.0", q:"A jet engine manufacturer places sensors in aircraft engines to predict failures before they happen and schedule maintenance in advance. This is an example of:", options:{A:"Intelligent Products",B:"Intelligent Assets",C:"Empowered People",D:"System Integration only"}, correct:"B", explain:"Intelligent Assets are machines with sensors providing real-time data for predictive maintenance — GE aircraft engines is the reviewer's own example."}
+];
+
+// ---------- STATE ----------
+let order = [];
+let currentPos = 0;           // position within `order`
+let answers = {};             // qIndex -> {selected, correct}
+let mode = "quiz";            // 'quiz' | 'review'
+let reviewPos = 0;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function initQuiz(){
+  order = shuffle(QUESTIONS.map((_,i)=>i));
+  currentPos = 0;
+  answers = {};
+  mode = "quiz";
+  document.getElementById("summaryView").classList.add("hidden");
+  document.getElementById("quizView").classList.remove("hidden");
+  renderQuestion();
+  updateStats();
+}
+
+function currentQIndex(){
+  return mode === "review" ? order[reviewPos] : order[currentPos];
+}
+
+function renderQuestion(){
+  const pos = mode === "review" ? reviewPos : currentPos;
+  const qIndex = order[pos];
+  const q = QUESTIONS[qIndex];
+  const already = answers[qIndex];
+
+  document.getElementById("qTopic").textContent = q.topic;
+  document.getElementById("qText").textContent = q.q;
+
+  const optWrap = document.getElementById("qOptions");
+  optWrap.innerHTML = "";
+  ["A","B","C","D"].forEach(letter=>{
+    const div = document.createElement("div");
+    div.className = "opt";
+    div.dataset.letter = letter;
+    div.innerHTML = '<span class="badge">'+letter+'</span><span>'+q.options[letter]+'</span>';
+    div.addEventListener("click", ()=> selectAnswer(letter));
+    optWrap.appendChild(div);
+  });
+
+  const fb = document.getElementById("feedback");
+  fb.classList.remove("show");
+
+  if(already){
+    lockOptions(qIndex);
+  }
+
+  document.getElementById("btnPrev").disabled = pos === 0;
+  const isLast = pos === order.length - 1;
+  const nextBtn = document.getElementById("btnNext");
+  if(mode === "review"){
+    nextBtn.disabled = false;
+    nextBtn.textContent = isLast ? "Back to summary" : "Next";
+  } else {
+    nextBtn.disabled = !already;
+    nextBtn.textContent = isLast ? "Finish" : "Next";
+  }
+
+  document.getElementById("statProgress").textContent = (pos+1) + " / " + order.length;
+  const pct = ((pos+ (already?1:0)) / order.length) * 100;
+}
+
+function selectAnswer(letter){
+  const qIndex = currentQIndex();
+  if(answers[qIndex]) return; // already locked
+  const q = QUESTIONS[qIndex];
+  const isCorrect = letter === q.correct;
+  answers[qIndex] = {selected:letter, correct:isCorrect};
+  lockOptions(qIndex);
+  updateStats();
+  document.getElementById("btnNext").disabled = false;
+  const pos = currentPos;
+  const isLast = pos === order.length - 1;
+  document.getElementById("btnNext").textContent = isLast ? "Finish" : "Next";
+}
+
+function lockOptions(qIndex){
+  const q = QUESTIONS[qIndex];
+  const rec = answers[qIndex];
+  const opts = document.querySelectorAll("#qOptions .opt");
+  opts.forEach(el=>{
+    const letter = el.dataset.letter;
+    el.classList.add("locked");
+    if(letter === q.correct){
+      el.classList.add("correct");
+    }
+    if(rec.selected === letter && letter !== q.correct){
+      el.classList.add("incorrect");
+    }
+    if(letter === rec.selected){
+      el.classList.add("selected");
+    }
+    if(letter !== q.correct && letter !== rec.selected){
+      el.classList.add("dim");
+    }
+  });
+
+  const fb = document.getElementById("feedback");
+  const tag = document.getElementById("fbTag");
+  const txt = document.getElementById("fbText");
+  if(rec.correct){
+    tag.textContent = "Correct";
+    tag.className = "tag right";
+  } else {
+    tag.textContent = "Incorrect — correct answer: " + q.correct;
+    tag.className = "tag wrong";
+  }
+  txt.textContent = q.explain;
+  fb.classList.add("show");
+}
+
+function updateStats(){
+  let correct=0, wrong=0;
+  Object.values(answers).forEach(a=>{ a.correct ? correct++ : wrong++; });
+  document.getElementById("statCorrect").textContent = correct;
+  document.getElementById("statWrong").textContent = wrong;
+  const total = order.length || QUESTIONS.length;
+  const answeredCount = Object.keys(answers).length;
+  document.getElementById("barfill").style.width = (answeredCount/total*100)+"%";
+}
+
+function goNext(){
+  if(mode === "review"){
+    if(reviewPos === order.length-1){
+      showSummary();
+      return;
+    }
+    reviewPos++;
+    renderQuestion();
+    return;
+  }
+  const qIndex = order[currentPos];
+  if(!answers[qIndex]) return; // must answer first
+  if(currentPos === order.length-1){
+    showSummary();
+    return;
+  }
+  currentPos++;
+  renderQuestion();
+}
+
+function goPrev(){
+  if(mode === "review"){
+    if(reviewPos>0){ reviewPos--; renderQuestion(); }
+    return;
+  }
+  if(currentPos>0){ currentPos--; renderQuestion(); }
+}
+
+function showSummary(){
+  document.getElementById("quizView").classList.add("hidden");
+  document.getElementById("summaryView").classList.remove("hidden");
+
+  let correct=0, wrong=0;
+  Object.values(answers).forEach(a=>{ a.correct ? correct++ : wrong++; });
+  const total = order.length;
+  const pct = Math.round((correct/total)*100);
+
+  document.getElementById("sumScoreBig").textContent = pct + "%";
+  document.getElementById("sumScoreSub").textContent = correct + " of " + total + " correct (" + wrong + " wrong)";
+
+  let headline = "Solid grasp of the material.";
+  if(pct >= 90) headline = "Excellent — you know this cold.";
+  else if(pct >= 75) headline = "Strong performance overall.";
+  else if(pct >= 60) headline = "Decent, but a few gaps remain.";
+  else headline = "Worth another pass through the reviewer.";
+  document.getElementById("sumHeadline").textContent = headline;
+
+  // per-topic breakdown (group by the week/section prefix before " · ")
+  const groups = {};
+  order.forEach(qIndex=>{
+    const q = QUESTIONS[qIndex];
+    const key = q.topic.split(" · ")[0];
+    if(!groups[key]) groups[key] = {correct:0,total:0};
+    groups[key].total++;
+    if(answers[qIndex] && answers[qIndex].correct) groups[key].correct++;
+  });
+
+  const bd = document.getElementById("breakdown");
+  bd.innerHTML = "";
+  Object.keys(groups).forEach(key=>{
+    const g = groups[key];
+    const p = Math.round((g.correct/g.total)*100);
+    const row = document.createElement("div");
+    row.className = "row";
+    row.innerHTML = '<span>'+key+'</span><span class="pct">'+g.correct+'/'+g.total+' — '+p+'%</span>';
+    bd.appendChild(row);
+  });
+}
+
+document.getElementById("btnNext").addEventListener("click", goNext);
+document.getElementById("btnPrev").addEventListener("click", goPrev);
+document.getElementById("btnRestart").addEventListener("click", initQuiz);
+document.getElementById("btnReview").addEventListener("click", ()=>{
+  mode = "review";
+  reviewPos = 0;
+  document.getElementById("summaryView").classList.add("hidden");
+  document.getElementById("quizView").classList.remove("hidden");
+  renderQuestion();
+});
+
+document.addEventListener("keydown", (e)=>{
+  if(document.getElementById("quizView").classList.contains("hidden")) return;
+  const key = e.key.toLowerCase();
+  if(["a","b","c","d"].includes(key)){
+    if(mode === "quiz"){
+      const qIndex = order[currentPos];
+      if(!answers[qIndex]) selectAnswer(key.toUpperCase());
+    }
+  } else if(e.key === "Enter" || e.key === " "){
+    e.preventDefault();
+    const nextBtn = document.getElementById("btnNext");
+    if(!nextBtn.disabled) goNext();
+  } else if(e.key === "ArrowLeft"){
+    goPrev();
+  } else if(e.key === "ArrowRight"){
+    const nextBtn = document.getElementById("btnNext");
+    if(!nextBtn.disabled) goNext();
+  }
+});
+
+initQuiz();
+</script>
+</body>
+</html>
