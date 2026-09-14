@@ -184,11 +184,12 @@
 			<h3>For per course breakdown computation</h3>
 			<ol>
 				<li>Enter the course name, units, and switch label whether if its for midterm or final.</li>
-				<li>Enter the percentage equivalent for class participation, performance task, and exam.</li>
+				<li>Enter the name of category.</li>
+				<li>Enter the percentage equivalent for each category.</li>
 				<li>Enter the total score and your score of each task.</li>
-				<li>For exam, select the label between midterm and final, enter total and your score.</li>
 				<li>It will automatically calculate your final semester course GWA instantly.</li>
-				<li>Add more courses using the + Add course button at the bottom of the table for separate breakdown.</li>
+				<li>Add more categories by clickingg + Add Category button before the exam category for additional category that set by a course or professor.</li>
+				<li>Add more courses using the + Add Course button at the bottom of the table for separate breakdown.</li>
 				<li>Delete course list by clicking the delete button.</li>
 			</ol>
 			<i>NOTE: Midterm and final wasn't computed in combine. Try add separarte list for same course if you want to compute both midterm and final then use the term computation calculator to calculate the grades of the entire term.</i>
@@ -279,7 +280,7 @@
 			<h3>For course breakdown computation</h3>
 			<div class="equation-container">
 				<div class="centered">
-					<b>Class Participation =</b>
+					<b>Category<sub>1</sub> =</b>
 				</div>
 				<div class="fraction-wrapper">
 					<div class="numerator">
@@ -296,7 +297,7 @@
 			<br>
 			<div class="equation-container">
 				<div class="centered">
-					<b>Performance Tasks =</b>
+					<b>Category<sub>n</sub> =</b>
 				</div>
 				<div class="fraction-wrapper">
 					<div class="numerator">
@@ -312,7 +313,7 @@
 			</div>
 			<br><b>Exam =</b> Score ÷ Total Score = Initial %tage over 100% × Weight in %
 			<br>
-			<br><b>Course Grade =</b> Weighted Class Participation + Weighted Performance Tasks % + Weighted Exam %
+			<br><b>Course Grade =</b> Weighted Category<sub>1</sub> + Weighted Category<sub>2</sub> + Weighted Category<sub>n</sub> + Weighted Exam
 			<br>
 			<br><i>NOTE: After computing the final percentage, refer to the table of the official grading system to convert into point grade.</i>
 			<br>
@@ -334,6 +335,8 @@
 					<th>Score</th>
 					<td>9</td>
 					<td>18</td>
+				
+				
 					<td>13</td>
 					<td><b>40</b></td>
 					<td>72.7%</td>
@@ -809,316 +812,404 @@
 		}
 
 		// ============================================================================
-		// 3. PER COURSE BREAKDOWN COMPUTATION LOGIC
-		// ============================================================================
-		let breakdownIndex = 0;
+// 3. PER COURSE BREAKDOWN COMPUTATION LOGIC
+// ============================================================================
+let breakdownIndex = 0;
 
-		function addBreakdownCourse(data = null) {
-			breakdownIndex++;
-			const container = document.getElementById('breakdown-container');
-			if (!container) return;
+function addBreakdownCourse(data = null) {
+	breakdownIndex++;
+	const container = document.getElementById('breakdown-container');
+	if (!container) return;
 
-			const courseId = `bd-course-${breakdownIndex}`;
-			const div = document.createElement('div');
-			div.id = courseId;
-			div.className = "box3";
-			div.style.marginBottom = "20px";
+	const courseId = `bd-course-${breakdownIndex}`;
+	const div = document.createElement('div');
+	div.id = courseId;
+	div.className = "box3";
+	div.style.marginBottom = "20px";
 
-			const initialData = data || {
-				name: `Course ${breakdownIndex}`,
-				units: 3.0,
-				termLabel: 'MIDTERM',
-				cpWeight: 25,
-				ptWeight: 25,
-				examWeight: 50,
-				cpItems: [{
-					total: '',
-					score: ''
-				}],
-				ptItems: [{
-					total: '',
-					score: ''
-				}],
-				exam: {
-					total: '',
-					score: ''
-				}
-			};
+	const initialData = data || {
+		name: `Course ${breakdownIndex}`,
+		units: 3.0,
+		termLabel: 'MIDTERM',
+		categories: [
+			{
+				id: 'cp',
+				title: 'Class Participation',
+				weight: 25,
+				items: [{ total: '', score: '' }]
+			},
+			{
+				id: 'pt',
+				title: 'Performance Task',
+				weight: 25,
+				items: [{ total: '', score: '' }]
+			}
+		],
+		exam: {
+			title: 'Exam',
+			weight: 50,
+			total: '',
+			score: ''
+		}
+	};
 
-			div.innerHTML = `
-			<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-			<div>
+	div.innerHTML = `
+	<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+		<div>
 			<input type="text" class="bd-name" value="${initialData.name}" oninput="calcBreakdown('${courseId}')"> |
 			Units: <input type="number" class="bd-units" value="${initialData.units}" style="width:50px;" oninput="calcBreakdown('${courseId}')"> |
 			<button type="button" class="bd-term-btn" onclick="toggleTermLabel('${courseId}')">${initialData.termLabel}</button>
-			</div>
+		</div>
+		<div>
+			<button type="button" onclick="duplicateBreakdownCourse('${courseId}')">Duplicate Course</button>
 			<button type="button" onclick="removeBreakdownCourse('${courseId}')">Delete Course</button>
-			</div>
+		</div>
+	</div>
 
-			<div class="cp-table-container" style="overflow-x:auto;"></div>
-			<div>- TOTAL WEIGHTED %TAGE: <span class="cp-weighted-result">0%</span></div>
-			<br>
+	<div class="bd-categories-container"></div>
+	
+	<button type="button" style="margin-bottom: 15px;" onclick="addCategoryRow('${courseId}')">+ Add Category</button>
 
-			<div class="pt-table-container" style="overflow-x:auto;"></div>
-			<div>- TOTAL WEIGHTED %TAGE: <span class="pt-weighted-result">0%</span></div>
-			<br>
-
-			<div style="overflow-x:auto;">
-			<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
-			<thead>
-			<tr><th colspan="3">EXAM [<input type="number" class="exam-weight" value="${initialData.examWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th></tr>
-			<tr>
+	<div style="overflow-x:auto;">
+		<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
+		<thead>
+		<tr>
+			<th colspan="3">
+				<input type="text" class="exam-title-input" value="${initialData.exam.title || 'Exam'}" style="text-align:center; font-weight:bold;" oninput="calcBreakdown('${courseId}')"> 
+				[<input type="number" class="exam-weight" value="${initialData.exam.weight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]
+			</th>
+		</tr>
+		<tr>
 			<th><span class="exam-label-sync">${initialData.termLabel}</span> EXAM</th>
 			<th>YOUR SCORE</th>
 			<th>TOTAL SCORE</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
 			<td>Exam Score</td>
 			<td><input type="number" class="exam-score" value="${initialData.exam.score}" oninput="calcBreakdown('${courseId}')"></td>
 			<td><input type="number" class="exam-total" value="${initialData.exam.total}" oninput="calcBreakdown('${courseId}')"></td>
-			</tr>
-			</tbody>
-			</table>
-			</div>
-			<div>- TOTAL WEIGHTED %TAGE: <span class="exam-weighted-result">0%</span></div>
-			<br>
-			<div class="bd-error-msg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
-			<div class="gwa-result">COURSE FINAL PERCENT GRADE: <span class="bd-final-pct">0%</span></div>
-			<div class="gwa-result">COURSE GWA POINT RESULT: <span class="bd-gwa-result">0.00</span></div>
-			`;
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div>- TOTAL WEIGHTED %TAGE: <span class="exam-weighted-result">0%</span></div>
+	<br>
+	<div class="bd-error-msg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+	<div class="gwa-result">COURSE FINAL PERCENT GRADE: <span class="bd-final-pct">0%</span></div>
+	<div class="gwa-result">COURSE GWA POINT RESULT: <span class="bd-gwa-result">0.00</span></div>
+	`;
 
-			container.appendChild(div);
-			updateCourseNumbers('#breakdown-container > div', '.bd-name');
+	container.appendChild(div);
+	updateCourseNumbers('#breakdown-container > div', '.bd-name');
 
-			renderItems(courseId, 'cp', initialData.cpItems, initialData.cpWeight);
-			renderItems(courseId, 'pt', initialData.ptItems, initialData.ptWeight);
+	const catContainer = div.querySelector('.bd-categories-container');
+	initialData.categories.forEach((cat, idx) => {
+		const catId = cat.id || `cat-${Date.now()}-${idx}`;
+		renderCategoryBlock(courseId, catContainer, catId, cat.title, cat.weight, cat.items);
+	});
 
-			calcBreakdown(courseId);
+	calcBreakdown(courseId);
+}
+
+function removeBreakdownCourse(id) {
+	const el = document.getElementById(id);
+	if (el) el.remove();
+	updateCourseNumbers('#breakdown-container > div', '.bd-name');
+	saveAllBreakdownData();
+}
+
+function duplicateBreakdownCourse(courseId) {
+	const course = document.getElementById(courseId);
+	if (!course) return;
+
+	const catBlocks = course.querySelectorAll('.category-block');
+	let categories = [];
+
+	catBlocks.forEach((block, idx) => {
+		const totals = Array.from(block.querySelectorAll('.cat-t')).map(i => i.value);
+		const scores = Array.from(block.querySelectorAll('.cat-s')).map(i => i.value);
+
+		categories.push({
+			id: `cat-${Date.now()}-${idx}`,
+			title: block.querySelector('.cat-title-input')?.value || '',
+			weight: block.querySelector('.cat-weight')?.value || 0,
+			items: totals.map((t, i) => ({ total: t, score: scores[i] }))
+		});
+	});
+
+	const duplicateData = {
+		name: `${course.querySelector('.bd-name').value} (Copy)`,
+		units: course.querySelector('.bd-units').value,
+		termLabel: course.querySelector('.bd-term-btn').innerText,
+		categories: categories,
+		exam: {
+			title: course.querySelector('.exam-title-input')?.value || 'Exam',
+			weight: course.querySelector('.exam-weight')?.value || 50,
+			total: course.querySelector('.exam-total').value,
+			score: course.querySelector('.exam-score').value
 		}
+	};
 
-		function removeBreakdownCourse(id) {
-			const el = document.getElementById(id);
-			if (el) el.remove();
-			updateCourseNumbers('#breakdown-container > div', '.bd-name');
-			saveAllBreakdownData();
-		}
+	addBreakdownCourse(duplicateData);
+}
 
-		function toggleTermLabel(courseId) {
-			const course = document.getElementById(courseId);
-			const btn = course.querySelector('.bd-term-btn');
-			const syncLabel = course.querySelector('.exam-label-sync');
-			if (btn.innerText === 'MIDTERM') {
-				btn.innerText = 'FINAL';
-				syncLabel.innerText = 'FINAL';
-			} else {
-				btn.innerText = 'MIDTERM';
-				syncLabel.innerText = 'MIDTERM';
-			}
-			calcBreakdown(courseId);
-		}
+function toggleTermLabel(courseId) {
+	const course = document.getElementById(courseId);
+	const btn = course.querySelector('.bd-term-btn');
+	const syncLabel = course.querySelector('.exam-label-sync');
+	if (btn.innerText === 'MIDTERM') {
+		btn.innerText = 'FINAL';
+		syncLabel.innerText = 'FINAL';
+	} else {
+		btn.innerText = 'MIDTERM';
+		syncLabel.innerText = 'MIDTERM';
+	}
+	calcBreakdown(courseId);
+}
 
-		function renderItems(courseId, type, items, weightVal = 25) {
-			const course = document.getElementById(courseId);
-			if (!course) return;
+function addCategoryRow(courseId) {
+	const course = document.getElementById(courseId);
+	if (!course) return;
+	const catContainer = course.querySelector('.bd-categories-container');
+	const newCatId = `cat-${Date.now()}`;
+	renderCategoryBlock(courseId, catContainer, newCatId, 'New Category', 0, [{ total: '', score: '' }]);
+	calcBreakdown(courseId);
+}
 
-			const container = course.querySelector(`.${type}-table-container`);
+function removeCategoryRow(courseId, catId) {
+	const course = document.getElementById(courseId);
+	if (!course) return;
+	const block = course.querySelector(`#${catId}-block`);
+	if (block) block.remove();
+	calcBreakdown(courseId);
+}
 
-			let itemCols = '';
-			let totalInputs = '';
-			let scoreInputs = '';
+function renderCategoryBlock(courseId, catContainer, catId, title, weight, items) {
+	const block = document.createElement('div');
+	block.id = `${catId}-block`;
+	block.className = 'category-block';
+	block.style.marginBottom = '15px';
 
-			items.forEach((item, idx) => {
-				itemCols += `<th>${idx + 1}</th>`;
-				totalInputs += `<td><input type="number" class="${type}-t" value="${item.total !== undefined ? item.total: ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
-				scoreInputs += `<td><input type="number" class="${type}-s" value="${item.score !== undefined ? item.score: ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
-			});
+	let itemCols = '';
+	let totalInputs = '';
+	let scoreInputs = '';
 
-			const label = type === 'cp' ? 'CLASS PARTICIPATION': 'PERFORMANCE TASK';
-			const currentWeight = course.querySelector(`.${type}-weight`)?.value || weightVal;
+	items.forEach((item, idx) => {
+		itemCols += `<th class="item-col-header">${idx + 1}</th>`;
+		totalInputs += `<td><input type="number" class="cat-t" value="${item.total !== undefined ? item.total : ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
+		scoreInputs += `<td><input type="number" class="cat-s" value="${item.score !== undefined ? item.score : ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
+	});
 
-			container.innerHTML = `
-			<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
-			<thead>
-			<tr>
-			<th colspan="${items.length + 3}">${label} [<input type="number" class="${type}-weight" value="${currentWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th>
-			</tr>
-			<tr>
+	block.innerHTML = `
+	<div style="overflow-x:auto;">
+		<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
+		<thead>
+		<tr class="header-main-tr">
+			<th class="header-main-th" colspan="${items.length + 3}">
+				<input type="text" class="cat-title-input" value="${title}" style="text-align:center; font-weight:bold;" oninput="calcBreakdown('${courseId}')"> 
+				[<input type="number" class="cat-weight" value="${weight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]
+				<button type="button" style="float:right; margin-left:10px;" onclick="removeCategoryRow('${courseId}', '${catId}')">Delete Category</button>
+			</th>
+		</tr>
+		<tr class="cols-header-tr">
 			<th>#</th>
 			${itemCols}
-			<th>
-			<button type="button" onclick="addBreakdownItem('${courseId}', '${type}')">+ Add</button>
-			<button type="button" onclick="removeBreakdownItem('${courseId}', '${type}')">Delete</button>
+			<th class="actions-cell">
+				<button type="button" onclick="addBreakdownItem('${courseId}', '${catId}')">+ Add</button>
+				<button type="button" onclick="removeBreakdownItem('${courseId}', '${catId}')">Delete</button>
 			</th>
 			<th>TOTAL</th>
 			<th>TOTAL %TAGE (over 100%)</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="scores-tr">
 			<th>Input score</th>
 			${scoreInputs}
-			<td></td>
-			<td class="${type}-sum-scores">0</td>
-			<td class="${type}-raw-pct">0%</td>
-			</tr>
-			<tr>
+			<td class="action-spacer-1"></td>
+			<td class="cat-sum-scores">0</td>
+			<td class="cat-raw-pct">0%</td>
+		</tr>
+		<tr class="totals-tr">
 			<th>Total items</th>
 			${totalInputs}
-			<td></td>
-			<td class="${type}-sum-totals">0</td>
-			<td class="${type}-100-pct">100%</td>
-			</tr>
-			</tbody>
-			</table>
-			`;
-		}
+			<td class="action-spacer-2"></td>
+			<td class="cat-sum-totals">0</td>
+			<td class="cat-100-pct">100%</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div>- TOTAL WEIGHTED %TAGE: <span class="cat-weighted-result">0%</span></div>
+	`;
 
-		function addBreakdownItem(courseId, type) {
-			const course = document.getElementById(courseId);
-			const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(e => e.value);
-			const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(e => e.value);
+	catContainer.appendChild(block);
+}
 
-			totals.push('');
-			scores.push('');
+function addBreakdownItem(courseId, catId) {
+	const block = document.getElementById(`${catId}-block`);
+	if (!block) return;
 
-			const items = totals.map((t, i) => ({
-				total: t, score: scores[i]
-			}));
-			renderItems(courseId, type, items);
-			calcBreakdown(courseId);
-		}
+	const headerTh = block.querySelector('.header-main-th');
+	const colsHeaderTr = block.querySelector('.cols-header-tr');
+	const actionsCell = block.querySelector('.actions-cell');
+	const scoresTr = block.querySelector('.scores-tr');
+	const totalsTr = block.querySelector('.totals-tr');
+	const spacer1 = block.querySelector('.action-spacer-1');
+	const spacer2 = block.querySelector('.action-spacer-2');
 
-		function removeBreakdownItem(courseId, type) {
-			const course = document.getElementById(courseId);
-			const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(e => e.value);
-			const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(e => e.value);
+	const currentCount = block.querySelectorAll('.item-col-header').length;
+	const newCount = currentCount + 1;
 
-			if (totals.length > 1) {
-				totals.pop();
-				scores.pop();
-				const items = totals.map((t, i) => ({
-					total: t, score: scores[i]
-				}));
-				renderItems(courseId, type, items);
-				calcBreakdown(courseId);
+	// 1. Expand title colspan
+	headerTh.colSpan = newCount + 3;
+
+	// 2. Add column header
+	const th = document.createElement('th');
+	th.className = 'item-col-header';
+	th.innerText = newCount;
+	colsHeaderTr.insertBefore(th, actionsCell);
+
+	// 3. Add score input cell
+	const tdScore = document.createElement('td');
+	tdScore.innerHTML = `<input type="number" class="cat-s" value="" style="width:45px;" oninput="calcBreakdown('${courseId}')">`;
+	scoresTr.insertBefore(tdScore, spacer1);
+
+	// 4. Add total input cell
+	const tdTotal = document.createElement('td');
+	tdTotal.innerHTML = `<input type="number" class="cat-t" value="" style="width:45px;" oninput="calcBreakdown('${courseId}')">`;
+	totalsTr.insertBefore(tdTotal, spacer2);
+
+	calcBreakdown(courseId);
+}
+
+function removeBreakdownItem(courseId, catId) {
+	const block = document.getElementById(`${catId}-block`);
+	if (!block) return;
+
+	const itemHeaders = block.querySelectorAll('.item-col-header');
+	if (itemHeaders.length <= 1) return; // Keep at least 1 column
+
+	const headerTh = block.querySelector('.header-main-th');
+	const scoresInputs = block.querySelectorAll('.cat-s');
+	const totalsInputs = block.querySelectorAll('.cat-t');
+
+	// 1. Reduce title colspan
+	headerTh.colSpan = itemHeaders.length + 2;
+
+	// 2. Remove last elements in row safely
+	itemHeaders[itemHeaders.length - 1].remove();
+	scoresInputs[scoresInputs.length - 1].closest('td').remove();
+	totalsInputs[totalsInputs.length - 1].closest('td').remove();
+
+	calcBreakdown(courseId);
+}
+
+function calcBreakdown(courseId) {
+	const course = document.getElementById(courseId);
+	if (!course) return;
+
+	let errorMsg = "";
+	let totalFinalPct = 0;
+
+	// Calculate Dynamic Categories
+	const catBlocks = course.querySelectorAll('.category-block');
+	catBlocks.forEach(block => {
+		const catTitle = block.querySelector('.cat-title-input')?.value || 'Category';
+		const catWeight = parseFloat(block.querySelector('.cat-weight')?.value || 0);
+		const totals = Array.from(block.querySelectorAll('.cat-t')).map(i => parseFloat(i.value) || 0);
+		const scores = Array.from(block.querySelectorAll('.cat-s')).map(i => parseFloat(i.value) || 0);
+		
+		const rawTotals = Array.from(block.querySelectorAll('.cat-t')).map(i => parseFloat(i.value));
+		const rawScores = Array.from(block.querySelectorAll('.cat-s')).map(i => parseFloat(i.value));
+
+		for (let i = 0; i < rawTotals.length; i++) {
+			if (!isNaN(rawTotals[i]) && !isNaN(rawScores[i]) && rawScores[i] > rawTotals[i]) {
+				if (!errorMsg) errorMsg = `Error in ${catTitle} #${i + 1}: Score (${rawScores[i]}) cannot be greater than Total Score (${rawTotals[i]}).`;
 			}
 		}
 
-		function calcBreakdown(courseId) {
-			const course = document.getElementById(courseId);
-			if (!course) return;
+		const sumTotal = totals.reduce((a, b) => a + b, 0);
+		const sumScore = scores.reduce((a, b) => a + b, 0);
+		const rawPct = sumTotal > 0 ? (sumScore / sumTotal) * 100 : 0;
+		const weightedPct = (rawPct * catWeight) / 100;
 
-			let hasScoreError = false;
+		totalFinalPct += weightedPct;
 
-			// Helper: Checks array of total inputs against score inputs for invalid numbers
-			function checkScores(type, sectionName) {
-				const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(i => parseFloat(i.value));
-				const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(i => parseFloat(i.value));
-				for (let i = 0; i < totals.length; i++) {
-					if (!isNaN(totals[i]) && !isNaN(scores[i]) && scores[i] > totals[i]) {
-						hasScoreError = true;
-						return `Error in ${sectionName} #${i + 1}: Score (${scores[i]}) cannot be greater than Total Score (${totals[i]}).`;
-					}
-				}
-				return "";
-			}
+		if (block.querySelector('.cat-sum-totals')) block.querySelector('.cat-sum-totals').innerText = sumTotal;
+		if (block.querySelector('.cat-sum-scores')) block.querySelector('.cat-sum-scores').innerText = sumScore;
+		if (block.querySelector('.cat-raw-pct')) block.querySelector('.cat-raw-pct').innerText = rawPct.toFixed(1) + '%';
+		if (block.querySelector('.cat-weighted-result')) block.querySelector('.cat-weighted-result').innerText = weightedPct.toFixed(2) + `% (over ${catWeight}%)`;
+	});
 
-			let errorMsg = checkScores('cp', 'Class Participation');
-			if (!errorMsg) errorMsg = checkScores('pt', 'Performance Task');
+	// Calculate Exam
+	const examWeight = parseFloat(course.querySelector('.exam-weight')?.value || 0);
+	const examTotal = parseFloat(course.querySelector('.exam-total')?.value || 0);
+	const examScore = parseFloat(course.querySelector('.exam-score')?.value || 0);
 
-			// Calc Class Participation
-			const cpWeight = parseFloat(course.querySelector('.cp-weight')?.value || 0);
-			const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => parseFloat(i.value) || 0);
-			const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => parseFloat(i.value) || 0);
-			const cpSumTotal = cpTotals.reduce((a, b) => a + b, 0);
-			const cpSumScore = cpScores.reduce((a, b) => a + b, 0);
-			const cpRawPct = cpSumTotal > 0 ? (cpSumScore / cpSumTotal) * 100: 0;
-			const cpWeighted = (cpRawPct * cpWeight) / 100;
+	if (!isNaN(examTotal) && !isNaN(examScore) && examScore > examTotal) {
+		if (!errorMsg) errorMsg = `Error in Exam: Score (${examScore}) cannot be greater than Total Score (${examTotal}).`;
+	}
 
-			if (course.querySelector('.cp-sum-totals')) course.querySelector('.cp-sum-totals').innerText = cpSumTotal;
-			if (course.querySelector('.cp-sum-scores')) course.querySelector('.cp-sum-scores').innerText = cpSumScore;
-			if (course.querySelector('.cp-raw-pct')) course.querySelector('.cp-raw-pct').innerText = cpRawPct.toFixed(1) + '%';
-			if (course.querySelector('.cp-weighted-result')) course.querySelector('.cp-weighted-result').innerText = cpWeighted.toFixed(2) + `% (over ${cpWeight}%)`;
+	const examRawPct = examTotal > 0 ? (examScore / examTotal) * 100 : 0;
+	const examWeighted = (examRawPct * examWeight) / 100;
 
-			// Calc Performance Tasks
-			const ptWeight = parseFloat(course.querySelector('.pt-weight')?.value || 0);
-			const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => parseFloat(i.value) || 0);
-			const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => parseFloat(i.value) || 0);
-			const ptSumTotal = ptTotals.reduce((a, b) => a + b, 0);
-			const ptSumScore = ptScores.reduce((a, b) => a + b, 0);
-			const ptRawPct = ptSumTotal > 0 ? (ptSumScore / ptSumTotal) * 100: 0;
-			const ptWeighted = (ptRawPct * ptWeight) / 100;
+	totalFinalPct += examWeighted;
 
-			if (course.querySelector('.pt-sum-totals')) course.querySelector('.pt-sum-totals').innerText = ptSumTotal;
-			if (course.querySelector('.pt-sum-scores')) course.querySelector('.pt-sum-scores').innerText = ptSumScore;
-			if (course.querySelector('.pt-raw-pct')) course.querySelector('.pt-raw-pct').innerText = ptRawPct.toFixed(1) + '%';
-			if (course.querySelector('.pt-weighted-result')) course.querySelector('.pt-weighted-result').innerText = ptWeighted.toFixed(2) + `% (over ${ptWeight}%)`;
+	if (course.querySelector('.exam-weighted-result')) course.querySelector('.exam-weighted-result').innerText = examWeighted.toFixed(2) + `% (over ${examWeight}%)`;
 
-			// Calc Exam
-			const examWeight = parseFloat(course.querySelector('.exam-weight')?.value || 0);
-			const examTotal = parseFloat(course.querySelector('.exam-total')?.value || 0);
-			const examScore = parseFloat(course.querySelector('.exam-score')?.value || 0);
+	// Final Grade & GWA Point
+	const gradePoint = percentageToPoint(totalFinalPct);
 
-			if (!isNaN(examTotal) && !isNaN(examScore) && examScore > examTotal) {
-				hasScoreError = true;
-				if (!errorMsg) errorMsg = `Error in Exam: Score (${examScore}) cannot be greater than Total Score (${examTotal}).`;
-			}
+	const errContainer = course.querySelector('.bd-error-msg');
+	if (errContainer) {
+		errContainer.innerText = errorMsg;
+	}
 
-			const examRawPct = examTotal > 0 ? (examScore / examTotal) * 100: 0;
-			const examWeighted = (examRawPct * examWeight) / 100;
+	if (course.querySelector('.bd-final-pct')) course.querySelector('.bd-final-pct').innerText = totalFinalPct.toFixed(2) + '%';
+	if (course.querySelector('.bd-gwa-result')) course.querySelector('.bd-gwa-result').innerText = gradePoint.toFixed(2);
 
-			if (course.querySelector('.exam-weighted-result')) course.querySelector('.exam-weighted-result').innerText = examWeighted.toFixed(2) + `% (over ${examWeight}%)`;
+	saveAllBreakdownData();
+}
 
-			// Final Grade & GWA Point
-			const finalPct = cpWeighted + ptWeighted + examWeighted;
-			const gradePoint = percentageToPoint(finalPct);
+function saveAllBreakdownData() {
+	const courses = document.querySelectorAll('#breakdown-container > div');
+	let saveData = [];
 
-			const errContainer = course.querySelector('.bd-error-msg');
-			if (errContainer) {
-				errContainer.innerText = errorMsg;
-			}
+	courses.forEach(course => {
+		const catBlocks = course.querySelectorAll('.category-block');
+		let categories = [];
 
-			if (course.querySelector('.bd-final-pct')) course.querySelector('.bd-final-pct').innerText = finalPct.toFixed(2) + '%';
-			if (course.querySelector('.bd-gwa-result')) course.querySelector('.bd-gwa-result').innerText = gradePoint.toFixed(2);
+		catBlocks.forEach(block => {
+			const totals = Array.from(block.querySelectorAll('.cat-t')).map(i => i.value);
+			const scores = Array.from(block.querySelectorAll('.cat-s')).map(i => i.value);
 
-			saveAllBreakdownData();
-		}
-
-		function saveAllBreakdownData() {
-			const courses = document.querySelectorAll('#breakdown-container > div');
-			let saveData = [];
-
-			courses.forEach(course => {
-				const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => i.value);
-				const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => i.value);
-				const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => i.value);
-				const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => i.value);
-
-				saveData.push({
-					name: course.querySelector('.bd-name').value,
-					units: course.querySelector('.bd-units').value,
-					termLabel: course.querySelector('.bd-term-btn').innerText,
-					cpWeight: course.querySelector('.cp-weight')?.value || 25,
-					ptWeight: course.querySelector('.pt-weight')?.value || 25,
-					examWeight: course.querySelector('.exam-weight')?.value || 50,
-					cpItems: cpTotals.map((t, i) => ({
-						total: t, score: cpScores[i]
-					})),
-					ptItems: ptTotals.map((t, i) => ({
-						total: t, score: ptScores[i]
-					})),
-					exam: {
-						total: course.querySelector('.exam-total').value,
-						score: course.querySelector('.exam-score').value
-					}
-				});
+			categories.push({
+				id: block.id.replace('-block', ''),
+				title: block.querySelector('.cat-title-input')?.value || '',
+				weight: block.querySelector('.cat-weight')?.value || 0,
+				items: totals.map((t, i) => ({ total: t, score: scores[i] }))
 			});
+		});
 
-			localStorage.setItem('nu_breakdown_data', JSON.stringify(saveData));
-		}
+		saveData.push({
+			name: course.querySelector('.bd-name').value,
+			units: course.querySelector('.bd-units').value,
+			termLabel: course.querySelector('.bd-term-btn').innerText,
+			categories: categories,
+			exam: {
+				title: course.querySelector('.exam-title-input')?.value || 'Exam',
+				weight: course.querySelector('.exam-weight')?.value || 50,
+				total: course.querySelector('.exam-total').value,
+				score: course.querySelector('.exam-score').value
+			}
+		});
+	});
 
+	localStorage.setItem('nu_breakdown_data', JSON.stringify(saveData));
+}
 	</script>
 	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../script/footer/footerB.js" type="text/javascript" charset="utf-8"></script>
