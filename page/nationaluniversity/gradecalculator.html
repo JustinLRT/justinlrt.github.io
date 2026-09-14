@@ -8,11 +8,12 @@
 	<link rel="stylesheet" href="../../style.css" type="text/css" media="all" />
 	<title>NU GWA Grade Calculator</title>
 	<style>
-		/* Keeps the fraction and the multiplier aligned perfectly in a straight line */
+		/* Keeps the fraction and the multiplier aligned in a single line without wrapping */
 		.equation-container {
 			display: inline-flex;
 			align-items: center;
 			margin: 15px 0;
+			/* Prevents formula elements from wrapping to a new line */
 		}
 
 		/* Stacks the numerator on top of the denominator */
@@ -24,10 +25,9 @@
 			padding: 0 2px;
 		}
 
-		/* Creates a clean, solid fraction line that matches text length perfectly */
+		/* Dynamic border color using currentColor to adapt seamlessly to dark mode/light mode themes */
 		.numerator {
-			border-bottom: 2px solid #000000;
-			/* Change color to match your site theme */
+			border-bottom: 2px solid currentColor;
 			width: 100%;
 			padding-bottom: 4px;
 		}
@@ -37,7 +37,6 @@
 			width: 100%;
 		}
 
-		/* Adds a bit of breathing room for the multiplier symbol */
 		.centered {
 			padding-left: 2px;
 		}
@@ -64,7 +63,22 @@
 			width: 50px;
 			text-align: center;
 		}
-
+		/* Adds horizontal scrollability for mobile view so equations never break layout */
+		.box2 {
+			overflow-x: auto;
+		}
+		div.gwa-result {
+			font-size: 1.3em;
+			font-weight: bold;
+		}
+		table.table-container {
+			display: block;
+			max-width: -moz-fit-content;
+			max-width: fit-content;
+			margin: 0 auto;
+			overflow-x: auto;
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>
@@ -101,8 +115,8 @@
 			<br>
 			<button type="button" onclick="addStraightRow()">+ Add Course</button>
 			<br><br>
-			<div>
-				<strong>GWA RESULT (POINT):</strong> <span id="straight-gwa">0.00</span>
+			<div class="gwa-result">
+				GWA RESULT: <span id="straight-gwa">0.00</span>
 			</div>
 			<div id="straight-message" style="margin-top: 5px; font-weight: bold;"></div>
 
@@ -131,8 +145,8 @@
 			<br>
 			<button type="button" onclick="addTermRow()">+ Add Course</button>
 			<br><br>
-			<div>
-				<strong>GWA RESULT:</strong> <span id="term-gwa">0.00</span>
+			<div class="gwa-result">
+				GWA RESULT: <span id="term-gwa">0.00</span>
 			</div>
 			<div id="term-message" style="margin-top: 5px; font-weight: bold;"></div>
 
@@ -175,7 +189,7 @@
 				<li>For exam, select the label between midterm and final, enter total and your score.</li>
 				<li>It will automatically calculate your final semester course GWA instantly.</li>
 				<li>Add more courses using the + Add course button at the bottom of the table for separate breakdown.</li>
-				<li>Delete course list by cliking the delete button.</li>
+				<li>Delete course list by clicking the delete button.</li>
 			</ol>
 			<i>NOTE: Midterm and final wasn't computed in combine. Try add separarte list for same course if you want to compute both midterm and final then use the term computation calculator to calculate the grades of the entire term.</i>
 		</div>
@@ -220,7 +234,7 @@
 				</div>
 			</div>
 			<br>Example:
-			<table>
+			<table class="table-container">
 				<tr>
 					<th rowspan="2">Course</th>
 					<th>Midterm</th>
@@ -298,12 +312,12 @@
 			</div>
 			<br><b>Exam =</b> Score ÷ Total Score = Initial %tage over 100% × Weight in %
 			<br>
-			<br><b>Course Grade =</b> Weighted Class Participation + Weighted Performance Tasks % + Weighted Exam
+			<br><b>Course Grade =</b> Weighted Class Participation + Weighted Performance Tasks % + Weighted Exam %
 			<br>
 			<br><i>NOTE: After computing the final percentage, refer to the table of the official grading system to convert into point grade.</i>
 			<br>
 			<br>Example:
-			<table>
+			<table class="table-container">
 				<tr>
 					<th colspan="7">Class Participation (30%)</th>
 				</tr>
@@ -317,15 +331,6 @@
 					<th>Weighted %tage</th>
 				</tr>
 				<tr>
-					<th>Total Score</th>
-					<td>10</td>
-					<td>20</td>
-					<td>15</td>
-					<td><b>55</b></td>
-					<td>100%</td>
-					<td><b>30%</b></td>
-				</tr>
-				<tr>
 					<th>Score</th>
 					<td>9</td>
 					<td>18</td>
@@ -333,6 +338,15 @@
 					<td><b>40</b></td>
 					<td>72.7%</td>
 					<td class="green-bg"><b>21.8%</b></td>
+				</tr>
+				<tr>
+					<th>Total Score</th>
+					<td>10</td>
+					<td>20</td>
+					<td>15</td>
+					<td><b>55</b></td>
+					<td>100%</td>
+					<td><b>30%</b></td>
 				</tr>
 				<tr>
 					<th colspan="7">Performance Tasks (40%)</th>
@@ -347,15 +361,6 @@
 					<th>Weighted %tage</th>
 				</tr>
 				<tr>
-					<th>Total Score</th>
-					<td>100</td>
-					<td>50</td>
-					<td>30</td>
-					<td><b>180</b></td>
-					<td>100%</td>
-					<td><b>40%</b></td>
-				</tr>
-				<tr>
 					<th>Score</th>
 					<td>80</td>
 					<td>41</td>
@@ -363,6 +368,15 @@
 					<td><b>141</b></td>
 					<td>78.3%</td>
 					<td class="green-bg"><b>31.3%</b></td>
+				</tr>
+				<tr>
+					<th>Total Score</th>
+					<td>100</td>
+					<td>50</td>
+					<td>30</td>
+					<td><b>180</b></td>
+					<td>100%</td>
+					<td><b>40%</b></td>
 				</tr>
 				<tr>
 					<th colspan="7">Midterm Exam (30%)</th>
@@ -373,26 +387,26 @@
 					<th>Weighted %tage</th>
 				</tr>
 				<tr>
-					<th>Total Score</th>
-					<td colspan="4">100</td>
-					<td>100%</td>
-					<td>30%</td>
-				</tr>
-				<tr>
 					<th>Score</th>
 					<td colspan="4">72</td>
 					<td>72%</td>
 					<td class="green-bg">21.6%</td>
 				</tr>
 				<tr>
-					<td colspan="4"></td>
-					<th colspan="2">Final Course Grade (Midterm)</th>
-					<th>74.7%</th>
+					<th>Total Score</th>
+					<td colspan="4">100</td>
+					<td>100%</td>
+					<td>30%</td>
 				</tr>
 				<tr>
 					<td colspan="4"></td>
-					<th colspan="2">Final Point Grade (Midterm)</th>
-					<th>2.00</th>
+					<td colspan="2" class="orange-bg">Final Course Grade (Midterm)</td>
+					<td class="orange-bg">74.7%</td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+					<td colspan="2" class="cyan-bg">Final Point Grade (Midterm)</td>
+					<td class="cyan-bg">2.00</td>
 				</tr>
 			</table>
 			<br><i>NOTE: The breakdown is only computed half of the term, midterm or final, and not computed as entire term.</i>
@@ -401,7 +415,7 @@
 			<h2>NU Grading System and Grade Equivalents</h2>
 			Numeric ranges below appear under Section 3-E of the NU's 2025–2026 Student Handbook. Enter your awarded grade point, not a converted percentage.
 			<br>
-			<table>
+			<table class="table-container">
 				<tr>
 					<th>NU Grade Point</th>
 					<th>Grade Range (%)</th>
@@ -509,7 +523,7 @@
 					</td>
 				</tr>
 			</table>
-			<br><h3>Qualificatios</h3>
+			<br><h3>Qualifications</h3>
 			<ul>
 				<li>Attain a Term General Weighted Average (GWA) of at least 3.25</li>
 				<li>Carry a minimum academic load of 12.0 units unless specified otherwise in the program flowchart. <b>Note:</b> if the regular load for the term falls below 12.0 units, have the Registrar's Office validate your qualifying GWA for the term on or before the midterm period of the following term.</li>
@@ -525,7 +539,7 @@
 			<h2>Frequently Asked Questions</h2>
 			<button class="collapsible">Is this webpage affiliated with National University Philippines?</button>
 			<div class="content">
-				<br>No. This is a personal website I created as an NU student to help fellow students calculate their GWA. It is not affiliated with or endorsed National University Philippines. Always verify your grades with the official NUIS student portal or your registrar.
+				<br>No. This is a personal website I created as an NU student to help fellow students calculate their GWA. It is not affiliated with or endorsed by National University Philippines. Always verify your grades with the official NUIS student portal or your registrar.
 			</div>
 			<button class="collapsible">What grading scale does this calculator use?</button>
 			<div class="content">
@@ -533,7 +547,7 @@
 			</div>
 			<button class="collapsible">Can I save my grades for next time?</button>
 			<div class="content">
-				<br>Yes. Your grades are automatically saved in your browser's local storage, so the data you're inputted still be there the next time you visit as long as you use the same browser and haven't cleared your data.
+				<br>Yes. Your grades are automatically saved in your browser's local storage, so the data you've inputted still be there the next time you visit as long as you use the same browser and haven't cleared your data.
 			</div>
 			<button class="collapsible">What GWA do I need for the Dean's list?</button>
 			<div class="content">
@@ -556,11 +570,11 @@
 			</div>
 			<button class="collapsible">Take remedial courses seriously</button>
 			<div class="content">
-				<br>Retaking a failed subject and passing it improves your transcript and academic standing. Treat remedial courses as a second chance, not an afterthought. Note that some major courses has limit on retakes, the more failures and retakes will result to disqualification to entering the program.
+				<br>Retaking a failed subject and passing it improves your transcript and academic standing. Treat remedial courses as a second chance, not an afterthought. Note that some major courses have limits on retakes; excessive failures and retakes may result in disqualification from the program.
 			</div>
 			<button class="collapsible">Balance your unit load</button>
 			<div class="content">
-				<br>Taking too many units when you're not prepared can hurt your performance across all subjects. Plan your term wisely and know your limits. You can requeest load revision from your registrar two weeks from the opening of classes every term.
+				<br>Taking too many units when you're not prepared can hurt your performance across all subjects. Plan your term wisely and know your limits. You can request load revision from your registrar two weeks from the opening of classes every term.
 			</div>
 		</div>
 		<footer id="footerB"></footer>
@@ -568,504 +582,542 @@
 	<script type='text/javascript' src='../../script/jquery.min.js'></script>
 	<script>
 		// NU Percentage to Point Grade Conversion Table
-function percentageToPoint(score) {
-    if (score >= 96) return 4.0;
-    if (score >= 90) return 3.5;
-    if (score >= 84) return 3.0;
-    if (score >= 78) return 2.5;
-    if (score >= 72) return 2.0;
-    if (score >= 66) return 1.5;
-    if (score >= 60) return 1.0;
-    return 0.0;
-}
-
-// Dean's Honors List Message Generator
-function getDeanMessage(gwa, hasGradeBelow25, validCourseCount) {
-    if (validCourseCount === 0 || gwa === 0) return "";
-
-    if (gwa < 3.25 || hasGradeBelow25) {
-        return "You need a GWA of at least 3.25 and no grades below 2.5 to qualify for the Dean's List, Bawi next sem! :D";
-    }
-    if (gwa >= 3.50) {
-        return "Congrats! You're on the Dean's First Honors List";
-    }
-    return "Congrats! You're on the Dean's Second Honors List";
-}
-
-// Helper: Re-indexes course names (1, 2, 3...) dynamically when rows are added/deleted
-function updateCourseNumbers(selector, nameClass) {
-    const rows = document.querySelectorAll(selector);
-    rows.forEach((row, index) => {
-        const input = row.querySelector(nameClass);
-        if (input && (!input.value || /^Course \d+$/.test(input.value))) {
-            input.value = `Course ${index + 1}`;
-        }
-    });
-}
-
-// ============================================================================
-// 1. STRAIGHT COMPUTATION LOGIC
-// ============================================================================
-let straightIndex = 0;
-
-function addStraightRow(data = {}) {
-    straightIndex++;
-    const tbody = document.getElementById('straight-body');
-    if (!tbody) return;
-    const tr = document.createElement('tr');
-    tr.id = `straight-row-${straightIndex}`;
-
-    tr.innerHTML = `
-    <td><input type="text" class="st-name" value="${data.name !== undefined ? data.name : ''}" oninput="calcStraight()"></td>
-    <td><input type="number" step="0.1" class="st-grade" placeholder="0.0 - 4.0" value="${data.grade !== undefined ? data.grade : ''}" oninput="calcStraight()"></td>
-    <td><input type="number" step="0.5" class="st-units" value="${data.units !== undefined ? data.units : 3.0}" oninput="calcStraight()"></td>
-    <td><button type="button" onclick="removeStraightRow('${tr.id}')">Delete</button></td>
-    `;
-    tbody.appendChild(tr);
-    updateCourseNumbers('#straight-body tr', '.st-name');
-    calcStraight();
-}
-
-function removeStraightRow(id) {
-    const row = document.getElementById(id);
-    if (row) row.remove();
-    updateCourseNumbers('#straight-body tr', '.st-name');
-    calcStraight();
-}
-
-function calcStraight() {
-    const rows = document.querySelectorAll('#straight-body tr');
-    let totalWeightedPoints = 0;
-    let totalUnits = 0;
-    let hasGradeBelow25 = false;
-    let validCourseCount = 0;
-    let saveData = [];
-    let hasInvalidGrade = false;
-
-    rows.forEach(row => {
-        const name = row.querySelector('.st-name').value;
-        const gradeVal = row.querySelector('.st-grade').value;
-        const unitsVal = row.querySelector('.st-units').value;
-
-        const grade = parseFloat(gradeVal);
-        const units = parseFloat(unitsVal) || 0;
-
-        saveData.push({ name, grade: gradeVal, units: unitsVal });
-
-        if (gradeVal !== '') {
-            if (isNaN(grade) || grade < 0.0 || grade > 4.0) {
-                hasInvalidGrade = true;
-            } else if (units > 0) {
-                totalWeightedPoints += grade * units;
-                totalUnits += units;
-                validCourseCount++;
-                if (grade < 2.5) hasGradeBelow25 = true;
-            }
-        }
-    });
-
-    const gwa = totalUnits > 0 ? (totalWeightedPoints / totalUnits) : 0;
-    const gwaEl = document.getElementById('straight-gwa');
-    const msgEl = document.getElementById('straight-message');
-
-    if (gwaEl) gwaEl.innerText = gwa.toFixed(2);
-
-    if (msgEl) {
-        if (hasInvalidGrade) {
-            msgEl.style.color = "red";
-            msgEl.innerText = "Error: Invalid grade point entered! Grade must be a number between 0.0 and 4.0.";
-        } else {
-            msgEl.style.color = "";
-            msgEl.innerText = getDeanMessage(gwa, hasGradeBelow25, validCourseCount);
-        }
-    }
-
-    localStorage.setItem('nu_straight_data', JSON.stringify(saveData));
-}
-
-// ============================================================================
-// 2. TERM COMPUTATION LOGIC
-// ============================================================================
-let termIndex = 0;
-
-function addTermRow(data = {}) {
-    termIndex++;
-    const tbody = document.getElementById('term-body');
-    if (!tbody) return;
-    const tr = document.createElement('tr');
-    tr.id = `term-row-${termIndex}`;
-
-    tr.innerHTML = `
-    <td><input type="text" class="tm-name" value="${data.name !== undefined ? data.name : ''}" oninput="calcTerm()"></td>
-    <td><input type="number" step="0.1" class="tm-midterm" placeholder="0.0 - 4.0" value="${data.midterm !== undefined ? data.midterm : ''}" oninput="calcTerm()"></td>
-    <td><input type="number" step="0.1" class="tm-final" placeholder="0.0 - 4.0" value="${data.final !== undefined ? data.final : ''}" oninput="calcTerm()"></td>
-    <td><input type="number" step="0.5" class="tm-units" value="${data.units !== undefined ? data.units : 3.0}" oninput="calcTerm()"></td>
-    <td><span class="tm-result">0.00</span></td>
-    <td><button type="button" onclick="removeTermRow('${tr.id}')">Delete</button></td>
-    `;
-    tbody.appendChild(tr);
-    updateCourseNumbers('#term-body tr', '.tm-name');
-    calcTerm();
-}
-
-function removeTermRow(id) {
-    const row = document.getElementById(id);
-    if (row) row.remove();
-    updateCourseNumbers('#term-body tr', '.tm-name');
-    calcTerm();
-}
-
-function calcTerm() {
-    const midWeightInput = document.getElementById('term-midterm-weight');
-    const finWeightInput = document.getElementById('term-final-weight');
-
-    const midWeight = (parseFloat(midWeightInput ? midWeightInput.value : 40) || 0) / 100;
-    const finWeight = (parseFloat(finWeightInput ? finWeightInput.value : 60) || 0) / 100;
-
-    const rows = document.querySelectorAll('#term-body tr');
-    let totalWeightedPoints = 0;
-    let totalUnits = 0;
-    let hasGradeBelow25 = false;
-    let validCourseCount = 0;
-    let saveData = [];
-    let hasInvalidGrade = false;
-
-    rows.forEach(row => {
-        const name = row.querySelector('.tm-name').value;
-        const midVal = row.querySelector('.tm-midterm').value;
-        const finVal = row.querySelector('.tm-final').value;
-        const unitsVal = row.querySelector('.tm-units').value;
-
-        const midterm = parseFloat(midVal);
-        const final = parseFloat(finVal);
-        const units = parseFloat(unitsVal) || 0;
-
-        if (midVal !== '') {
-            if (isNaN(midterm) || midterm < 0.0 || midterm > 4.0) hasInvalidGrade = true;
-            else if (midterm < 2.5) hasGradeBelow25 = true;
-        }
-
-        if (finVal !== '') {
-            if (isNaN(final) || final < 0.0 || final > 4.0) hasInvalidGrade = true;
-            else if (final < 2.5) hasGradeBelow25 = true;
-        }
-
-        let courseGWA = 0;
-        if (!isNaN(midterm) && !isNaN(final) && midterm >= 0.0 && midterm <= 4.0 && final >= 0.0 && final <= 4.0) {
-            courseGWA = (midterm * midWeight) + (final * finWeight);
-            row.querySelector('.tm-result').innerText = courseGWA.toFixed(2);
-        } else {
-            row.querySelector('.tm-result').innerText = "0.00";
-        }
-
-        saveData.push({ name, midterm: midVal, final: finVal, units: unitsVal });
-
-        if (courseGWA > 0 && units > 0) {
-            totalWeightedPoints += courseGWA * units;
-            totalUnits += units;
-            validCourseCount++;
-        }
-    });
-
-    const gwa = totalUnits > 0 ? (totalWeightedPoints / totalUnits) : 0;
-    const gwaEl = document.getElementById('term-gwa');
-    const msgEl = document.getElementById('term-message');
-
-    if (gwaEl) gwaEl.innerText = gwa.toFixed(2);
-
-    if (msgEl) {
-        if (hasInvalidGrade) {
-            msgEl.style.color = "red";
-            msgEl.innerText = "Error: Invalid grade point entered! Midterm/Final grade must be a number between 0.0 and 4.0.";
-        } else {
-            msgEl.style.color = "";
-            msgEl.innerText = getDeanMessage(gwa, hasGradeBelow25, validCourseCount);
-        }
-    }
-
-    localStorage.setItem('nu_term_data', JSON.stringify({
-        midWeight: midWeightInput ? midWeightInput.value : 40,
-        finWeight: finWeightInput ? finWeightInput.value : 60,
-        rows: saveData
-    }));
-}
-
-// ============================================================================
-// 3. PER COURSE BREAKDOWN COMPUTATION LOGIC
-// ============================================================================
-let breakdownIndex = 0;
-
-function addBreakdownCourse(data = null) {
-    breakdownIndex++;
-    const container = document.getElementById('breakdown-container');
-    if (!container) return;
-
-    const courseId = `bd-course-${breakdownIndex}`;
-    const div = document.createElement('div');
-    div.id = courseId;
-    div.className = "box3";
-    div.style.marginBottom = "20px";
-
-    const initialData = data || {
-        name: `Course ${breakdownIndex}`,
-        units: 3.0,
-        termLabel: 'MIDTERM',
-        cpWeight: 25,
-        ptWeight: 25,
-        examWeight: 50,
-        cpItems: [{ total: '', score: '' }],
-        ptItems: [{ total: '', score: '' }],
-        exam: { total: '', score: '' }
-    };
-
-    div.innerHTML = `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-        <div>
-            <input type="text" class="bd-name" value="${initialData.name}" oninput="calcBreakdown('${courseId}')"> |
-            Units: <input type="number" class="bd-units" value="${initialData.units}" style="width:50px;" oninput="calcBreakdown('${courseId}')"> |
-            <button type="button" class="bd-term-btn" onclick="toggleTermLabel('${courseId}')">${initialData.termLabel}</button>
-        </div>
-        <button type="button" onclick="removeBreakdownCourse('${courseId}')">Delete Course</button>
-    </div>
-
-    <div class="cp-table-container" style="overflow-x:auto;"></div>
-    <div>- TOTAL %TAGE: <span class="cp-weighted-result">0%</span></div>
-    <br>
-
-    <div class="pt-table-container" style="overflow-x:auto;"></div>
-    <div>- TOTAL %TAGE: <span class="pt-weighted-result">0%</span></div>
-    <br>
-
-    <div style="overflow-x:auto;">
-        <table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
-        <thead>
-            <tr><th colspan="3">EXAM [<input type="number" class="exam-weight" value="${initialData.examWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th></tr>
-            <tr>
-                <th><span class="exam-label-sync">${initialData.termLabel}</span> EXAM</th>
-                <th>TOTAL SCORE</th>
-                <th>YOUR SCORE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Exam Score</td>
-                <td><input type="number" class="exam-total" value="${initialData.exam.total}" oninput="calcBreakdown('${courseId}')"></td>
-                <td><input type="number" class="exam-score" value="${initialData.exam.score}" oninput="calcBreakdown('${courseId}')"></td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
-    <div>- TOTAL %TAGE: <span class="exam-weighted-result">0%</span></div>
-    <br>
-    <div class="bd-error-msg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
-    <div><strong>COURSE FINAL GRADE:</strong> <span class="bd-final-pct">0%</span></div>
-    <div><strong>COURSE GWA (POINT) RESULT:</strong> <span class="bd-gwa-result">0.00</span></div>
-    `;
-
-    container.appendChild(div);
-    updateCourseNumbers('#breakdown-container > div', '.bd-name');
-
-    renderItems(courseId, 'cp', initialData.cpItems, initialData.cpWeight);
-    renderItems(courseId, 'pt', initialData.ptItems, initialData.ptWeight);
-
-    calcBreakdown(courseId);
-}
-
-function removeBreakdownCourse(id) {
-    const el = document.getElementById(id);
-    if (el) el.remove();
-    updateCourseNumbers('#breakdown-container > div', '.bd-name');
-    saveAllBreakdownData();
-}
-
-function toggleTermLabel(courseId) {
-    const course = document.getElementById(courseId);
-    const btn = course.querySelector('.bd-term-btn');
-    const syncLabel = course.querySelector('.exam-label-sync');
-    if (btn.innerText === 'MIDTERM') {
-        btn.innerText = 'FINAL';
-        syncLabel.innerText = 'FINAL';
-    } else {
-        btn.innerText = 'MIDTERM';
-        syncLabel.innerText = 'MIDTERM';
-    }
-    calcBreakdown(courseId);
-}
-
-function renderItems(courseId, type, items, weightVal = 25) {
-    const course = document.getElementById(courseId);
-    if (!course) return;
-
-    const container = course.querySelector(`.${type}-table-container`);
-
-    let itemCols = '';
-    let totalInputs = '';
-    let scoreInputs = '';
-
-    items.forEach((item, idx) => {
-        itemCols += `<th>${idx + 1}</th>`;
-        totalInputs += `<td><input type="number" class="${type}-t" value="${item.total !== undefined ? item.total : ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
-        scoreInputs += `<td><input type="number" class="${type}-s" value="${item.score !== undefined ? item.score : ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
-    });
-
-    const label = type === 'cp' ? 'CLASS PARTICIPATION' : 'PERFORMANCE TASK';
-    const currentWeight = course.querySelector(`.${type}-weight`)?.value || weightVal;
-
-    container.innerHTML = `
-    <table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
-    <thead>
-        <tr>
-            <th colspan="${items.length + 3}">${label} [<input type="number" class="${type}-weight" value="${currentWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th>
-        </tr>
-        <tr>
-            <th>#</th>
-            ${itemCols}
-            <th><button type="button" onclick="addBreakdownItem('${courseId}', '${type}')">+</button></th>
-            <th>TOTAL</th>
-            <th>TOTAL %TAGE (over 100%)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>total items</th>
-            ${totalInputs}
-            <td></td>
-            <td class="${type}-sum-totals">0</td>
-            <td class="${type}-100-pct">100%</td>
-        </tr>
-        <tr>
-            <th>input score</th>
-            ${scoreInputs}
-            <td></td>
-            <td class="${type}-sum-scores">0</td>
-            <td class="${type}-raw-pct">0%</td>
-        </tr>
-    </tbody>
-    </table>
-    `;
-}
-
-function addBreakdownItem(courseId, type) {
-    const course = document.getElementById(courseId);
-    const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(e => e.value);
-    const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(e => e.value);
-
-    totals.push('');
-    scores.push('');
-
-    const items = totals.map((t, i) => ({ total: t, score: scores[i] }));
-    renderItems(courseId, type, items);
-    calcBreakdown(courseId);
-}
-
-function calcBreakdown(courseId) {
-    const course = document.getElementById(courseId);
-    if (!course) return;
-
-    let hasScoreError = false;
-
-    // Helper: Checks array of total inputs against score inputs for invalid numbers
-    function checkScores(type, sectionName) {
-        const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(i => parseFloat(i.value));
-        const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(i => parseFloat(i.value));
-        for (let i = 0; i < totals.length; i++) {
-            if (!isNaN(totals[i]) && !isNaN(scores[i]) && scores[i] > totals[i]) {
-                hasScoreError = true;
-                return `Error in ${sectionName} #${i + 1}: Score (${scores[i]}) cannot be greater than Total Score (${totals[i]}).`;
-            }
-        }
-        return "";
-    }
-
-    let errorMsg = checkScores('cp', 'Class Participation');
-    if (!errorMsg) errorMsg = checkScores('pt', 'Performance Task');
-
-    // Calc Class Participation
-    const cpWeight = parseFloat(course.querySelector('.cp-weight')?.value || 0);
-    const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => parseFloat(i.value) || 0);
-    const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => parseFloat(i.value) || 0);
-    const cpSumTotal = cpTotals.reduce((a, b) => a + b, 0);
-    const cpSumScore = cpScores.reduce((a, b) => a + b, 0);
-    const cpRawPct = cpSumTotal > 0 ? (cpSumScore / cpSumTotal) * 100 : 0;
-    const cpWeighted = (cpRawPct * cpWeight) / 100;
-
-    if (course.querySelector('.cp-sum-totals')) course.querySelector('.cp-sum-totals').innerText = cpSumTotal;
-    if (course.querySelector('.cp-sum-scores')) course.querySelector('.cp-sum-scores').innerText = cpSumScore;
-    if (course.querySelector('.cp-raw-pct')) course.querySelector('.cp-raw-pct').innerText = cpRawPct.toFixed(1) + '%';
-    if (course.querySelector('.cp-weighted-result')) course.querySelector('.cp-weighted-result').innerText = cpWeighted.toFixed(2) + `% (over ${cpWeight}%)`;
-
-    // Calc Performance Tasks
-    const ptWeight = parseFloat(course.querySelector('.pt-weight')?.value || 0);
-    const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => parseFloat(i.value) || 0);
-    const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => parseFloat(i.value) || 0);
-    const ptSumTotal = ptTotals.reduce((a, b) => a + b, 0);
-    const ptSumScore = ptScores.reduce((a, b) => a + b, 0);
-    const ptRawPct = ptSumTotal > 0 ? (ptSumScore / ptSumTotal) * 100 : 0;
-    const ptWeighted = (ptRawPct * ptWeight) / 100;
-
-    if (course.querySelector('.pt-sum-totals')) course.querySelector('.pt-sum-totals').innerText = ptSumTotal;
-    if (course.querySelector('.pt-sum-scores')) course.querySelector('.pt-sum-scores').innerText = ptSumScore;
-    if (course.querySelector('.pt-raw-pct')) course.querySelector('.pt-raw-pct').innerText = ptRawPct.toFixed(1) + '%';
-    if (course.querySelector('.pt-weighted-result')) course.querySelector('.pt-weighted-result').innerText = ptWeighted.toFixed(2) + `% (over ${ptWeight}%)`;
-
-    // Calc Exam
-    const examWeight = parseFloat(course.querySelector('.exam-weight')?.value || 0);
-    const examTotal = parseFloat(course.querySelector('.exam-total')?.value || 0);
-    const examScore = parseFloat(course.querySelector('.exam-score')?.value || 0);
-
-    if (!isNaN(examTotal) && !isNaN(examScore) && examScore > examTotal) {
-        hasScoreError = true;
-        if (!errorMsg) errorMsg = `Error in Exam: Score (${examScore}) cannot be greater than Total Score (${examTotal}).`;
-    }
-
-    const examRawPct = examTotal > 0 ? (examScore / examTotal) * 100 : 0;
-    const examWeighted = (examRawPct * examWeight) / 100;
-
-    if (course.querySelector('.exam-weighted-result')) course.querySelector('.exam-weighted-result').innerText = examWeighted.toFixed(2) + `% (over ${examWeight}%)`;
-
-    // Final Grade & GWA Point
-    const finalPct = cpWeighted + ptWeighted + examWeighted;
-    const gradePoint = percentageToPoint(finalPct);
-
-    const errContainer = course.querySelector('.bd-error-msg');
-    if (errContainer) {
-        errContainer.innerText = errorMsg;
-    }
-
-    if (course.querySelector('.bd-final-pct')) course.querySelector('.bd-final-pct').innerText = finalPct.toFixed(2) + '%';
-    if (course.querySelector('.bd-gwa-result')) course.querySelector('.bd-gwa-result').innerText = gradePoint.toFixed(2);
-
-    saveAllBreakdownData();
-}
-
-function saveAllBreakdownData() {
-    const courses = document.querySelectorAll('#breakdown-container > div');
-    let saveData = [];
-
-    courses.forEach(course => {
-        const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => i.value);
-        const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => i.value);
-        const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => i.value);
-        const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => i.value);
-
-        saveData.push({
-            name: course.querySelector('.bd-name').value,
-            units: course.querySelector('.bd-units').value,
-            termLabel: course.querySelector('.bd-term-btn').innerText,
-            cpWeight: course.querySelector('.cp-weight')?.value || 25,
-            ptWeight: course.querySelector('.pt-weight')?.value || 25,
-            examWeight: course.querySelector('.exam-weight')?.value || 50,
-            cpItems: cpTotals.map((t, i) => ({ total: t, score: cpScores[i] })),
-            ptItems: ptTotals.map((t, i) => ({ total: t, score: ptScores[i] })),
-            exam: {
-                total: course.querySelector('.exam-total').value,
-                score: course.querySelector('.exam-score').value
-            }
-        });
-    });
-
-    localStorage.setItem('nu_breakdown_data', JSON.stringify(saveData));
-}
+		function percentageToPoint(score) {
+			if (score >= 96) return 4.0;
+			if (score >= 90) return 3.5;
+			if (score >= 84) return 3.0;
+			if (score >= 78) return 2.5;
+			if (score >= 72) return 2.0;
+			if (score >= 66) return 1.5;
+			if (score >= 60) return 1.0;
+			return 0.0;
+		}
+
+		// Dean's Honors List Message Generator
+		function getDeanMessage(gwa, hasGradeBelow25, validCourseCount) {
+			if (validCourseCount === 0 || gwa === 0) return "";
+
+			if (gwa < 3.25 || hasGradeBelow25) {
+				return "You need a GWA of at least 3.25 and no grades below 2.5 to qualify for the Dean's List, Bawi next term!";
+			}
+			if (gwa >= 3.50) {
+				return "Congrats! You're on the Dean's First Honors List";
+			}
+			return "Congrats! You're on the Dean's Second Honors List";
+		}
+
+		// Helper: Re-indexes course names (1, 2, 3...) dynamically when rows are added/deleted
+		function updateCourseNumbers(selector, nameClass) {
+			const rows = document.querySelectorAll(selector);
+			rows.forEach((row, index) => {
+				const input = row.querySelector(nameClass);
+				if (input && (!input.value || /^Course \d+$/.test(input.value))) {
+					input.value = `Course ${index + 1}`;
+				}
+			});
+		}
+
+		// ============================================================================
+		// 1. STRAIGHT COMPUTATION LOGIC
+		// ============================================================================
+		let straightIndex = 0;
+
+		function addStraightRow(data = {}) {
+			straightIndex++;
+			const tbody = document.getElementById('straight-body');
+			if (!tbody) return;
+			const tr = document.createElement('tr');
+			tr.id = `straight-row-${straightIndex}`;
+
+			tr.innerHTML = `
+			<td><input type="text" class="st-name" value="${data.name !== undefined ? data.name: ''}" oninput="calcStraight()"></td>
+			<td><input type="number" step="0.1" class="st-grade" placeholder="0.0 - 4.0" value="${data.grade !== undefined ? data.grade: ''}" oninput="calcStraight()"></td>
+			<td><input type="number" step="0.5" class="st-units" value="${data.units !== undefined ? data.units: 3.0}" oninput="calcStraight()"></td>
+			<td><button type="button" onclick="removeStraightRow('${tr.id}')">Delete</button></td>
+			`;
+			tbody.appendChild(tr);
+			updateCourseNumbers('#straight-body tr', '.st-name');
+			calcStraight();
+		}
+
+		function removeStraightRow(id) {
+			const row = document.getElementById(id);
+			if (row) row.remove();
+			updateCourseNumbers('#straight-body tr', '.st-name');
+			calcStraight();
+		}
+
+		function calcStraight() {
+			const rows = document.querySelectorAll('#straight-body tr');
+			let totalWeightedPoints = 0;
+			let totalUnits = 0;
+			let hasGradeBelow25 = false;
+			let validCourseCount = 0;
+			let saveData = [];
+			let hasInvalidGrade = false;
+
+			rows.forEach(row => {
+				const name = row.querySelector('.st-name').value;
+				const gradeVal = row.querySelector('.st-grade').value;
+				const unitsVal = row.querySelector('.st-units').value;
+
+				const grade = parseFloat(gradeVal);
+				const units = parseFloat(unitsVal) || 0;
+
+				saveData.push({
+					name, grade: gradeVal, units: unitsVal
+				});
+
+				if (gradeVal !== '') {
+					if (isNaN(grade) || grade < 0.0 || grade > 4.0) {
+						hasInvalidGrade = true;
+					} else if (units > 0) {
+						totalWeightedPoints += grade * units;
+						totalUnits += units;
+						validCourseCount++;
+						if (grade < 2.5) hasGradeBelow25 = true;
+					}
+				}
+			});
+
+			const gwa = totalUnits > 0 ? (totalWeightedPoints / totalUnits): 0;
+			const gwaEl = document.getElementById('straight-gwa');
+			const msgEl = document.getElementById('straight-message');
+
+			if (gwaEl) gwaEl.innerText = gwa.toFixed(2);
+
+			if (msgEl) {
+				if (hasInvalidGrade) {
+					msgEl.style.color = "red";
+					msgEl.innerText = "Error: Invalid grade point entered! Grade must be a number between 0.0 and 4.0.";
+				} else {
+					msgEl.style.color = "";
+					msgEl.innerText = getDeanMessage(gwa, hasGradeBelow25, validCourseCount);
+				}
+			}
+
+			localStorage.setItem('nu_straight_data', JSON.stringify(saveData));
+		}
+
+		// ============================================================================
+		// 2. TERM COMPUTATION LOGIC
+		// ============================================================================
+		let termIndex = 0;
+
+		function addTermRow(data = {}) {
+			termIndex++;
+			const tbody = document.getElementById('term-body');
+			if (!tbody) return;
+			const tr = document.createElement('tr');
+			tr.id = `term-row-${termIndex}`;
+
+			tr.innerHTML = `
+			<td><input type="text" class="tm-name" value="${data.name !== undefined ? data.name: ''}" oninput="calcTerm()"></td>
+			<td><input type="number" step="0.1" class="tm-midterm" placeholder="0.0 - 4.0" value="${data.midterm !== undefined ? data.midterm: ''}" oninput="calcTerm()"></td>
+			<td><input type="number" step="0.1" class="tm-final" placeholder="0.0 - 4.0" value="${data.final !== undefined ? data.final: ''}" oninput="calcTerm()"></td>
+			<td><input type="number" step="0.5" class="tm-units" value="${data.units !== undefined ? data.units: 3.0}" oninput="calcTerm()"></td>
+			<td><span class="tm-result">0.00</span></td>
+			<td><button type="button" onclick="removeTermRow('${tr.id}')">Delete</button></td>
+			`;
+			tbody.appendChild(tr);
+			updateCourseNumbers('#term-body tr', '.tm-name');
+			calcTerm();
+		}
+
+		function removeTermRow(id) {
+			const row = document.getElementById(id);
+			if (row) row.remove();
+			updateCourseNumbers('#term-body tr', '.tm-name');
+			calcTerm();
+		}
+
+		function calcTerm() {
+			const midWeightInput = document.getElementById('term-midterm-weight');
+			const finWeightInput = document.getElementById('term-final-weight');
+
+			const midWeight = (parseFloat(midWeightInput ? midWeightInput.value: 40) || 0) / 100;
+			const finWeight = (parseFloat(finWeightInput ? finWeightInput.value: 60) || 0) / 100;
+
+			const rows = document.querySelectorAll('#term-body tr');
+			let totalWeightedPoints = 0;
+			let totalUnits = 0;
+			let hasGradeBelow25 = false;
+			let validCourseCount = 0;
+			let saveData = [];
+			let hasInvalidGrade = false;
+
+			rows.forEach(row => {
+				const name = row.querySelector('.tm-name').value;
+				const midVal = row.querySelector('.tm-midterm').value;
+				const finVal = row.querySelector('.tm-final').value;
+				const unitsVal = row.querySelector('.tm-units').value;
+
+				const midterm = parseFloat(midVal);
+				const final = parseFloat(finVal);
+				const units = parseFloat(unitsVal) || 0;
+
+				if (midVal !== '') {
+					if (isNaN(midterm) || midterm < 0.0 || midterm > 4.0) hasInvalidGrade = true;
+					else if (midterm < 2.5) hasGradeBelow25 = true;
+				}
+
+				if (finVal !== '') {
+					if (isNaN(final) || final < 0.0 || final > 4.0) hasInvalidGrade = true;
+					else if (final < 2.5) hasGradeBelow25 = true;
+				}
+
+				let courseGWA = 0;
+				if (!isNaN(midterm) && !isNaN(final) && midterm >= 0.0 && midterm <= 4.0 && final >= 0.0 && final <= 4.0) {
+					courseGWA = (midterm * midWeight) + (final * finWeight);
+					row.querySelector('.tm-result').innerText = courseGWA.toFixed(2);
+				} else {
+					row.querySelector('.tm-result').innerText = "0.00";
+				}
+
+				saveData.push({
+					name, midterm: midVal, final: finVal, units: unitsVal
+				});
+
+				if (courseGWA > 0 && units > 0) {
+					totalWeightedPoints += courseGWA * units;
+					totalUnits += units;
+					validCourseCount++;
+				}
+			});
+
+			const gwa = totalUnits > 0 ? (totalWeightedPoints / totalUnits): 0;
+			const gwaEl = document.getElementById('term-gwa');
+			const msgEl = document.getElementById('term-message');
+
+			if (gwaEl) gwaEl.innerText = gwa.toFixed(2);
+
+			if (msgEl) {
+				if (hasInvalidGrade) {
+					msgEl.style.color = "red";
+					msgEl.innerText = "Error: Invalid grade point entered! Midterm/Final grade must be a number between 0.0 and 4.0.";
+				} else {
+					msgEl.style.color = "";
+					msgEl.innerText = getDeanMessage(gwa, hasGradeBelow25, validCourseCount);
+				}
+			}
+
+			localStorage.setItem('nu_term_data', JSON.stringify({
+				midWeight: midWeightInput ? midWeightInput.value: 40,
+				finWeight: finWeightInput ? finWeightInput.value: 60,
+				rows: saveData
+			}));
+		}
+
+		// ============================================================================
+		// 3. PER COURSE BREAKDOWN COMPUTATION LOGIC
+		// ============================================================================
+		let breakdownIndex = 0;
+
+		function addBreakdownCourse(data = null) {
+			breakdownIndex++;
+			const container = document.getElementById('breakdown-container');
+			if (!container) return;
+
+			const courseId = `bd-course-${breakdownIndex}`;
+			const div = document.createElement('div');
+			div.id = courseId;
+			div.className = "box3";
+			div.style.marginBottom = "20px";
+
+			const initialData = data || {
+				name: `Course ${breakdownIndex}`,
+				units: 3.0,
+				termLabel: 'MIDTERM',
+				cpWeight: 25,
+				ptWeight: 25,
+				examWeight: 50,
+				cpItems: [{
+					total: '',
+					score: ''
+				}],
+				ptItems: [{
+					total: '',
+					score: ''
+				}],
+				exam: {
+					total: '',
+					score: ''
+				}
+			};
+
+			div.innerHTML = `
+			<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+			<div>
+			<input type="text" class="bd-name" value="${initialData.name}" oninput="calcBreakdown('${courseId}')"> |
+			Units: <input type="number" class="bd-units" value="${initialData.units}" style="width:50px;" oninput="calcBreakdown('${courseId}')"> |
+			<button type="button" class="bd-term-btn" onclick="toggleTermLabel('${courseId}')">${initialData.termLabel}</button>
+			</div>
+			<button type="button" onclick="removeBreakdownCourse('${courseId}')">Delete Course</button>
+			</div>
+
+			<div class="cp-table-container" style="overflow-x:auto;"></div>
+			<div>- TOTAL WEIGHTED %TAGE: <span class="cp-weighted-result">0%</span></div>
+			<br>
+
+			<div class="pt-table-container" style="overflow-x:auto;"></div>
+			<div>- TOTAL WEIGHTED %TAGE: <span class="pt-weighted-result">0%</span></div>
+			<br>
+
+			<div style="overflow-x:auto;">
+			<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
+			<thead>
+			<tr><th colspan="3">EXAM [<input type="number" class="exam-weight" value="${initialData.examWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th></tr>
+			<tr>
+			<th><span class="exam-label-sync">${initialData.termLabel}</span> EXAM</th>
+			<th>YOUR SCORE</th>
+			<th>TOTAL SCORE</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>Exam Score</td>
+			<td><input type="number" class="exam-score" value="${initialData.exam.score}" oninput="calcBreakdown('${courseId}')"></td>
+			<td><input type="number" class="exam-total" value="${initialData.exam.total}" oninput="calcBreakdown('${courseId}')"></td>
+			</tr>
+			</tbody>
+			</table>
+			</div>
+			<div>- TOTAL WEIGHTED %TAGE: <span class="exam-weighted-result">0%</span></div>
+			<br>
+			<div class="bd-error-msg" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+			<div class="gwa-result">COURSE FINAL PERCENT GRADE: <span class="bd-final-pct">0%</span></div>
+			<div class="gwa-result">COURSE GWA POINT RESULT: <span class="bd-gwa-result">0.00</span></div>
+			`;
+
+			container.appendChild(div);
+			updateCourseNumbers('#breakdown-container > div', '.bd-name');
+
+			renderItems(courseId, 'cp', initialData.cpItems, initialData.cpWeight);
+			renderItems(courseId, 'pt', initialData.ptItems, initialData.ptWeight);
+
+			calcBreakdown(courseId);
+		}
+
+		function removeBreakdownCourse(id) {
+			const el = document.getElementById(id);
+			if (el) el.remove();
+			updateCourseNumbers('#breakdown-container > div', '.bd-name');
+			saveAllBreakdownData();
+		}
+
+		function toggleTermLabel(courseId) {
+			const course = document.getElementById(courseId);
+			const btn = course.querySelector('.bd-term-btn');
+			const syncLabel = course.querySelector('.exam-label-sync');
+			if (btn.innerText === 'MIDTERM') {
+				btn.innerText = 'FINAL';
+				syncLabel.innerText = 'FINAL';
+			} else {
+				btn.innerText = 'MIDTERM';
+				syncLabel.innerText = 'MIDTERM';
+			}
+			calcBreakdown(courseId);
+		}
+
+		function renderItems(courseId, type, items, weightVal = 25) {
+			const course = document.getElementById(courseId);
+			if (!course) return;
+
+			const container = course.querySelector(`.${type}-table-container`);
+
+			let itemCols = '';
+			let totalInputs = '';
+			let scoreInputs = '';
+
+			items.forEach((item, idx) => {
+				itemCols += `<th>${idx + 1}</th>`;
+				totalInputs += `<td><input type="number" class="${type}-t" value="${item.total !== undefined ? item.total: ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
+				scoreInputs += `<td><input type="number" class="${type}-s" value="${item.score !== undefined ? item.score: ''}" style="width:45px;" oninput="calcBreakdown('${courseId}')"></td>`;
+			});
+
+			const label = type === 'cp' ? 'CLASS PARTICIPATION': 'PERFORMANCE TASK';
+			const currentWeight = course.querySelector(`.${type}-weight`)?.value || weightVal;
+
+			container.innerHTML = `
+			<table class="bd-table" style="width:100%; border-collapse:collapse; text-align:center;">
+			<thead>
+			<tr>
+			<th colspan="${items.length + 3}">${label} [<input type="number" class="${type}-weight" value="${currentWeight}" style="width:45px;" oninput="calcBreakdown('${courseId}')">%]</th>
+			</tr>
+			<tr>
+			<th>#</th>
+			${itemCols}
+			<th>
+			<button type="button" onclick="addBreakdownItem('${courseId}', '${type}')">+ Add</button>
+			<button type="button" onclick="removeBreakdownItem('${courseId}', '${type}')">Delete</button>
+			</th>
+			<th>TOTAL</th>
+			<th>TOTAL %TAGE (over 100%)</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<th>Input score</th>
+			${scoreInputs}
+			<td></td>
+			<td class="${type}-sum-scores">0</td>
+			<td class="${type}-raw-pct">0%</td>
+			</tr>
+			<tr>
+			<th>Total items</th>
+			${totalInputs}
+			<td></td>
+			<td class="${type}-sum-totals">0</td>
+			<td class="${type}-100-pct">100%</td>
+			</tr>
+			</tbody>
+			</table>
+			`;
+		}
+
+		function addBreakdownItem(courseId, type) {
+			const course = document.getElementById(courseId);
+			const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(e => e.value);
+			const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(e => e.value);
+
+			totals.push('');
+			scores.push('');
+
+			const items = totals.map((t, i) => ({
+				total: t, score: scores[i]
+			}));
+			renderItems(courseId, type, items);
+			calcBreakdown(courseId);
+		}
+
+		function removeBreakdownItem(courseId, type) {
+			const course = document.getElementById(courseId);
+			const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(e => e.value);
+			const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(e => e.value);
+
+			if (totals.length > 1) {
+				totals.pop();
+				scores.pop();
+				const items = totals.map((t, i) => ({
+					total: t, score: scores[i]
+				}));
+				renderItems(courseId, type, items);
+				calcBreakdown(courseId);
+			}
+		}
+
+		function calcBreakdown(courseId) {
+			const course = document.getElementById(courseId);
+			if (!course) return;
+
+			let hasScoreError = false;
+
+			// Helper: Checks array of total inputs against score inputs for invalid numbers
+			function checkScores(type, sectionName) {
+				const totals = Array.from(course.querySelectorAll(`.${type}-t`)).map(i => parseFloat(i.value));
+				const scores = Array.from(course.querySelectorAll(`.${type}-s`)).map(i => parseFloat(i.value));
+				for (let i = 0; i < totals.length; i++) {
+					if (!isNaN(totals[i]) && !isNaN(scores[i]) && scores[i] > totals[i]) {
+						hasScoreError = true;
+						return `Error in ${sectionName} #${i + 1}: Score (${scores[i]}) cannot be greater than Total Score (${totals[i]}).`;
+					}
+				}
+				return "";
+			}
+
+			let errorMsg = checkScores('cp', 'Class Participation');
+			if (!errorMsg) errorMsg = checkScores('pt', 'Performance Task');
+
+			// Calc Class Participation
+			const cpWeight = parseFloat(course.querySelector('.cp-weight')?.value || 0);
+			const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => parseFloat(i.value) || 0);
+			const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => parseFloat(i.value) || 0);
+			const cpSumTotal = cpTotals.reduce((a, b) => a + b, 0);
+			const cpSumScore = cpScores.reduce((a, b) => a + b, 0);
+			const cpRawPct = cpSumTotal > 0 ? (cpSumScore / cpSumTotal) * 100: 0;
+			const cpWeighted = (cpRawPct * cpWeight) / 100;
+
+			if (course.querySelector('.cp-sum-totals')) course.querySelector('.cp-sum-totals').innerText = cpSumTotal;
+			if (course.querySelector('.cp-sum-scores')) course.querySelector('.cp-sum-scores').innerText = cpSumScore;
+			if (course.querySelector('.cp-raw-pct')) course.querySelector('.cp-raw-pct').innerText = cpRawPct.toFixed(1) + '%';
+			if (course.querySelector('.cp-weighted-result')) course.querySelector('.cp-weighted-result').innerText = cpWeighted.toFixed(2) + `% (over ${cpWeight}%)`;
+
+			// Calc Performance Tasks
+			const ptWeight = parseFloat(course.querySelector('.pt-weight')?.value || 0);
+			const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => parseFloat(i.value) || 0);
+			const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => parseFloat(i.value) || 0);
+			const ptSumTotal = ptTotals.reduce((a, b) => a + b, 0);
+			const ptSumScore = ptScores.reduce((a, b) => a + b, 0);
+			const ptRawPct = ptSumTotal > 0 ? (ptSumScore / ptSumTotal) * 100: 0;
+			const ptWeighted = (ptRawPct * ptWeight) / 100;
+
+			if (course.querySelector('.pt-sum-totals')) course.querySelector('.pt-sum-totals').innerText = ptSumTotal;
+			if (course.querySelector('.pt-sum-scores')) course.querySelector('.pt-sum-scores').innerText = ptSumScore;
+			if (course.querySelector('.pt-raw-pct')) course.querySelector('.pt-raw-pct').innerText = ptRawPct.toFixed(1) + '%';
+			if (course.querySelector('.pt-weighted-result')) course.querySelector('.pt-weighted-result').innerText = ptWeighted.toFixed(2) + `% (over ${ptWeight}%)`;
+
+			// Calc Exam
+			const examWeight = parseFloat(course.querySelector('.exam-weight')?.value || 0);
+			const examTotal = parseFloat(course.querySelector('.exam-total')?.value || 0);
+			const examScore = parseFloat(course.querySelector('.exam-score')?.value || 0);
+
+			if (!isNaN(examTotal) && !isNaN(examScore) && examScore > examTotal) {
+				hasScoreError = true;
+				if (!errorMsg) errorMsg = `Error in Exam: Score (${examScore}) cannot be greater than Total Score (${examTotal}).`;
+			}
+
+			const examRawPct = examTotal > 0 ? (examScore / examTotal) * 100: 0;
+			const examWeighted = (examRawPct * examWeight) / 100;
+
+			if (course.querySelector('.exam-weighted-result')) course.querySelector('.exam-weighted-result').innerText = examWeighted.toFixed(2) + `% (over ${examWeight}%)`;
+
+			// Final Grade & GWA Point
+			const finalPct = cpWeighted + ptWeighted + examWeighted;
+			const gradePoint = percentageToPoint(finalPct);
+
+			const errContainer = course.querySelector('.bd-error-msg');
+			if (errContainer) {
+				errContainer.innerText = errorMsg;
+			}
+
+			if (course.querySelector('.bd-final-pct')) course.querySelector('.bd-final-pct').innerText = finalPct.toFixed(2) + '%';
+			if (course.querySelector('.bd-gwa-result')) course.querySelector('.bd-gwa-result').innerText = gradePoint.toFixed(2);
+
+			saveAllBreakdownData();
+		}
+
+		function saveAllBreakdownData() {
+			const courses = document.querySelectorAll('#breakdown-container > div');
+			let saveData = [];
+
+			courses.forEach(course => {
+				const cpTotals = Array.from(course.querySelectorAll('.cp-t')).map(i => i.value);
+				const cpScores = Array.from(course.querySelectorAll('.cp-s')).map(i => i.value);
+				const ptTotals = Array.from(course.querySelectorAll('.pt-t')).map(i => i.value);
+				const ptScores = Array.from(course.querySelectorAll('.pt-s')).map(i => i.value);
+
+				saveData.push({
+					name: course.querySelector('.bd-name').value,
+					units: course.querySelector('.bd-units').value,
+					termLabel: course.querySelector('.bd-term-btn').innerText,
+					cpWeight: course.querySelector('.cp-weight')?.value || 25,
+					ptWeight: course.querySelector('.pt-weight')?.value || 25,
+					examWeight: course.querySelector('.exam-weight')?.value || 50,
+					cpItems: cpTotals.map((t, i) => ({
+						total: t, score: cpScores[i]
+					})),
+					ptItems: ptTotals.map((t, i) => ({
+						total: t, score: ptScores[i]
+					})),
+					exam: {
+						total: course.querySelector('.exam-total').value,
+						score: course.querySelector('.exam-score').value
+					}
+				});
+			});
+
+			localStorage.setItem('nu_breakdown_data', JSON.stringify(saveData));
+		}
 
 	</script>
 	<script src="../../script.js" type="text/javascript" charset="utf-8"></script>
