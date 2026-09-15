@@ -282,6 +282,7 @@ header {
 	-webkit-tap-highlight-color: transparent !important;
 	text-decoration: none;
 	color: black;
+	margin-left: 8px;
 }
 .hamburger-menu {
 	-webkit-tap-highlight-color: transparent !important;
@@ -319,7 +320,7 @@ header {
 	font-family: system-ui;
 	line-height: 1.35;
 }
-*:not(h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, b, b i, b a, h3 span, strong, th, th a, th q, button, legend, div.name, div.ad a, div.ad, .card-title) {
+*:not(h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h3 q, b, b i, b a, h3 span, strong, th, th a, th q, button, legend, div.name, div.ad a, div.ad, .card-title) {
 	font-weight: 440;
 }
 html {
@@ -934,8 +935,11 @@ body.dark-mode .dot.active {
 	font-size: 18px;
 }
 .date-time {
-	color: #888;
+	color: #777;
 	font-size: 14px;
+}
+body.dark-mode .date-time {
+	color: #BBBBBB;
 }
 
 /* Calendar */
