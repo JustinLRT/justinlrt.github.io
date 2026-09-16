@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industrialisation &amp; Structural Change — Reviewer</title>
+<style>
+  :root{
+    --navy: #14213D;
+    --navy-panel: #1E2D4F;
+    --navy-line: rgba(233,228,216,0.08);
+    --paper: #E9E4D8;
+    --paper-dim: #D8D2C0;
+    --ink: #1B2A41;
+    --amber: #E8871E;
+    --amber-dim: #C46E12;
+    --green: #3F8F5F;
+    --red: #C0473F;
+    --muted: #8FA0BE;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      linear-gradient(var(--navy-line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--navy-line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--navy);
+    min-height:100vh;
+    font-family: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: var(--paper);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 32px 16px 60px;
+  }
+  h1,h2,h3{
+    font-family: Georgia, "Times New Roman", ui-serif, serif;
+    font-weight: 700;
+    margin:0;
+  }
+  .wrap{ width:100%; max-width: 660px; }
+
+  /* Header / plate */
+  header.plate{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom: 2px solid var(--amber);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+  }
+  header.plate .title{
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+    line-height:1.2;
+  }
+  header.plate .subtitle{
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top:4px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+  header.plate .score{
+    text-align:right;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    white-space:nowrap;
+  }
+  header.plate .score .nums{
+    font-size:1.1rem;
+    font-weight:700;
+    color: var(--paper);
+  }
+  header.plate .score .nums .c{ color: var(--green); }
+  header.plate .score .nums .w{ color: var(--red); }
+
+  /* Gauge / progress */
+  .gauge{
+    width:100%;
+    height: 6px;
+    background: var(--navy-panel);
+    border-radius: 3px;
+    overflow:hidden;
+    margin-bottom: 26px;
+  }
+  .gauge-fill{
+    height:100%;
+    background: var(--amber);
+    width:0%;
+    transition: width 0.3s ease;
+  }
+
+  /* Card */
+  .card{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 28px 26px 22px;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.18);
+    position:relative;
+  }
+  .topic-tag{
+    display:inline-block;
+    font-size: 0.72rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    color: var(--amber-dim);
+    border: 1px solid var(--amber-dim);
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin-bottom: 14px;
+  }
+  .q-count{
+    font-size: 0.78rem;
+    color: #5a6a86;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    margin-bottom: 6px;
+  }
+  .question{
+    font-size: 1.15rem;
+    line-height: 1.45;
+    margin-bottom: 20px;
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    text-align:left;
+    background: #fff;
+    border: 1.5px solid #C9C2AE;
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 0.98rem;
+    line-height:1.4;
+    cursor:pointer;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    color: var(--ink);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .option:hover:not(:disabled){ border-color: var(--amber); }
+  .option:focus-visible{ outline: 3px solid var(--amber); outline-offset: 2px; }
+  .option .letter{
+    flex: 0 0 auto;
+    width: 24px; height:24px;
+    border-radius:50%;
+    border: 1.5px solid #8a8265;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.8rem; font-weight:700;
+    color:#5a5539;
+  }
+  .option.correct{ background: #E4F3E9; border-color: var(--green); }
+  .option.correct .letter{ background: var(--green); border-color: var(--green); color:#fff; }
+  .option.wrong{ background: #F8E7E5; border-color: var(--red); }
+  .option.wrong .letter{ background: var(--red); border-color: var(--red); color:#fff; }
+  .option:disabled{ cursor: default; }
+  .option.dim{ opacity: 0.55; }
+
+  .explanation{
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #DED7C2;
+    border-left: 4px solid var(--amber);
+    border-radius: 2px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    display:none;
+  }
+  .explanation.show{ display:block; }
+  .explanation b{ color: var(--ink); }
+
+  .nav-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top: 22px;
+  }
+  .nav-btn{
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight:600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    border: none;
+    cursor:pointer;
+  }
+  .nav-btn.prev{
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--navy-line);
+  }
+  .nav-btn.prev:hover:not(:disabled){ color: var(--paper); border-color: var(--muted); }
+  .nav-btn.next{
+    background: var(--amber);
+    color: var(--navy);
+  }
+  .nav-btn.next:hover:not(:disabled){ background: #f5a03e; }
+  .nav-btn:disabled{ opacity:0.35; cursor:not-allowed; }
+
+  .hint{
+    text-align:center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 16px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+  kbd{
+    background: var(--navy-panel);
+    border: 1px solid var(--navy-line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+  }
+
+  /* Intro screen */
+  .intro{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 34px 30px;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.18);
+  }
+  .intro h2{ font-size: 1.4rem; margin-bottom: 10px; }
+  .intro p{ font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.95rem; line-height:1.55; color:#3a4560; margin: 0 0 10px;}
+  .intro ul{ font-family: ui-sans-serif, system-ui, sans-serif; font-size:0.9rem; color:#3a4560; padding-left: 20px; margin: 0 0 18px; line-height:1.6;}
+  .start-btn{
+    background: var(--amber);
+    color: var(--navy);
+    border:none;
+    font-weight:700;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    padding: 12px 26px;
+    border-radius: 3px;
+    cursor:pointer;
+  }
+  .start-btn:hover{ background:#f5a03e; }
+
+  /* Summary screen */
+  .summary{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 32px 28px;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.18);
+    text-align:center;
+  }
+  .summary .big-score{
+    font-family: Georgia, serif;
+    font-size: 3.2rem;
+    font-weight:700;
+    color: var(--navy);
+    line-height:1;
+    margin: 6px 0 4px;
+  }
+  .summary .pct{ font-family: ui-sans-serif, system-ui, sans-serif; color:#5a6a86; font-size:0.95rem; margin-bottom:20px;}
+  .summary .msg{ font-family: ui-sans-serif, system-ui, sans-serif; font-size:1rem; margin-bottom: 22px; color:#2b3550; }
+  .breakdown{
+    text-align:left;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.88rem;
+    border-top: 1px solid #C9C2AE;
+    padding-top: 16px;
+    margin-bottom: 22px;
+  }
+  .breakdown-row{
+    display:flex;
+    justify-content:space-between;
+    padding: 6px 0;
+    border-bottom: 1px dashed #C9C2AE;
+  }
+  .breakdown-row span:last-child{ font-weight:700; }
+  .restart-btn{
+    background: var(--navy);
+    color: var(--paper);
+    border:none;
+    font-weight:600;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.95rem;
+    padding: 11px 22px;
+    border-radius: 3px;
+    cursor:pointer;
+  }
+  .restart-btn:hover{ background: #22335c; }
+
+  .hidden{ display:none !important; }
+
+  @media (max-width:480px){
+    .card, .intro, .summary{ padding: 22px 18px; }
+    header.plate .title{ font-size: 1.2rem; }
+    .summary .big-score{ font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="plate">
+    <div>
+      <div class="title">Industrialisation &amp; Structural Change</div>
+      <div class="subtitle">Self-test reviewer — BAECODEX</div>
+    </div>
+    <div class="score">
+      <div>score</div>
+      <div class="nums"><span class="c" id="correctCount">0</span> / <span class="w" id="wrongCount">0</span></div>
+    </div>
+  </header>
+
+  <div class="gauge"><div class="gauge-fill" id="gaugeFill"></div></div>
+
+  <!-- INTRO -->
+  <div class="intro" id="intro">
+    <h2>Ready to review?</h2>
+    <p>This set covers all six topics: Industry &amp; Economic Growth, Models of Structural Change, Backward &amp; Forward Linkages, Aspects of Industrial Development, Industrial Efficiency Issues, and the Asian Experience.</p>
+    <ul>
+      <li>Questions are shuffled every time you load the page.</li>
+      <li>Use keys <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to answer, and <kbd>Enter</kbd> or <kbd>Space</kbd> to move to the next item.</li>
+      <li>You can go back with the Previous button any time — no need to wait for the summary.</li>
+      <li>An explanation appears after you answer each item.</li>
+    </ul>
+    <button class="start-btn" id="startBtn">Start review</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card hidden" id="quiz">
+    <div class="topic-tag" id="topicTag"></div>
+    <div class="q-count" id="qCount"></div>
+    <div class="question" id="questionText"></div>
+    <div class="options" id="optionsWrap"></div>
+    <div class="explanation" id="explanation"></div>
+    <div class="nav-row">
+      <button class="nav-btn prev" id="prevBtn">← Previous</button>
+      <button class="nav-btn next" id="nextBtn">Next →</button>
+    </div>
+  </div>
+  <div class="hint hidden" id="hint">Press <kbd>A</kbd>–<kbd>D</kbd> to answer · <kbd>Enter</kbd> / <kbd>Space</kbd> for next</div>
+
+  <!-- SUMMARY -->
+  <div class="summary hidden" id="summary">
+    <h2>Review complete</h2>
+    <div class="big-score" id="bigScore"></div>
+    <div class="pct" id="bigPct"></div>
+    <div class="msg" id="summaryMsg"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <button class="restart-btn" id="restartBtn">Restart with new shuffle</button>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+// ---------- TOPIC 1 ----------
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "According to the reviewer, which sector is described as the \"backbone of sustainable economic growth\"?",
+  options: ["Agriculture", "Services", "Industry", "Finance"],
+  correct: 2,
+  exp: "Industry is called the backbone of sustainable economic growth because it creates jobs, raises productivity, and builds infrastructure — agriculture provides the foundation and services expand opportunities, but industry drives sustained growth."
+},
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "A country's agricultural sector can no longer absorb enough workers as its population grows. Based on the reviewer, which sector typically fills this employment gap?",
+  options: ["Agriculture expansion", "Industry", "Government subsidies", "Tourism"],
+  correct: 1,
+  exp: "As agriculture alone cannot provide enough jobs or income once population and technology advance, industry fills this gap by absorbing surplus labor."
+},
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "Which term refers to the long-term shift of labor and resources from low-productivity sectors like subsistence farming to higher-productivity sectors like industry and services?",
+  options: ["Industrialisation", "Structural Change", "Economies of Scale", "Backward Linkage"],
+  correct: 1,
+  exp: "Structural Change is defined as the long-term shift of economic activity from low-productivity sectors (subsistence agriculture) to higher-productivity sectors (industry and services)."
+},
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "The memory tip \"GET-EUV\" lists the functions of industry in the economy. Which of the following is NOT part of GET-EUV?",
+  options: ["Growth", "Employment creation", "Value addition", "Taxation policy"],
+  correct: 3,
+  exp: "GET-EUV stands for Growth, Employment creation, Technology transfer, Exports (competitiveness), Urban development, and Value addition — taxation policy is not one of the six functions listed."
+},
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "Which country's example illustrates industrial growth led by chaebols — large industrial conglomerates?",
+  options: ["Japan", "South Korea", "China", "Philippines"],
+  correct: 1,
+  exp: "South Korea used chaebols such as Samsung and Hyundai as large industrial conglomerates to lead its industrial growth."
+},
+{
+  topic: "Topic 1 · Industry & Economic Growth",
+  q: "Which function of industry refers to raw materials being transformed into finished products, increasing economic value?",
+  options: ["Export competitiveness", "Value addition", "Urban development", "Technology transfer"],
+  correct: 1,
+  exp: "Value Addition is when raw materials are transformed into finished products, increasing economic value and revenues."
+},
+
+// ---------- TOPIC 2 ----------
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "Who developed the Dual-Sector (Surplus Labor) Model in 1954?",
+  options: ["Simon Kuznets", "Albert Hirschman", "W. Arthur Lewis", "Adam Smith"],
+  correct: 2,
+  exp: "W. Arthur Lewis developed the Dual-Sector Model, also called the Surplus Labor Model, in 1954."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "In the Lewis Dual-Sector Model, surplus workers move from which sector to which sector?",
+  options: ["Industry to agriculture", "Agriculture to industry", "Services to agriculture", "Industry to services"],
+  correct: 1,
+  exp: "In the Lewis Model, surplus workers in the low-productivity agricultural sector are gradually absorbed into the higher-productivity modern industrial sector."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "A researcher notes that as a country industrialises, income inequality tends to rise first and then fall as the economy matures. Which concept explains this pattern?",
+  options: ["Lewis Model", "Kuznets Curve", "Endogenous Growth Model", "Sequential Model"],
+  correct: 1,
+  exp: "The Kuznets Curve, part of the Kuznets Structural Change Hypothesis, suggests inequality rises in early industrialisation but eventually falls as economies mature."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "Which model emphasizes technology, innovation, R&D, and human capital as the drivers of long-term growth, rather than sector shifts alone?",
+  options: ["Lewis Dual-Sector Model", "Kuznets Hypothesis", "Endogenous Growth Model", "Sequential Model"],
+  correct: 2,
+  exp: "The Endogenous Growth and Structural Change Models (1990s onward) highlight technology, innovation, and human capital as sustaining long-term growth, beyond simple sector shifts."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "Which Asian country's rural-to-urban migration during the 1980s–2000s is given as an example of the Lewis Model?",
+  options: ["Japan", "South Korea", "China", "Philippines"],
+  correct: 2,
+  exp: "China's rural-to-urban migration during the 1980s–2000s is cited as an example following the Lewis Dual-Sector Model."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "According to the Agriculture–Industry–Services Sequential Model, which of these best describes the Philippines' current position?",
+  options: ["Fully service-driven", "Transitioning between agriculture and industry", "Fully industrial", "Purely agricultural"],
+  correct: 1,
+  exp: "The reviewer states the Philippines is still transitioning between agriculture and industry, while Singapore and Japan are already service-driven economies."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "Which economist introduced the Structural Change Hypothesis in the 1960s?",
+  options: ["W. Arthur Lewis", "Simon Kuznets", "Albert Hirschman", "Deng Xiaoping"],
+  correct: 1,
+  exp: "Simon Kuznets introduced the Structural Change Hypothesis in the 1960s, linking growth with shifts in output, labor, and technology."
+},
+{
+  topic: "Topic 2 · Models of Structural Change",
+  q: "Which pairing of proponent and model is correct?",
+  options: ["Hirschman — Dual-Sector Model", "Kuznets — Backward and Forward Linkages", "Lewis — Surplus Labor Model", "Deng Xiaoping — Endogenous Growth Model"],
+  correct: 2,
+  exp: "W. Arthur Lewis is correctly paired with the Surplus Labor (Dual-Sector) Model. Hirschman is linked to linkages, and Kuznets to the inequality hypothesis, not the reverse."
+},
+
+// ---------- TOPIC 3 ----------
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "Who introduced the concept of backward and forward linkages?",
+  options: ["W. Arthur Lewis", "Albert Hirschman", "Simon Kuznets", "Adam Smith"],
+  correct: 1,
+  exp: "Albert Hirschman introduced backward and forward linkages in his 1958 work, The Strategy of Economic Development."
+},
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "A textile factory's growth increases demand for cotton farming, dye production, and machinery suppliers. This is an example of:",
+  options: ["Forward linkage", "Backward linkage", "Economies of scale", "Capacity underutilisation"],
+  correct: 1,
+  exp: "This is a backward linkage — the industry stimulates growth in the industries that supply its inputs (cotton, dyes, machinery)."
+},
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "Increased steel production supports the growth of construction and machinery manufacturing. This is an example of:",
+  options: ["Backward linkage", "Forward linkage", "Kuznets Curve", "Managerial gap"],
+  correct: 1,
+  exp: "This is a forward linkage — steel's output becomes an input for downstream industries like construction and machinery manufacturing."
+},
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "A car manufacturer starts requiring more tires, engines, and glass parts from suppliers as its production expands. This demand is best classified as:",
+  options: ["Forward linkage", "Backward linkage", "Innovation and R&D", "Capital-intensive method"],
+  correct: 1,
+  exp: "Since the car industry is buying inputs (tires, engines, glass) from upstream suppliers, this is a backward linkage."
+},
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "The reviewer's \"quick test\" for telling backward and forward linkages apart asks whether the industry is:",
+  options: ["Big or small", "Buying or selling", "Local or foreign", "Old or new"],
+  correct: 1,
+  exp: "The quick test is: is the industry buying inputs (backward linkage) or selling its output as someone else's input (forward linkage)?"
+},
+{
+  topic: "Topic 3 · Backward & Forward Linkages",
+  q: "In which publication did Hirschman explain the concept of linkages?",
+  options: ["The Wealth of Nations", "The Strategy of Economic Development", "Das Kapital", "The Asian Miracle Report"],
+  correct: 1,
+  exp: "Hirschman explained linkages in his 1958 book, The Strategy of Economic Development."
+},
+
+// ---------- TOPIC 4 ----------
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Deciding between labor-intensive and capital-intensive production methods falls under which aspect of industrial development?",
+  options: ["Economies of Scale", "Choice of Technology", "Financing and Investment", "Industrial Efficiency"],
+  correct: 1,
+  exp: "Choice of Technology refers to whether industries use labor-intensive (manual, more workers) or capital-intensive (machines, automation) methods."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "A small furniture shop hires many workers to hand-craft items instead of investing in machines. This reflects:",
+  options: ["Capital-intensive production", "Labor-intensive production", "External economies of scale", "Forward linkage"],
+  correct: 1,
+  exp: "Labor-intensive production relies on manual work and more workers — it creates more jobs but may be less efficient, as with handicrafts and small furniture shops."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Cost savings gained within a single firm, such as bulk buying of raw materials or efficient use of machinery, is called:",
+  options: ["External economies of scale", "Internal economies of scale", "Backward linkage", "Capacity underutilisation"],
+  correct: 1,
+  exp: "Internal Economies of Scale are savings within a firm itself, such as bulk buying and efficient machinery use."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Cost savings shared across an entire industry through industrial parks and common infrastructure is called:",
+  options: ["Internal economies of scale", "External economies of scale", "Forward linkage", "Technological inefficiency"],
+  correct: 1,
+  exp: "External Economies of Scale are savings for industries as a group, such as through industrial parks, common infrastructure, and skilled labor pools."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "South Korea's shipbuilding industry became one of the world's cheapest producers mainly because of:",
+  options: ["Labor-intensive methods", "Economies of scale", "Weak infrastructure", "Small domestic market"],
+  correct: 1,
+  exp: "The reviewer notes South Korea's shipbuilding industry grew rapidly because of economies of scale, lowering its average cost per unit."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Which aspect of industrial development is most directly concerned with underutilised capacity and obsolete machinery?",
+  options: ["Innovation and R&D", "Industrial Efficiency", "Scale of Production", "Financing and Investment"],
+  correct: 1,
+  exp: "Industrial Efficiency depends on technology, management, and training, and its issues include underutilised capacity and obsolete machinery."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Which of the following is listed as a challenge rather than an advantage of industrial development?",
+  options: ["Lower production costs", "Weak infrastructure", "Global competitiveness", "Higher productivity and wages"],
+  correct: 1,
+  exp: "Weak Infrastructure — poor transport and high power costs — is listed among the Factors/Challenges, not the Advantages/Benefits."
+},
+{
+  topic: "Topic 4 · Aspects of Industrial Development",
+  q: "Access to loans, credit cooperatives, and foreign investment relates most directly to which aspect of industrial development?",
+  options: ["Financing and Investment", "Choice of Technology", "Economies of Scale", "Industrial Efficiency"],
+  correct: 0,
+  exp: "Financing and Investment covers access to capital for infrastructure, machinery, and training, including loans, credit cooperatives, and foreign investment."
+},
+
+// ---------- TOPIC 5 ----------
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "Which efficiency issue refers to factories operating below full capacity due to poor demand or power shortages?",
+  options: ["Technological Inefficiency", "Capacity Underutilisation", "Managerial and Skill Gaps", "Scale of Production"],
+  correct: 1,
+  exp: "Capacity Underutilisation occurs when factories operate below full capacity due to poor demand, power shortages, or weak supply chains, raising unit costs."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "High electricity costs and inefficient logistics are examples of which efficiency issue?",
+  options: ["High Production Costs", "Small-Scale Industrial Development", "Technological Inefficiency", "Capacity Underutilisation"],
+  correct: 0,
+  exp: "High Production Costs are caused by expensive electricity, inefficient logistics, or dependence on imported inputs."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "A Philippine textile firm cannot compete with cheaper mass-produced imports because it only produces small volumes. This illustrates the efficiency issue of:",
+  options: ["Managerial and Skill Gaps", "Scale of Production", "Technological Inefficiency", "High Production Costs"],
+  correct: 1,
+  exp: "This reflects the Scale of Production issue — operating on too small a scale prevents firms from benefiting from economies of scale, raising costs relative to large-scale producers."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "Reliance on outdated machines that reduces productivity and product quality is called:",
+  options: ["Capacity Underutilisation", "Technological Inefficiency", "High Production Costs", "Small-Scale Industrial Development"],
+  correct: 1,
+  exp: "Technological Inefficiency refers to reliance on outdated machines, which reduces productivity and product quality, along with weak R&D."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "Which of the following is listed as an ADVANTAGE, not a challenge, of small-scale industries?",
+  options: ["Limited access to credit", "Flexible and adaptable to local demand", "Vulnerable to competition from larger firms", "Difficulty adopting modern technology"],
+  correct: 1,
+  exp: "Being flexible and adaptable to local demand is listed as an advantage of small-scale industries, while the other options are listed as challenges."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "A shortage of skilled managers and workers, leading to poor planning and production inefficiencies, is classified under:",
+  options: ["Managerial and Skill Gaps", "Technological Inefficiency", "High Production Costs", "Capacity Underutilisation"],
+  correct: 0,
+  exp: "Managerial and Skill Gaps cover the lack of skilled managers and workers that leads to inefficiencies in planning and production."
+},
+{
+  topic: "Topic 5 · Industrial Efficiency Issues",
+  q: "The memory tip \"S-S-T-C-H-M\" covers six efficiency issues. Which of these is NOT one of the six?",
+  options: ["Scale of production", "Technological inefficiency", "Financing gaps", "Managerial and skill gaps"],
+  correct: 2,
+  exp: "S-S-T-C-H-M stands for Scale, Small-scale, Technological, Capacity, High costs, and Managerial issues — \"Financing gaps\" is not one of the six efficiency issues in this list."
+},
+
+// ---------- TOPIC 6 ----------
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "Which Japanese government agency directed resources into strategic industries after World War II?",
+  options: ["Bank of Japan", "Ministry of International Trade and Industry (MITI)", "Ministry of Finance", "JETRO"],
+  correct: 1,
+  exp: "Japan's Ministry of International Trade and Industry (MITI) directed resources into strategic sectors like steel, shipbuilding, automobiles, and electronics."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "South Korea's rapid industrial transformation is popularly known as:",
+  options: ["The Asian Tiger Leap", "Miracle on the Han River", "The Seoul Revolution", "Chaebol Rising"],
+  correct: 1,
+  exp: "South Korea's transformation is known as the \"Miracle on the Han River,\" supported by government backing of chaebols like Samsung, Hyundai, and LG."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "China's main tool for attracting foreign direct investment starting in 1978 was called:",
+  options: ["Chaebols", "MITI zones", "Special Economic Zones (SEZs)", "The Hukou System"],
+  correct: 2,
+  exp: "Beginning in 1978, China used Special Economic Zones (SEZs) to attract foreign direct investment as part of Deng Xiaoping's Reform and Opening Up."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "Which system in China restricted rural migrants' access to urban social services?",
+  options: ["Special Economic Zones (SEZ)", "The Hukou System", "Chaebol System", "MITI"],
+  correct: 1,
+  exp: "The Hukou system, China's household registration system, restricted migrants' access to urban social services, creating inequality."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "A policy analyst observes that a country's industrial policies shift frequently with each new administration, weakening long-term industrial strategy. Which country does the reviewer describe this way?",
+  options: ["Japan", "South Korea", "China", "Philippines"],
+  correct: 3,
+  exp: "The reviewer states that in the Philippines, policies have often shifted with administrations, limiting long-term strategies, with weak enforcement reducing effectiveness."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "Which country became known as the \"world's factory\" through low-cost export manufacturing?",
+  options: ["Japan", "South Korea", "China", "Philippines"],
+  correct: 2,
+  exp: "China became the \"world's factory,\" relying heavily on industrial manufacturing before moving into advanced sectors like AI, 5G, and renewable energy."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "Which country is highlighted for becoming a leading exporter of microchips and a global hub for call centers (BPO)?",
+  options: ["Japan", "South Korea", "China", "Philippines"],
+  correct: 3,
+  exp: "The Philippines became a leading exporter of microchips (semiconductors) and a global hub for BPO call center services, even as its overall industrialisation remained uneven."
+},
+{
+  topic: "Topic 6 · The Asian Experience",
+  q: "The reviewer describes the largest human migration in history as involving over 200 million rural workers moving to cities for factory jobs. Which country does this refer to?",
+  options: ["South Korea", "China", "Japan", "Philippines"],
+  correct: 1,
+  exp: "China's rural-to-urban migration is described as the largest in human history, with over 200 million rural workers moving to cities, though the hukou system limited their access to urban services."
+}
+];
+
+// ---------- State ----------
+let order = [];
+let answers = []; // { selected: idx|null, optOrder: [0,1,2,3] shuffled per question }
+let current = 0;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function initQuiz(){
+  order = shuffle(QUESTIONS.map((_,i)=>i));
+  answers = order.map(qIdx=>{
+    const optOrder = shuffle([0,1,2,3]);
+    return { selected: null, optOrder };
+  });
+  current = 0;
+}
+
+function scoreCounts(){
+  let correct = 0, wrong = 0;
+  answers.forEach((a,i)=>{
+    if(a.selected !== null){
+      const q = QUESTIONS[order[i]];
+      const chosenOriginalIdx = a.optOrder[a.selected];
+      if(chosenOriginalIdx === q.correct) correct++; else wrong++;
+    }
+  });
+  return {correct, wrong};
+}
+
+function updateHeader(){
+  const {correct, wrong} = scoreCounts();
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  const answeredCount = answers.filter(a=>a.selected!==null).length;
+  const pct = Math.round((current) / order.length * 100);
+  document.getElementById('gaugeFill').style.width = Math.round((current)/order.length*100) + '%';
+}
+
+function renderQuestion(){
+  document.getElementById('summary').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('hint').classList.remove('hidden');
+
+  const qIdx = order[current];
+  const q = QUESTIONS[qIdx];
+  const a = answers[current];
+
+  document.getElementById('topicTag').textContent = q.topic;
+  document.getElementById('qCount').textContent = `Item ${current+1} of ${order.length}`;
+  document.getElementById('questionText').textContent = q.q;
+
+  const wrap = document.getElementById('optionsWrap');
+  wrap.innerHTML = '';
+  const letters = ['A','B','C','D'];
+
+  a.optOrder.forEach((origIdx, displayIdx)=>{
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `<span class="letter">${letters[displayIdx]}</span><span>${q.options[origIdx]}</span>`;
+    btn.addEventListener('click', ()=> selectAnswer(displayIdx));
+    if(a.selected !== null){
+      btn.disabled = true;
+      if(origIdx === q.correct){
+        btn.classList.add('correct');
+      } else if(displayIdx === a.selected){
+        btn.classList.add('wrong');
+      } else {
+        btn.classList.add('dim');
+      }
+    }
+    wrap.appendChild(btn);
+  });
+
+  const expEl = document.getElementById('explanation');
+  if(a.selected !== null){
+    expEl.innerHTML = `<b>Explanation:</b> ${q.exp}`;
+    expEl.classList.add('show');
+  } else {
+    expEl.classList.remove('show');
+    expEl.innerHTML = '';
+  }
+
+  document.getElementById('prevBtn').disabled = (current === 0);
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = (current === order.length - 1) ? 'See summary →' : 'Next →';
+
+  updateHeader();
+}
+
+function selectAnswer(displayIdx){
+  const a = answers[current];
+  if(a.selected !== null) return; // locked once answered
+  a.selected = displayIdx;
+  renderQuestion();
+}
+
+function goNext(){
+  if(current < order.length - 1){
+    current++;
+    renderQuestion();
+  } else {
+    showSummary();
+  }
+}
+
+function goPrev(){
+  if(current > 0){
+    current--;
+    renderQuestion();
+  }
+}
+
+function showSummary(){
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('hint').classList.add('hidden');
+  document.getElementById('summary').classList.remove('hidden');
+
+  const {correct, wrong} = scoreCounts();
+  const total = order.length;
+  const pct = Math.round((correct/total)*100);
+
+  document.getElementById('bigScore').textContent = `${correct} / ${total}`;
+  document.getElementById('bigPct').textContent = `${pct}% correct`;
+
+  let msg;
+  if(pct >= 90) msg = "Excellent — you know this material solidly.";
+  else if(pct >= 75) msg = "Good grasp overall. Review the missed items below.";
+  else if(pct >= 50) msg = "Fair start. Revisit the topics you missed before the exam.";
+  else msg = "Needs more review — go back through the reviewer topics and try again.";
+  document.getElementById('summaryMsg').textContent = msg;
+
+  // per-topic breakdown
+  const topicStats = {};
+  order.forEach((qIdx, i)=>{
+    const q = QUESTIONS[qIdx];
+    const a = answers[i];
+    if(!topicStats[q.topic]) topicStats[q.topic] = {correct:0, total:0};
+    topicStats[q.topic].total++;
+    if(a.selected !== null && a.optOrder[a.selected] === q.correct){
+      topicStats[q.topic].correct++;
+    }
+  });
+
+  const bd = document.getElementById('breakdown');
+  bd.innerHTML = '';
+  Object.keys(topicStats).sort().forEach(topic=>{
+    const s = topicStats[topic];
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = `<span>${topic}</span><span>${s.correct} / ${s.total}</span>`;
+    bd.appendChild(row);
+  });
+
+  document.getElementById('gaugeFill').style.width = '100%';
+}
+
+function startQuiz(){
+  initQuiz();
+  document.getElementById('intro').classList.add('hidden');
+  renderQuestion();
+}
+
+// ---------- Events ----------
+document.getElementById('startBtn').addEventListener('click', startQuiz);
+document.getElementById('nextBtn').addEventListener('click', goNext);
+document.getElementById('prevBtn').addEventListener('click', goPrev);
+document.getElementById('restartBtn').addEventListener('click', startQuiz);
+
+document.addEventListener('keydown', (e)=>{
+  const introVisible = !document.getElementById('intro').classList.contains('hidden');
+  const summaryVisible = !document.getElementById('summary').classList.contains('hidden');
+
+  if(introVisible){
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      startQuiz();
+    }
+    return;
+  }
+
+  if(summaryVisible){
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      startQuiz();
+    }
+    return;
+  }
+
+  const key = e.key.toLowerCase();
+  if(['a','b','c','d'].includes(key)){
+    const idx = {a:0,b:1,c:2,d:3}[key];
+    const optionsCount = document.getElementById('optionsWrap').children.length;
+    if(idx < optionsCount){
+      selectAnswer(idx);
+    }
+  } else if(e.key === 'Enter' || e.key === ' '){
+    e.preventDefault();
+    goNext();
+  } else if(e.key === 'ArrowLeft'){
+    goPrev();
+  } else if(e.key === 'ArrowRight'){
+    const a = answers[current];
+    if(a.selected !== null) goNext();
+  }
+});
+</script>
+</body>
+</html>
