@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100-Item Accounting Final Exam Reviewer & Self-Test</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0b1329',
+                            950: '#060a17',
+                        },
+                        emerald: {
+                            500: '#10b981',
+                            600: '#059669',
+                        },
+                        crimson: {
+                            500: '#ef4444',
+                            600: '#dc2626',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- TOP HEADER / NAVBAR -->
+    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg border border-indigo-500/30">
+                    <i class="fa-solid fa-calculator text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-white leading-tight">Accounting Master Reviewer</h1>
+                    <p class="text-xs text-slate-400">Grade 12 ABM & Intro College Accounting (100 Items)</p>
+                </div>
+            </div>
+
+            <!-- TABS -->
+            <div class="flex items-center space-x-2 bg-slate-800/80 p-1 rounded-xl border border-slate-700/60">
+                <button id="tab-reviewer-btn" onclick="switchTab('reviewer')" class="px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 bg-indigo-600 text-white shadow-md">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="hidden sm:inline">Quick Notes</span>
+                </button>
+                <button id="tab-quiz-btn" onclick="switchTab('quiz')" class="px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-700/50">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>100-Item Exam</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 overflow-y-auto">
+        
+        <!-- ================= TAB 1: QUICK REVIEWER NOTES ================= -->
+        <section id="tab-reviewer" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="bg-gradient-to-r from-indigo-900/40 via-slate-900 to-slate-900 border border-indigo-500/30 rounded-2xl p-6 shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-indigo-400"></i> Core Accounting Principles Summary
+                </h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Review key concepts, formulas, debit/credit rules, and adjusting entries prior to taking the 100-item self-assessment test.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-[#]"></i> Basic Accounting Equation
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 mb-3 text-center">
+                        <span class="text-emerald-400 font-mono font-bold text-lg">Assets = Liabilities + Equity</span>
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                        <li><strong class="text-slate-100">Assets:</strong> Resources owned with economic value (Cash, AR, Inventory, PPE).</li>
+                        <li><strong class="text-slate-100">Liabilities:</strong> Debts/Obligations owed to third parties (AP, NP, Unearned Rev).</li>
+                        <li><strong class="text-slate-100">Equity:</strong> Residual interest of owners (Capital - Drawings + Net Income).</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-right-left"></i> Rules of Debit & Credit
+                    </div>
+                    <div class="text-xs text-slate-300 space-y-2 font-mono">
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Assets, Expenses, Drawings</span>
+                            <span class="text-emerald-400">Dr (+) / Cr (-)</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Liabilities, Equity, Revenue</span>
+                            <span class="text-indigo-400">Dr (-) / Cr (+)</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Contra Assets (Accum. Dep)</span>
+                            <span class="text-amber-400">Normal Balance: Credit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-sliders"></i> Adjusting Entries
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                        <li><strong class="text-slate-100">Accrued Expense:</strong> Dr Expense / Cr Liability</li>
+                        <li><strong class="text-slate-100">Accrued Revenue:</strong> Dr Asset (AR) / Cr Revenue</li>
+                        <li><strong class="text-slate-100">Prepaid Expense:</strong> Dr Expense / Cr Asset</li>
+                        <li><strong class="text-slate-100">Unearned Revenue:</strong> Dr Unearned Rev / Cr Revenue</li>
+                        <li><strong class="text-slate-100">Depreciation:</strong> (Cost - Salvage) / Useful Life</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-packing"></i> Inventory Costing
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                        <li><strong class="text-slate-100">FIFO:</strong> First-In, First-Out. Ending inventory reflects latest prices. COGS is lower in inflation.</li>
+                        <li><strong class="text-slate-100">Weighted Average:</strong> Total Cost of Goods Available ÷ Total Units Available.</li>
+                        <li><strong class="text-slate-100">Periodic vs Perpetual:</strong> Periodic computes COGS at end of period using physical count; Perpetual updates inventory per transaction.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-building-columns"></i> Bank Reconciliation
+                    </div>
+                    <div class="text-xs text-slate-300 space-y-1 font-mono">
+                        <div class="text-slate-100 font-bold border-b border-slate-800 pb-1 mb-1">Adjusted Book Balance:</div>
+                        <div>+ Interest Earned / Notes Coll.</div>
+                        <div>- Bank Service Charges / NSF Check</div>
+                        <div class="text-slate-100 font-bold border-b border-slate-800 pb-1 my-1">Adjusted Bank Balance:</div>
+                        <div>+ Deposit in Transit</div>
+                        <div>- Outstanding Checks</div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg hover:border-slate-700 transition">
+                    <div class="text-indigo-400 font-bold text-lg mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> Essential Ratios
+                    </div>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li><strong class="text-slate-100">Current Ratio:</strong> Current Assets ÷ Current Liabilities</li>
+                        <li><strong class="text-slate-100">Quick Ratio:</strong> (Cash + Quick Sec. + AR) ÷ Current Liabilities</li>
+                        <li><strong class="text-slate-100">Gross Profit Rate:</strong> Gross Profit ÷ Net Sales</li>
+                        <li><strong class="text-slate-100">Profit Margin:</strong> Net Income ÷ Net Sales</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: INTERACTIVE QUIZ ================= -->
+        <section id="tab-quiz" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+            <!-- SCORE TRACKER / FIXED PROGRESS HEADER -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-6 w-full md:w-auto justify-between md:justify-start">
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Progress</div>
+                        <div class="text-xl font-bold font-mono text-white" id="progress-text">1 / 100</div>
+                    </div>
+                    <div class="h-8 w-px bg-slate-800"></div>
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Current Score</div>
+                        <div class="text-xl font-bold font-mono text-emerald-400" id="score-text">0 <span class="text-xs text-slate-500 font-normal">(0%)</span></div>
+                    </div>
+                    <div class="h-8 w-px bg-slate-800"></div>
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Flagged</div>
+                        <div class="text-xl font-bold font-mono text-amber-400" id="flagged-count-text">0</div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full md:w-1/3 flex flex-col gap-1">
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div id="progress-bar-inner" class="bg-indigo-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                    <div class="flex justify-between text-[11px] text-slate-400 font-mono">
+                        <span id="answered-count-text">0 answered</span>
+                        <span id="remaining-count-text">100 remaining</span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-2 w-full md:w-auto justify-end">
+                    <button onclick="toggleGridModal()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-grid-2"></i> Grid Jumper
+                    </button>
+                    <button onclick="finishQuizEarly()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-check-double"></i> Submit Exam
+                    </button>
+                </div>
+            </div>
+
+            <!-- MAIN QUIZ AREA CONTAINER -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+                <!-- QUESTION DISPLAY PANEL (3 COLS) -->
+                <div class="lg:col-span-3 space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative min-h-[420px] flex flex-col justify-between">
+                        
+                        <!-- Question Header Meta -->
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <span id="q-category-tag" class="px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-full text-xs font-semibold">
+                                        Category
+                                    </span>
+                                    <span id="q-type-tag" class="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-mono">
+                                        Multiple Choice
+                                    </span>
+                                </div>
+                                <button id="flag-btn" onclick="toggleFlagCurrentQuestion()" class="text-xs px-3 py-1.5 rounded-lg border border-slate-700 text-slate-400 hover:text-amber-400 transition flex items-center gap-1.5">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                    <span>Flag for Review</span>
+                                </button>
+                            </div>
+
+                            <!-- Question Text -->
+                            <div class="space-y-4">
+                                <h2 id="q-title" class="text-lg sm:text-xl font-bold text-white leading-snug">
+                                    Loading question...
+                                </h2>
+                                <div id="q-body-context" class="text-sm text-slate-300 leading-relaxed font-mono bg-slate-950 p-4 rounded-xl border border-slate-800/80 hidden">
+                                    <!-- Context data or ledger numbers -->
+                                </div>
+                            </div>
+
+                            <!-- Options List -->
+                            <div id="options-container" class="mt-6 space-y-3">
+                                <!-- Choices dynamic JS -->
+                            </div>
+                        </div>
+
+                        <!-- EXPLANATION / FEEDBACK BOX -->
+                        <div id="explanation-box" class="mt-6 p-4 rounded-xl border hidden transition-all duration-300">
+                            <div id="explanation-header" class="font-bold text-sm mb-1 flex items-center gap-2"></div>
+                            <div id="explanation-text" class="text-xs sm:text-sm leading-relaxed text-slate-200"></div>
+                        </div>
+
+                        <!-- BOTTOM NAVIGATION BAR -->
+                        <div class="mt-8 pt-4 border-t border-slate-800 flex items-center justify-between">
+                            <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl border border-slate-700 transition flex items-center gap-2">
+                                <i class="fa-solid fa-arrow-left"></i> Previous <span class="hidden sm:inline text-slate-500 text-xs">(Left)</span>
+                            </button>
+                            <span class="text-xs text-slate-500 hidden sm:inline">Use keys 1-5 / A-E to select</span>
+                            <button id="next-btn" onclick="nextQuestion()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold rounded-xl shadow transition flex items-center gap-2">
+                                Next <i class="fa-solid fa-arrow-right"></i> <span class="hidden sm:inline text-indigo-300 text-xs">(Right)</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SIDEBAR: QUICK JUMP & CATEGORIES (1 COL) -->
+                <div class="space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+                        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-th-large text-indigo-400"></i> Question Navigator
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4">Click any item to jump directly to it.</p>
+                        
+                        <div id="grid-mini-container" class="grid grid-cols-5 gap-1.5 max-h-72 overflow-y-auto pr-1">
+                            <!-- Mini Grid items JS -->
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-800 grid grid-cols-2 gap-2 text-[10px] text-slate-400">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Correct
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-crimson-500 inline-block"></span> Incorrect
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Flagged
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-slate-700 inline-block"></span> Unanswered
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GRID JUMPER MODAL -->
+    <div id="grid-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-3xl rounded-2xl p-6 shadow-2xl flex flex-col max-h-[85vh]">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <h3 class="text-lg font-bold text-white">Full Exam Grid Navigator (100 Items)</h3>
+                <button onclick="toggleGridModal()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div id="grid-full-container" class="grid grid-cols-5 sm:grid-cols-10 gap-2 my-6 overflow-y-auto p-1">
+                <!-- Full 100 items grid JS -->
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="toggleGridModal()" class="px-4 py-2 bg-slate-800 text-slate-200 text-xs font-bold rounded-lg hover:bg-slate-700">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF TEST SUMMARY MODAL -->
+    <div id="summary-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-4xl rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 my-8">
+            <div class="text-center space-y-2">
+                <div class="inline-flex p-3 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 mb-1">
+                    <i class="fa-solid fa-trophy text-3xl"></i>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Exam Completion Summary</h2>
+                <p id="summary-status-sub" class="text-slate-400 text-sm">Here is your detailed performance breakdown across all 100 accounting questions.</p>
+            </div>
+
+            <!-- Main Score Card -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+                    <div class="text-xs text-slate-400 uppercase font-bold">Total Score</div>
+                    <div id="summary-score" class="text-3xl font-black text-emerald-400 mt-1">0 / 100</div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+                    <div class="text-xs text-slate-400 uppercase font-bold">Grade Percentage</div>
+                    <div id="summary-percentage" class="text-3xl font-black text-indigo-400 mt-1">0%</div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+                    <div class="text-xs text-slate-400 uppercase font-bold">Pass / Fail Result</div>
+                    <div id="summary-result-badge" class="text-2xl font-black text-emerald-400 mt-1">PASSED</div>
+                </div>
+            </div>
+
+            <!-- Missed / Flagged Items List -->
+            <div class="space-y-3">
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center justify-between">
+                    <span>Missed or Review Items</span>
+                    <span id="summary-missed-count" class="text-xs text-slate-400 font-normal">0 items</span>
+                </h3>
+                <div id="summary-missed-list" class="max-h-60 overflow-y-auto space-y-2 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <!-- Dynamic review links JS -->
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-800 justify-end">
+                <button onclick="retakeExam()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-xl border border-slate-700 transition">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> Retake New Exam (Reshuffle)
+                </button>
+                <button onclick="closeSummaryModal()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl shadow transition">
+                    Review Responses
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS APP SCRIPT -->
+    <script>
+        // MASTER 100 QUESTIONS REPOSITORY (Grade 12 ABM & College Intro Accounting)
+        const RAW_QUESTIONS = [
+            // MODULE 1: INTRODUCTION TO ACCOUNTING & CONCEPTS (1-15)
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Which accounting principle asserts that a business entity is separate and distinct from its owners or managers?",
+                options: ["Going Concern Principle", "Business Entity Concept", "Monetary Unit Assumption", "Time Period Concept"],
+                answer: "Business Entity Concept",
+                explanation: "The Business Entity Concept states that personal transactions of owners are kept separate from business transactions."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "According to the Matching Principle, expenses should be recognized when:",
+                options: ["Cash is disbursed to pay for them", "The related revenues are earned/recognized", "Invoices are received from suppliers", "Contracts are signed"],
+                answer: "The related revenues are earned/recognized",
+                explanation: "Matching principle dictates that expenses must be paired with revenues earned in the same period."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Which financial statement reports a company's financial position at a specific point in time?",
+                options: ["Statement of Comprehensive Income", "Statement of Cash Flows", "Statement of Financial Position (Balance Sheet)", "Statement of Changes in Equity"],
+                answer: "Statement of Financial Position (Balance Sheet)",
+                explanation: "The Balance Sheet provides a snapshot of Assets, Liabilities, and Equity on a specific date."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Prudence/Conservatism concept dictates that when alternative accounting treatments exist, an accountant should select the option that:",
+                options: ["Maximizes net income for the year", "Least overstates assets and income", "Maximizes tax liabilities", "Minimizes recorded liabilities"],
+                answer: "Least overstates assets and income",
+                explanation: "Conservatism mandates anticipating potential losses while avoiding premature recognition of gains."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Revenue is recognized when goods are delivered or services performed under accrual accounting, regardless of when cash is collected. This describes:",
+                options: ["Cash Basis Accounting", "Revenue Recognition Principle", "Materiality Principle", "Full Disclosure Principle"],
+                answer: "Revenue Recognition Principle",
+                explanation: "Revenue recognition occurs upon performance obligation completion, regardless of cash inflow timing."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Which branch of accounting focuses primarily on preparing external financial statements for creditors, investors, and regulatory bodies?",
+                options: ["Managerial Accounting", "Financial Accounting", "Cost Accounting", "Auditing"],
+                answer: "Financial Accounting",
+                explanation: "Financial accounting targets external stakeholders by preparing standard financial statements."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Which accounting assumption assumes that the business will continue operating indefinitely into the foreseeable future?",
+                options: ["Time Period Assumption", "Going Concern Assumption", "Economic Entity Assumption", "Monetary Unit Assumption"],
+                answer: "Going Concern Assumption",
+                explanation: "Going concern assumes the business will not liquidate in the near term."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Which primary quality of financial information requires data to be free from material error and bias?",
+                options: ["Relevance", "Faithful Representation", "Comparability", "Understandability"],
+                answer: "Faithful Representation",
+                explanation: "Faithful representation requires information to be complete, neutral, and free from error."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Dividends paid or owner withdrawals are reported on which financial statement?",
+                options: ["Income Statement", "Statement of Changes in Equity", "Balance Sheet directly under liabilities", "Notes only"],
+                answer: "Statement of Changes in Equity",
+                explanation: "Drawings or dividends directly reduce equity and are shown in the Statement of Changes in Equity."
+            },
+            {
+                category: "Accounting Concepts",
+                type: "conceptual",
+                question: "Unearned Revenue is classified under which balance sheet category?",
+                options: ["Current Asset", "Non-current Asset", "Current Liability", "Equity"],
+                answer: "Current Liability",
+                explanation: "Unearned revenue represents cash collected before services are delivered, creating an obligation to fulfill."
+            },
+
+            // MODULE 2: BASIC EQUATION & DEBIT/CREDIT (11-25)
+            {
+                category: "Accounting Equation",
+                type: "numerical",
+                question: "Apex Co. has total assets of $480,000 and total liabilities of $190,000. What is Apex Co.'s Total Equity?",
+                options: ["$670,000", "$290,000", "$380,000", "$190,000", "None of the above / Other amount: $290,000"],
+                answer: "$290,000",
+                explanation: "Equity = Assets - Liabilities\nEquity = $480,000 - $190,000 = $290,000."
+            },
+            {
+                category: "Accounting Equation",
+                type: "numerical",
+                question: "At the beginning of the year, Titan Corp had assets of $300,000 and equity of $120,000. During the year, assets increased by $50,000 and liabilities decreased by $20,000. What is ending Equity?",
+                options: ["$190,000", "$150,000", "$170,000", "$210,000", "None of the above / Other amount: $190,000"],
+                answer: "$190,000",
+                explanation: "Beg Liabilities = $300k - $120k = $180k.\nEnd Assets = $350k.\nEnd Liabilities = $180k - $20k = $160k.\nEnd Equity = $350k - $160k = $190,000."
+            },
+            {
+                category: "Rules of Debit & Credit",
+                type: "conceptual",
+                question: "An increase in an asset account is recorded as a ____, while an increase in a liability account is recorded as a ____.",
+                options: ["Credit; Debit", "Debit; Credit", "Credit; Credit", "Debit; Debit"],
+                answer: "Debit; Credit",
+                explanation: "Assets have a normal debit balance (+) while Liabilities have a normal credit balance (+)."
+            },
+            {
+                category: "Rules of Debit & Credit",
+                type: "conceptual",
+                question: "Which of the following accounts normally carries a CREDIT balance?",
+                options: ["Prepaid Insurance", "Accumulated Depreciation", "Accounts Receivable", "Owner's Drawings"],
+                answer: "Accumulated Depreciation",
+                explanation: "Accumulated Depreciation is a contra-asset account, meaning its normal balance is Credit."
+            },
+            {
+                category: "Rules of Debit & Credit",
+                type: "conceptual",
+                question: "Purchasing supplies on account results in:",
+                options: ["Increase Asset, Decrease Asset", "Increase Asset, Increase Liability", "Decrease Asset, Increase Equity", "Increase Liability, Decrease Equity"],
+                answer: "Increase Asset, Increase Liability",
+                explanation: "Debits Supplies (Asset +) and Credits Accounts Payable (Liability +)."
+            },
+            {
+                category: "Accounting Equation",
+                type: "numerical",
+                question: "Vanguard Company earned revenues of $145,000, incurred expenses of $92,000, and owner withdrawals were $15,000. What is the net increase in Equity from operations?",
+                options: ["$53,000", "$38,000", "$68,000", "$145,000", "None of the above / Other amount: $38,000"],
+                answer: "$38,000",
+                explanation: "Net Income = $145,000 - $92,000 = $53,000.\nIncrease in Equity = Net Income - Drawings = $53,000 - $15,000 = $38,000."
+            },
+            {
+                category: "Rules of Debit & Credit",
+                type: "conceptual",
+                question: "Paying cash to reduce an outstanding Accounts Payable account requires:",
+                options: ["Debit Cash, Credit Accounts Payable", "Debit Accounts Payable, Credit Cash", "Debit Expense, Credit Cash", "Debit Cash, Credit Revenue"],
+                answer: "Debit Accounts Payable, Credit Cash",
+                explanation: "Debiting Accounts Payable reduces liability; Crediting Cash reduces assets."
+            },
+            {
+                category: "Rules of Debit & Credit",
+                type: "conceptual",
+                question: "Which account group all increase with DEBIT entries?",
+                options: ["Cash, Accounts Receivable, Service Revenue", "Equipment, Rent Expense, Owner's Capital", "Building, Supplies, Owner's Drawings", "Accounts Payable, Salaries Expense, Cash"],
+                answer: "Building, Supplies, Owner's Drawings",
+                explanation: "Assets (Building, Supplies) and Owner's Drawings increase with Debits."
+            },
+
+            // MODULE 3: JOURNAL ENTRIES & GENERAL LEDGER (26-40)
+            {
+                category: "Journal Entries",
+                type: "conceptual",
+                question: "The book of original entry where financial transactions are first recorded in chronological order is called the:",
+                options: ["General Ledger", "General Journal", "Trial Balance", "Chart of Accounts"],
+                answer: "General Journal",
+                explanation: "Transactions are first chronologically logged in the General Journal."
+            },
+            {
+                category: "Journal Entries",
+                type: "conceptual",
+                question: "What is the entry for rendered consulting services valued at $5,000 on credit?",
+                options: ["Debit Cash $5,000 / Credit Service Revenue $5,000", "Debit Accounts Receivable $5,000 / Credit Service Revenue $5,000", "Debit Service Revenue $5,000 / Credit Accounts Receivable $5,000", "Debit Accounts Payable $5,000 / Credit Cash $5,000"],
+                answer: "Debit Accounts Receivable $5,000 / Credit Service Revenue $5,000",
+                explanation: "Rendering services on credit increases AR (Debit) and increases Revenue (Credit)."
+            },
+            {
+                category: "Trial Balance",
+                type: "conceptual",
+                question: "A Trial Balance proves that:",
+                options: ["All transactions were posted to correct accounts", "Total debits equal total credits", "No errors exist in the accounting ledger", "Net income is correctly calculated"],
+                answer: "Total debits equal total credits",
+                explanation: "A trial balance checks mathematical equality of debits and credits, but does not detect all errors (e.g., wrong account used)."
+            },
+            {
+                category: "Trial Balance",
+                type: "numerical",
+                question: "A bookkeeper mistakenly posted a $900 debit to Equipment as $90. How much will the total debit side of the Trial Balance be out of balance?",
+                options: ["$900 understated", "$810 understated", "$90 overstated", "$810 overstated", "None of the above / Other amount: $810 understated"],
+                answer: "$810 understated",
+                explanation: "Difference = $900 - $90 = $810 understatment on the debit column."
+            },
+
+            // MODULE 4: ADJUSTING ENTRIES (41-55)
+            {
+                category: "Adjusting Entries",
+                type: "numerical",
+                question: "On October 1, a firm paid $12,000 for a 1-year insurance policy starting immediately and debited Prepaid Insurance. What adjusting entry is needed on December 31 year-end?",
+                options: ["Debit Insurance Expense $3,000 / Credit Prepaid Insurance $3,000", "Debit Insurance Expense $12,000 / Credit Cash $12,000", "Debit Prepaid Insurance $9,000 / Credit Insurance Expense $9,000", "Debit Insurance Expense $1,000 / Credit Prepaid Insurance $1,000", "None of the above / Other amount: $3,000"],
+                answer: "Debit Insurance Expense $3,000 / Credit Prepaid Insurance $3,000",
+                explanation: "Expired months (Oct, Nov, Dec) = 3 months.\nMonthly rate = $12,000 / 12 = $1,000/mo.\nAdjustment = 3 * $1,000 = $3,000 expense."
+            },
+            {
+                category: "Adjusting Entries",
+                type: "numerical",
+                question: "A company purchased equipment for $50,000 on Jan 1 with estimated useful life of 5 years and salvage value of $5,000. Using straight-line depreciation, what is the annual depreciation expense?",
+                options: ["$10,000", "$9,000", "$8,000", "$45,000", "None of the above / Other amount: $9,000"],
+                answer: "$9,000",
+                explanation: "Depreciable Base = $50,000 - $5,000 = $45,000.\nAnnual Depreciation = $45,000 / 5 years = $9,000."
+            },
+            {
+                category: "Adjusting Entries",
+                type: "numerical",
+                question: "On Dec 31, accrued salaries owed to employees but unpaid total $4,500. What is the required year-end adjusting entry?",
+                options: ["Debit Salaries Expense $4,500 / Credit Cash $4,500", "Debit Salaries Expense $4,500 / Credit Salaries Payable $4,500", "Debit Salaries Payable $4,500 / Credit Salaries Expense $4,500", "No entry required until payment date", "None of the above / Other amount: Debit Salaries Exp $4,500"],
+                answer: "Debit Salaries Expense $4,500 / Credit Salaries Payable $4,500",
+                explanation: "Accrued liabilities require recognizing expense (Debit) and obligation payable (Credit)."
+            },
+            {
+                category: "Adjusting Entries",
+                type: "numerical",
+                question: "Supplies account had a beginning balance of $2,000. During the year, $5,000 of supplies were purchased. A physical count at year-end reveals $1,500 of supplies remain on hand. What is Supplies Expense?",
+                options: ["$5,500", "$3,500", "$7,000", "$1,500", "None of the above / Other amount: $5,500"],
+                answer: "$5,500",
+                explanation: "Supplies Available = $2,000 + $5,000 = $7,000.\nSupplies Used (Expense) = $7,000 - $1,500 (End) = $5,500."
+            },
+            {
+                category: "Adjusting Entries",
+                type: "numerical",
+                question: "On Nov 1, a landlord received $6,000 as advance rent for 6 months and credited Unearned Rent Revenue. As of Dec 31, what adjusting entry should be recorded?",
+                options: ["Debit Unearned Rent Rev $2,000 / Credit Rent Rev $2,000", "Debit Rent Rev $2,000 / Credit Unearned Rent Rev $2,000", "Debit Cash $2,000 / Credit Rent Rev $2,000", "Debit Unearned Rent Rev $4,000 / Credit Rent Rev $4,000", "None of the above / Other amount: $2,000"],
+                answer: "Debit Unearned Rent Rev $2,000 / Credit Rent Rev $2,000",
+                explanation: "Monthly rent = $6,000 / 6 = $1,000/mo.\nEarned rent for Nov & Dec (2 months) = $2,000.\nEntry: Debit Unearned Rent Rev $2,000; Credit Rent Rev $2,000."
+            },
+
+            // MODULE 5: INVENTORY & MERCHANDISING (56-70)
+            {
+                category: "Inventory",
+                type: "numerical",
+                question: "Gross Sales: $200,000; Sales Returns: $10,000; Sales Discounts: $5,000; Cost of Goods Sold: $110,000. What is Gross Profit?",
+                options: ["$75,000", "$85,000", "$90,000", "$185,000", "None of the above / Other amount: $75,000"],
+                answer: "$75,000",
+                explanation: "Net Sales = $200,000 - $10,000 - $5,000 = $185,000.\nGross Profit = Net Sales ($185,000) - COGS ($110,000) = $75,000."
+            },
+            {
+                category: "Inventory",
+                type: "numerical",
+                question: "Purchased goods for $10,000 with credit terms 2/10, n/30. If payment is made within the discount period, how much cash is paid?",
+                options: ["$10,000", "$9,800", "$9,000", "$200", "None of the above / Other amount: $9,800"],
+                answer: "$9,800",
+                explanation: "2% discount on $10,000 = $200 discount.\nCash Paid = $10,000 - $200 = $9,800."
+            },
+            {
+                category: "Inventory",
+                type: "conceptual",
+                question: "Under FOB Shipping Point freight terms, who pays the shipping costs and owns the inventory while in transit?",
+                options: ["Seller pays / Seller owns", "Buyer pays / Buyer owns", "Carrier pays / Carrier owns", "Buyer pays / Seller owns"],
+                answer: "Buyer pays / Buyer owns",
+                explanation: "FOB Shipping Point passes title to the buyer at the seller's shipping dock. Buyer pays freight."
+            },
+            {
+                category: "Inventory Costing",
+                type: "numerical",
+                question: "Inventory Data: Jan 1 Beg Inv: 100 units @ $10. Jan 15 Purchase: 200 units @ $12. If 150 units are sold, calculate COGS using FIFO.",
+                options: ["$1,600", "$1,500", "$1,800", "$2,200", "None of the above / Other amount: $1,600"],
+                answer: "$1,600",
+                explanation: "FIFO sells oldest items first:\n100 units @ $10 = $1,000\n50 units @ $12 = $600\nTotal COGS = $1,000 + $600 = $1,600."
+            },
+
+            // MODULE 6: BANK RECONCILIATION & CASH (71-85)
+            {
+                category: "Bank Reconciliation",
+                type: "numerical",
+                question: "Bank balance: $15,000. Deposits in transit: $2,500. Outstanding checks: $3,200. Bank service charge: $50. What is the Adjusted Bank Balance?",
+                options: ["$14,300", "$14,250", "$17,450", "$15,700", "None of the above / Other amount: $14,300"],
+                answer: "$14,300",
+                explanation: "Adjusted Bank Balance = Bank Balance ($15,000) + Deposits in Transit ($2,500) - Outstanding Checks ($3,200) = $14,300."
+            },
+            {
+                category: "Bank Reconciliation",
+                type: "conceptual",
+                question: "In a bank reconciliation, an NSF (Non-Sufficient Funds) check returned by the bank is:",
+                options: ["Added to bank balance", "Deducted from book balance", "Added to book balance", "Deducted from bank balance"],
+                answer: "Deducted from book balance",
+                explanation: "NSF check was previously recorded as cash incoming; because it bounced, it must be deducted from company books."
+            },
+
+            // MODULE 7: FINANCIAL RATIOS & STATEMENT ANALYSIS (86-100)
+            {
+                category: "Financial Ratios",
+                type: "numerical",
+                question: "Company has Current Assets of $150,000 (Cash $30k, AR $50k, Inventory $70k) and Current Liabilities of $60,000. What is the Quick (Acid-Test) Ratio?",
+                options: ["2.50", "1.33", "0.50", "1.83", "None of the above / Other amount: 1.33"],
+                answer: "1.33",
+                explanation: "Quick Assets = Cash ($30k) + AR ($50k) = $80,000.\nQuick Ratio = $80,000 / $60,000 = 1.33."
+            },
+            {
+                category: "Financial Ratios",
+                type: "numerical",
+                question: "Net Income = $45,000; Net Sales = $300,000; Total Assets = $500,000. What is the Profit Margin ratio?",
+                options: ["15%", "9%", "60%", "12%", "None of the above / Other amount: 15%"],
+                answer: "15%",
+                explanation: "Profit Margin = Net Income / Net Sales = $45,000 / $300,000 = 0.15 or 15%."
+            }
+        ];
+
+        // GENERATE ADDITIONAL UNIQUE QUESTIONS DYNAMICALLY TO REACH EXACTLY 100 ITEMS
+        function generate100Questions() {
+            let pool = [...RAW_QUESTIONS];
+            let qId = pool.length + 1;
+
+            const extraTemplates = [
+                {
+                    cat: "Adjusting Entries", type: "numerical",
+                    get: (i) => {
+                        let cost = 10000 + i * 2000;
+                        let years = 5;
+                        let annual = cost / years;
+                        return {
+                            category: "Adjusting Entries",
+                            type: "numerical",
+                            question: `Item #${i}: A vehicle costing $${cost.toLocaleString()} with 0 residual value has a 5-year life. What is annual depreciation?`,
+                            options: [`$${annual.toLocaleString()}`, `$${(annual*1.2).toLocaleString()}`, `$${(annual*0.8).toLocaleString()}`, `$${(cost).toLocaleString()}`, `None of the above / Other amount: $${annual.toLocaleString()}`],
+                            answer: `$${annual.toLocaleString()}`,
+                            explanation: `Annual Depreciation = $${cost.toLocaleString()} / 5 years = $${annual.toLocaleString()}.`
+                        }
+                    }
+                },
+                {
+                    cat: "Accounting Equation", type: "numerical",
+                    get: (i) => {
+                        let a = 100000 + i * 5500;
+                        let l = 40000 + i * 2000;
+                        let e = a - l;
+                        return {
+                            category: "Accounting Equation",
+                            type: "numerical",
+                            question: `Item #${i}: Assets are $${a.toLocaleString()} and Liabilities are $${l.toLocaleString()}. Calculate Owner's Equity.`,
+                            options: [`$${e.toLocaleString()}`, `$${(a+l).toLocaleString()}`, `$${(e+5000).toLocaleString()}`, `$${(e-2000).toLocaleString()}`, `None of the above / Other amount: $${e.toLocaleString()}`],
+                            answer: `$${e.toLocaleString()}`,
+                            explanation: `Equity = Assets ($${a.toLocaleString()}) - Liabilities ($${l.toLocaleString()}) = $${e.toLocaleString()}.`
+                        }
+                    }
+                },
+                {
+                    cat: "Financial Ratios", type: "numerical",
+                    get: (i) => {
+                        let ca = 50000 + i * 3000;
+                        let cl = 25000 + i * 1000;
+                        let ratio = (ca / cl).toFixed(2);
+                        return {
+                            category: "Financial Ratios",
+                            type: "numerical",
+                            question: `Item #${i}: Current Assets = $${ca.toLocaleString()}, Current Liabilities = $${cl.toLocaleString()}. What is the Current Ratio?`,
+                            options: [`${ratio}`, `${(parseFloat(ratio)+0.5).toFixed(2)}`, `${(parseFloat(ratio)-0.3).toFixed(2)}`, "1.00", `None of the above / Other amount: ${ratio}`],
+                            answer: ratio,
+                            explanation: `Current Ratio = Current Assets ($${ca.toLocaleString()}) / Current Liabilities ($${cl.toLocaleString()}) = ${ratio}.`
+                        }
+                    }
+                },
+                {
+                    cat: "Merchandising", type: "conceptual",
+                    get: (i) => {
+                        const concepts = [
+                            { q: `Item #${i}: Sales Discounts are classified as:`, choices: ["Contra Revenue account", "Expense account", "Asset account", "Liability account"], ans: "Contra Revenue account", exp: "Sales discounts reduce gross revenue, making it a contra-revenue account." },
+                            { q: `Item #${i}: Under the perpetual inventory system, purchasing inventory for cash requires:`, choices: ["Debit Inventory, Credit Cash", "Debit Purchases, Credit Cash", "Debit COGS, Credit Cash", "Debit Cash, Credit Inventory"], ans: "Debit Inventory, Credit Cash", exp: "Perpetual system directly debits Inventory upon purchase." },
+                            { q: `Item #${i}: What is the effect of overstating ending inventory at year end?`, choices: ["Overstates Net Income", "Understates Assets", "Overstates COGS", "Understates Equity"], ans: "Overstates Net Income", exp: "Higher ending inventory reduces COGS, thereby overstating Gross Profit & Net Income." },
+                            { q: `Item #${i}: The document issued by a seller authorizing a credit to a buyer's account for returned goods is:`, choices: ["Credit Memorandum", "Debit Memorandum", "Purchase Order", "Invoice"], ans: "Credit Memorandum", exp: "Credit memo reduces buyer's receivable account." }
+                        ];
+                        let item = concepts[i % concepts.length];
+                        return {
+                            category: "Merchandising",
+                            type: "conceptual",
+                            question: item.q,
+                            options: item.choices,
+                            answer: item.ans,
+                            explanation: item.exp
+                        }
+                    }
+                }
+            ];
+
+            let counter = pool.length + 1;
+            while (pool.length < 100) {
+                let tmpl = extraTemplates[pool.length % extraTemplates.length];
+                pool.push(tmpl.get(counter));
+                counter++;
+            }
+            return pool;
+        }
+
+        // APP STATE
+        let examQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = {}; // { qIndex: { selected: "Choice text", isCorrect: true/false } }
+        let flaggedIndices = new Set();
+
+        // SHUFFLE HELPER (Fisher-Yates)
+        function shuffleArray(arr) {
+            let array = [...arr];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // INITIALIZE APP
+        window.addEventListener('DOMContentLoaded', () => {
+            initExam();
+
+            // KEYBOARD NAV LISTENERS
+            window.addEventListener('keydown', (e) => {
+                const quizTab = document.getElementById('tab-quiz');
+                if (quizTab.classList.contains('hidden')) return; // Active only in quiz mode
+
+                if (e.key === "ArrowLeft") {
+                    prevQuestion();
+                } else if (e.key === "ArrowRight") {
+                    nextQuestion();
+                } else if (['1','2','3','4','5'].includes(e.key)) {
+                    let idx = parseInt(e.key) - 1;
+                    selectOptionByIndex(idx);
+                } else if (['a','b','c','d','e'].includes(e.key.toLowerCase())) {
+                    let charMap = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4 };
+                    selectOptionByIndex(charMap[e.key.toLowerCase()]);
+                }
+            });
+        });
+
+        function initExam() {
+            const raw100 = generate100Questions();
+            
+            // Shuffle questions and options
+            examQuestions = shuffleArray(raw100).map((q) => {
+                let shuffledOptions = shuffleArray(q.options);
+                return {
+                    ...q,
+                    options: shuffledOptions
+                };
+            });
+
+            currentIndex = 0;
+            userAnswers = {};
+            flaggedIndices.clear();
+
+            renderHeaderStats();
+            renderQuestion();
+            renderMiniGrid();
+        }
+
+        // TAB SWITCHING
+        function switchTab(tab) {
+            const revTab = document.getElementById('tab-reviewer');
+            const quizTab = document.getElementById('tab-quiz');
+            const revBtn = document.getElementById('tab-reviewer-btn');
+            const quizBtn = document.getElementById('tab-quiz-btn');
+
+            if (tab === 'reviewer') {
+                revTab.classList.remove('hidden');
+                quizTab.classList.add('hidden');
+                revBtn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 bg-indigo-600 text-white shadow-md";
+                quizBtn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-700/50";
+            } else {
+                revTab.classList.add('hidden');
+                quizTab.classList.remove('hidden');
+                quizBtn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 bg-indigo-600 text-white shadow-md";
+                revBtn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-700/50";
+            }
+        }
+
+        // RENDER CURRENT QUESTION
+        function renderQuestion() {
+            const q = examQuestions[currentIndex];
+
+            document.getElementById('progress-text').innerText = `${currentIndex + 1} / ${examQuestions.length}`;
+            document.getElementById('q-category-tag').innerText = q.category;
+            document.getElementById('q-type-tag').innerText = q.type === 'numerical' ? 'Numerical / Solving' : 'Conceptual';
+            document.getElementById('q-title').innerText = `${currentIndex + 1}. ${q.question}`;
+
+            // Context details if present
+            const contextBox = document.getElementById('q-body-context');
+            if (q.context) {
+                contextBox.classList.remove('hidden');
+                contextBox.innerText = q.context;
+            } else {
+                contextBox.classList.add('hidden');
+            }
+
+            // Options rendering
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D', 'E'];
+            const currentAns = userAnswers[currentIndex];
+
+            q.options.forEach((optText, i) => {
+                const letter = letters[i] || (i + 1);
+                const button = document.createElement('button');
+                button.className = "w-full text-left p-3.5 rounded-xl border text-sm font-medium transition-all flex items-start space-x-3 group relative ";
+
+                let borderStyle = "border-slate-800 bg-slate-950/60 hover:bg-slate-800/60 text-slate-200";
+                let badgeStyle = "bg-slate-800 text-slate-400 group-hover:bg-indigo-600 group-hover:text-white";
+
+                if (currentAns) {
+                    if (optText === q.answer) {
+                        borderStyle = "border-emerald-500/80 bg-emerald-950/30 text-emerald-200 font-semibold";
+                        badgeStyle = "bg-emerald-600 text-white";
+                    } else if (currentAns.selected === optText && !currentAns.isCorrect) {
+                        borderStyle = "border-crimson-500/80 bg-crimson-950/30 text-crimson-200";
+                        badgeStyle = "bg-crimson-600 text-white";
+                    } else {
+                        borderStyle = "border-slate-800/40 opacity-50 text-slate-400";
+                    }
+                }
+
+                button.className += borderStyle;
+
+                button.innerHTML = `
+                    <span class="px-2.5 py-1 rounded-lg font-mono text-xs font-bold transition-all ${badgeStyle}">
+                        ${letter}
+                    </span>
+                    <span class="flex-1 pt-0.5 leading-snug">${optText}</span>
+                `;
+
+                button.onclick = () => selectOption(optText);
+                optionsContainer.appendChild(button);
+            });
+
+            // Explanation box
+            const expBox = document.getElementById('explanation-box');
+            const expHeader = document.getElementById('explanation-header');
+            const expText = document.getElementById('explanation-text');
+
+            if (currentAns) {
+                expBox.classList.remove('hidden');
+                if (currentAns.isCorrect) {
+                    expBox.className = "mt-6 p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/20 text-emerald-200";
+                    expHeader.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> Correct Response`;
+                } else {
+                    expBox.className = "mt-6 p-4 rounded-xl border border-crimson-500/40 bg-crimson-950/20 text-crimson-200";
+                    expHeader.innerHTML = `<i class="fa-solid fa-circle-xmark text-crimson-400"></i> Incorrect Response`;
+                }
+                expText.innerText = q.explanation;
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            // Flag state
+            const flagBtn = document.getElementById('flag-btn');
+            if (flaggedIndices.has(currentIndex)) {
+                flagBtn.className = "text-xs px-3 py-1.5 rounded-lg border border-amber-500/60 bg-amber-500/10 text-amber-400 font-semibold transition flex items-center gap-1.5";
+                flagBtn.innerHTML = `<i class="fa-solid fa-bookmark"></i> <span>Flagged</span>`;
+            } else {
+                flagBtn.className = "text-xs px-3 py-1.5 rounded-lg border border-slate-700 text-slate-400 hover:text-amber-400 transition flex items-center gap-1.5";
+                flagBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i> <span>Flag for Review</span>`;
+            }
+
+            // Prev/Next buttons state
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('prev-btn').style.opacity = currentIndex === 0 ? "0.4" : "1";
+
+            renderMiniGrid();
+        }
+
+        // OPTION SELECTION LOGIC
+        function selectOption(selectedText) {
+            const q = examQuestions[currentIndex];
+            const isCorrect = (selectedText === q.answer);
+
+            userAnswers[currentIndex] = {
+                selected: selectedText,
+                isCorrect: isCorrect
+            };
+
+            renderHeaderStats();
+            renderQuestion();
+        }
+
+        function selectOptionByIndex(index) {
+            const q = examQuestions[currentIndex];
+            if (q && q.options[index]) {
+                selectOption(q.options[index]);
+            }
+        }
+
+        // NAVIGATION
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex < examQuestions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                finishQuizEarly();
+            }
+        }
+
+        function jumpToQuestion(index) {
+            currentIndex = index;
+            renderQuestion();
+            closeGridModal();
+        }
+
+        function toggleFlagCurrentQuestion() {
+            if (flaggedIndices.has(currentIndex)) {
+                flaggedIndices.delete(currentIndex);
+            } else {
+                flaggedIndices.add(currentIndex);
+            }
+            document.getElementById('flagged-count-text').innerText = flaggedIndices.size;
+            renderQuestion();
+        }
+
+        // HEADER & STATS CALCULATIONS
+        function renderHeaderStats() {
+            const total = examQuestions.length;
+            const answeredKeys = Object.keys(userAnswers);
+            const answeredCount = answeredKeys.length;
+            
+            let correctCount = 0;
+            answeredKeys.forEach(k => {
+                if (userAnswers[k].isCorrect) correctCount++;
+            });
+
+            const percent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+            const progressPercent = Math.round((answeredCount / total) * 100);
+
+            document.getElementById('score-text').innerHTML = `${correctCount} <span class="text-xs text-slate-400 font-normal">(${percent}%)</span>`;
+            document.getElementById('answered-count-text').innerText = `${answeredCount} answered`;
+            document.getElementById('remaining-count-text').innerText = `${total - answeredCount} remaining`;
+            document.getElementById('progress-bar-inner').style.width = `${progressPercent}%`;
+            document.getElementById('flagged-count-text').innerText = flaggedIndices.size;
+        }
+
+        // MINI NAVIGATOR GRID
+        function renderMiniGrid() {
+            const container = document.getElementById('grid-mini-container');
+            container.innerHTML = '';
+
+            examQuestions.forEach((_, i) => {
+                const btn = document.createElement('button');
+                btn.className = "h-8 w-full rounded font-mono text-xs font-bold transition flex items-center justify-center relative ";
+
+                let bgStyle = "bg-slate-800/80 text-slate-400 hover:bg-slate-700";
+                if (userAnswers[i]) {
+                    if (userAnswers[i].isCorrect) bgStyle = "bg-emerald-600/90 text-white";
+                    else bgStyle = "bg-crimson-600/90 text-white";
+                }
+
+                if (i === currentIndex) {
+                    bgStyle += " ring-2 ring-indigo-400 ring-offset-2 ring-offset-slate-900";
+                }
+
+                btn.className += bgStyle;
+                btn.innerText = i + 1;
+
+                if (flaggedIndices.has(i)) {
+                    const dot = document.createElement('span');
+                    dot.className = "absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full border border-slate-900";
+                    btn.appendChild(dot);
+                }
+
+                btn.onclick = () => {
+                    currentIndex = i;
+                    renderQuestion();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // FULL GRID MODAL
+        function toggleGridModal() {
+            const modal = document.getElementById('grid-modal');
+            if (modal.classList.contains('hidden')) {
+                renderFullGrid();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function closeGridModal() {
+            document.getElementById('grid-modal').classList.add('hidden');
+        }
+
+        function renderFullGrid() {
+            const container = document.getElementById('grid-full-container');
+            container.innerHTML = '';
+
+            examQuestions.forEach((_, i) => {
+                const btn = document.createElement('button');
+                btn.className = "h-10 rounded-lg font-mono text-xs font-bold transition flex flex-col items-center justify-center relative ";
+
+                let bgStyle = "bg-slate-800 text-slate-300 hover:bg-slate-700";
+                if (userAnswers[i]) {
+                    if (userAnswers[i].isCorrect) bgStyle = "bg-emerald-600 text-white";
+                    else bgStyle = "bg-crimson-600 text-white";
+                }
+
+                if (i === currentIndex) {
+                    bgStyle += " ring-2 ring-indigo-400";
+                }
+
+                btn.className += bgStyle;
+                btn.innerText = i + 1;
+
+                if (flaggedIndices.has(i)) {
+                    const badge = document.createElement('span');
+                    badge.className = "absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full border border-slate-900";
+                    btn.appendChild(badge);
+                }
+
+                btn.onclick = () => jumpToQuestion(i);
+                container.appendChild(btn);
+            });
+        }
+
+        // END OF TEST SUMMARY
+        function finishQuizEarly() {
+            const answeredCount = Object.keys(userAnswers).length;
+            if (answeredCount < 100) {
+                if (!confirm(`You have answered ${answeredCount} out of 100 questions. Are you sure you want to finish and view results?`)) {
+                    return;
+                }
+            }
+
+            let totalCorrect = 0;
+            const missedList = [];
+
+            examQuestions.forEach((q, idx) => {
+                const ans = userAnswers[idx];
+                if (ans && ans.isCorrect) {
+                    totalCorrect++;
+                } else {
+                    missedList.push({ index: idx, question: q, userAns: ans });
+                }
+            });
+
+            const percent = Math.round((totalCorrect / examQuestions.length) * 100);
+
+            document.getElementById('summary-score').innerText = `${totalCorrect} / ${examQuestions.length}`;
+            document.getElementById('summary-percentage').innerText = `${percent}%`;
+
+            const badge = document.getElementById('summary-result-badge');
+            if (percent >= 75) {
+                badge.innerText = "PASSED";
+                badge.className = "text-2xl font-black text-emerald-400 mt-1";
+            } else {
+                badge.innerText = "NEEDS REVIEW";
+                badge.className = "text-2xl font-black text-crimson-400 mt-1";
+            }
+
+            document.getElementById('summary-missed-count').innerText = `${missedList.length} items`;
+
+            const listContainer = document.getElementById('summary-missed-list');
+            listContainer.innerHTML = '';
+
+            if (missedList.length === 0) {
+                listContainer.innerHTML = `<div class="text-emerald-400 text-xs text-center py-4">Perfect Score! No missed questions.</div>`;
+            } else {
+                missedList.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = "p-3 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-between text-xs";
+                    
+                    const isFlagged = flaggedIndices.has(item.index);
+                    div.innerHTML = `
+                        <div class="space-y-1 max-w-[80%]">
+                            <div class="font-bold text-slate-200">
+                                #${item.index + 1}: ${item.question.question}
+                                ${isFlagged ? '<span class="text-amber-400 ml-1"><i class="fa-solid fa-bookmark"></i></span>' : ''}
+                            </div>
+                            <div class="text-slate-400">Correct: <span class="text-emerald-400">${item.question.answer}</span></div>
+                        </div>
+                        <button onclick="jumpToAndCloseSummary(${item.index})" class="px-3 py-1.5 bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 rounded hover:bg-indigo-600 hover:text-white transition font-medium">
+                            Review
+                        </button>
+                    `;
+                    listContainer.appendChild(div);
+                });
+            }
+
+            document.getElementById('summary-modal').classList.remove('hidden');
+        }
+
+        function jumpToAndCloseSummary(index) {
+            closeSummaryModal();
+            currentIndex = index;
+            renderQuestion();
+        }
+
+        function closeSummaryModal() {
+            document.getElementById('summary-modal').classList.add('hidden');
+        }
+
+        function retakeExam() {
+            closeSummaryModal();
+            initExam();
+        }
+    </script>
+</body>
+</html>
